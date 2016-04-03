@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en"> 
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Air France</title>
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="css/Homestyle.css">
+	<link rel="stylesheet" href="css/animate.css">
+    
+    <script src="./js/wow.min.js"></script>
+    <script src="./js/jquery-2.2.0.min.js"></script>
+    <script src="./js/angular.min.js"></script>
+    <script src="./js/angular-route.min.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+    <script src="./js/ui-bootstrap-tpls-1.2.5.min.js"></script>
+
+    <script src="./core.js"></script>
+    <script src="./services/airportsSrv.js"> </script>
+    <script src="./services/reservationCancelationSrv.js"> </script>
+    <script src="./services/flightsSrv.js"> </script>
+    <script src="./controllers/controller.js "></script>
+	
+</head>
+<body ng-app="mainApp" ng-controller="myCtrl"  >
+
+
+<!--START The top image background -->
+<section id="imageHome"  >
+ <div id="nav" class="navbar navbar-default">
+  <div class="container">
+    <div class="nav navbar-nav">
+     
+      <li><img id="logo" src="./images/logo2.svg" width="200"></li>
+    </div>
+    <ul class="nav navbar-nav navbar-right">
+
+      <li class="active btn-lg"><a href="index.html"><span class="glyphicon glyphicon-home"></span>Home</a></li>
+      <li class="btn-lg"><a href="#"><span class="glyphicon glyphicon-plane"></span>Booking</a></li>
+      <li class="btn-lg"><a href="contact.html"><span class="glyphicon glyphicon-user"></span>Contact Us</a></li>
+       
+    </ul>
+  </div>
+</div>
+
+
+	<div id="topImage" > 
+	
+   <div id="home-tabling-container" class="col-xs-12 col-md-10 col-lg-8" ng-controller="reservationsController">
+   <div id="bookingForm" ng-show="showMe" >
+
+   <!-- Start Booking Form -->
+   <div id="bookingSection" ng-show="showBooking" ng-controller="bookingCtrl" >
+
+	<div>
+		<div ng-model="bookings">	
+		<h1>Book a flight!</h1>
+		<div>
+		<div class="col-xs-2">
+		<input type="radio" name="oneRound" value="round" ng-click="hideReturnedDate()">Round Trip </input>
+		</div>
+		<input type="radio" name="oneRound" value="one" ng-click="showReturnedDate()">One Way</input>
+		</div>
+
+
+		<div class="col-xs-4">
+			<div >
+				<label>From</label>
+				<input name="originAirports"
+                id="originAirports"
+                type="text"
+                placeholder="Flying From"
+                ng-model="selectedOrigin"
+                uib-typeahead="airport.name+' ('+airport.iata+')' for airport in airports | airportsFilters:selectedOrigin| limitTo:10"
+                class="form-control",
+                typeahead-on-select="SetOriginAirport($item.iata)">
+			</div>
+
+
+			<div >
+				<label>Departure Date</label>
+				<input type="date" class="form-control"  name="name" placeholder="Departure Date">
+			</div>
+
+			<div >
+				<label></label>
+				<select class="form-control">
+					<option>1 Adult</option>
+					<option>2 Adults</option>
+					<option>3 Adults</option>
+					<option>4 Adults</option>
+					<option>5 Adults</option>
+					<option>6 Adults</option>
+					<option>7 Adults</option>
+				</select>
+
+			</div>
+
+			<div>
+				<label>Class</label>
+				<select class="form-control">
+					<option>Economy</option>
+					<option>Bussines</option>
+					<option>First</option>
+				</select>
+
+				<br>
+
+				<input id="bookBtn" type="Button" ng-click="bookFlight()" class="btn-primary btn-lg"  value="Book Flight" >
+			</div>
+
+
+		</div>
+
+
+
+
+		
+
+
+		<div class="col-xs-1">
+		</div>	
+
+		<div  class="col-xs-4">
+			
+				<div >	
+					<label>To</label>
+						<input name="destinationAirports"
+                id="destinationAirports"
+                type="text"
+                placeholder="Flying To"
+                ng-model="selectedDestination"
+                uib-typeahead="airport.name+' ('+airport.iata+')' for airport in airports | airportsFilters:selectedDestination| limitTo:10"
+                class="form-control",
+                typeahead-on-select="SetDestinationAirport($item.iata)">
+				</div>	
+
+
+					
+				<div ng-hide="hidedate">	
+					<label>Return Date</label>
+					<input type="date" class="form-control" name="name" placeholder="Departure Date">
+				</div>	
+
+				<div ng-hide="!hidedate">	
+					<label> </label>
+					<br>
+					<label> </label>
+					<br>
+					<br>
+
+					
+						
+				
+				</div>	
+
+				
+
+				<div class="col-xs-1">
+				</div>	
+
+
+				<div>
+					<label></label>
+					<select class="form-control">
+					<option>0 Child (2-11 years)</option>
+					<option>1 Child</option>
+					<option>2 Children</option>
+					<option>3 Children</option>
+					<option>4 Children</option>
+					<option>5 Children</option>
+					<option>6 Children</option>
+					</select>
+				</div>
+
+				
+
+
+					
+				<div >
+					<label>Email</label>
+					<input type="email" class="form-control">
+				</div>	
+
+
+				
+		</div>
+
+
+
+		</div>
+	</div>	
+</div>	
+<div id="timeTableSection" ng-show="showBooking2" ng-controller="bookingCtrl" >
+   	  <div ng-controller="bookingCtrl"  data-ng-init="changeTable()" >
+        <div ng-hide="hide">
+      
+          <div ng-class="image" ng-style="{'background': 'url('+image+') no-repeat ','background-size':'70% 100%'}">
+            <div class="col-xs-5"  >
+                <lable style="font-family: arial;color: red">
+                    Destination: 
+                </lable>
+                <input class="form-control" id="tag"type="text" ng-click="changeTable()" ng-model="destination" typeahead-on-select="changeTable($item.destinationCity)" uib-typeahead="flight.destinationCity for flight in arr |filter:$viewValue" placeholder="Destination: ">
+
+                
+            </div>
+
+
+            <div class="col-xs-5" ng-show="datedivbool" id="DateDiv">
+              <lable style="font-family: arial;">
+                  Select Date
+              </lable>
+
+              <input class="form-control" id="dateTextBox" type="date" ng-model="dateString">
+            
+              <button class="btn-primary" ng-click="filterTableDate()">Filter By Date</button>
+            </div>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+            </div>
+
+
+
+          <table id="table" class="table table-striped">
+          <!-- /  fillTable(destination); -->
+            <tr class="row" >  
+               <td>Type</td>
+               <td>Aircraft</td>
+                <td>Capacity</td>
+                <td>OriginCity</td>
+                <td>DestinationCity</td>
+                <td>date</td>
+
+
+            </tr>
+
+
+            <tr class="row" ng-repeat="flight in arr | limitTo:limit | orderBy:'date'" ng-animate=" 'animate' ">  
+            <td>{{flight.flightNumber.type}}</td>
+              <td>{{flight.aircraft}}</td>
+            <td>{{flight.capacity}}</td>
+            <td>{{flight.originCity}}</td>
+            <td>{{flight.destinationCity}}</td>
+            <td>{{flight.date}}</td>
+
+          </tr>
+
+
+        </table>
+        <button class="btn-info btn-lg" ng-click="showMore()">Show More</button>
+
+    </div>
+    <div ng-hide="!hide">
+    </div>
+
+    </div>
+</div>	
+<!-- messend -->
+<!-- geddostart -->
+
+<div id="timeTableSection" ng-show="showBooking3" ng-controller="bookingCtrl" >
+   	  <div ng-controller="bookingCtrl"  data-ng-init="changeTable()" >
+        <div ng-hide="hide">
+      
+          <div ng-class="image" ng-style="{'background': 'url('+image+') no-repeat','background-size':'70% 100%'}">
+            <div class="col-xs-5"  >
+                
+                
+
+                
+            </div>
+
+
+            <div class="col-xs-5" ng-show="datedivbool" id="DateDiv">
+              <lable style="font-family: arial;">
+                  Select Date
+              </lable>
+
+              <input class="form-control" id="dateTextBox" type="date" ng-model="dateString">
+            
+              <button class="btn-primary" ng-click="filterTableDate()">Filter By Date</button>
+            </div>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+            </div>
+
+
+
+          <table id="table" class="table table-striped">
+          <!-- /  fillTable(destination); -->
+            <tr class="row" >  
+               <td>Type</td>
+               <td>Aircraft</td>
+                <td>Capacity</td>
+                <td>OriginCity</td>
+                <td>DestinationCity</td>
+                <td>date</td>
+
+
+            </tr>
+
+
+            <tr class="row" ng-repeat="flight in arr | limitTo:limit | orderBy:'date'" ng-animate=" 'animate' ">  
+            <td>{{flight.flightNumber.type}}</td>
+              <td>{{flight.aircraft}}</td>
+            <td>{{flight.capacity}}</td>
+            <td>{{flight.originCity}}</td>
+            <td>{{flight.destinationCity}}</td>
+            <td>{{flight.date}}</td>
+            <td><button  ng-click="bookButton(flight.flightNumber.unique)" class="btn-primary btn-xs">Book!</button></td>
+
+          </tr>
+
+
+        </table>
+        <button class="btn-info btn-lg" ng-click="showMore()">Show More</button>
+
+    </div>
+    <div ng-hide="!hide">
+    </div>
+
+    </div>
+</div>
+
+<!-- geddoend -->
+<!-- Start timeTable Form -->
+
+  <div ng-show="timeTableshow" id="timeTableShow">
+  
+
+  </div>
+  
+
+<!-- End Booking Form -->
+ <!-- Start Manage Booking  -->
+    <div id="big-form" class="well auth-box" ng-show="showManage">
+      <form>
+        <fieldset>
+
+          <!-- Form Name -->
+          <center><h1>Reservation Details</h1></center>
+          <br>	
+
+          	<floatlabel>
+          <!-- Text input-->
+          <div class="formgroup">
+            <label id="labelReference" for="textinput" >Please Enter your reference number</label>  
+            <div class="">
+              <input id="textinput" name="textinput" placeholder="Reference Number" ng-model="enteredReferenceNum" type="text">
+            </div>
+          </div>
+
+          <div class="formgroup">
+            <div class="">
+              <center><button id="singlebutton" ng-click ="searchReservations()" name="singlebutton" class="btn btn-default">Search</button></center>
+            </div>
+          </div>
+         <div >
+         <div n>
+           <!-- Text input-->
+            <div class="form-group">
+              <label class=" control-label" for="textinput" >
+                <ul class="nav nav-pills nav-stacked">
+              <li ng-animate="'animate'" ng-repeat="name in names | filter:search"> {{name}}
+              </li>
+              </ul>
+             </label>
+            </div>
+           <div class="form-group">
+              <label class=" control-label" for="textinput" >
+                <ul class="groupinformation">
+              <li ng-animate="'animate'" ng-repeat="name in flightDetails | filter:search"> {{name}}
+              </li>
+              </ul>
+             </label>
+            </div>
+
+            <div class="form-group-cancelation">
+            <div class="">
+             <center><button ng-show ="reservationExist" id="btnCancelReservation"class="btn btn-default" ng-click="cancelReservation()">Cancel Reservation</button></center>
+            </div>
+            </div>
+          </div>
+          <!-- Button -->
+       </div>
+        
+        </fieldset>
+      </form>
+    </div>
+ <!--End Manage Booking-->
+   	<button id="closeButton" class ="glyphicon glyphicon-remove" ng-click="close()"></button>
+   	<p id="closeButtonText">close</p>
+   </div> 
+   <ul id="home-tabling-list" class="nav nav-tabs wow slideInLeft" data-wow-duration="2.5s" style="visibility: visible; animation-duration: 2.5s; animation-name: slideInLeft;">
+                                    <li class="" ng-click="click1()"><a data-toggle="tab" href="#"><span class="glyphicon glyphicon-plane"></span><span class="tabText">
+                                        Book</span></a></li>
+
+                                    <li class="" ng-click="click2()" ng-active="activateButton"> <a data-toggle="tab" href="#"><span class="glyphicon glyphicon-calendar"></span>
+                                        Timetable</span></a></li>
+
+                                    <li class="" ng-click="click3()"><a data-toggle="tab" href="#"><span class="glyphicon glyphicon-remove-circle"></span>
+                                        Manage Booking</span></a></li>
+
+                                        </ul>
+   </div>
+   <br>	
+     <div class="row" >
+				  <div class="text-center wow fadeIn" data-wow-delay="0.2s">
+				  		<p id="paragraphScroll" class=" wow fadeIn" data-wow-delay="1s">scroll down to see more</p>
+				  		<div id="scroll"  class="glyphicon glyphicon-hand-down wow bounce " data-wow-delay="1s" data-wow-iteration="20" ng-click="gotoBottom()"></div>
+				  		
+
+				  </div>
+			  </div>
+    
+			
+		 </div>
+		 <h2 id="welcomeTextDown" class=" wow fadeInLeft" data-wow-duration="2s" data-wow-delay="0.2s">
+			Welcome to Air France
+			<img id="franceLogo" src="./images/francelogo.png">
+		 </h2>
+		<h5  class="wow fadeIn" data-wow-delay="0.2s"id="welcomeText2">We are happy to serve you</h5>
+
+	</section>
+  </div>  
+<!--END The top image background -->
+
+<!--Start History section-->
+<section class="history text-center">
+	<div class="container">
+	<div class="row">
+		<div id="beginning" class=" historyDivs col-lg-3 col-sm 12 wow fadeInLeftBig"  data-wow-offset="100" data-wow-duration="1.5s">
+			
+			<div id="beginningText" class="btn-primary  wow fadeInUpBig"  data-wow-delay ="0.2s" data-wow-offset="10" data-wow-duration="1s">
+				<h3>1909-1930 THE BEGINNING</h3>
+				<p>France was passionate about the burgeoning world of aviation. In the excitement of the Roaring Twenties, the first airlines appeared. Pilots and passengers alike took part in the adventure.</p>
+			</div>
+		</div>
+		<div id="takeOff"class=" historyDivs col-lg-3  col-sm 12 wow fadeInUpBig"  data-wow-delay ="0.5s" data-wow-offset="100" data-wow-duration="1.5s">
+				<div id="takeOffText" class="btn-primary  wow fadeInUpBig" data-wow-offset="5" data-wow-duration="2s">
+				<h3>1933-1945 TAKEOFF</h3>
+				<p>In 1933, Air France brought together the five main French air transporters. In just a few years, it entered the international stage as a major airline.</p>
+			</div>
+		</div>
+		
+		<div id="flying" class=" historyDivs col-lg-3 col-sm 12 wow fadeInDownBig" data-wow-delay ="0.3s" data-wow-offset="100" data-wow-duration="1.5s">
+				 <div id="flyingText" class="btn-primary   wow fadeInUpBig"   data-wow-delay ="0.3s" data-wow-offset="5" data-wow-duration="2.5s">
+				<h3>1946-1958 FLYING HIGH</h3>
+				<p>Boosted by the expanding air transport industry, the airline experienced a spectacular boom. With a renewed fleet, it increased its network's density and expanded into Africa, Asia and the Americas.</p>
+			</div>
+		</div>
+
+		<div id="jetAge" class=" historyDivs col-lg-3 col-sm 12 wow fadeInRightBig"  data-wow-offset="100" data-wow-duration="1.5s">
+			
+			<div id="jetAgeText" class="btn-primary   wow fadeInUpBig"  data-wow-delay ="0.3s" data-wow-offset="5" data-wow-duration="2s">
+				<h3>1959-1969 JET AGE</h3>
+				<p>Caravelle, Boeing 707… Jets revolutionized air travel. These more powerful aircraft were able to transport more passengers quicker and further. Air France's traffic doubled in ten years.</p>
+			</div>
+
+		</div>
+	</div>
+	</div>
+</section>
+<section class="history2 text-center">
+ <div class="container">
+		<div class="row">
+			<div id="maturity" class=" historyDivs col-lg-3 col-sm 12 wow fadeInRightBig"  data-wow-offset="100" data-wow-duration="1">
+				<div id="maturityText" class="btn-primary  wow fadeInUpBig"  data-wow-delay ="0.3s" data-wow-offset="1" data-wow-duration="1s">
+				<h3>1970-1989 MATURITY</h3>
+					<p>Air France entered the era of mass transport. Faced with competition and oil crises, the airline dealt with the turbulence and gave wings to one of the most beautiful birds in history - Concorde..</p>
+					
+				</div>		
+
+			</div>
+
+		
+		<div id="renewal" class=" historyDivs col-lg-3 col-sm 12 wow fadeInRightBig"  data-wow-offset="100" data-wow-duration="2s">
+			<div id="renewalText" class="btn-primary wow fadeInUpBig"  data-wow-delay ="0.3s" data-wow-offset="1" data-wow-duration="1s">
+				<h3>1990-1999 RENEWAL</h3>
+				<p>Conditions began to deteriorate. Thanks to a recovery plan, Air France underwent thorough modernization. The airline aimed to 'make the sky the best place on earth'.</p>
+			</div>
+		</div>
+
+		<div id="worldLeader" class=" historyDivs col-lg-3  col-sm 12 wow fadeInRightBig"  data-wow-offset="100" data-wow-duration="2.5s">
+			<div id="worldLeaderText" class="btn-primary  wow fadeInUpBig"  data-wow-delay ="0.3s" data-wow-offset="1" data-wow-duration="2.6s">
+				<h3>2000+ WORLD LEADER</h3>
+				<p>Along with KLM, Air France created one of the world leaders in air transport – passengers, cargo, and maintenance.</p>
+			</div>
+		
+		</div>
+	</div>
+</div>
+	
+
+	
+
+</section>
+<!--End History section-->
+
+<!--Start section Statistics-->
+	<section class="stats text-center">
+		<div id="data" > 
+			 <div class="container">
+				  <div class="row">
+					  <div class="text-center wow fadeIn" data-wow-delay="0.2s">
+					  		<h2 id="statsText">Our Airline Statistics</h2>
+					  </div>
+					  <div class="statsDivs  col-lg-4">
+					  	<img class="icons " src="./icons/aircraft.png">
+					  	<h3>Air Crafts</h3>
+					  	<h5>228</h5>
+					  </div>
+					  <div class="statsDivs col-lg-4">
+					  	<img class="icons " src="./icons/destination.png">
+					  	<h3>Destinations</h3>
+					  	<h5>204</h5>
+					  </div>
+					  <div class="statsDivs col-lg-4">
+					  	<img class="icons" src="./icons/seat.png">
+					  	<h3>Seats</h3>
+					  	<h5>34,562</h5>
+					  </div>
+			  	</div>
+			</div>	
+
+		 </div>
+
+
+	</section>
+<!--End Section Statistics-->
+
+
+<!--Start Section Features-->
+	<section class="features text-center">
+	<div id="data2" > 
+		<div class="container">
+			
+				
+			</div>
+		</div>
+	
+	</section>
+<!--End Section Features-->
+
+ <div id="slide-show">
+		 	
+		 
+	<div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+      <li data-target="#myCarousel" data-slide-to="2"></li>
+      <li data-target="#myCarousel" data-slide-to="3"></li>
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner" role="listbox">
+
+      <div class="item active">
+        <img class="slide-show-image img-rounded" src="./images/hero-1.jpg" alt="Chania" width="800px" height="150px">
+        <div class="carousel-caption">
+          <h3>Chania</h3>
+          <p>The atmosphere in Chania has a touch of Florence and Venice.</p>
+        </div>
+      </div>
+
+      <div class="item">
+        <img class="slide-show-image img-rounded" src="./images/hero-2.jpg" alt="Chania" width="800" height="150">
+        <div class="carousel-caption">
+          <h3>Chania</h3>
+          <p>The atmosphere in Chania has a touch of Florence and Venice.</p>
+        </div>
+      </div>
+    
+      <div class="item">
+        <img class="slide-show-image img-rounded" src="./images/pey1.jpg" alt="Flower" width="800" height="150">
+        <div class="carousel-caption">
+          <h3>Flowers</h3>
+          <p>Beatiful flowers in Kolymbari, Crete.</p>
+        </div>
+      </div>
+
+      <div class="item">
+        <img class="slide-show-image img-rounded" src="./images/hero-2.jpg" alt="Flower" width="800" height="150" >
+        <div class="carousel-caption">
+          <h3>Flowers</h3>
+          <p>Beatiful flowers in Kolymbari, Crete.</p>
+        </div>
+      </div>
+  
+    </div>
+   
+    
+  </div>
+</div>
+
+
+
+
+
+
+<script>
+	new WOW().init();
+</script>
+
+</body>
+</html>
