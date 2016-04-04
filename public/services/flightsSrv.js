@@ -164,11 +164,11 @@ app.factory('FlightsSrv', function () {
         "duration": "2:00",
         "originIata": "CAI",
         "originCity": "Cairo",
-<<<<<<< HEAD
+
         "destinationIata": "BEU",
-=======
+
         "destinationIata": "BEY",
->>>>>>> 831f7d5460afeb91e32f1c14cdbf14bfa52b0e1b
+
         "destinationCity":"Beirut",
         "seatMap": [{"reserved": true,"seatWindow":true,"aisle":true,"cost":"230.4","cabin": "1","reservationID":"321efr434"}],
         "url":"",
@@ -182,11 +182,11 @@ app.factory('FlightsSrv', function () {
         "duration": "2:00",
         "originIata": "CAI",
         "originCity": "Cairo",
-<<<<<<< HEAD
+
         "destinationIata": "YKS",
-=======
+
         "destinationIata": "HND",
->>>>>>> 831f7d5460afeb91e32f1c14cdbf14bfa52b0e1b
+
         "destinationCity":"Tokyo",
         "seatMap": [{"reserved": true,"seatWindow":true,"aisle":true,"cost":"230.4","cabin": "1","reservationID":"321efr434"}],
         "url":"",
@@ -200,11 +200,11 @@ app.factory('FlightsSrv', function () {
         "duration": "2:00",
         "originIata": "CAI",
         "originCity": "Cairo",
-<<<<<<< HEAD
+
         "destinationIata": "CHR",
-=======
+
         "destinationIata": "CDG",
->>>>>>> 831f7d5460afeb91e32f1c14cdbf14bfa52b0e1b
+
         "destinationCity":"Paris",
         "seatMap": [{"reserved": true,"seatWindow":true,"aisle":true,"cost":"230.4","cabin": "1","reservationID":"321efr434"}],
         "url":"",
@@ -218,11 +218,11 @@ app.factory('FlightsSrv', function () {
         "duration": "2:00",
         "originIata": "CAI",
         "originCity": "Cairo",
-<<<<<<< HEAD
+
         "destinationIata": "SHK",
-=======
+
         "destinationIata": "SSH",
->>>>>>> 831f7d5460afeb91e32f1c14cdbf14bfa52b0e1b
+
         "destinationCity":"SharmELSheikh",
         "seatMap": [{"reserved": true,"seatWindow":true,"aisle":true,"cost":"230.4","cabin": "1","reservationID":"321efr434"}],
         "url":"",
@@ -236,19 +236,19 @@ app.factory('FlightsSrv', function () {
         "duration": "2:00",
         "originIata": "CAI",
         "originCity": "Cairo",
-<<<<<<< HEAD
+
         "destinationIata": "LDN",
-=======
+
         "destinationIata": "LHR",
->>>>>>> 831f7d5460afeb91e32f1c14cdbf14bfa52b0e1b
+
         "destinationCity":"London",
         "seatMap": [{"reserved": true,"seatWindow":true,"aisle":true,"cost":"230.4","cabin": "1","reservationID":"321efr434"}],
         "url":"",
         "size": "medium"
-<<<<<<< HEAD
-    }
+
     
-=======
+    
+
     },
     {
         "flightNumber": { "type": "National","unique": true },
@@ -564,7 +564,7 @@ app.factory('FlightsSrv', function () {
         "url":"",
         "size": "medium"
     }
->>>>>>> 831f7d5460afeb91e32f1c14cdbf14bfa52b0e1b
+
     
 ];
    return flights;
