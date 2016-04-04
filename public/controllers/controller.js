@@ -164,10 +164,15 @@ app.controller('bookingCtrl', function($scope, $location,airportSrv,FlightsSrv) 
           }
 
        }
-       $scope.arr = result;;
+       if(result.length==0){
+         $scope.hideTable=true;
+       }
+       $scope.arr = result;
   }
-  $scope.changeTable=function(city,flag){
-    if(city==undefined){
+  $scope.changeTable=function(iata){
+    
+    if(iata==undefined){
+      $scope.destination=null;
           $scope.hide=false;
           $scope.hideBookButton=true;
           // FlightsSrv.getFlights().success(function(flights) {
@@ -187,22 +192,27 @@ app.controller('bookingCtrl', function($scope, $location,airportSrv,FlightsSrv) 
 
        //   });
         
-       $scope.image="../public/images/default.jpg"; 
+       $scope.image="../images/default.jpg"; 
        $scope.datedivbool=false;
     }      
     else{
+
        var result=[];
        var array=$scope.arr;
        var i;
        for(i=0;i<array.length;i++){
-          if(array[i].destinationCity==city){
+          if(array[i].destinationIata==iata){
             result.push(array[i]);
           }
        }
        $scope.arr = result;
        $scope.datedivbool=true;
-       console.log(city);
-       $scope.image="../public/images/"+city+".jpg"; 
+       if(result.length!=0){
+        $scope.image="../images/"+iata+".jpg"; 
+       }
+       else{
+        $scope.hideTable=true;
+       }
 
 
     }
@@ -295,5 +305,3 @@ $(document).ready(function(){
     e.preventDefault();
   });
 });*/
-
-
