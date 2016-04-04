@@ -4,20 +4,43 @@
 
 html{
   height: 100%;
+background : url(../images/parisnight.jpg) no-repeat center center fixed;
+	background-size: 101% 100%;
+
+
 }
+
 body {
   height: 100%;
+ background : url(../images/lyon) no-repeat center center fixed;
+	background-size: 101% 100%;
+ cursor:url("../icons/sky.png"), auto;
+
   overflow-x:hidden;
+}
+
+#main
+{
+	height: 100%;
+background-color: rgba(2,2,2,.86);
+	
 }
  
 #nav {
-	background-color: rgb(250,254,255);
-	color: white;
+	background-color: rgba(2,2,2,0.8);
+	
+	color:red;
 	width:100%;
-	height:10%;
+	height:8%;
 	position:fixed;
 	 z-index: 1;
 } 
+#navBarStyle
+{
+	position: absolute;
+	top:-5%;
+	left:29%;
+}
 #logo
 {
 	position:relative;
@@ -27,6 +50,7 @@ body {
 {
 	height:100%;
 
+
 }
 /*Start section ImageTop*/
 #imageHome
@@ -34,8 +58,6 @@ body {
 	
 	width:100%;
 	height:100%;
-	background : url(../images/paris.jpg) no-repeat center center fixed;
-	background-size: 101% 100%;
 
 }
 #topImage
@@ -43,7 +65,7 @@ body {
 	
 	width: 100%;
 	height:100%;
-	background-color: rgba(2,2,2,0.3);
+
 	
 }
 
@@ -83,8 +105,8 @@ body {
 #paragraphScroll
 {
 	position: absolute;
-	left:43%;
-	top:81%;
+	left:42%;
+	top:83%;
 	font-size: 20px;
 	color:white;
 
@@ -107,6 +129,9 @@ width:100%;
 .history
 {
 	height:100%;
+	
+	position: relative;
+	left:1%;
 	overflow: hidden;
 
 }
@@ -114,18 +139,26 @@ width:100%;
 {
 	height:100%;
 	overflow: hidden;
+	width:90%;
+
+	position: relative;
+	left:15%;
 
 }
 
 .row
 {
 	height: 100%;
+	
 
 }
 .historyDivs
 {
 	
 	height:100%;
+	width:24%;
+	position: relative;
+	left:1%;
 	margin:0%;
 	padding:0%;
 
@@ -135,7 +168,7 @@ width:100%;
 {
 	background: url(../images/histoire01.jpg) no-repeat center center;
 	
-    text-align: bottom;
+	text-align: bottom;
 
 }
 
@@ -178,10 +211,9 @@ width:100%;
 
 #beginningText
 {
-	color: #fff;
-  
-  background-color: #337ab7;
-  border-color: #2e6da4;
+	color: #eee;
+
+  font-family:sans-serif;
   border-radius: 5px;
   width:60%;
 	height:40%;
@@ -196,8 +228,7 @@ width:100%;
 {
 	color: #fff;
   
-  background-color: #d9534f;
-  border-color: #d43f3a;
+ 
   border-radius: 5px;
   width:60%;
 	height:40%;
@@ -209,8 +240,7 @@ width:100%;
 #flyingText
 {
 	color:#fff;
-background-color: #5cb85c;
-  border-color: #4cae4c;
+
     border-radius: 5px;
   width:60%;
 	height:40%;
@@ -224,8 +254,7 @@ background-color: #5cb85c;
 {
 	color: #fff;
   
-  background-color: #d9534f;
-  border-color: #d43f3a;
+ 
   border-radius: 5px;
   width:60%;
 	height:40%;
@@ -237,8 +266,7 @@ background-color: #5cb85c;
 #maturityText
 {
 	color:#fff;
-	background-color: #5cb85c;
-  	border-color: #4cae4c;
+	
     border-radius: 5px;
   	width:60%;
 	height:40%;
@@ -252,8 +280,7 @@ background-color: #5cb85c;
 
 	color: #fff;
   
-  background-color: #d9534f;
-  border-color: #d43f3a;
+  
   border-radius: 5px;
   width:60%;
 	height:40%;
@@ -266,8 +293,7 @@ background-color: #5cb85c;
 #worldLeaderText
 {
 color:#fff;
-	background-color: #337ab7;
-  border-color: #2e6da4;
+
     border-radius: 5px;
   	width:60%;
 	height:40%;
@@ -282,7 +308,6 @@ color:#fff;
 /*Start section Statistics*/
  .stats
  {
- 	background: url(../images/seats.jpg) no-repeat center center fixed;
  	height:60%;
  }
  #data
@@ -291,6 +316,7 @@ color:#fff;
 	width: 100%;
 	height:100%;
  }
+
  #statsText
  {
  	color:#EEE;
@@ -332,7 +358,10 @@ h4
  {
  	background-color: rgba(2,2,2,0.5);
 	width: 100%;
-	height:100%;
+	position: relative;
+	top:-10%;
+	height:120%;
+
  }
  #gameDiv
  {
@@ -343,35 +372,7 @@ h4
  	position:relative;
  	left:2%;
  }
- #moviesAndMusicDiv
- {
- 	height:80%;
- 	left:2%;
-
- }
-  #moviesDiv
- {
- 	background-color:#ccc;
- 	opacity:0.4;
- 	height:45%;
- 	width:80%;
- 	border-radius:5px;
- 	left:2%;
- 	margin:1%;
- 	
- }
-  #musicDiv
- {
- 	background-color:#ccc;
- 	opacity:0.4;
- 	height:45%;
- 	width:80%;
- 	border-radius:5px;
- 	left:2%;
- 	margin:1%;
-
- 	
- }
+ 
 /*End section Features*/
 
 /* start home-tabling-container */
@@ -379,15 +380,22 @@ h4
 	margin-top: 35%;
 	width: 40%;
 	height: 5%;
-	background-color: rgb(0, 33, 71);
+	opacity:0.8;
+	background-color: rgb(11,26,71);
+
+
 }
 
 .home-tabling-btn{
 background-color: rgb(0, 33, 71);
+
+
 }
 #home-tabling-list{
    float: right;
    color: rgb(212, 159, 0);
+   opacity:0.7;
+
 }
 
 .slide-show-image{
@@ -713,3 +721,165 @@ overflow-x:hidden;
 {
 	width:1%;
 }
+/*start payment section*/
+
+.form-horizontal{
+		   position:relative;
+    		top: 4%;
+    		left: 0%;
+
+    		}
+     
+
+		.confirm{
+		   position:relative;
+		   top: 20%;
+    		left: 50%;
+			}
+    	
+    	.whole{
+    	position:relative;
+    	color:white;
+    	top: 15%;
+    	left: 25%;
+    	
+    	border-radius: 20px;
+   
+    	padding: 20px; 
+    	width: 700px;
+    	height: 350px;   
+
+			}
+
+		#check{
+			position: relative;
+			left: -12%;
+			color:white;
+			font-size: 20px;
+			font-weight: bold;
+      margin-left: 18%;
+		}
+
+    #date{
+    	position: absolute;
+    	top:200%;
+      margin-left: 4.5%;
+      
+    }
+    #cvv
+    {
+    	color:white;
+    	position: absolute;
+    	top:160%;
+    	left:17%;
+    	width:90%;
+    }
+     #cvvText
+    {
+    	color:white;
+    	font-size: 15px;
+    	position: absolute;
+    	top:0%;
+    	left:-20%;
+    }
+#cardNumber
+{
+	position:absolute;
+	top:119%;
+	width: 90%;
+	left:2%;
+	color: white;	
+}
+#cardName
+{
+	position:absolute;
+	top:80%;
+	width: 90%;
+	left:2%;
+	color: white;	
+}
+
+#btnConfirm
+{
+	position: absolute;
+	top:78%;
+	left:50%;
+}
+span
+{
+	font-size: 15px;
+	font-weight: bold;
+}
+
+#mainPay
+{
+	overflow:hidden;
+}
+
+ /*end Payment section */
+ /*Start Section Team*/
+.team
+{
+height:80%;
+}
+#img1
+{
+	position: absolute;
+	top:15%;
+	left:35%;
+ 
+}
+#img2
+{
+	position: absolute;
+	top:35%;
+	left:28%;
+ 
+}
+#img3
+{
+	position: absolute;
+	top:59%;
+	left:28%;
+ 
+}
+#img4
+{
+	position: absolute;
+	top:80%;
+	left:34%;
+ 
+}
+#img5
+{
+	position: absolute;
+	top:15%;
+	left:52%;
+}
+#img6
+{
+	position: absolute;
+	top:32%;
+	left:61%;
+}
+#img7
+{
+	position: absolute;
+	top:56%;
+	left:61%;
+}
+#img8
+{
+	position: absolute;
+	top:80%;
+	left:54%;
+ 
+}
+#tagText
+{
+	color:white;
+	position: absolute;
+	top:20%;
+	left:22%;
+}
+ /*End Section Team*/

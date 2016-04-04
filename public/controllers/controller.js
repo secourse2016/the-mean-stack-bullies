@@ -4,12 +4,48 @@
 //handling clicking events to show the relevant material 
 
 //start handling section
+app.controller('ScrollController', ['$scope', '$location', '$anchorScroll',
+  function ($scope, $location, $anchorScroll) {
+    $scope.gotoBottom = function() {
+      // set the location.hash to the id of
+      // the element you wish to scroll to.
+      $location.hash('beginning');
+
+      // call $anchorScroll()
+      $anchorScroll('beginning');
+    };
+
+  }]);
+
+app.directive('scrollOnClick', function() {
+  return {
+    restrict: 'A',
+    link: function(scope, $elm) {
+      $elm.on('click', function() {
+        $("body").animate({scrollTop: $elm.offset().top}, "slow");
+      });
+    }
+  }
+});
+ app.controller('myCtrl', ['$scope', '$location', '$anchorScroll',
+  function ($scope, $location, $anchorScroll) {
+    $scope.gotoBottom = function() {
+      // set the location.hash to the id of
+      // the element you wish to scroll to.
+      $location.hash('cvv');
+
+      // call $anchorScroll()
+      $anchorScroll();
+    };
+  }]);
+
 app.controller('myCtrl', function($scope) {
   $scope.showMe=false;
   $scope.showBooking=false;
  $scope.showBooking2=false;
  $scope.showBooking3=false;
-
+ $scope.showPay=false;
+$scope.showTag=false;
   $scope.click1= function()
   {
   	$scope.showMe=true;
@@ -48,6 +84,18 @@ app.controller('myCtrl', function($scope) {
     $scope.showBooking3=true;
 
   }
+   $scope.click5= function()
+  {
+    $scope.showPay=true;
+   
+    
+  }
+  $scope.tag=function()
+  {
+    $scope.showTag=true;
+
+  }
+    
    $scope.close= function()
   {
   	$scope.showMe=false;
@@ -94,8 +142,12 @@ app.controller('bookingCtrl', function($scope, $location,airportSrv,FlightsSrv) 
     $scope.click4();
   }
 
-  $scope.bookButton=function(id){
-    $scope.hide=true;
+  $scope.bookButton=function(){
+
+  $scope.click5();
+
+  
+ 
   }
   $scope.filterTableDate=function(){
     var result=[];
@@ -224,6 +276,12 @@ app.controller('reservationsController', function($scope,cancelationReservation)
     
 	}
 
+
+});
+app.controller('validateCtrl', function($scope) {
+    $scope.CardNumber= "";
+    $scope.holderName = "";
+    $scope.CVV= "";
 
 });
 //End reservation controller

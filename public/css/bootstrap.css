@@ -1098,13 +1098,16 @@ textarea {
   line-height: inherit;
 }
 a {
-  color: #337ab7;
+  
+  font-family: "Helvetica Neue","Helvetica",Helvetica,Arial,sans-serif;
+  font-weight: bold;
   text-decoration: none;
+  color:white;
 }
 a:hover,
 a:focus {
-  color: #23527c;
-  text-decoration: underline;
+  
+
 }
 a:focus {
   outline: thin dotted;
@@ -3438,7 +3441,10 @@ fieldset[disabled] .btn-link:focus {
 .btn-lg,
 .btn-group-lg > .btn {
   padding: 10px 16px;
-  font-size: 18px;
+  font-size: 14px;
+  font-family: "Helvetica Neue","Helvetica",Helvetica,Arial,sans-serif;
+  font-weight: bold;
+  font-style: normal;
   line-height: 1.3333333;
   border-radius: 6px;
 }
@@ -3988,14 +3994,16 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   position: relative;
   display: block;
   padding: 10px 15px;
+
 }
 .nav > li > a:hover,
 .nav > li > a:focus {
-  text-decoration: none;
-  background-color: #eee;
+  color:grey;
+  font-size: 14px;
+  
 }
 .nav > li.disabled > a {
-  color: #777;
+  color: black;
 }
 .nav > li.disabled > a:hover,
 .nav > li.disabled > a:focus {
@@ -4204,7 +4212,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   }
   .navbar-collapse.collapse {
     display: block !important;
-    height: auto !important;
+    
     padding-bottom: 0;
     overflow: visible !important;
   }
@@ -4516,7 +4524,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 .navbar-default .navbar-nav > li > a:hover,
 .navbar-default .navbar-nav > li > a:focus {
-  color: #333;
+  
   background-color: transparent;
 }
 .navbar-default .navbar-nav > .active > a,
