@@ -6,11 +6,14 @@ module.exports = {
 	init :function(cb){
 		mongoose.connect(dbPath);
 		var database = mongoose.connection;
-		database.on('error', console.error.bind(console, 'connection denied'));
+		database.on('error', function(){
+			console.error("database connection denied");
+			cb("database connection denied",null);
+		});
 		database.once('open', function() {
 			console.log("connected to database");
             db = database;
-            cb();
+            cb(null,db);
           });
 	},
 	db: function(){
