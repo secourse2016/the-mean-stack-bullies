@@ -53,36 +53,25 @@ app.directive('scrollOnClick', function() {
 
 app.controller('myCtrl', function($scope) {
   $scope.showMe=false;
-  $scope.showBooking=false;
- $scope.showBooking2=false;
- $scope.showBooking3=false;
- $scope.showPay=false;
-$scope.showTag=false;
+  $scope.showPay=false;
+  $scope.showTag=false;
+  
+  
   $scope.click1= function()
   {
   	$scope.showMe=true;
-  	$scope.showManage=false;
-    $scope.showBooking2=false;
-  	 $scope.showBooking=true;
-     $scope.showBooking3=false;
-
+    $scope.include="../partials/bookingForm.html"
   }
    $scope.click2= function()
   {
   	$scope.showMe=true;
-  	$scope.showBooking=false;
-  	$scope.showManage=false;
-    $scope.showBooking2=true;
-    $scope.showBooking3=false;
+    $scope.include="../partials/booking2.html"
 
   }
   $scope.click3=function()
   {
   	$scope.showMe=true;
-    $scope.showBooking=false;
-  	$scope.showManage=true;
-    $scope.showBooking2=false;
-    $scope.showBooking3=false;
+    $scope.include="../partials/checkreservation.html"
 
   }
 
@@ -94,6 +83,7 @@ $scope.showTag=false;
     $scope.showManage=false;
     $scope.showBooking2=false;
     $scope.showBooking3=true;
+    console.log("hiiiiiiiiiiiiiitag");
 
   }
    $scope.click5= function()
@@ -150,8 +140,7 @@ app.controller('bookingCtrl', function($scope, $location,airportSrv,FlightsSrv) 
     $scope.hidedate=true;
   }
   $scope.bookFlight=function(){
-    
-    $scope.click4();
+    $location.url('/book');
   }
 
   $scope.bookButton=function(){
@@ -242,7 +231,6 @@ app.controller('reservationsController', function($scope,cancelationReservation)
 	{
 	   // $http.get("./reservation.json")
     //   .then(function(response) {
-
       	   reservations =  cancelationReservation.getReservation();
       	   found = false;
            choosenReservation = 0;

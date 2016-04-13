@@ -10,11 +10,24 @@ app.config(function($routeProvider) {
             templateUrl : '/partials/home.html',
             controller  : 'myCtrl'
         })
+        .when('/book', {
+            templateUrl : '/partials/booking.html',
+            controller  : 'bookingCtrl'
+        })
+        // .when('/bookForm', {
+        //     templateUrl : '/partials/bookingForm.html',
+        //     controller  : 'bookingCtrl'
+        // })
+        // .when('/bookForm2', {
+        //     templateUrl : '/partials/bookingForm.html',
+        //     controller  : 'bookingCtrl'
+        // })
           .when('/contact', {
             templateUrl : '/partials/contactUs.html',
             controller  : 'ContactUsController'
         });
-         
+        
+      
        
 });
 

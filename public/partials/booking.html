@@ -1,0 +1,75 @@
+
+          <div id="timeTableSection"  ng-controller="bookingCtrl"  >
+            <div ng-controller="bookingCtrl"  data-ng-init="changeTable()">
+              <div ng-hide="hide">
+
+                <div ng-class="image" >
+                  <div class="col-xs-5"  >
+
+
+
+
+                  </div>
+
+
+                  <div class="col-xs-5" ng-show="datedivbool" id="DateDiv">
+                    <lable style="font-family: arial;">
+                      Select Date
+                    </lable>
+
+                    <input class="form-control" id="dateTextBox" type="date" ng-model="dateString">
+
+                    <button class="btn-primary" ng-click="filterTableDate()">Filter By Date</button>
+                  </div>
+                  <br>
+                  <br>
+                  <br>
+                  <br>
+                  <br>
+                  <br>
+                  <br>
+                  <br>
+                  <br>
+                  <br>
+                  <br>
+                  <br>
+                </div>
+
+
+
+                <table id="table" class="table table-striped">
+                  <!-- /  fillTable(destination); -->
+                  <tr class="row" >  
+                   <td>Type</td>
+                   <td>Aircraft</td>
+                   <td>Capacity</td>
+                   <td>OriginCity</td>
+                   <td>DestinationCity</td>
+                   <td>date</td>
+
+
+                 </tr>
+
+
+                 <tr class="row" ng-repeat="flight in arr | limitTo:limit | orderBy:'date'" ng-animate=" 'animate' ">  
+                  <td>{{flight.flightNumber.type}}</td>
+                  <td>{{flight.aircraft}}</td>
+                  <td>{{flight.capacity}}</td>
+                  <td>{{flight.originCity}}</td>
+                  <td>{{flight.destinationCity}}</td>
+                  <td>{{flight.date}}</td>
+                  <td><a class="btn-primary btn-xs" ng-click="bookButton()" scroll-on-click scroll-to="#beginning">Book!</a>
+                  </td>
+
+                </tr>
+
+
+              </table>
+              <button class="btn-info btn-lg" ng-click="showMore()">Show More</button>
+
+            </div>
+            <div ng-hide="!hide">
+            </div>
+
+          </div>
+        <!-- </div> -->
