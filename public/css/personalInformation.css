@@ -1,0 +1,64 @@
+html
+{
+	height: 100%;
+	width:100%;
+}
+body
+{
+	height:100%;
+}
+#personalInfoDiv
+{
+	background-color: white;
+	width:60%;
+	height:60%;
+	position: absolute;
+	top:30%;
+	left:20%;
+	 box-shadow: -10px 12px 50px #ccc;
+}
+
+#firstNameDiv
+{
+	position: absolute;
+	top:10%;
+	left:15%;
+}
+#lastNameDiv
+{
+	position: absolute;
+	top:10%;
+	left:55%;
+}
+#ageDiv
+{
+	position: absolute;
+	top:35%;
+	left:15%;
+}
+
+#passportDiv
+{
+	position: absolute;
+	top:35%;
+	left:55%;
+
+}
+
+#issueDateDiv
+{
+	position: absolute;
+	top:62%;
+	left:15%;
+
+}
+
+#expiryDateDiv
+{
+	position: absolute;
+	top:62%;
+	left:55%;
+
+}
+
+
