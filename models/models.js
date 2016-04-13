@@ -14,13 +14,35 @@ var flightSchema = schema({
             aircraftType      : String,
             aircraftModel     : String,
             departureDateTime : Date,
-            arrivalDateTime   :Date
-            origin 		      : String,
-            destination      : String,
+            arrivalDateTime   : Date,
+            origin 		: String,
+            destination       : String,
             cost              : Number,
             currency          : String,
             class             : String,
             Airline           : String
+});
+var bookingSchema = schema({
+    from: String,
+    To: String,
+    DepartureDate: Date,
+    ReturnDate: Date,
+    NumberOfAdults: Number,
+    NumberOfChildren: Number,
+    Class:String,
+    Email:String
+
+});
+
+var reservationSchema = schema({
+    firstName: String,
+    lastName: String,
+    passport: String,
+    issueDate: Date,
+    expiryDate: Date,
+    receipt_number: String,
+    bookingRefNumber:String
+
 });
 
 
@@ -36,9 +58,29 @@ var airportSchema = schema({
 	size: String
 
 });
+
+
+var paymentSchema = schema({
+      visa:Boolean,
+      MasterCard: Boolean,
+      CardHolderName: String,
+      CardHolderNo: Number,
+      Cvv: Number,
+      ExpiryDate: Date
+
+});
+
+
 mongoose.model('Airport', airportSchema);
-mongoose.model('Flights', flightSchema);
+mongoose.model('Flight', flightSchema);
+mongoose.model('Reservation', reservationSchema);
+mongoose.model('Booking', bookingSchema);
+mongoose.model('Payment', paymentSchema);
+
 
 Db.seed(mongoose.model('Airport'),require('../airports.json'));
-Db.seed(mongoose.model('Flights'),require('../flights.json'));
+Db.seed(mongoose.model('Flight'),require('../flights.json'));
+Db.seed(mongoose.model('Reservation'),require('../reservations.json'));
+Db.seed(mongoose.model('Booking'),require('../bookings.json'));
+Db.seed(mongoose.model('Payment'),require('../payments.json'));
 
