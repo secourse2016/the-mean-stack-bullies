@@ -6,6 +6,7 @@ html
 body
 {
 	height:100%;
+	background: rgb(17,37,60);
 }
 #personalInfoDiv
 {
@@ -15,7 +16,8 @@ body
 	position: absolute;
 	top:35%;
 	left:20%;
-	 box-shadow: -10px 12px 50px #ccc;
+	 box-shadow: -12px 12px 70px black;
+	 border-radius: 10px;
 }
 
 #firstNameDiv
@@ -61,22 +63,13 @@ body
 
 }
 
-#highlightAbove
-{
-	width:100%;
-	height:20%;
-	position: relative;
-	top:-23%;
-background: rgb(17,37,60);
-}
 
-#highlightAbove h4
+#firstNameInput
 {
-	font-size: 40px;
 	position: relative;
-	top:20%;
-	left:10%;
-	color:white;
-	font-weight: bold;
-	font-family: arial;
+	left:-20%;
+}
+input
+{
+	 border-radius: 5px;
 }

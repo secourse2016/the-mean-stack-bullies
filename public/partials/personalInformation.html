@@ -1,19 +1,17 @@
 
 <div id="personalInfoDiv">
-  <div id="highlightAbove">
-  	<h4>Your Information</h4>
-  </div>
+
 	<div id="firstNameDiv" >
 	<div class="glyphicon glyphicon-user"></div>
 	 <div id="firstNameText" class="hvr-underline-from-left">First Name</div>
 	 <br>
-	 <input	type="text" class="hvr-reveal" id="firstName" >
+	 <input	type="text" class="" id="firstName" >
 	 </div>	
 	 <div id="lastNameDiv">
 	 	<div class="glyphicon glyphicon-user"></div>
 	  <div id="lastNameText" class="hvr-underline-from-left">Last Name</div>
 	  <br>
-	 <input	type="text" id="lastName">
+	 <input class=""type="text" id="lastName">
 	  </div>	
 	 <div id="ageDiv">
 	 <div class="glyphicon glyphicon-gift"></div>
@@ -25,28 +23,20 @@
 	 <div class="glyphicon glyphicon-globe"></div>
 	  <div id="passportText" class="hvr-underline-from-left">Nationality</div>
 	  <br>
-	  
 	 <input	type="text"  id="passport">
 	  </div>	
-	 <div id="issueDateDiv">
-	 
-	  <div class="col-sm-6" style="height:130px;">
-        <div class="form-group">
-            <div class='input-group date' id='datetimepicker10'>
-                <input type='text' class="form-control" />
-                <span class="input-group-addon">
-                    <span class="glyphicon glyphicon-calendar">
-                    </span>
-                </span>
-            </div>
-        </div>
-    </div>
+	 <div id="issueDateDiv" class="input-group date">
+	 <div class="glyphicon glyphicon-calendar"></div>
+	  <div id="issueDateText" class="hvr-underline-from-left">Issue Date</div>
+	  <br>
+	 <input type="date" data-date-inline-picker="true" />
 	  </div>	
+
 	 <div id="expiryDateDiv">
 	 <div class="glyphicon glyphicon-calendar"></div>
 	  <div id="expiryDateText" class="hvr-underline-from-left">Expiry Date</div>
 	  <br>
-	 <input	type="text" id="expiryDate">
+	 <input	type="date" id="expiryDate">
 	 </div>	
 
 </div>
