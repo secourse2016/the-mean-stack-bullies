@@ -950,7 +950,7 @@ footer {
 }
 #contactUsDiv
 {
-background-color: black;
+
 position: relative;
 top:12%;
 color:white;
@@ -961,5 +961,10 @@ position: relative;
 top:5%;
 left:10%;
 color:#EEE;
+}
+#get
+{
+	color:white;
+	font-weight: bold;
 }
 /*End Section contact us*/
