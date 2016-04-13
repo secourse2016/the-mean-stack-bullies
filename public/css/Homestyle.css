@@ -12,8 +12,7 @@ html{
 
 body {
     height: 100%;
-  background : url(../images/lyon) no-repeat center center fixed;
-  background-size: 101% 100%;
+ 
   cursor:url("../icons/sky.png"), auto;
     overflow-x:hidden;
 }
@@ -48,6 +47,7 @@ background-color: rgba(2,2,2,.56);
 #main
 {
   height:100%;
+  padding: 0px;
 
 
 }
@@ -62,6 +62,8 @@ background-color: rgba(2,2,2,.56);
   
   width: 100%;
   height:100%;
+   background : url(../images/lyon) no-repeat center center fixed;
+  background-size: 101% 100%;
 
   
 }
@@ -740,6 +742,23 @@ overflow-x:hidden;
 {
   width:70%;
   color:black;
+
+}
+#timeTableSection2
+{
+position: relative;
+left:9%;
+max-height:100%;
+
+font-weight: bold;
+overflow-y:scroll;
+overflow-x:hidden;    
+}
+#table2
+{
+  width:70%;
+  color:black;
+  
 }
 /*start payment section*/
 
