@@ -1,46 +1,52 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title></title>
-	  <link rel="stylesheet" href="../css/personalInformation.css">
-	  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" media="all">
-	  <link rel="stylesheet" href="../css/hover.css">
-	   <link rel="stylesheet" href="../css/bootstrap.css">
 
-	      
-   <script src="../js/bootstrap.min.js"></script>
-      <script src="../js/ui-bootstrap-tpls-1.2.5.min.js"></script>
-</head>
-<body>
 <div id="personalInfoDiv">
-
+  <div id="highlightAbove">
+  	<h4>Your Information</h4>
+  </div>
 	<div id="firstNameDiv" >
-	
-	 <div id="firstNameText">First Name</div>
-	 
-	 <input	type="text" class="" id="firstName" >
+	<div class="glyphicon glyphicon-user"></div>
+	 <div id="firstNameText" class="hvr-underline-from-left">First Name</div>
+	 <br>
+	 <input	type="text" class="hvr-reveal" id="firstName" >
 	 </div>	
 	 <div id="lastNameDiv">
-	  <div id="lastNameText">Last Name</div>
+	 	<div class="glyphicon glyphicon-user"></div>
+	  <div id="lastNameText" class="hvr-underline-from-left">Last Name</div>
+	  <br>
 	 <input	type="text" id="lastName">
 	  </div>	
 	 <div id="ageDiv">
-	  <div id="ageText">Age</div>
+	 <div class="glyphicon glyphicon-gift"></div>
+	  <div id="ageText" class="hvr-underline-from-left">Age</div>
+	  <br>
 	 <input	type="number" id="age">
 	  </div>	
 	 <div id="passportDiv">
-	  <div id="passportText">Passport</div>
-	 <input	type="text" id="passport">
+	 <div class="glyphicon glyphicon-globe"></div>
+	  <div id="passportText" class="hvr-underline-from-left">Nationality</div>
+	  <br>
+	  
+	 <input	type="text"  id="passport">
 	  </div>	
 	 <div id="issueDateDiv">
-	  <div id="issueDateText">Issue Date</div>
-	 <input	type="text" id="issueDate">
+	 
+	  <div class="col-sm-6" style="height:130px;">
+        <div class="form-group">
+            <div class='input-group date' id='datetimepicker10'>
+                <input type='text' class="form-control" />
+                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-calendar">
+                    </span>
+                </span>
+            </div>
+        </div>
+    </div>
 	  </div>	
 	 <div id="expiryDateDiv">
-	  <div id="expiryDateText">Expiry Date</div>
+	 <div class="glyphicon glyphicon-calendar"></div>
+	  <div id="expiryDateText" class="hvr-underline-from-left">Expiry Date</div>
+	  <br>
 	 <input	type="text" id="expiryDate">
 	 </div>	
 
 </div>
-</body>
-</html>

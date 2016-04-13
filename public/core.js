@@ -22,10 +22,18 @@ app.config(function($routeProvider) {
         //     templateUrl : '/partials/bookingForm.html',
         //     controller  : 'bookingCtrl'
         // })
+        .when('/passenger', {
+            templateUrl : '/partials/personalInformation.html',
+            controller  : 'mainCtrl'
+        })  
           .when('/contact', {
             templateUrl : '/partials/contactUs.html',
             controller  : 'ContactUsController'
         });
+
+
+
+
         
       
        
