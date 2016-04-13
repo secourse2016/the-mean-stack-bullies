@@ -1,19 +1,40 @@
 var mongoose = require('mongoose');
-var db = "mongodb://localhost/AirFranceDB"
-
+var dbPath = "mongodb://localhost/AirFranceDB"
+var db;
 module.exports = {
-	connect :   function(cb){
+	
+	init :function(cb){
+		mongoose.connect(dbPath);
+		var database = mongoose.connection;
+		database.on('error', console.error.bind(console, 'connection denied'));
+		database.once('open', function() {
+			console.log("connected to database");
+            db = database;
+            cb();
+          });
+	},
+	db: function(){
+		if(db){
+			return db;
+		}
+		
+	},
+	close:function(db,cb){
+		db.close();
+		cb();
+	},
+	seed:function(model,entities) {  
+    var promise = new mongoose.Promise;
+    model.create(entities, function(err) {
+        if(err) { promise.reject(err); }
+        else    { promise.resolve();
+                  console.log("seeding completed");
+                   }
+    });
+    return promise;
+	}
 
-	                        mongoose.connect(db);
+};
 
-                         cb();
 
-             },
-        disconnect:  function(db,cb){
-                        db.close();
-                        cb();
-                        }
-                              
-
-}
 
