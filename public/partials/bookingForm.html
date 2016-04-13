@@ -1,0 +1,151 @@
+  <div id="bookingSection"  ng-controller="bookingCtrl" >
+
+              <div>
+                <div ng-model="bookings"> 
+                  <h1>Book a flight!</h1>
+                  <div>
+                    <div class="col-xs-2">
+                      <input type="radio" name="oneRound" value="round" ng-click="hideReturnedDate()">Round Trip </input>
+                    </div>
+                    <input type="radio" name="oneRound" value="one" ng-click="showReturnedDate()">One Way</input>
+                  </div>
+
+
+                  <div class="col-xs-4">
+                    <div >
+                      <label>From</label>
+                      <input name="originAirports"
+                      id="originAirports"
+                      type="text"
+                      placeholder="Flying From"
+                      ng-model="selectedOrigin"
+                      uib-typeahead="airport.name+' ('+airport.iata+')' for airport in airports | airportsFilters:selectedOrigin| limitTo:10"
+                      class="form-control",
+                      typeahead-on-select="SetOriginAirport($item.iata)">
+                    </div>
+
+
+                    <div >
+                      <label>Departure Date</label>
+                      <input type="date" class="form-control"  name="name" placeholder="Departure Date">
+                    </div>
+
+                    <div >
+                      <label></label>
+                      <select class="form-control">
+                        <option>1 Adult</option>
+                        <option>2 Adults</option>
+                        <option>3 Adults</option>
+                        <option>4 Adults</option>
+                        <option>5 Adults</option>
+                        <option>6 Adults</option>
+                        <option>7 Adults</option>
+                      </select>
+
+                    </div>
+
+                    <div>
+                      <label>Class</label>
+                      <select class="form-control">
+                        <option>Economy</option>
+                        <option>Bussines</option>
+                        <option>First</option>
+                      </select>
+
+                      <br>
+
+                      <input id="bookBtn" type="Button" ng-click="bookFlight()" class="btn-primary btn-lg"  value="Book Flight" >
+                    </div>
+
+
+                  </div>
+
+
+                  <div class="col-xs-1">
+                  </div>  
+
+                  <div  class="col-xs-4">
+
+                    <div >  
+                      <label>To</label>
+                      <input name="destinationAirports"
+                      id="destinationAirports"
+                      type="text"
+                      placeholder="Flying To"
+                      ng-model="selectedDestination"
+                      uib-typeahead="airport.name+' ('+airport.iata+')' for airport in airports | airportsFilters:selectedDestination| limitTo:10"
+                      class="form-control",
+                      typeahead-on-select="SetDestinationAirport($item.iata)">
+                    </div>  
+
+
+
+                    <div ng-hide="hidedate">  
+                      <label>Return Date</label>
+                      <input type="date" class="form-control" name="name" placeholder="Departure Date">
+                    </div>  
+
+                    <div ng-hide="!hidedate"> 
+                      <label> </label>
+                      <br>
+                      <label> </label>
+                      <br>
+                      <br>
+
+
+
+
+                    </div>  
+
+
+
+                    <div class="col-xs-1">
+                    </div>  
+
+
+                    <div>
+                      <label></label>
+                      <select class="form-control">
+                        <option>0 Child (2-11 years)</option>
+                        <option>1 Child</option>
+                        <option>2 Children</option>
+                        <option>3 Children</option>
+                        <option>4 Children</option>
+                        <option>5 Children</option>
+                        <option>6 Children</option>
+                      </select>
+                    </div>
+
+
+
+
+
+                    <div >
+                      <label>Email</label>
+                      <input type="email" class="form-control">
+                    </div>  
+
+
+
+                  </div>
+
+
+
+                </div>
+              </div>  
+            </div> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
