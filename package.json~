@@ -2,7 +2,7 @@
   "name": "AirFrance_Airline_Project",
   "version": "0.0.0",
   "private": true,
-  "description": "AriFrance Arline web application for booking and paying for flights",
+  "description": "AriFrance Arline Project for booking and paying for flights",
   "scripts": {
     "start": "node ./bin/www"
   },
