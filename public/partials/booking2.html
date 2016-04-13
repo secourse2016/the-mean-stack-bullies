@@ -14,11 +14,11 @@
 
                     <br> <br> <br>
                     <div class="col-sm-5" ng-show="datedivbool" id="DateDiv">
-                      <lable style="font-family: arial;">
+                      <lable style="color:red;font-family: arial;">
                         Select Date
                       </lable>
 
-                      <input class="form-control" id="dateTextBox" type="date" ng-model="dateString" style="color:red">
+                      <input class="form-control" id="dateTextBox" type="date" ng-model="dateString">
 
 
                       <button class="btn-primary" ng-click="filterTableDate()">Filter By Date</button>
@@ -41,13 +41,13 @@
 
                   <table id="table" class="table table-striped" ng-hide="hideTable">
                     <!-- /  fillTable(destination); -->
-                    <tr class="row" style="color: black">  
+                    <tr class="row" style="color: white;">  
                      <td>Type</td>
                      <td>Aircraft</td>
                      <td>Capacity</td>
-                     <td>OriginCity</td>
-                     <td>DestinationCity</td>
-                     <td>date</td>
+                     <td>Origin City</td>
+                     <td>Destination City</td>
+                     <td>Date</td>
 
 
                    </tr>
