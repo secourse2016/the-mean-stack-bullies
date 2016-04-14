@@ -17,9 +17,9 @@
       <thead>
         <tr class="sp1">  
         <th class="text-left sp1 spx" style=" font-size: 30px; color:white;">{{flight.originCity}}</th>
-        <th class="text-left sp1 spx" style=" font-size: 30px; color:white;"> <img id="franceLogo" src="./icons/sky2.png"></th>
+        <th class="text-left sp1 spx" style=" font-size: 30px; color:white;">{{flight.aircraft}} <img id="franceLogo" src="./icons/sky2.png"></div></th>
        <th  class="text-left sp1 spx" style=" font-size: 30px; color:white;">{{flight.destinationCity}}</th>
-       <th  class="text-left sp1 spx" style=" font-size: 30px; color:white;"></th>
+       <th  class="text-left sp1 spx" style=" font-size: 30px; color:white;">#BX321</th>
          
   
 
@@ -30,9 +30,9 @@
 
       <tr class="sp">  
         
-         <th class="text-left sp">Origin</th>
-         <th class="text-left sp">Destination</th>
-         <th class="text-left sp">Price</th>
+         <th class="text-left sp">Economy</th>
+          <th class="text-left sp"></th>
+         <th class="text-left sp"></th>
          <th  class="text-left sp1 spx" style=" font-size: 30px; color:white;"></th>
          
 
@@ -50,8 +50,8 @@
  
    
     <td class="text-left sp"><div>{{flight.originIata}} <br> {{flight.date}}</div></td>
+   <td class="text-left sp"><div>$<br>500</div></td>
     <td class="text-left sp"><div>{{flight.destinationIata}}<br>{{flight.flightNumber.type}}</div></td>
-    <td class="text-left sp"><div>500<br>$</div></td>
     <td class="text-left sp"><div class="chooseflight">  
         <input type="radio" name="radio" id={{$index}} class="radio"/>
         <label for={{$index}}>Choose</label>
@@ -59,12 +59,27 @@
 
 </tr>
 
+</tr>
+
+      <tr class="sp">  
+        
+         <th class="text-left sp">Business</th>
+          <th class="text-left sp"></th>
+         <th class="text-left sp"></th>
+         <th  class="text-left sp1 spx" style=" font-size: 30px; color:white;"></th>
+         
+
+
+
+
+     </tr>
+
 <tr >  
  <!-- TAKE CARE FOR HARDCODED RADIO BUTTONS INDECES -->
    
     <td class="text-left sp"><div>{{flight.originIata}} <br> {{flight.date}}</div></td>
+     <td class="text-left sp"><div>$<br>500</div></td>
     <td class="text-left sp"><div>{{flight.destinationIata}}<br>{{flight.flightNumber.type}}</div></td>
-    <td class="text-left sp"><div>5001<br>$</div></td>
     <td class="text-left sp"><div class="chooseflight">  
         <input type="radio" name="radio" id=500+{{$index}} class="radio"/>
         <label for=500+{{$index}} >Choose</label>
