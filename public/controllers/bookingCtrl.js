@@ -24,6 +24,10 @@ app.controller('bookingCtrl', function($scope, $location,airportSrv,FlightsSrv) 
     $scope.hidedate=false;
     
   }
+  $scope.Book=function()
+  {
+     //$location.url('/passenger.html');
+  }
   $scope.showReturnedDate=function(){
     $scope.hidedate=true;
   }

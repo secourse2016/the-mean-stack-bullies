@@ -62,6 +62,7 @@ app.directive('scrollOnClick', function() {
 
 
 
+
 app.controller('validateCtrl', function($scope) {
     $scope.CardNumber= "";
     $scope.holderName = "";

@@ -1,43 +1,44 @@
 <div id="timeTableSection"  ng-controller="bookingCtrl" >
-              <div ng-controller="bookingCtrl"  data-ng-init="changeTable()"  >
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<h1>Cairo -> Newyork</h1>
-<br><br>
-  <table class="sp">
-<thead>
+  <div ng-controller="bookingCtrl"  data-ng-init="changeTable()"  >
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <h1>Cairo -> Newyork</h1>
+    <br>
+    <br>
+    <table class="sp">
+      <thead>
 
- <tr class="sp">  
-   <th class="text-left sp">Type</th>
-   <th class="text-left sp">Aircraft</th>
-   <th class="text-left sp">Capacity</th>
-   <th class="text-left sp">Origin City</th>
-   <th class="text-left sp">Destination City</th>
-   <th class="text-left sp">Date</th>
-   <th class="text-left sp">Choose</th>
+      <tr class="sp">  
+        <th class="text-left sp">Type</th>
+        <th class="text-left sp">Aircraft</th>
+        <th class="text-left sp">Capacity</th>
+         <th class="text-left sp">Origin City</th>
+         <th class="text-left sp">Destination City</th>
+         <th class="text-left sp">Date</th>
+         <th class="text-left sp">Choose</th>
 
 
 
 
-  </tr>
+     </tr>
 
 
 </thead>
 
 
 
-<tr  ng-repeat="flight in arr | limitTo:limit | orderBy:'date'">  
+<tr  ng-repeat="flight in arr | limitTo:2 | orderBy:'date'">  
  
     <td class="text-left sp">{{flight.flightNumber.type}}</td>
     <td class="text-left sp">{{flight.aircraft}}</td>
     <td class="text-left sp">{{flight.capacity}}</td>
-    <td class="text-left sp">{{flight.originCity}}</td>
-    <td class="text-left sp">{{flight.destinationCity}}</td>
+    <td class="text-left sp"><div>{{flight.originCity}} <br> {{flight.originIata}}</div></td>
+    <td class="text-left sp"><div>{{flight.destinationCity}}<br>{{flight.destinationIata}}</div></td>
     <td class="text-left sp">{{flight.date}}</td>
     <td class="text-left sp"><div class="chooseflight">  
         <input type="radio" name="radio" id={{$index}} class="radio"/>
@@ -47,11 +48,19 @@
 </tr>
 
 
-
-
-
-
 </table>
+
+<br>
+<br>
+<br>
+<br>
+
+<button ng-click="Book()" class="bookButton" >Book</button>
+
+<br>
+<br>
+<br>
+<br>
 </div>
 </div>
 
