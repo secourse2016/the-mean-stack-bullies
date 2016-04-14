@@ -1,0 +1,272 @@
+
+     
+<div id="main" class="container-fluid">
+      
+
+   <!--START The top image background -->
+
+        <div id="topImage" > 
+
+         <div id="home-tabling-container" class="col-xs-12 col-md-10 col-lg-8" ng-controller="reservationsController" >
+           <div id="bookingForm" ng-show="showMe" >
+
+             <!-- Start Booking Form -->
+                <div ng-include="include">
+                  
+                </div>
+
+             <!-- end booking form -->
+
+        <!-- End Booking Form -->
+        <!-- Start Manage Booking  -->
+        
+
+        
+       <!--End Manage Booking-->
+       <button id="closeButton" class ="glyphicon glyphicon-remove" ng-click="close()"></button>
+       <p id="closeButtonText">close</p>
+     </div> 
+     <ul id="home-tabling-list" class="nav nav-tabs wow slideInLeft" data-wow-duration="2.5s" style="visibility: visible; animation-duration: 2.5s; animation-name: slideInLeft;">
+      <li class="" ng-click="click1()"><a data-toggle="tab" ><span class="glyphicon glyphicon-plane"></span><span class="tabText">
+        Book</span></a></li>
+
+        <li class="" ng-click="click2()" ng-active="activateButton"> <a data-toggle="tab" ><span class="glyphicon glyphicon-calendar"></span>
+          Timetable</span></a></li>
+
+          <li class="" ng-click="click3()"><a data-toggle="tab"><span class="glyphicon glyphicon-remove-circle"></span>
+            Manage Booking</span></a></li>
+
+          </ul>
+        </div>
+        <br> 
+        <div class="row row2" >
+          <div class="text-center wow fadeIn" data-wow-delay="0.2s"1>
+            <p id="paragraphScroll" class=" wow fadeIn" data-wow-delay="1s">scroll down to see more</p>
+            <div id="scroll"  class="glyphicon glyphicon-menu-down wow bounce col-xs-12 col-md-12 col-lg-12" data-wow-delay="1s" data-wow-iteration="200" ng-click="gotoBottom()"></div>
+
+
+          </div>
+        </div>
+        
+
+      </div>
+      <h2 id="welcomeTextDown" class=" wow fadeInLeft" data-wow-duration="2s" data-wow-delay="0.2s">
+        Welcome to Air France
+        <img id="franceLogo" src="./images/francelogo.png">
+      </h2>
+      <h5  class="wow fadeIn" data-wow-delay="0.2s"id="welcomeText2">We are happy to serve you</h5>
+
+    </section>
+    </div>  
+    <!--END The top image background -->
+    <!-- Start payment Section -->
+    <div id="mainPay" ng-show="showPay" class="wow fadeInUpBig">
+      <div class="whole">
+        <form class="form-horizontal" role="form"  ng-app="myApp" ng-controller="validateCtrl" 
+        name="myForm"  novalidate>
+
+        <h2>Payment Form:</h2>
+
+
+        <div id="check">
+          <input type="radio" name="oneRound" value="visa" >VISA </input>
+          <input type="radio" name="oneRound" value="masterCard" >Master Card</input>
+        </div>
+        <br>
+        <br>    
+        
+
+        <div id="cardName" class="form-group">
+          <label class="control-label col-sm-2" for="email">Cardholder Name:</label>
+          <div class="col-xs-4">
+            <input type="text" class="form-control"   placeholder="Card Name" name="holderName" ng-model="holderName" required>
+          </div>
+          <span ng-show="myForm.holderName.$error.required">Name is required.</span>
+        </div>
+
+
+        <div id="cardNumber" class="form-group">
+          <label class="control-label col-sm-2" for="email">Card No.:</label>
+          <div class="col-xs-4">
+            <input type="number" class="form-control"  placeholder="Enter card number" name="CardNumber" ng-model="CardNumber" required>
+          </div>
+          <span ng-show="myForm.CardNumber.$error.required">required.</span>
+        </div>
+
+
+        <div id="cvv"class="form-group">
+          <label id="cvvText" class="control-label col-sm-2" for="pwd">CVV:</label>
+          <div class="col-xs-4">
+            <input type="number" class="form-control" placeholder="Only 3 digits" name="CVV" ng-model="CVV" required>
+          </div>
+          <span ng-show="myForm.CVV.$error.required">required.</span>
+        </div>
+
+        <div id="date"class="form-inline">
+          <label> Expiry Date:  </label>
+          <select id="expiryDate" class="form-control" placeholder="Departure Date" >
+            <option>January</option>
+            <option>February</option>
+            <option>March</option>
+            <option>April</option>
+            <option>May</option>
+            <option>June</option>
+            <option>July</option>
+            <option>August</option>
+            <option>September</option>
+            <option>October</option>
+            <option>November</option>
+            <option>December</option>
+          </select>
+          
+          <select class="form-control" >
+            <option>2016</option>
+            <option>2017</option>
+            <option>2018</option>
+            <option>2019</option>
+            <option>2020</option>
+            <option>2021</option>
+            <option>2022</option>
+          </select>
+
+
+        </div>
+
+
+      </form>
+
+      <!-- dropdown -->
+      
+      <button id="btnConfirm" class="btn btn-primary" type="button" ><a href="confirmation.html">Confirm!</a></button>
+      
+
+    </div>
+    </div>
+    <!-- End payment Section -->
+    <!--Start History section-->
+    <section class="history text-center">
+
+      <div class="container cont2">
+        <div class="row row2">
+
+
+          <div id="beginning" class=" historyDivs col-lg-3 col-sm 12 wow fadeInLeftBig"  data-wow-offset="100" data-wow-duration="1.5s">
+
+            <div id="data2" >
+              <div id="beginningText" class="  wow fadeInUpBig"  data-wow-delay ="0.2s" data-wow-offset="10" data-wow-duration="1s">
+
+                <h3>1909-1930 THE BEGINNING</h3>
+                <p>France was passionate about the burgeoning world of aviation. In the excitement of the Roaring Twenties, the first airlines appeared. Pilots and passengers alike took part in the adventure.</p>
+              </div>
+
+            </div>
+          </div>
+          <div id="takeOff"class=" historyDivs col-lg-3  col-sm 12 wow fadeInUpBig"  data-wow-delay ="0.5s" data-wow-offset="100" data-wow-duration="1.5s">
+            <div id="data2" >
+              <div id="takeOffText" class="wow fadeInUpBig" data-wow-offset="5" data-wow-duration="2s">
+                <h3>1933-1945 TAKEOFF</h3>
+                <p>In 1933, Air France brought together the five main French air transporters. In just a few years, it entered the international stage as a major airline.</p>
+              </div>
+            </div>
+          </div>
+          <div id="flying" class=" historyDivs col-lg-3 col-sm 12 wow fadeInDownBig" data-wow-delay ="0.3s" data-wow-offset="100" data-wow-duration="1.5s">
+            <div id="data2" >
+             <div id="flyingText" class=" wow fadeInUpBig"   data-wow-delay ="0.3s" data-wow-offset="5" data-wow-duration="2.5s">
+              <h3>1946-1958 FLYING HIGH</h3>
+              <p>Boosted by the expanding air transport industry, the airline experienced a spectacular boom. With a renewed fleet, it increased its network's density and expanded into Africa, Asia and the Americas.</p>
+            </div>
+          </div>
+        </div>
+        <div id="jetAge" class=" historyDivs col-lg-3 col-sm 12 wow fadeInRightBig"  data-wow-offset="100" data-wow-duration="1.5s">
+         <div id="data2" >
+          <div id="jetAgeText" class=" wow fadeInUpBig"  data-wow-delay ="0.3s" data-wow-offset="5" data-wow-duration="2s">
+            <h3>1959-1969 JET AGE</h3>
+            <p>Caravelle, Boeing 707… Jets revolutionized air travel. These more powerful aircraft were able to transport more passengers quicker and further. Air France's traffic doubled in ten years.</p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    </div>
+    </div>
+    </section>
+    <section class="history2 text-center">
+     <div class="container cont2">
+      <div class="row row2">
+        <div id="maturity" class=" historyDivs col-lg-3 col-sm 12 wow fadeInRightBig"  data-wow-offset="100" data-wow-duration="1">
+          <div id="data2" >
+            <div id="maturityText" class=" wow fadeInUpBig"  data-wow-delay ="0.3s" data-wow-offset="1" data-wow-duration="1s">
+              <h3>1970-1989 MATURITY</h3>
+              <p>Air France entered the era of mass transport. Faced with competition and oil crises, the airline dealt with the turbulence and gave wings to one of the most beautiful birds in history - Concorde..</p>
+              
+            </div>    
+          </div>
+        </div>
+
+        
+        <div id="renewal" class=" historyDivs col-lg-3 col-sm 12 wow fadeInRightBig"  data-wow-offset="100" data-wow-duration="2s">
+          <div id="data2" >
+            <div id="renewalText" class=" wow fadeInUpBig"  data-wow-delay ="0.3s" data-wow-offset="1" data-wow-duration="1s">
+              <h3>1990-1999 RENEWAL</h3>
+              <p>Conditions began to deteriorate. Thanks to a recovery plan, Air France underwent thorough modernization. The airline aimed to 'make the sky the best place on earth'.</p>
+            </div>
+          </div>
+        </div>
+        <div id="worldLeader" class=" historyDivs col-lg-3  col-sm 12 wow fadeInRightBig"  data-wow-offset="100" data-wow-duration="2.5s">
+          <div id="data2" >
+            <div id="worldLeaderText" class="wow fadeInUpBig"  data-wow-delay ="0.3s" data-wow-offset="1" data-wow-duration="2.6s">
+              <h3>2000+ WORLD LEADER</h3>
+              <p>Along with KLM, Air France created one of the world leaders in air transport – passengers, cargo, and maintenance.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+
+
+
+    </section>
+    <!--End History section-->
+
+    <!--Start section Statistics-->
+    <section id="stats" class="stats text-center">
+      <div id="data" > 
+       <div class="container cont2">
+        <div class="row row2">
+          <div class="text-center wow fadeIn" data-wow-delay="0.2s">
+            <h2 id="statsText">Our Airline Statistics</h2>
+          </div>
+          <div class="statsDivs  col-lg-4">
+            <img class="icons " src="./icons/aircraft.png">
+            <h3>Air Crafts</h3>
+            <h5>228</h5>
+          </div>
+          <div class="statsDivs col-lg-4">
+            <img class="icons " src="./icons/destination.png">
+            <h3>Destinations</h3>
+            <h5>204</h5>
+          </div>
+          <div class="statsDivs col-lg-4">
+            <img class="icons" src="./icons/seat.png">
+            <h3>Seats</h3>
+            <h5>34,562</h5>
+          </div>
+        </div>
+      </div>  
+
+    </div>
+
+
+    </section>
+    <!--End Section Statistics-->
+
+
+    <!--Start Section Features-->
+    
+   
+
+
+      
+
