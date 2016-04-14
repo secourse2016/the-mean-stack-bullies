@@ -8,7 +8,7 @@ Db.init(function(){
 console.log("here");
 });
 
-// Db.seed();
+
 
 
 var outgoingflightSchema = schema({
@@ -99,7 +99,7 @@ mongoose.model('inFlight', ingoingflightSchema);
 
 
 
-function seedOutFlights(){
+function seedOutFlights(entity){
   var newOutFlights = [];
    
  
@@ -108,7 +108,7 @@ function seedOutFlights(){
   {
   
 
- var outflights = require('../outflights');
+ var outflights = require(entity);
 
  
 
@@ -145,8 +145,11 @@ function seedOutFlights(){
 }
 
 
+
+
 seedingFunction=function(cb){
 Db.seed(mongoose.model('Airport'),require('../airports.json'),function(){
+
     mongoose.model('outFlight').count( {}, function(err, count) { 
           if(count !=0){
             console.log("already seeded");
@@ -161,8 +164,11 @@ Db.seed(mongoose.model('Airport'),require('../airports.json'),function(){
           }     
       
             Db.seed(mongoose.model('inFlight'),require('../returnflights.json'),function(){
+
                 Db.seed(mongoose.model('Reservation'),require('../reservations.json'),function(){
+
                     Db.seed(mongoose.model('Booking'),require('../bookings.json'),function(){
+
                         Db.seed(mongoose.model('Payment'),require('../payments.json'),function(){
                             cb();
 
@@ -174,7 +180,10 @@ Db.seed(mongoose.model('Airport'),require('../airports.json'),function(){
     });
 
 };
-
-seedingFunction(function(){
+ Db.drop(function(){
+    console.log("dropped");
+    seedingFunction(function(){
     console.log("seeding database");
 });
+ });
+
