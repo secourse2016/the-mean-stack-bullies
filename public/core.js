@@ -18,14 +18,10 @@ app.config(function($routeProvider) {
             templateUrl : '/partials/booking.html',
             controller  : 'bookingCtrl'
         })
-        // .when('/bookForm', {
-        //     templateUrl : '/partials/bookingForm.html',
-        //     controller  : 'bookingCtrl'
-        // })
-        // .when('/bookForm2', {
-        //     templateUrl : '/partials/bookingForm.html',
-        //     controller  : 'bookingCtrl'
-        // })
+        .when('/pay', {
+            templateUrl : '/partials/payment.html',
+            controller  : 'paymentCtrl'
+        })
         .when('/passenger', {
             templateUrl : '/partials/personalInformation.html',
             controller  : 'mainCtrl'

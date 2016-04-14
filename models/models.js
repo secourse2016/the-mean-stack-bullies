@@ -3,11 +3,11 @@ var mongoose = require('mongoose');
 var schema = mongoose.Schema;
 var Db = require('../db.js');
 
-// Db.init(function(){
-// console.log("here");
-// });
+Db.init(function(){
+console.log("");
+});
 
-// Db.seed();
+
 
 
 var outgoingflightSchema = schema({

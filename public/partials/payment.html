@@ -1,0 +1,85 @@
+ 
+    <div ng-controller="paymentCtrl">  
+      <div id="mainPay" class="wow fadeInUpBig">
+            <div class="whole">
+              <form class="form-horizontal" role="form"  ng-app="myApp" ng-controller="validateCtrl" 
+              name="myForm"  novalidate>
+
+              <h2>Payment Form:</h2>
+
+
+              <div id="check">
+                <input type="radio" name="oneRound" value="visa" >VISA </input>
+                <input type="radio" name="oneRound" value="masterCard" >Master Card</input>
+              </div>
+              <br>
+              <br>    
+              
+
+              <div id="cardName" class="form-group">
+                <label class="control-label col-sm-2" for="email">Cardholder Name:</label>
+                <div class="col-xs-4">
+                  <input type="text" class="form-control"   placeholder="Card Name" name="holderName" ng-model="holderName" required>
+                </div>
+                <span ng-show="myForm.holderName.$error.required">Name is required.</span>
+              </div>
+
+
+              <div id="cardNumber" class="form-group">
+                <label class="control-label col-sm-2" for="email">Card No.:</label>
+                <div class="col-xs-4">
+                  <input type="number" class="form-control"  placeholder="Enter card number" name="CardNumber" ng-model="CardNumber" required>
+                </div>
+                <span ng-show="myForm.CardNumber.$error.required">required.</span>
+              </div>
+
+
+              <div id="cvv"class="form-group">
+                <label id="cvvText" class="control-label col-sm-2" for="pwd">CVV:</label>
+                <div class="col-xs-4">
+                  <input type="number" class="form-control" placeholder="Only 3 digits" name="CVV" ng-model="CVV" required>
+                </div>
+                <span ng-show="myForm.CVV.$error.required">required.</span>
+              </div>
+
+              <div id="date"class="form-inline">
+                <label> Expiry Date:  </label>
+                <select id="expiryDate" class="form-control" placeholder="Departure Date" >
+                  <option>January</option>
+                  <option>February</option>
+                  <option>March</option>
+                  <option>April</option>
+                  <option>May</option>
+                  <option>June</option>
+                  <option>July</option>
+                  <option>August</option>
+                  <option>September</option>
+                  <option>October</option>
+                  <option>November</option>
+                  <option>December</option>
+                </select>
+                
+                <select class="form-control" >
+                  <option>2016</option>
+                  <option>2017</option>
+                  <option>2018</option>
+                  <option>2019</option>
+                  <option>2020</option>
+                  <option>2021</option>
+                  <option>2022</option>
+                </select>
+
+
+              </div>
+
+
+            </form>
+
+            <!-- dropdown -->
+            
+            <button  ng-click="clicktest()" id="btnConfirm" class="btn btn-primary" type="button" ><a href="confirmation.html">Confirm!</a></button>
+            
+
+          </div>
+          </div>
+    </div>   
