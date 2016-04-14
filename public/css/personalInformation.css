@@ -46,6 +46,7 @@ body
 	top:10%;
 	left:15%;
 }
+
 #lastNameDiv
 {
 	position: absolute;
@@ -91,7 +92,8 @@ body
 }
 input
 {
-	
+	position: absolute;
+
 }
 #partialDiv
 {
@@ -149,7 +151,7 @@ background-image: url(../icons/payment.png);
     font-weight: 100;
     padding: 20px;
     margin: -30px -30px 30px -30px;
-    
+
 }
 .form-style-8 input[type="text"],
 .form-style-8 input[type="date"],
@@ -173,14 +175,20 @@ background-image: url(../icons/payment.png);
     border: none;
     border-bottom: 1px solid #ddd;
     background: transparent;
+        background-color:white;
+        border-bottom-color: black;
     margin-bottom: 10px;
     font: 16px Arial, Helvetica, sans-serif;
-    height: 45px;
+   height:10px;
+    width: 160px;
+  -webkit-transition: width .35s ease-in-out;
+  transition: width .35s ease-in-out;
 }
 .form-style-8 textarea{
     resize:none;
     overflow: hidden;
-    border-bottom: 2px solid black;
+   background: #eee;
+    border-top: 1px solid #eee;
 }
 .form-style-8 input[type="button"], 
 .form-style-8 input[type="submit"]{
@@ -205,3 +213,35 @@ background-image: url(../icons/payment.png);
     background-color:#34CACA;
     border-bottom: 2px solid black;
 }
+
+.form-style-8 input:hover
+{
+
+    border-bottom-color: black;
+-webkit-transition: height .35s ease-in-out;
+  transition: height .35s ease-in-out;
+ height:40px;
+    width: 160px;
+
+}
+
+
+
+/*#line
+{
+	width:150px;
+	height:2px;
+	background-color: red;
+	position: absolute;
+	top:24.5%;
+	left:10%;
+}
+#line:hover
+{
+	width:0px;
+	height:100px;
+	background-color: black;
+	position: absolute;
+	top:24.5%;
+	left:10%;
+}*/
