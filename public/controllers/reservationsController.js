@@ -8,9 +8,9 @@ app.controller('reservationsController', function($scope,cancelationReservation)
       	   reservations =  cancelationReservation.getReservation();
       	   found = false;
            choosenReservation = 0;
-      	   for ( i = 0;i<reservations.length;i++)
-      	   {
 
+      	   for ( i = 0;i<reservations.length;i++)
+      	   { 
       	   	 if (reservations[i].bookingRefNumber == $scope.enteredReferenceNum)
       	   	 {
               choosenReservation = i;
@@ -21,6 +21,8 @@ app.controller('reservationsController', function($scope,cancelationReservation)
    	 	    		$scope.status ="Status : Not Confirmed";
    	 	    	found = true;
                 
+
+
    	 	    	break;
       
       	   	 }
