@@ -19,6 +19,11 @@ app.controller('ScrollController', ['$scope', '$location', '$anchorScroll',
       $location.url('/team');
     };
 
+     $scope.goHome = function() {
+        console.log("In gotoTeam");
+      $location.url('/');
+    };
+
     $scope.goToContactUs = function() {
       // set the location.hash to the id of
       // the element you wish to scroll to.

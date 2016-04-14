@@ -6,20 +6,74 @@ margin-bottom: 40px;
 	padding-top: 40px;
 	padding-bottom:40px;
 }
-.offers .offer{
-	background:#FFF;
+.offers .offer1{
+	background-image:url(../images/JFK1.jpg)  ;*/
 	padding:10px;
 	border:1px solid #DDD;
 }
-.offers .offer h2{
+.offers .offer1 h2{
 	margin:5px 0 15px;
 }
-.offers .offer p {
+.offers .offer1 p {
 	font-size: 25px;
 	font-weight:bold;
-	color:#666;
+	color:#FFF;
 }
 
-.offers .offer a{
+.offers .offer1 a{
+	margin-bottom:5px;
+}
+
+
+.offers .offer2{
+	background-image:url(../images/BCN1.jpg)  ;*/
+	padding:10px;
+	border:1px solid #DDD;
+}
+.offers .offer2 h2{
+	margin:5px 0 15px;
+}
+.offers .offer2 p {
+	font-size: 25px;
+	font-weight:bold;
+	color:#FFF;
+}
+
+.offers .offer2 a{
+	margin-bottom:5px;
+}
+
+.offers .offer3{
+	background-image:url(../images/THF1.jpg)  ;*/
+	padding:10px;
+	border:1px solid #DDD;
+}
+.offers .offer3 h2{
+	margin:5px 0 15px;
+}
+.offers .offer3 p {
+	font-size: 25px;
+	font-weight:bold;
+	color:#FFF;
+}
+
+.offers .offer3 a{
+	margin-bottom:5px;
+}
+.offers .offer4{
+	background-image:url(../images/AHN1.jpg)  ;*/
+	padding:10px;
+	border:1px solid #DDD;
+}
+.offers .offer4 h2{
+	margin:5px 0 15px;
+}
+.offers .offer4 p {
+	font-size: 25px;
+	font-weight:bold;
+	color:#FFF;
+}
+
+.offers .offer4 a{
 	margin-bottom:5px;
 }
