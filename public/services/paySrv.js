@@ -1,8 +1,14 @@
-App.factory('paysSrv', function ($http) {
+app.factory('paySrv', function ($http) {
      return {
-         // insertpayment : function() {
-         //   return $http.get('/api/data/codes');
-         // },
+         insertPayment : function(pa) {
+          var req = {
+              method: 'POST',
+              url: '/api/insertpayment',
+              data: { payment: pa }
+          };
+
+          return $http(req);
+         }
          // getFlights : function() {
          //   return $http.get('/api/data/flights');
          // },
