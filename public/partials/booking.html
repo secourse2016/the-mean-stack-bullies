@@ -1,27 +1,26 @@
 
-<div id="timeTableSection"  ng-controller="bookingCtrl" >
-  <div ng-controller="bookingCtrl"  data-ng-init="changeTable()"  >
+<div id="timeTableSection"  ng-controller="bookingCtrl" class="viewflights bookbody">
+  <div ng-controller="bookingCtrl"  data-ng-init="changeTable()"   >
 
     <br>
     <br>
-    <br>
-    <br>
-    <br>
-    <br>
+    
     <br>
       
     
     <br>
     <br>
-    <table class="sp">
+    <div ng-repeat="flight in arr | limitTo:2| orderBy:'date'">
+    <table class="tx sp" >
      
 
       <thead>
         <tr class="sp1">  
-        <th class="text-left sp1 spx" style=" font-size: 30px; color:white;">Cairo</th>
-        <th class="text-left sp1 spx" style=" font-size: 30px; color:white;">--></th>
-       <th class="text-left sp1 spx" style=" font-size: 30px; color:white;">New York</th>
-         <th class="text-left sp1"></th>
+        <th class="text-left sp1 spx" style=" font-size: 30px; color:white;">{{flight.originCity}}</th>
+        <th class="text-left sp1 spx" style=" font-size: 30px; color:white;"> <img id="franceLogo" src="./icons/sky2.png"></th>
+       <th  class="text-left sp1 spx" style=" font-size: 30px; color:white;">{{flight.destinationCity}}</th>
+       <th  class="text-left sp1 spx" style=" font-size: 30px; color:white;"></th>
+         
   
 
 
@@ -31,10 +30,11 @@
 
       <tr class="sp">  
         
-         <th class="text-left sp">Origin City</th>
-         <th class="text-left sp">Destination City</th>
-         <th class="text-left sp">Date</th>
-         <th class="text-left sp">Choose</th>
+         <th class="text-left sp">Origin</th>
+         <th class="text-left sp">Destination</th>
+         <th class="text-left sp">Price</th>
+         <th  class="text-left sp1 spx" style=" font-size: 30px; color:white;"></th>
+         
 
 
 
@@ -46,34 +46,49 @@
 
 
 
-<tr  ng-repeat="flight in arr | limitTo:2 | orderBy:'date'">  
+<tr >  
  
    
-    <td class="text-left sp"><div>{{flight.originCity}} <br> {{flight.originIata}}</div></td>
-    <td class="text-left sp"><div>{{flight.destinationCity}}<br>{{flight.destinationIata}}</div></td>
-    <td class="text-left sp">{{flight.date}}</td>
+    <td class="text-left sp"><div>{{flight.originIata}} <br> {{flight.date}}</div></td>
+    <td class="text-left sp"><div>{{flight.destinationIata}}<br>{{flight.flightNumber.type}}</div></td>
+    <td class="text-left sp"><div>500<br>$</div></td>
     <td class="text-left sp"><div class="chooseflight">  
         <input type="radio" name="radio" id={{$index}} class="radio"/>
-        <label for={{$index}}>Choose Flight</label>
+        <label for={{$index}}>Choose</label>
+                            </div></td>
+
+</tr>
+
+<tr >  
+ <!-- TAKE CARE FOR HARDCODED RADIO BUTTONS INDECES -->
+   
+    <td class="text-left sp"><div>{{flight.originIata}} <br> {{flight.date}}</div></td>
+    <td class="text-left sp"><div>{{flight.destinationIata}}<br>{{flight.flightNumber.type}}</div></td>
+    <td class="text-left sp"><div>5001<br>$</div></td>
+    <td class="text-left sp"><div class="chooseflight">  
+        <input type="radio" name="radio" id=500+{{$index}} class="radio"/>
+        <label for=500+{{$index}} >Choose</label>
                             </div></td>
 
 </tr>
 
 
 </table>
-
-<br>
-<br>
 <br>
 <br>
 
+<br>
+<br>
+
+</div>
+<div style="text-align:center;">
 <button ng-click="Book()" class="bookButton" >Book</button>
-
-<br>
-<br>
 <br>
 <br>
 </div>
+
+</div>
+
 </div>
 
 
