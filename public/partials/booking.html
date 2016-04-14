@@ -18,13 +18,11 @@
 
       <thead>
         <tr class="sp1">  
-        <th class="text-left sp1">Cairo</th>
-        <th class="text-left sp1">-></th>
-        <th class="text-left sp1">NewYork</th>
+        <th class="text-left sp1 spx" style=" font-size: 30px; color:white;">Cairo</th>
+        <th class="text-left sp1 spx" style=" font-size: 30px; color:white;">--></th>
+       <th class="text-left sp1 spx" style=" font-size: 30px; color:white;">New York</th>
          <th class="text-left sp1"></th>
-         <th class="text-left sp1"></th>
-         <th class="text-left sp1"></th>
-         <th class="text-left sp1"></th>
+  
 
 
 
@@ -32,9 +30,7 @@
      </tr>
 
       <tr class="sp">  
-        <th class="text-left sp">Type</th>
-        <th class="text-left sp">Aircraft</th>
-        <th class="text-left sp">Capacity</th>
+        
          <th class="text-left sp">Origin City</th>
          <th class="text-left sp">Destination City</th>
          <th class="text-left sp">Date</th>
@@ -52,9 +48,7 @@
 
 <tr  ng-repeat="flight in arr | limitTo:2 | orderBy:'date'">  
  
-    <td class="text-left sp">{{flight.flightNumber.type}}</td>
-    <td class="text-left sp">{{flight.aircraft}}</td>
-    <td class="text-left sp">{{flight.capacity}}</td>
+   
     <td class="text-left sp"><div>{{flight.originCity}} <br> {{flight.originIata}}</div></td>
     <td class="text-left sp"><div>{{flight.destinationCity}}<br>{{flight.destinationIata}}</div></td>
     <td class="text-left sp">{{flight.date}}</td>
