@@ -29,6 +29,10 @@ app.config(function($routeProvider) {
           .when('/contact', {
             templateUrl : '/partials/contactUs.html',
             controller  : 'ContactUsController'
+        })
+           .when('/team', {
+            templateUrl : '/partials/team.html',
+            controller  : 'TeamController'
         });
 
 
