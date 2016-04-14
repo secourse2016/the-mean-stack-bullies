@@ -21,7 +21,8 @@ before(function(done) {
 describe("Seeding the Databases for the first time", function() {
     db.drop(function() {
     	model.seedingFunction(function(){
-		    	it("should seed flights database if not seeded", function(done) {
+		    	console.log("-----------------------------------Seeded----------------------------");
+		    	 it("should seed flights database if not seeded", function(done) {
 		       		 this.timeout(0);
 		       		 mongoose.model('Flight').count( {}, function(err, count) {
 		        		flightscount=count;
@@ -58,11 +59,11 @@ describe("Seeding the Databases for the first time", function() {
 		        		assert(count!=0,"Reservations is not seeded correctly");
 		        		done();
 		        	}); 
-		    	});
+		    	}); 
 		    	
 		});
 
-    });	  
+    });	 
     
 });
 
