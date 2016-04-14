@@ -6,7 +6,6 @@
       <link rel="stylesheet" href="css/bootstrap.css">
       <link rel="stylesheet" href="css/Homestyle.css">
       <link rel="stylesheet" href="css/animate.css">
-          <link rel="stylesheet" href="../css/personalInformation.css">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" media="all">
     <link href="../css/hover.css" rel="stylesheet" media="all">
 
@@ -21,6 +20,7 @@
       <script src="./services/airportsSrv.js"> </script>
       <script src="./services/reservationCancelationSrv.js"> </script>
       <script src="./services/flightsSrv.js"> </script>
+      <script src="./services/paySrv.js"> </script>
       <script src="./controllers/homeController.js"></script>
       <script src="./controllers/contactUsController.js"></script>
 
@@ -32,6 +32,7 @@
       <script src="./controllers/bookingCtrl.js"></script>
       <script src="./controllers/myCtrl.js"></script>
       <script src="./controllers/reservationsController.js"></script>
+      <script src="./controllers/paymentCtrl.js"></script>
 
 
 
@@ -47,8 +48,8 @@
           </div>
           <ul id="navBarStyle" class="nav navbar-nav navbar-right" ng-controller="ScrollController" >
        
-            <li class="active btn-lg"><a href="index.html"></span>Home</a></li>
             
+            <li class="btn-lg"><a ng-click="goHome()">Home</a></li>
             <li class="btn-lg"><a ng-click="gotoTeam()">GetInTouch</a></li>
             <li class="btn-lg"><a href="#/contact">Contact us</a></li>
             
@@ -59,10 +60,11 @@
           
         </div>
 
-    </div>
+ 
+
     <script>
       new WOW().init();
     </script>
-
   </body>
+
   </html>

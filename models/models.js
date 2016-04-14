@@ -8,9 +8,6 @@ Db.init(function(){
 console.log("here");
 });
 
-
-
-
 var outgoingflightSchema = schema({
             flightNumber      : String,
             aircraftType      : String,
