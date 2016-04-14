@@ -56,17 +56,7 @@ describe("Seeding the Databases for the first time", function() {
 		    	});
 		      }); 
 		    }); 		 	
-		    	it("should seed flights database if not seeded", function(done) {
-		       		 this.timeout(0);
-		       		 mongoose.model('inFlight').count( {}, function(err, count) {
-
-		        		console.log("count="+count);
-		        		assert(count!=0,"Flights is not seeded correctly");
-		        		done();
-
-		        
-                     });
-		    	});
+		    	
 		    	it("should seed flights database if not seeded", function(done) {
 		       		 this.timeout(0);
 		       		  db.seed(mongoose.model('inFlight'),require('../returnflights.json'),function(){
@@ -87,7 +77,7 @@ describe("Seeding the Databases for the first time", function() {
 		        	this.timeout(0);
 		        db.seed(mongoose.model('Payment'),require('../payments.json'),function(){	
 		        	mongoose.model('Payment').count( {}, function(err, count) {
-<<<<<<< HEAD
+
 		        		if(err){
 		       		 		  console.error(err);
 		       		 		}else{
@@ -96,18 +86,15 @@ describe("Seeding the Databases for the first time", function() {
 		        			
 		       		 		}
 		        			done();
-=======
-		        		console.log("count="+count);
-		        		assert(count!=0,"Payments is not seeded correctly");
-		        		done();
->>>>>>> master
+
+		        		
 		        	}); 
                   });
 		         	
 		    	});
 		    	it("should seed airports database if not seeded", function(done) {
 		        	this.timeout(0);
-<<<<<<< HEAD
+
 		        	db.seed(mongoose.model('outFlight'),require('../outflights.json'),function(){
 
 		        	mongoose.model('outFlight').count( {}, function(err, count) {
@@ -120,19 +107,14 @@ describe("Seeding the Databases for the first time", function() {
 		       		 		}
 		        			done();
 		        	});
-=======
-		        	mongoose.model('Airport').count( {}, function(err, count) {
-		        		console.log("count="+count);
-		        		assert(count!=0,"Airports is not seeded correctly");
-		        		done();
->>>>>>> master
+
 		        	}); 
 		    	});
 		    	it("should seed Bookings database if not seeded", function(done) {
 		        	this.timeout(0);
 		        db.seed(mongoose.model('Booking'),require('../bookings.json'),function(){	
 		        	mongoose.model('Booking').count( {}, function(err, count) {
-<<<<<<< HEAD
+
 		        		if(err){
 		       		 		  console.error(err);
 		       		 		}else{
@@ -142,19 +124,14 @@ describe("Seeding the Databases for the first time", function() {
 		       		 		}
 		        			done();
 		        	});
-=======
-		        		console.log("count="+count);
-		        		assert(count!=0,"Bookings is not seeded correctly");
-		        		done();
->>>>>>> master
-		        	}); 
-		    	});
+		        }); 
+		    });
 
 		    	it("should seed Reservations database if not seeded", function(done) {
 		       	 	this.timeout(0);
 		       	 db.seed(mongoose.model('Reservation'),require('../reservations.json'),function(){	
 		       	 	mongoose.model('Reservation').count( {}, function(err, count) {
-<<<<<<< HEAD
+
 		       	 		if(err){
 		       		 		  console.error(err);
 		       		 		}else{
@@ -167,19 +144,7 @@ describe("Seeding the Databases for the first time", function() {
                  });
 		        	 
 		    	});
-		
-=======
-		       	 		console.log("count="+count);
-		        		assert(count!=0,"Reservations is not seeded correctly");
-		        		done();
-		        	}); 
-		    	}); 
-		    	
-		
 
-   	 
-    
->>>>>>> master
 });
 
 describe("Seeding the database when it is already seeded  ", function() {
