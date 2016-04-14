@@ -1,5 +1,5 @@
 
-<div id="timeTableSection"  ng-controller="bookingCtrl" class="viewflights">
+<div id="timeTableSection"  ng-controller="bookingCtrl" class="viewflights bookbody">
   <div ng-controller="bookingCtrl"  data-ng-init="changeTable()"   >
 
     <br>
@@ -10,7 +10,7 @@
     
     <br>
     <br>
-    <div ng-repeat="flight in arr  | orderBy:'date'">
+    <div ng-repeat="flight in arr | limitTo:2| orderBy:'date'">
     <table class="tx sp" >
      
 
