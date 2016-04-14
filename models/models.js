@@ -14,13 +14,35 @@ var flightSchema = schema({
             aircraftType      : String,
             aircraftModel     : String,
             departureDateTime : Date,
-            arrivalDateTime   :Date
+            arrivalDateTime   : Date,
             origin 		      : String,
-            destination      : String,
+            destination       : String,
             cost              : Number,
             currency          : String,
             class             : String,
             Airline           : String
+});
+var bookingSchema = schema({
+    from: String,
+    To: String,
+    DepartureDate: Date,
+    ReturnDate: Date,
+    NumberOfAdults: Number,
+    NumberOfChildren: Number,
+    Class:String,
+    Email:String
+
+});
+
+var reservationSchema = schema({
+    firstName: String,
+    lastName: String,
+    passport: String,
+    issueDate: Date,
+    expiryDate: Date,
+    receipt_number: String,
+    bookingRefNumber:String
+
 });
 
 
@@ -36,9 +58,33 @@ var airportSchema = schema({
 	size: String
 
 });
-mongoose.model('Airport', airportSchema);
-mongoose.model('Flights', flightSchema);
 
-Db.seed(mongoose.model('Airport'),require('../airports.json'));
-Db.seed(mongoose.model('Flights'),require('../flights.json'));
+
+var paymentSchema = schema({
+      visa:Boolean,
+      MasterCard: Boolean,
+      CardHolderName: String,
+      CardHolderNo: Number,
+      Cvv: Number,
+      ExpiryDate: Date
+
+});
+
+
+mongoose.model('Airport', airportSchema);
+mongoose.model('Flight', flightSchema);
+mongoose.model('Reservation', reservationSchema);
+mongoose.model('Booking', bookingSchema);
+mongoose.model('Payment', paymentSchema);
+
+
+exports.seedingFunction=function(cb){
+    Db.seed(mongoose.model('Airport'),require('../airports.json'));
+    Db.seed(mongoose.model('Flight'),require('../flights.json'));
+    Db.seed(mongoose.model('Reservation'),require('../reservations.json'));
+    Db.seed(mongoose.model('Booking'),require('../bookings.json'));
+    Db.seed(mongoose.model('Payment'),require('../payments.json'));
+    cb();
+};
+
 

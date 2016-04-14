@@ -4,17 +4,238 @@
 
 html{
   height: 100%;
-    background-color: rgb(6,14,30);
+  background-color: rgb(17,37,60);
   background-size: 101% 100%;
 
 
 }
+
+.bookButton {
+   
+  
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+    background-color: white; 
+    color: rgb(17,37,60); 
+    border: 2px solid rgb(17,37,60);
+    border-radius: 9px;
+
+}
+
+.bookButton:hover {
+     background-color: rgb(17,37,60);
+    color: red;
+}
+
+
+/*begin table*/
+div.table-title {
+   display: block;
+  margin: auto;
+  max-width: 600px;
+  padding:5px;
+  width: 100%;
+}
+
+.table-title h3 {
+   color: #fafafa;
+   font-size: 30px;
+   font-weight: 400;
+   font-style:normal;
+   font-family: "Roboto", helvetica, arial, sans-serif;
+   text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.1);
+   text-transform:uppercase;
+}
+
+
+/*** Table Styles **/
+
+.sp .table-fill {
+  background: white;
+  border-radius:3px;
+  border-collapse: collapse;
+  height: 320px;
+  margin: auto;
+  max-width: 600px;
+  padding:5px;
+  width: 100%;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  animation: float 5s infinite;
+}
+ 
+.sp th {
+  color:#D5DDE5;
+  background:rgb(17,37,60);
+  border-bottom:4px solid #9ea7af;
+  border-right: 1px solid #343a45;
+  font-size:23px;
+  font-weight: 100;
+  padding:24px;
+  text-align:left;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+  vertical-align:middle;
+}
+
+.sp th:first-child {
+  border-top-left-radius:3px;
+}
+ 
+.sp th:last-child {
+  border-top-right-radius:3px;
+  border-right:none;
+}
+  
+.sp tr {
+  border-top: 1px solid #C1C3D1;
+  border-bottom-: 1px solid #C1C3D1;
+  color:#666B85;
+  font-size:16px;
+  font-weight:normal;
+  text-shadow: 0 1px 1px rgba(256, 256, 256, 0.1);
+}
+ 
+
+ 
+.sp tr:first-child {
+  border-top:none;
+}
+
+.sp tr:last-child {
+  border-bottom:none;
+}
+ 
+.sp tr:nth-child(odd) td {
+  background:#EBEBEB;
+}
+ 
+
+
+.sp tr:last-child td:first-child {
+  border-bottom-left-radius:3px;
+}
+ 
+.sp tr:last-child td:last-child {
+  border-bottom-right-radius:3px;
+}
+ 
+.sp td {
+  background:#FFFFFF;
+  padding:20px;
+  text-align:left;
+  vertical-align:middle;
+  font-weight:300;
+  font-size:18px;
+  text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.1);
+  border-right: 1px solid #C1C3D1;
+}
+
+.sp td:last-child {
+  border-right: 0px;
+}
+
+.sp th.text-left {
+  text-align: left;
+}
+
+.sp th.text-center {
+  text-align: center;
+}
+
+.sp th.text-right {
+  text-align: right;
+}
+
+.sp td.text-left {
+  text-align: left;
+}
+
+.sp td.text-center {
+  text-align: center;
+}
+
+.sp td.text-right {
+  text-align: right;
+}
+
+
+/*end table*/
+
+/*>>>>>>>>>RADIOBUTTON BEGIN<<<<<<<<<*/
+/* hide input */
+input.radio:empty {
+  margin-left: -999px;
+}
+
+/* style label */
+input.radio:empty ~ label {
+  position: relative;
+  float: left;
+  line-height: 2.5em;
+  text-indent: 3.25em;
+  margin-top: 2em;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+input.radio:empty ~ label:before {
+  position: absolute;
+  display: block;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  content: '';
+  width: 2.5em;
+  background: #D1D3D4;
+  border-radius: 3px 0 0 3px;
+}
+
+/* toggle hover */
+input.radio:hover:not(:checked) ~ label:before {
+  content:'\2714';
+  text-indent: .9em;
+  color: #C2C2C2;
+}
+
+input.radio:hover:not(:checked) ~ label {
+  color: #888;
+}
+
+/* toggle on */
+input.radio:checked ~ label:before {
+  content:'\2714';
+  text-indent: .9em; 
+  color: red;
+  background-color: rgb(17,37,60);
+}
+
+input.radio:checked ~ label {
+  color: #777;
+}
+
+/*>>>>>>>>>RADIOBUTTON BEGIN<<<<<<<<<*/
+
 
 body {
     height: 100%;
  
  /* cursor:url("../icons/sky.png"), auto;*/
     overflow-x:hidden;
+}
+
+.chooseflight {
+  margin-top: -30%;
 }
 
 #main
@@ -434,7 +655,7 @@ background-color: rgb(0, 33, 71);
   color:white;
   overflow: hidden;
   position: absolute;
-  background-color: rgb(6,14,30);
+  background-color: rgb(17,37,60);
   top:-1104%;
   left:-10%;
 }
