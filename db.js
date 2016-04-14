@@ -21,10 +21,30 @@ module.exports = {
 			return db;
 		}
 		
+		
 	},
 	close:function(db,cb){
 		db.close();
 		cb();
+	},
+	drop:function(cb){
+		mongoose.model('Airport').remove({}, function(err) { 
+   			console.log('Airport removed') ;
+   			mongoose.model('Flight').remove({}, function(err) { 
+   				console.log('Flight removed') ;
+   				mongoose.model('Reservation').remove({}, function(err) { 
+   					console.log('Reservation removed') ;
+   					mongoose.model('Booking').remove({}, function(err) { 
+   						console.log('Booking removed') ;
+   						mongoose.model('Payment').remove({}, function(err) { 
+   							console.log('Payment removed') ;
+   							cb();
+						});
+					});
+				});
+			});
+		});
+		
 	},
 	seed:function(model,entities) {  
 	    model.count( {}, function(err, count) {
