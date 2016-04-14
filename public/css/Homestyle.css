@@ -4,9 +4,13 @@
 
 html{
   height: 100%;
-  background-color: rgb(17,37,60);
+  background-color: rgb(209,112,59);
   background-size: 101% 100%;
-
+   background: rgb(209,112,59);; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(white,rgb(12,65,108)); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(white,rgb(12,65,108)); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(white,rgb(12,65,108)); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(white,rgb(12,65,108)); /* Standard syntax */
 
 }
 
@@ -32,7 +36,7 @@ html{
 }
 
 .bookButton:hover {
-     background-color: rgb(17,37,60);
+     background-color: black;
     color: red;
 }
 
@@ -74,7 +78,7 @@ div.table-title {
  
 .sp th {
   color:#D5DDE5;
-  background:rgb(17,37,60);
+  background:black;
   border-bottom:4px solid #9ea7af;
   border-right: 1px solid #343a45;
   font-size:23px;
@@ -217,7 +221,7 @@ input.radio:checked ~ label:before {
   content:'\2714';
   text-indent: .9em; 
   color: red;
-  background-color: rgb(17,37,60);
+  background-color: black;
 }
 
 input.radio:checked ~ label {
@@ -225,6 +229,7 @@ input.radio:checked ~ label {
 }
 
 /*>>>>>>>>>RADIOBUTTON BEGIN<<<<<<<<<*/
+
 
 
 body {
