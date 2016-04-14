@@ -7,7 +7,7 @@
                       <lable style="font-family: arial;color: red">
                         Search Destination: 
                       </lable>
-                      <input class="form-control" id="tag"type="text" ng-click="changeTable()" ng-model="destination" typeahead-on-select="changeTable($item.iata)" uib-typeahead="airport.name+' ('+airport.iata+')' for airport in airports | airportsFilters:destination| limitTo:10" placeholder="Destination: ">
+                      <input class="form-control" id="tag"type="text" ng-click="changeTable()" ng-model="destination" typeahead-on-select="changeTable($item.iata)" uib-typeahead="airport.name+'('+airport.iata+')' for airport in airports | airportsFilters:destination| limitTo:10" placeholder="Destination: ">
 
 
                     </div>

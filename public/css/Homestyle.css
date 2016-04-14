@@ -32,7 +32,7 @@ html{
 }
 
 .bookButton:hover {
-     background-color: rgb(17,37,60);
+     background-color: black;
     color: red;
 }
 
@@ -74,7 +74,7 @@ div.table-title {
  
 .sp th {
   color:#D5DDE5;
-  background:rgb(17,37,60);
+  background:black;
   border-bottom:4px solid #9ea7af;
   border-right: 1px solid #343a45;
   font-size:23px;
@@ -217,7 +217,7 @@ input.radio:checked ~ label:before {
   content:'\2714';
   text-indent: .9em; 
   color: red;
-  background-color: rgb(17,37,60);
+  background-color: black;
 }
 
 input.radio:checked ~ label {

@@ -112,6 +112,8 @@ app.controller('myCtrl', function($scope) {
  */
 app.controller('bookingCtrl', function($scope, $location,airportSrv,FlightsSrv) {
 
+  
+
     
   $scope.date= new Date();
   $scope.limit=6;
@@ -134,7 +136,7 @@ app.controller('bookingCtrl', function($scope, $location,airportSrv,FlightsSrv) 
 
   $scope.Book=function()
   {
-     // $location.url('/passenger.html'); <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+     $location.url('/passenger.html');
   }
 
   $scope.hideReturnedDate=function(){
@@ -145,6 +147,7 @@ app.controller('bookingCtrl', function($scope, $location,airportSrv,FlightsSrv) 
     $scope.hidedate=true;
   }
   $scope.bookFlight=function(){
+ 
     $location.url('/book');
   }
 
