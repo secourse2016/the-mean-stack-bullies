@@ -19,6 +19,7 @@
         <th class="text-left sp1 spx" style=" font-size: 30px; color:white;">{{flight.originCity}}</th>
         <th class="text-left sp1 spx" style=" font-size: 30px; color:white;">--></th>
        <th  class="text-left sp1 spx" style=" font-size: 30px; color:white;">{{flight.destinationCity}}</th>
+       <th  class="text-left sp1 spx" style=" font-size: 30px; color:white;"></th>
          
   
 
@@ -32,6 +33,7 @@
          <th class="text-left sp">Origin</th>
          <th class="text-left sp">Destination</th>
          <th class="text-left sp">Price</th>
+         <th  class="text-left sp1 spx" style=" font-size: 30px; color:white;"></th>
          
 
 
@@ -53,6 +55,19 @@
     <td class="text-left sp"><div class="chooseflight">  
         <input type="radio" name="radio" id={{$index}} class="radio"/>
         <label for={{$index}}>Choose</label>
+                            </div></td>
+
+</tr>
+
+<tr >  
+ 
+   
+    <td class="text-left sp"><div>{{flight.originIata}} <br> {{flight.date}}</div></td>
+    <td class="text-left sp"><div>{{flight.destinationIata}}<br>{{flight.flightNumber.type}}</div></td>
+    <td class="text-left sp"><div>5001<br>$</div></td>
+    <td class="text-left sp"><div class="chooseflight">  
+        <input type="radio" name="radio" id="500" class="radio"/>
+        <label for="500">Choose</label>
                             </div></td>
 
 </tr>
