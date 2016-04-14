@@ -93,8 +93,7 @@ div.table-title {
 .sp th {
   color:#D5DDE5;
   background:rgb(152,58,49);
-  border-bottom:4px solid #9ea7af;
-  
+      border-bottom:0px solid #9ea7af;
   font-size:23px;
   font-weight: 100;
   padding-right:24px;
@@ -107,8 +106,7 @@ div.table-title {
 .sp1 th {
   color:#D5DDE5;
   background:rgb(17,37,60);
-  border-bottom:4px solid #9ea7af;
-  
+      border-bottom:4px solid #9ea7af;
   font-size:23px;
   font-weight: 100;
   padding-right:24px;
