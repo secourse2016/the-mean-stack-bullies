@@ -1231,6 +1231,7 @@ footer {
   height:auto;
   background-color: rgb(235,235,235);
   box-shadow: 10px 10px 5px #888888;
+  /*box-shadow: -12px 12px 70px black;*/
   margin: 0 auto;
 
 }
