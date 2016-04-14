@@ -1096,6 +1096,7 @@ background-color:white;
 }
 #teamText
 {
+  color:black;
   font-size: 30px;
   position: relative;
   top:5%;
@@ -1155,7 +1156,7 @@ background-color:white;
 }
 #theText
 {
-  color:white;
+  color:black;
   position: absolute;
   font-size: 30px;
   top:43%;
@@ -1163,7 +1164,7 @@ background-color:white;
 }
 #teamMEAN
 {
-  color:blue;
+  color:red;
   position: absolute;
   font-size: 30px;
   top:47%;
@@ -1171,7 +1172,7 @@ background-color:white;
 }
 #teamStack
 {
-  color:white;
+  color:blue;
   position: absolute;
   font-size: 30px;
   top:47%;
@@ -1179,7 +1180,7 @@ background-color:white;
 }
 #teamBullies
 {
-  color:white;
+  color:black;
   position: absolute;
   font-size: 30px;
   top:51%;
