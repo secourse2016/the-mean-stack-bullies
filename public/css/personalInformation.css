@@ -6,8 +6,27 @@ html
 body
 {
 	height:100%;
-	background: rgb(17,37,60);
+	background: rgba(2,2,2,0.6);
 }
+#mainDIV
+{
+	height: 100%;
+	width:100%;
+	position: relative;
+	top:-10%;
+	left:-4%;
+}
+#fixAnimation
+{
+	width:80%;
+	height:100%;
+
+	overflow: hidden;
+	position: absolute;
+	top:0%;
+	left:1.5%;
+}
+
 #personalInfoDiv
 {
 	background-color: white;
@@ -75,31 +94,34 @@ input
 }
 #partialDiv
 {
-	background:grey;
+		background-image: url(../icons/flights.png);
+			background-repeat: no-repeat;
 	width:40%;
-	height:10%;
+	height:20%;
 	position: absolute;
-	top:20%;
-	left:-55%;
-
+	top:40%;
+	left:8%;
 }
 #partialDiv2
 {
-	background:rgb(152,58,49);
+	background-image: url(../icons/passenger.png);
+	background-repeat: no-repeat;
+
 	width:50%;
-	height:10%;
+	height:30%;
 	position: absolute;
-	top:35%;
-	left:-55%;
+	top:60%;
+	left:4%;
 
 }
 #partialDiv3
 {
-	background:grey;
+background-image: url(../icons/payment.png);
+	background-repeat: no-repeat;
 	width:40%;
-	height:10%;
+	height:20%;
 	position: absolute;
-	top:50%;
-	left:-55%;
+	top:79%;
+	left:8%;
 
 }
