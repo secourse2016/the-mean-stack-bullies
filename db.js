@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 var dbPath = "mongodb://localhost/AirFranceDB"
-var db;
+var db = null;
 module.exports = {
 	
 	init :function(cb){
@@ -17,8 +17,10 @@ module.exports = {
           });
 	},
 	db: function(){
-		if(db){
+		if(db != null){
 			return db;
+		}else{
+		return console.error("Access denied");
 		}
 		
 		
@@ -29,24 +31,34 @@ module.exports = {
 	},
 	drop:function(cb){
 		mongoose.model('Airport').remove({}, function(err) { 
+			if(err) console.log("connot be removed");
    			console.log('Airport removed') ;
-   			mongoose.model('Flight').remove({}, function(err) { 
-   				console.log('Flight removed') ;
-   				mongoose.model('Reservation').remove({}, function(err) { 
-   					console.log('Reservation removed') ;
-   					mongoose.model('Booking').remove({}, function(err) { 
-   						console.log('Booking removed') ;
-   						mongoose.model('Payment').remove({}, function(err) { 
-   							console.log('Payment removed') ;
-   							cb();
+   			mongoose.model('outFlight').remove({}, function(err) {
+   			    if(err) console.log("connot be removed"); 
+   				console.log('out going Flights removed') ;
+   				mongoose.model('inFlight').remove({}, function(err) { 
+   					if(err) console.log("connot be removed");
+   					console.log('returned Flights removed') ;
+	   				mongoose.model('Reservation').remove({}, function(err) {
+	   					if(err) console.log("connot be removed"); 
+	   					console.log('Reservation removed') ;
+	   					mongoose.model('Booking').remove({}, function(err) { 
+	   						if(err) console.log("connot be removed");
+	   						console.log('Booking removed') ;
+	   						mongoose.model('Payment').remove({}, function(err) { 
+	   							if(err) console.log("connot be removed");
+	   							console.log('Payment removed') ;
+	   							cb();
+							});
 						});
 					});
-				});
+				});		
 			});
 		});
+			
 		
 	},
-	seed:function(model,entities) {  
+	seed:function(model,entities,cb) {  
 	    model.count( {}, function(err, count) {
 	          if(count==0){
 	          	var promise = new mongoose.Promise;
@@ -54,13 +66,15 @@ module.exports = {
 	      			if(err) 
 	      			{ 
 	      				promise.reject(err); 
+	      				cb(null);
 	      			}
 	      		  	else{ 
 	        			promise.resolve();
 	      	            console.log("seeded correctly");
+	      	           cb(promise);
 	           		 }
 	   			});
-	    		return promise;
+	    		   return promise;
 				}
 				else
 				{
@@ -68,6 +82,7 @@ module.exports = {
 				}
 	    		
 	    });
+
 
     }
     

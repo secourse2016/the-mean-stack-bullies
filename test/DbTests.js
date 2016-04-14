@@ -11,20 +11,43 @@ var flightscount=0;
 
 before(function(done) {
     db.init(function(err, db) {
-        if (err) return done(err);
-        else done();
+        if (err){
+        	
+        	return done(err);
+        } 
+        else{
+        	console.log("hereees");
+        	 done();
+        }
     });
 });
 
 
-
+   
 describe("Seeding the Databases for the first time", function() {
-    db.drop(function() {
-    	model.seedingFunction(function(){
+ 
+      before(function(done){
+          db.drop(function(){
+     	model.seedingFunction();
+         });
+          done();
+      });
+      	
+    	
+		    	console.log("-----------------------------------Seeded----------------------------");
+		    	 it("should seed flights database if not seeded", function(done) {
+		       		 this.timeout(0);
+		       		 mongoose.model('outFlight').count( {}, function(err, count) {
+		        		console.log("count="+count);
+		        		assert(count!=0,"Flights is not seeded correctly");
+		        		done();
+		        	});
+
+		    	});
 		    	it("should seed flights database if not seeded", function(done) {
 		       		 this.timeout(0);
-		       		 mongoose.model('Flight').count( {}, function(err, count) {
-		        		flightscount=count;
+		       		 mongoose.model('inFlight').count( {}, function(err, count) {
+
 		        		console.log("count="+count);
 		        		assert(count!=0,"Flights is not seeded correctly");
 		        		done();
@@ -34,6 +57,7 @@ describe("Seeding the Databases for the first time", function() {
 		    	it("should seed payments database if not seeded", function(done) {
 		        	this.timeout(0);
 		        	mongoose.model('Payment').count( {}, function(err, count) {
+		        		console.log("count="+count);
 		        		assert(count!=0,"Payments is not seeded correctly");
 		        		done();
 		        	}); 
@@ -41,6 +65,7 @@ describe("Seeding the Databases for the first time", function() {
 		    	it("should seed airports database if not seeded", function(done) {
 		        	this.timeout(0);
 		        	mongoose.model('Airport').count( {}, function(err, count) {
+		        		console.log("count="+count);
 		        		assert(count!=0,"Airports is not seeded correctly");
 		        		done();
 		        	}); 
@@ -48,6 +73,7 @@ describe("Seeding the Databases for the first time", function() {
 		    	it("should seed Bookings database if not seeded", function(done) {
 		        	this.timeout(0);
 		        	mongoose.model('Booking').count( {}, function(err, count) {
+		        		console.log("count="+count);
 		        		assert(count!=0,"Bookings is not seeded correctly");
 		        		done();
 		        	}); 
@@ -55,14 +81,15 @@ describe("Seeding the Databases for the first time", function() {
 		    	it("should seed Reservations database if not seeded", function(done) {
 		       	 	this.timeout(0);
 		       	 	mongoose.model('Reservation').count( {}, function(err, count) {
+		       	 		console.log("count="+count);
 		        		assert(count!=0,"Reservations is not seeded correctly");
 		        		done();
 		        	}); 
-		    	});
+		    	}); 
 		    	
-		});
+		
 
-    });	  
+   	 
     
 });
 

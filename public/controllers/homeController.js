@@ -14,6 +14,10 @@ app.controller('ScrollController', ['$scope', '$location', '$anchorScroll',
       // call $anchorScroll()
       $anchorScroll('beginning');
     };
+    $scope.gotoTeam = function() {
+        console.log("In gotoTeam");
+      $location.url('/team');
+    };
 
     $scope.goToContactUs = function() {
       // set the location.hash to the id of
@@ -48,6 +52,7 @@ app.directive('scrollOnClick', function() {
       // call $anchorScroll()
       $anchorScroll();
     };
+
   }]);
 
 
