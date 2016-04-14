@@ -14,6 +14,16 @@ html{
 
 }
 
+.history2 {
+
+  background-color:black;
+   background: -webkit-linear-gradient(rgb(12,65,108),white); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(rgb(12,65,108),white); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(rgb(12,65,108),white); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(rgb(12,65,108),white); /* Standard syntax */
+
+}
+
 .bookButton {
    
   
@@ -36,7 +46,7 @@ html{
 }
 
 .bookButton:hover {
-     background-color: black;
+     background-color: rgb(17,37,60);
     color: red;
 }
 
@@ -61,7 +71,11 @@ div.table-title {
 
 
 /*** Table Styles **/
+.tx{
+  margin: 0 auto;
+  width:85%;
 
+}
 .sp .table-fill {
   background: white;
   border-radius:3px;
@@ -233,7 +247,7 @@ input.radio:checked ~ label:before {
   content:'\2714';
   text-indent: .9em; 
   color: red;
-  background-color: black;
+  background-color: rgb(17,37,60);
 }
 
 input.radio:checked ~ label {
@@ -301,7 +315,7 @@ background-color: rgba(2,2,2,.56);
   width: 100%;
   height:100%;
    background : url(../images/paris.jpg) no-repeat center center fixed;
-  background-size: 101% 100%;
+  background-size: 100% 100%;
 
   
 }
@@ -371,13 +385,24 @@ background-color: rgba(2,2,2,.56);
 {
   height:100%;
   overflow: hidden;
-  width:90%;
-
+  width:100%;
+  padding-left: 20%;
   position: relative;
-  left:15%;
+
+  margin-right: 15%;
 
 }
 
+#data2
+ {
+  background-color: rgba(2,2,2,0.5);
+  width: 100%;
+  position: relative;
+  top:-10%;
+  height:110%;
+
+
+ }
 .row2
 {
   height: 100%;
@@ -546,6 +571,7 @@ color:#fff;
 /*Start section Statistics*/
  .stats
  {
+  background-color: red;
   height:60%;
  }
  #data
@@ -592,15 +618,7 @@ h4
 
 }
   
-#data2
- {
-  background-color: rgba(2,2,2,0.5);
-  width: 100%;
-  position: relative;
-  top:-10%;
-  height:110%;
 
- }
  #data3
  {
   background-color: rgba(2,2,2,0);
@@ -966,15 +984,7 @@ overflow-y: scroll;
 
 
 }
-#timeTableSection
-{
-position: relative;
-left:9%;
-max-height:100%;
-font-weight: bold;
-overflow-y:scroll;
-overflow-x:hidden;   
-}
+
 #table
 {
   width:70%;
@@ -1214,6 +1224,14 @@ background-color:white;
 footer {
     margin: 50px 0;
 }
+.viewflights{
+  width:65%;
+  height:100%;
+  background-color: blue;
+  box-shadow: 10px 10px 5px #888888;
+  margin: 0 auto;
+
+}
 #contactUsDiv
 {
 
@@ -1228,6 +1246,21 @@ top:5%;
 left:10%;
 color:#EEE;
 }
+#mainDIV
+{
+  height: 100%;
+  width:100%;
+  position: relative;
+  top:-5%;
+  left:-4%;
+}
+.footer{
+    background-color: rgb(17,37,60);
+    height: 50px;
+    color:white;
+    text-align: right;
+}
+
 #get
 {
   color:white;
@@ -1244,3 +1277,4 @@ color:#EEE;
   left:10%;
    border-radius: 5px;
 }
+
