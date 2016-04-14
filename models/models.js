@@ -9,13 +9,28 @@ console.log("here");
 
 // Db.seed();
 
-var flightSchema = schema({
+var outgoingflightSchema = schema({
             flightNumber      : String,
             aircraftType      : String,
             aircraftModel     : String,
             departureDateTime : Date,
             arrivalDateTime   : Date,
             origin 		      : String,
+            destination       : String,
+            cost              : Number,
+            currency          : String,
+            class             : String,
+            Airline           : String
+});
+
+
+var ingoingflightSchema = schema({
+            flightNumber      : String,
+            aircraftType      : String,
+            aircraftModel     : String,
+            departureDateTime : Date,
+            arrivalDateTime   : Date,
+            origin            : String,
             destination       : String,
             cost              : Number,
             currency          : String,
@@ -72,15 +87,30 @@ var paymentSchema = schema({
 
 
 mongoose.model('Airport', airportSchema);
-mongoose.model('Flight', flightSchema);
+mongoose.model('outFlight', outgoingflightSchema);
 mongoose.model('Reservation', reservationSchema);
 mongoose.model('Booking', bookingSchema);
 mongoose.model('Payment', paymentSchema);
+mongoose.model('inFlight', ingoingflightSchema);
 
 
 exports.seedingFunction=function(cb){
+    // Db.seed(mongoose.model('Airport'),require('../airports.json'),function(){
+    //     Db.seed(mongoose.model('outFlight'),require('../outflights.json'),function(){
+    //         Db.seed(mongoose.model('inFlight'),require('../returnflights.json'),function(){
+    //             Db.seed(mongoose.model('Reservation'),require('../reservations.json'),function(){
+    //                 Db.seed(mongoose.model('Booking'),require('../bookings.json'),function(){
+    //                     Db.seed(mongoose.model('Payment'),require('../payments.json'),function(){
+    //                           cb();
+    //                     });
+    //                 });
+    //             });
+    //         });
+    //     });
+    // });
     Db.seed(mongoose.model('Airport'),require('../airports.json'));
-    Db.seed(mongoose.model('Flight'),require('../flights.json'));
+    Db.seed(mongoose.model('outFlight'),require('../outflights.json'));
+    Db.seed(mongoose.model('inFlight'),require('../returnflights.json'));
     Db.seed(mongoose.model('Reservation'),require('../reservations.json'));
     Db.seed(mongoose.model('Booking'),require('../bookings.json'));
     Db.seed(mongoose.model('Payment'),require('../payments.json'));
