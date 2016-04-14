@@ -4,7 +4,7 @@
 
 html{
   height: 100%;
-    background-color: rgb(17,37,60);
+  background-color: rgb(17,37,60);
   background-size: 101% 100%;
 
 
@@ -24,8 +24,8 @@ html{
     -webkit-transition-duration: 0.4s; /* Safari */
     transition-duration: 0.4s;
     cursor: pointer;
-     background-color: white; 
-    color: black; 
+    background-color: white; 
+    color: rgb(17,37,60); 
     border: 2px solid rgb(17,37,60);
     border-radius: 9px;
 
@@ -73,7 +73,7 @@ div.table-title {
 }
  
 .sp th {
-  color:#D5DDE5;;
+  color:#D5DDE5;
   background:rgb(17,37,60);
   border-bottom:4px solid #9ea7af;
   border-right: 1px solid #343a45;
