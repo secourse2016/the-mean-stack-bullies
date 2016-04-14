@@ -15,7 +15,7 @@ var flightSchema = schema({
             aircraftModel     : String,
             departureDateTime : Date,
             arrivalDateTime   : Date,
-            origin 		: String,
+            origin 		      : String,
             destination       : String,
             cost              : Number,
             currency          : String,
@@ -78,9 +78,13 @@ mongoose.model('Booking', bookingSchema);
 mongoose.model('Payment', paymentSchema);
 
 
-Db.seed(mongoose.model('Airport'),require('../airports.json'));
-Db.seed(mongoose.model('Flight'),require('../flights.json'));
-Db.seed(mongoose.model('Reservation'),require('../reservations.json'));
-Db.seed(mongoose.model('Booking'),require('../bookings.json'));
-Db.seed(mongoose.model('Payment'),require('../payments.json'));
+exports.seedingFunction=function(cb){
+    Db.seed(mongoose.model('Airport'),require('../airports.json'));
+    Db.seed(mongoose.model('Flight'),require('../flights.json'));
+    Db.seed(mongoose.model('Reservation'),require('../reservations.json'));
+    Db.seed(mongoose.model('Booking'),require('../bookings.json'));
+    Db.seed(mongoose.model('Payment'),require('../payments.json'));
+    cb();
+};
+
 
