@@ -6,9 +6,6 @@ html
 body
 {
 	height:100%;
-	background-image: url(../images/world.jpg);
-	background-repeat: no-repeat;
-	background-size: 100% 100%;
 	
 	/*background: rgb(17,37,60);*/
 }
@@ -35,7 +32,8 @@ body
 {
 	background-color: white;
 	width:50%;
-	height:60%;
+	height:100%;
+	background-color: rgb(235,235,235);
 	position: absolute;
 	top:35%;
 	left:33%;
