@@ -78,7 +78,8 @@ module.exports = {
 				}
 				else
 				{
-					console.log("already seeded");
+					 console.log("already seeded");
+					 cb(null);
 				}
 	    		
 	    });
