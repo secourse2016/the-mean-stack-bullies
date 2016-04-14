@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+
+<head>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+     
+      <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>  
+        <meta charset="utf-8">
+  
+  <style >
+    html{
+    
+    height: 100%;
+      }
+  
+    img{
+      position: absolute;
+      height: 100%;
+      width: 100%;
+  
+      }
+
+    body{
+    
+    background-size:cover; 
+    width: 100%;
+    height: 100%;
+
+    }
+  
+    .form-horizontal{
+       position:relative;
+        top: 10%;
+        left: 0%;
+        
+      }
+     
+
+    .confirm{
+       position:relative;
+       top: 20%;
+        left: 50%;
+      }
+      
+      h2{
+    position:relative;
+      left: 0.5%;
+      }
+      
+      .whole{
+      position:relative;
+      top: 15%;
+      left: 25%;
+       opacity: 0.8;
+      filter: alpha(opacity=40);
+      border-radius: 20px;
+      background: rgb(192,192,192);
+      padding: 20px; 
+      width: 700px;
+      height: 500px;   
+
+      }
+
+    #check{
+      left: 40%;
+      margin-left: 18%;
+    }
+
+    #date{
+      margin-left: 4.5%;
+      
+    }
+
+    
+
+
+    </style>
+</head>
+
+<body>
+  
+   <img src="http://cdn.pcwallart.com/images/airport-runway-wallpaper-2.jpg"/>
+    
+    <!-- Form -->
+    
+
+  <div class="whole">
+    <form class="form-horizontal" role="form"  ng-app="myApp" ng-controller="validateCtrl" 
+        name="myForm"  novalidate>
+       
+       <h2>Payment Form:</h2>
+     
+      
+      <div id="check">
+        <input type="radio" name="oneRound" value="visa" >VISA </input>
+        <input type="radio" name="oneRound" value="masterCard" >Master Card</input>
+      </div>
+      <br>
+      <br>    
+    
+     
+      <div class="form-group">
+        <label class="control-label col-sm-2" for="email">Cardholder Name:</label>
+        <div class="col-xs-4">
+        <input type="text" class="form-control"   placeholder="Card Name" name="holderName" ng-model="holderName" required>
+        </div>
+        <span ng-show="myForm.holderName.$error.required&&!myForm.holderName.$pristine">Name is required.</span>
+      </div>
+
+     
+     <div class="form-group">
+        <label class="control-label col-sm-2" for="email">Card No.:</label>
+        <div class="col-xs-4">
+          <input type="number" class="form-control"  placeholder="Enter card number" name="CardNumber" ng-model="CardNumber" required>
+        </div>
+
+        <span ng-show="myForm.CardNumber.$error.required&&!myForm.CardNumber.$pristine">required.</span>
+    </div>
+
+     
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="pwd">CVV:</label>
+      <div class="col-xs-4">
+        <input type="number" class="form-control" placeholder="Only 3 digits" name="CVV" ng-model="CVV" required ng-minlength="3" ng-maxlength="3">
+      </div>
+        <span ng-show="myForm.CVV.$error.required&&!myForm.CVV.$pristine">required.</span>
+         <p ng-show="myForm.CVV.$error.minlength" class="help-block"> too short.</p>
+    <p ng-show="myForm.CVV.$error.maxlength" class="help-block"> too long.</p>
+    </div>
+      
+    <div id="date"class="form-inline">
+      <label> Expiry Date:  </label>
+      <select class="form-control" placeholder="Departure Date" >
+        <option>January</option>
+        <option>February</option>
+        <option>March</option>
+        <option>April</option>
+        <option>May</option>
+        <option>June</option>
+        <option>July</option>
+        <option>August</option>
+        <option>September</option>
+        <option>October</option>
+        <option>November</option>
+        <option>December</option>
+       </select>
+      
+      <select class="form-control" >
+        <option>2016</option>
+        <option>2017</option>
+        <option>2018</option>
+        <option>2019</option>
+        <option>2020</option>
+        <option>2021</option>
+        <option>2022</option>
+      </select>
+    
+          
+  </div>
+  
+
+</form>
+
+  <!-- dropdown -->
+  <div class="confirm">
+    <button class="btn btn-primary " type="button" 
+    ng-disabled="myForm.CardNumber.$dirty && myForm.CardNumber.$invalid ||  
+myForm.CVV.$dirty && myForm.CVV.$invalid ||  
+myForm.holderName.$dirty && myForm.holderName.$invalid"data-toggle="dropdown">Confirm</button>
+  </div>
+
+</div>
+
+
+<script>
+var app = angular.module('myApp', []);
+app.controller('validateCtrl', function($scope) {
+    $scope.CardNumber= "";
+    $scope.holderName = "";
+    $scope.CVV= "";
+
+});
+</script>
+ 
+</body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
