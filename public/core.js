@@ -10,6 +10,10 @@ app.config(function($routeProvider) {
             templateUrl : '/partials/home.html',
             controller  : 'myCtrl'
         })
+         .when('/pi', {
+            templateUrl : '/partials/personalInformation.html',
+            controller  : 'payCtrl'
+        })
         .when('/book', {
             templateUrl : '/partials/booking.html',
             controller  : 'bookingCtrl'

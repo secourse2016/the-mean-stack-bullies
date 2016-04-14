@@ -49,7 +49,6 @@ div.table-title {
   padding:5px;
   width: 100%;
 }
-
 .table-title h3 {
    color: #fafafa;
    font-size: 30px;
@@ -78,9 +77,22 @@ div.table-title {
  
 .sp th {
   color:#D5DDE5;
-  background:black;
+  background:rgb(152,58,49);
   border-bottom:4px solid #9ea7af;
-  border-right: 1px solid #343a45;
+  
+  font-size:23px;
+  font-weight: 100;
+  padding:24px;
+  text-align:left;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+  vertical-align:middle;
+}
+
+.sp1 th {
+  color:#D5DDE5;
+  background:rgb(17,37,60);
+  border-bottom:4px solid #9ea7af;
+  
   font-size:23px;
   font-weight: 100;
   padding:24px;
@@ -139,7 +151,7 @@ div.table-title {
   font-weight:300;
   font-size:18px;
   text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.1);
-  border-right: 1px solid #C1C3D1;
+  
 }
 
 .sp td:last-child {
@@ -251,7 +263,7 @@ background-color: rgba(2,2,2,.56);
 }
  
 #nav {
-  background-color: rgba(2,2,2,0.8);
+ background: rgb(17,37,60);
   
   color:red;
   width:100%;
@@ -263,7 +275,7 @@ background-color: rgba(2,2,2,.56);
 {
   position: absolute;
   top:-5%;
-  left:29%;
+  left:60%;
 }
 #logo
 {
@@ -1222,3 +1234,13 @@ color:#EEE;
   font-weight: bold;
 }
 /*End Section contact us*/
+#aboveHeader
+{
+  background: rgb(17,37,60);
+  width:80%;
+  height: 20%;
+  position: absolute;
+  top:20%;
+  left:10%;
+   border-radius: 5px;
+}
