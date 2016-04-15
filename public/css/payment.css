@@ -6,20 +6,16 @@
 
 #mainPay{
   margin: 0 auto;
-  background: blue;
+  background: red;
   min-height:100%;
   height:auto;
   width:80%;
+  text-align:center;
 
 }
 
 
-.whole {
 
-  min-height:100%
-  height:auto;
-
-}
 
 .side{
   color:black;
