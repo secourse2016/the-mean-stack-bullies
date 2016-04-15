@@ -1,0 +1,121 @@
+.offers h1{
+margin-bottom: 40px;
+}
+.offers {
+	background-color: rgb(17,37,60);
+	padding-top: 40px;
+	padding-bottom:20px;
+	padding-left: 20px;
+	padding-right: 20px;
+	color: white;
+}
+.offers .offer1{
+	background-image:url(../images/JFK1.jpg) ;
+	padding:20px;
+	border:1px solid #DDD;
+	height: 300px;
+	background-repeat: no-repeat;
+	background-position: center bottom, center bottom;
+	background-attachment: scroll;
+
+}
+.offers .offer1 h2{
+	/*margin:5px 0 15px;*/
+	margin-top: 0px;
+}
+.offers .offer1 p {
+	font-size: 25px;
+	font-weight:bold;
+	color:#FFF;
+	margin-top: 60px;
+
+
+}
+
+.offers .offer1 a{
+	margin-top: 60px;
+	margin-bottom:5px;
+
+}
+
+
+.offers .offer2{
+	background-image:url(../images/BCN1.jpg)  ;
+	padding:100px;
+	border:1px solid #DDD;
+	height: 300px;
+    background-repeat: no-repeat;
+	background-position: center bottom, center bottom;
+	background-attachment: scroll;
+
+}
+.offers .offer2 h2{
+	margin:5px 0px 15px;
+	margin-top: 20px;
+}
+.offers .offer2 p {
+	font-size: 25px;
+	font-weight:bold;
+	color:#FFF;
+	margin-top: 60px;
+}
+
+.offers .offer2 a{
+	margin-top: 90px;
+	margin-bottom:5px;
+}
+
+.offers .offer3{
+	background-image:url(../images/THF1.jpg)  ;*/
+	padding:10px;
+	border:1px solid #DDD;
+	height: 300px;
+	background-repeat: no-repeat;
+	background-position: center bottom, center bottom;
+	background-attachment: scroll;
+}
+.offers .offer3 h2{
+	margin:5px 0 15px;
+	margin-top: 20px;
+}
+.offers .offer3 p {
+	font-size: 25px;
+	font-weight:bold;
+	color:#FFF;
+	margin-top: 60px;
+}
+
+.offers .offer3 a{
+	margin-top: 90px;
+	margin-bottom:5px;
+}
+.offers .offer4{
+	background-image:url(../images/AHN1.jpg)  ;*/
+	padding:10px;
+	border:1px solid #DDD;
+	height: 300px;
+	background-repeat: no-repeat;
+	background-position: center bottom, center bottom;
+	background-attachment: scroll;
+}
+.offers .offer4 h2{
+	margin:5px 0 15px;
+	margin-top: 20px;
+}
+.offers .offer4 p {
+	font-size: 25px;
+	font-weight:bold;
+	color:#FFF;
+	margin-top: 60px;
+}
+
+.offers .offer4 a{
+	margin-top: 90px;
+	margin-bottom:5px;
+}
+#blackOffers
+{
+	background:red;
+	width:100%;
+	height:100%;
+}
