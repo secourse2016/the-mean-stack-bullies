@@ -8,7 +8,10 @@ departureDateTime :new Date(),
 arrivalDateTime :"17 APR 2016"
 }];
 
-   $scope.arr =flightSrv.getFlights(flightData);
+  flightSrv.getFlights(flightData,function (returnedFlights)
+   {
+      $scope.arr = returnedFlights;
+       console.log($scope.arr)
+   });
 
-      
 });

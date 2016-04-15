@@ -1,16 +1,18 @@
 app.factory('flightSrv', function ($http) {
      return {
-         getFlights : function(pa) {
+         getFlights : function(fl,cb) {
 
-            console.log("I am in the get mother fukers ");
-               console.log(pa);
           var req = {
               method: 'GET',
-              url: '/api/getFlight/' + pa[0].origin + '/' + pa[0].destination
-              + '/' + pa[0].departureDateTime + '/' + pa[0].arrivalDateTime
+              url: '/api/getFlight/' + fl[0].origin + '/' + fl[0].destination
+              + '/' + fl[0].departureDateTime + '/' + fl[0].arrivalDateTime
           };
 
-          return $http(req);
+          return $http(req).then(function mySucces(response) {
+       cb(response.data);
+    }, function myError(response) {
+         cb(response.statusText);
+    });
          }
          // getFlights : function() {
          //   return $http.get('/api/data/flights');
