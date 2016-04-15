@@ -1,4 +1,4 @@
-app.controller('flightCtrl', function($scope, flightSrv) {
+app.controller('flightCtrl', function($scope,$location, flightSrv) {
 console.log("in flight controller");
 var flightData = [
 {
@@ -24,5 +24,10 @@ departureDateTime :new Date()
       }
             $scope.arr = returnedFlights;
    });
+
+    $scope.Book=function()
+  {
+     $location.url('/passenger');
+  }
 
 });
