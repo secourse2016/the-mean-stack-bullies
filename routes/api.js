@@ -3,7 +3,7 @@ var express = require('express');
        * requiring server controllers.
        */
 var paymentController= require('../serverController/paymentController.js');
-var contactUsController= require('../serverController/contactUsController.js');
+var contactUsController= require('../serverController/contactUsServerController.js');
     /**
      * requiring server validations.
      */
