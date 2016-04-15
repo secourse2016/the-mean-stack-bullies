@@ -62,7 +62,7 @@ app.controller('personalInfoCtrl', function($scope, $location,personalInfoSrv) {
                function(result) {
                      if(result.data=="person added to the database"){
                         console.log(result.data);
-                        // $location.url('/pay');
+                        $location.url('/pay');
                      }
                      else{
                       alert(result.data);
