@@ -1,6 +1,8 @@
 var express = require('express');
 var paymentController= require('../serverController/paymentController.js');
 var paymentValidation= require('../Validations/paymentValidation.js');
+var personController= require('../serverController/personController.js');
+// var personValidation= require('../Validations/personValidation.js');
 var router = express.Router();
 
 /*
@@ -37,6 +39,16 @@ router.post('/api/insertpayment', function(req, res) {
 				res.send('payment added to the database');
 			});
 	
+  
+});
+
+
+router.post('/api/insertperson', function(req, res) {
+
+      personController.addPersonIntoDatabase(req.body.person[0],function(){
+        res.send('person added to the database');
+      });
+  
   
 });
 
