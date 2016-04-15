@@ -1,22 +1,34 @@
+
+
+
 .payhead {
-  color:black;
+  color:rgb(17,37,60);;
+  text-align: left;
+  margin-left: 5%;
 }
 
 
 
 #mainPay{
-  
+  background-color: rgb(235,235,235);
+  box-shadow: 10px 10px 5px #888888;
   margin: 0 auto;
   min-height:100%;
   height:auto;
-  width:80%;
+  width:60%;
   text-align:center;
+  min-height:100%;
+  color:rgb(17,37,60);
+
 
 }
+
+
 
 .plabel{
   text-align:right;
   padding-right: 5px;
+    color:rgb(17,37,60);
 
 }
 
@@ -34,6 +46,32 @@ margin-top: 100px;
 
 }
 
+.payButton {
+
+
+    border: none;
+    padding-left:10%;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+    background-color: white;
+    color: rgb(17,37,60);
+    border: 2px solid rgb(17,37,60);
+    border-radius: 9px;
+
+}
+
+.payButton:hover {
+     background-color: rgb(17,37,60);
+    color: red;
+}
 
 
 
