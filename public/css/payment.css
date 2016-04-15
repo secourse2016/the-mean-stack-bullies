@@ -1,0 +1,23 @@
+.payhead {
+  color:black;
+}
+
+#mainPay{
+  background: blue;
+  min-height:100%;
+  height:auto;
+  width:80%;
+  text-align: center;
+}
+
+
+.whole {
+
+  min-height:100%
+  height:auto;
+
+}
+
+.side{
+  color:black;
+}

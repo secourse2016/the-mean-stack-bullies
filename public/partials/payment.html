@@ -1,23 +1,30 @@
- 
-    <div >  
+<link rel="stylesheet" href="../css/payment.css">
+      
+      <br>
+      <br>
+      <br>
       <div id="mainPay" class="wow fadeInUpBig">
             <div class="whole">
-              <form class="form-horizontal" role="form"  
+              <form class="form-horizontal" role="form"
               name="myForm"  novalidate>
 
-              <h2>Payment Form:</h2>
+
+
 
 
               <div id="check">
+
+
+                <h2 class="payhead">Payment Form:</h2>
                 <input type="radio" name="oneRound" ng-model="radioButton" value="visa" >VISA </input>
                 <input type="radio" name="oneRound" ng-model="radioButton" value="masterCard" >Master Card</input>
               </div>
               <br>
-              <br>    
-              
+              <br>
+
 
               <div id="cardName" class="form-group">
-                <label class="control-label col-sm-2" for="email">Cardholder Name:</label>
+                <label class="control-label col-sm-2 side" for="email">Cardholder Name:</label>
                 <div class="col-xs-4">
                  <!--  <br><br> -->
              <!--      <input type="text" ng-model="firstName">
@@ -29,7 +36,7 @@
 
 
               <div id="cardNumber" class="form-group">
-                <label class="control-label col-sm-2" for="email">Card No.:</label>
+                <label class="control-label col-sm-2 side" for="email">Card No.:</label>
                 <div class="col-xs-4">
                   <input type="number" class="form-control"  placeholder="Enter card number" name="CardNumber" ng-model="CardN" required>
                 </div>
@@ -38,7 +45,7 @@
 
 
               <div id="cvv"class="form-group">
-                <label id="cvvText" class="control-label col-sm-2" for="pwd">CVV:</label>
+                <label id="cvvText" class="control-label col-sm-2" for="pwd" style="color:black;">CVV:</label>
                 <div class="col-xs-4">
                   <input type="number" class="form-control" placeholder="Only 3 digits" name="CVV" ng-model="CVV" required>
                 </div>
@@ -46,8 +53,8 @@
               </div>
 
               <div id="date"class="form-inline">
-                <label> Expiry Date:  </label>
-                
+                <label class="side"> Expiry Date:  </label>
+
                  <select class="form-control"  ng-model="expiryday" placeholder="Departure Date">
                   <option>01</option>
                   <option>02</option>
@@ -96,7 +103,7 @@
                   <option>NOV</option>
                   <option>DEC</option>
                 </select>
-                
+
                 <select class="form-control"  ng-model="expiryyear" placeholder="Departure Date">
                   <option>2016</option>
                   <option>2017</option>
@@ -107,19 +114,17 @@
                   <option>2022</option>
                 </select>
 
-               
+
 
 
               </div>
-                          <button  ng-click="submitPaymentForm()" id="btnConfirm" class="btn btn-primary" type="button" >Confirm!</button>
+                <button  ng-click="submitPaymentForm()" id="btnConfirm" class="btn btn-primary" type="button" >Confirm!</button>
 
             </form>
 
             <!-- dropdown -->
-            
-  
-            
+
+
 
           </div>
           </div>
-    </div>   
