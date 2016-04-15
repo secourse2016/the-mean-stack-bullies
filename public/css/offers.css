@@ -3,7 +3,7 @@ margin-bottom: 40px;
 }
 .offers {
 	
-	padding-top: 40px;
+	padding-top: 90px;
 	padding-bottom:20px;
 	padding-left: 20px;
 	padding-right: 20px;
@@ -16,7 +16,7 @@ margin-bottom: 40px;
 	padding:20px;
 	border:1px solid #DDD;
 	height: 300px;
-	width:370px;
+	width:350px;
 	border:none;
 	background-repeat: no-repeat;
 	background-position: center bottom, center bottom;
@@ -84,7 +84,7 @@ margin-bottom: 40px;
 	margin-top: 0.5px;
 	margin-left: 9%;
 	padding:10px;
-width:370px;
+width:350px;
 
 	border:none;
 	height: 300px;
@@ -136,14 +136,15 @@ width:370px;
 	margin-bottom:5px;
 }
 
-/*#offer2Text
+#offer2Text
 {
 	
-	width:23.4%;
-	height:100%;
+	width:113.1%;
+	height:180%;
+	margin-left: -20px;
+	margin-top: -20px;
 	font-size: 40px;
-	background-color: rgba(2,2,2,0.5);
-	position:absolute;
-	top:0%;
-	z-index:1;
-}*/
+	background-color: rgba(2,2,2,0.6);
+	
+	
+}
