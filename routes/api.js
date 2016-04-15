@@ -1,6 +1,10 @@
 var express = require('express');
 var paymentController= require('../serverController/paymentController.js');
 var paymentValidation= require('../Validations/paymentValidation.js');
+
+var personController= require('../serverController/personController.js');
+var personValidation= require('../Validations/personValidation.js');
+
 var flightControl =  require('../serverController/flightController.js');
 
 var router = express.Router();
@@ -42,6 +46,28 @@ router.post('/api/insertpayment', function(req, res) {
   
 });
 
+
+ router.post('/api/insertperson', function(req, res,next) {
+       
+      personValidation.validatePerson(req.body.person[0],function(errmessage){
+         if(errmessage){
+          res.send(errmessage);
+         }else{
+
+          next();
+         }
+      });
+  
+  
+});
+
+
+
+
+router.post('/api/insertperson', function(req, res) {
+      personController.addPersonIntoDatabase(req.body.person[0],function(){
+        res.send('person added to the database');
+      });
 
 router.get('/api/getFlight/:origin/:dest/:departureTime', function(req, res) {
     console.log("I am in the route guys");

@@ -23,6 +23,16 @@ var outgoingflightSchema = schema({
 });
 
 
+var pesonSchema = schema({
+            firstName      : String,
+            secondName     : String,
+            age            : Number,
+            nationality    : String,
+            passportNumber : String,
+            issueDate      : Date,
+            expiryDate     : Date
+});
+
 var ingoingflightSchema = schema({
             flightNumber      : String,
             aircraftType      : String,
@@ -92,6 +102,7 @@ mongoose.model('Reservation', reservationSchema);
 mongoose.model('Booking', bookingSchema);
 mongoose.model('Payment', paymentSchema);
 mongoose.model('inFlight', ingoingflightSchema);
+mongoose.model('Person', pesonSchema);
 
 
 
