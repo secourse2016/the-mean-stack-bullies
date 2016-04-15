@@ -45,7 +45,8 @@ app.controller('paymentCtrl', function($scope, $location,paySrv) {
         * payment form submitting function
         */
 		$scope.submitPaymentForm=function() {
-     		var errMessage = paymentValidations();
+        
+        var errMessage = paymentValidations();
         if(errMessage){
           alert(errMessage);
         }
@@ -58,16 +59,25 @@ app.controller('paymentCtrl', function($scope, $location,paySrv) {
             boolea=false;
           }
           var date =$scope.expiryday+" "+$scope.expirymonth+" "+$scope.expiryyear;
-          console.log(date);
           var pa=[{
-       			visa:boolea,
-        		MasterCard: (!boolea),
-       			CardHolderName: $scope.holderN,
-        		CardHolderNo: $scope.CardN,
-       			Cvv: $scope.CVV,
-        		ExpiryDate: date
-       		}];
-       		paySrv.insertPayment(pa);
-    		}
-  		}
+            visa:boolea,
+            MasterCard: (!boolea),
+            CardHolderName: $scope.holderN,
+            CardHolderNo: $scope.CardN,
+            Cvv: $scope.CVV,
+            ExpiryDate: date
+          }];
+
+          paySrv.insertPayment(pa).then(
+               function(result) {
+                     if(result.data=="payment added to the database"){
+                        $location.url('/confirm');
+                     }
+                     else{
+                      alert(result.data);
+                     }
+                }
+          );
+        }
+      }
 });
