@@ -1,5 +1,6 @@
 var express = require('express');
-var payControl= require('../serverController/paymentController.js');
+var payControl= require('../serverController/paymentController.js'); 
+var bookControl = require('../serverController/bookingController.js');
 var router = express.Router();
 
 /* APIs */
@@ -12,12 +13,12 @@ router.post('/api/insertpayment', function(req, res) {
 }); 
 
 
-// router.get('/api/validateData', function(req,res) { 
-
+router.post('/api/validateData', function(req,res) { 
   
+    
+    
 
-
-// })
+});
 
 module.exports = router;
 

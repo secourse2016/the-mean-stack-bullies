@@ -34,7 +34,7 @@ app.controller('bookingCtrl', function($scope, $location,airportSrv,FlightsSrv) 
   $scope.bookFlight=function(){  
 
     /*form data is retrieved here*/ 
-     var data = {  
+     var data = [{  
     
     trip: $scope.trippp,
     from: $scope.selectedOrigin,
@@ -46,9 +46,9 @@ app.controller('bookingCtrl', function($scope, $location,airportSrv,FlightsSrv) 
     Class: $scope.tclass,
     Email:$scope.email
 
-    }   
-    /* form data is passed to the bookin service*/ 
-   //bookingSrv.validateData(data);  
+    }];   
+    /*form data is passed to the bookin service*/ 
+   bookingSrv.validateData(data);  
 
     $location.url('/book');
   }

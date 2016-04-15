@@ -1,25 +1,23 @@
-// app.factory('bookingSrv', function($http){ 
+app.factory('bookingSrv', function($http){ 
   
-//   return { 
+  return { 
 
-//     validateData : function(data){ 
+    validateData : function(data){ 
 
-//       var req = {  
-//         method : "GET", 
-//       	url : "/api/validateData", 
-//       	inputdata : data 
-//       }
+      var req = {  
+        method : "GET", 
+      	url : "/api/validateData", 
+      	data : {data: data}
+
+      } 
+       return $http(req);
 
 
-//     }
-
-
-  
-
+    }
 
 
 
-//   }
+  }
 
 
 
@@ -29,4 +27,4 @@
 
 
 
-// });
+});
