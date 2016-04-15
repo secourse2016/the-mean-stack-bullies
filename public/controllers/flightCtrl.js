@@ -4,14 +4,25 @@ var flightData = [
 {
 destination:"CAI",
 origin :"JED",
-departureDateTime :new Date(),
-arrivalDateTime :"17 APR 2016"
+departureDateTime :new Date()
 }];
 
   flightSrv.getFlights(flightData,function (returnedFlights)
    {
-      $scope.arr = returnedFlights;
-       console.log($scope.arr)
+
+
+      for (var i =0;i<returnedFlights.length;i++)
+      {
+        var date = new Date(   returnedFlights[i].departureDateTime );
+        returnedFlights[i].departureDateTime =  date.getDate() + "/" + date.getMonth() +"/" 
+        + date.getFullYear() + " " + date.getHours() + ":" +date.getMinutes();
+
+          date = new Date(   returnedFlights[i].arrivalDateTime );
+        returnedFlights[i].arrivalDateTime =  date.getDate() + "/" + date.getMonth() +"/" 
+        + date.getFullYear() + " " + date.getHours() + ":" +date.getMinutes();
+    
+      }
+            $scope.arr = returnedFlights;
    });
 
 });
