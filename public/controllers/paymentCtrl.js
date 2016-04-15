@@ -40,6 +40,10 @@ app.controller('paymentCtrl', function($scope, $location,paySrv) {
          }
          return errMessage;
        }
+
+       /**
+        * payment form submitting function
+        */
 		$scope.submitPaymentForm=function() {
      		var errMessage = paymentValidations();
         if(errMessage){
