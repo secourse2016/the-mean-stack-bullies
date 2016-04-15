@@ -2,7 +2,6 @@ var models = require('../models/models.js');
 var mongoose = require('mongoose');
 
 exports.searchFlights =function(flightData,cb){
-
     var FlightModel = mongoose.model('outFlight');
 
 	var query = FlightModel.find(flightData);
@@ -16,7 +15,7 @@ exports.searchFlights =function(flightData,cb){
 	y.setHours(23);
 	console.log(y);
 	query.where('departureDateTime',{"$gte":x
-		, "$lt": y});
+		, "$lt": y});	
 
 	query.exec(function (err, docs) {
 

@@ -1,27 +1,28 @@
-var models = require('../models/models.js');
-var mongoose = require('mongoose');
+app.controller('flightCtrl', function($scope, flightSrv) {
+console.log("in flight controller");
+var flightData = [
+{
+destination:"CAI",
+origin :"JED",
+departureDateTime :new Date()
+}];
 
-exports.searchFlights =function(flightData,cb){
-
-    var FlightModel = mongoose.model('outFlight');
-
-	var query = FlightModel.find(flightData);
-	query.where('destination',flightData[0].destination);
-	query.where('origin',flightData[0].origin);
-	var x = new Date(flightData[0].departureDateTime);
-	x.setMinutes(0);
-	x.setHours(0);
-	var y = new Date(flightData[0].departureDateTime);
-	y.setMinutes(59);
-	y.setHours(23);
-	console.log(y);
-	query.where('departureDateTime',{"$gte":x
-		, "$lt": y});
-
-	query.exec(function (err, docs) {
+  flightSrv.getFlights(flightData,function (returnedFlights)
+   {
 
 
-	cb(docs);
+      for (var i =0;i<returnedFlights.length;i++)
+      {
+        var date = new Date(   returnedFlights[i].departureDateTime );
+        returnedFlights[i].departureDateTime =  date.getDate() + "/" + date.getMonth() +"/" 
+        + date.getFullYear() + " " + date.getHours() + ":" +date.getMinutes();
+
+          date = new Date(   returnedFlights[i].arrivalDateTime );
+        returnedFlights[i].arrivalDateTime =  date.getDate() + "/" + date.getMonth() +"/" 
+        + date.getFullYear() + " " + date.getHours() + ":" +date.getMinutes();
+    
+      }
+            $scope.arr = returnedFlights;
+   });
+
 });
-	
-}
