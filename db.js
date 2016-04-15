@@ -1,9 +1,14 @@
+// var dotenv = require('dotenv');
+// var x = dotenv.load();
+
 var mongoose = require('mongoose');
-var dbPath = "mongodb://localhost/AirFranceDB"
+ var dbPath = "mongodb://localhost/AirFranceDB"
 var db = null;
 module.exports = {
 	
 	init :function(cb){
+		// console.log(process.env.DB_PATH);
+		// mongoose.connect(process.env.DB_PATH);
 		mongoose.connect(dbPath);
 		var database = mongoose.connection;
 		database.on('error', function(){

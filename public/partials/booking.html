@@ -53,7 +53,7 @@
    <td class="text-left sp"><div>$<br>500</div></td>
     <td class="text-left sp"><div>{{flight.destinationIata}}<br>{{flight.flightNumber.type}}</div></td>
     <td class="text-left sp"><div class="chooseflight">  
-        <input type="radio" name="radio" id={{$index}} class="radio"/>
+        <input type="radio" name="radio" id={{$index}} class="radio" ng-show="false"/>
         <label for={{$index}}>Choose</label>
                             </div></td>
 
@@ -81,7 +81,7 @@
      <td class="text-left sp"><div>$<br>500</div></td>
     <td class="text-left sp"><div>{{flight.destinationIata}}<br>{{flight.flightNumber.type}}</div></td>
     <td class="text-left sp"><div class="chooseflight">  
-        <input type="radio" name="radio" id=500+{{$index}} class="radio"/>
+        <input type="radio" name="radio" id=500+{{$index}} class="radio" ng-show="false"/>
         <label for=500+{{$index}} >Choose</label>
                             </div></td>
 
