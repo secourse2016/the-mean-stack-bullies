@@ -7,7 +7,7 @@ auth: {
 }
 });
 
-exports.SendEmail(receiverMail,subject,htmlBody,cb){
+exports.SendEmail = function(receiverMail,subject,htmlBody,cb){
 	// var mailOption = {
 	// 	from: 'Hatem Morgan <hatemmorgan17@gmail.com>',
 	// 	to: 'maha.ehab.elleci@gmail.com',
@@ -28,5 +28,5 @@ exports.SendEmail(receiverMail,subject,htmlBody,cb){
 	    	console.log("message sent");
 	    }
 	    cb(err);
-	})	
+	})	;
 }

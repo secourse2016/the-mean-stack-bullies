@@ -6,7 +6,7 @@ app.factory('contactUsSrv', function ($http) {
               url: '/api/contactUs',
               data: { newContactUs: newContactUs }
           };
-
+            console.log("in the client controller");  
           return $http(req).then(function successCallback(response){
                 if(response){
                   console.log(response);

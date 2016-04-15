@@ -38,15 +38,9 @@ var router = express.Router();
      * validating of contactUs middleware.
      */
     router.post('/api/contactUs', function(req, res,next) {
-
-      paymentValidation.validatePayment(req.body.newContactUs[0],function(errmessage){
-         if(errmessage){
-          res.send(errmessage);
-         }else{
-
-          next();
-         }
-      });
+              next();
+     
+    
         });
 
 
@@ -86,24 +80,25 @@ router.post('/api/insertpayment', function(req, res) {
      */
       router.post('/api/contactUs', function(req, res) {
         var errMessage ="";
+        console.log("in contact api");
         contactUsController.sendUserContactUsComfirmation(req.body.newContactUs[0],function(err){
              if(err){
               console.log(err);
               message+=err+"\n";
               res.send(message); 
              }
-        contactUsController.sendUserContactUsComfirmation(req.body.newContactUs[0],function(err){
+        contactUsController.sendMailContactUsTeam(req.body.newContactUs[0],function(err){
            if(err){
             console.log(err);
              message+=err+"\n";
              res.send(message); 
            }
-        }
+        
          res.send(null); 
         });
 
       });
-
+  });
 
 module.exports = router;
 
