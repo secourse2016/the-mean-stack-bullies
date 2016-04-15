@@ -1,3 +1,37 @@
+app.factory('flightSrv', function ($http) {
+     return {
+         getFlights : function(fl,cb) {
+
+          var req = {
+              method: 'GET',
+              url: '/api/getFlight/' + fl[0].origin + '/' + fl[0].destination
+              + '/' + fl[0].departureDateTime 
+          };
+
+          return $http(req).then(function mySucces(response) {
+       cb(response.data);
+    }, function myError(response) {
+         cb(response.statusText);
+    });
+         }
+         // getFlights : function() {
+         //   return $http.get('/api/data/flights');
+         // },
+         // setSelectedOriginAirport: function(value) {
+         //   this.selectedOriginAirport = value;
+         // },
+         // getSelectedOriginAirport: function() {
+         //   return this.selectedOriginAirport;
+         // },
+         // setSelectedDestinationAirport: function(value) {
+         //   this.selectedDestinationAirport = value;
+         // },
+         // getSelectedDestinationAirport: function() {
+         //   return this.selectedDestinationAirport;
+         // }
+     };
+ });
+
 app.factory('FlightsSrv', function () {
      return {
          getFlights : function() {

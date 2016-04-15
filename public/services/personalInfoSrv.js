@@ -1,12 +1,12 @@
-app.factory('paySrv', function ($http) {
+app.factory('personalInfoSrv', function ($http) {
      return {
-         insertPayment : function(pa) {
+         insertPerson : function(pe) {
           var req = {
               method: 'POST',
-              url: '/api/insertpayment',
-              data: { payment: pa }
+              url: '/api/insertperson',
+              data: { person: pe }
           };
-
+          
           return $http(req)
 
               .success(function(data, status, headers, config) {
@@ -16,6 +16,5 @@ app.factory('paySrv', function ($http) {
                  return "error";
           });
          }
-
      };
  });
