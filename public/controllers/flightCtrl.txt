@@ -2,9 +2,9 @@ app.controller('flightCtrl', function($scope, flightSrv) {
 console.log("in flight controller");
 var flightData = [
 {
-destination:"CAI",
-origin :"JED",
-departureDateTime :new Date(),
+destination:"JED",
+origin :"CAI",
+departureDateTime :"17 APR 2016",
 arrivalDateTime :"17 APR 2016"
 }];
 
