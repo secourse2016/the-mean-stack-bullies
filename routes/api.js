@@ -1,8 +1,12 @@
 var express = require('express');
 var paymentController= require('../serverController/paymentController.js');
 var paymentValidation= require('../Validations/paymentValidation.js');
+
 var personController= require('../serverController/personController.js');
 var personValidation= require('../Validations/personValidation.js');
+
+var flightControl =  require('../serverController/flightController.js');
+
 var router = express.Router();
 
 /*
@@ -64,7 +68,21 @@ router.post('/api/insertperson', function(req, res) {
       personController.addPersonIntoDatabase(req.body.person[0],function(){
         res.send('person added to the database');
       });
-  
+
+router.get('/api/getFlight/:origin/:dest/:departureTime', function(req, res) {
+    console.log("I am in the route guys");
+
+  var flightData = [
+  { 
+  destination:req.params.dest,
+  origin :req.params.origin,
+  departureDateTime :req.params.departureTime
+  }];
+
+  flightControl.searchFlights(flightData,function(returnedFlights){
+    res.json(returnedFlights);
+   });
+
   
 });
 

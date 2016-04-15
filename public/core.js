@@ -12,7 +12,7 @@ app.config(function($routeProvider) {
         })
         .when('/book', {
             templateUrl : '/partials/booking.html',
-            controller  : 'bookingCtrl'
+            controller  : 'flightCtrl'
         })
         .when('/pay', {
             templateUrl : '/partials/payment.html',
