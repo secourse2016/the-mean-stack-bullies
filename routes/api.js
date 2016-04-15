@@ -85,9 +85,16 @@ router.post('/api/insertpayment', function(req, res) {
      * Inserting ContactUs route.
      */
       router.post('/api/contactUs', function(req, res) {
-
-      contactUsController.addPaymentIntoDatabase(req.body.newContactUs[0],function(){
-        res.send('payment added to the database');
+        contactUsController.sendUserContactUsComfirmation(req.body.newContactUs[0],function(err){
+             if(err){
+              console.log(err);
+             }
+        contactUsController.sendUserContactUsComfirmation(req.body.newContactUs[0],function(err){
+           if(err){
+            console.log(err);
+           }
+        }     
+        });
       });
 
 
