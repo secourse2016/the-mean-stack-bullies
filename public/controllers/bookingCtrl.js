@@ -31,15 +31,31 @@ app.controller('bookingCtrl', function($scope, $location,airportSrv,FlightsSrv) 
   $scope.showReturnedDate=function(){
     $scope.hidedate=true;
   }
-  $scope.bookFlight=function(){
+  $scope.bookFlight=function(){  
+
+    /*form data is retrieved here*/ 
+     var data = {  
+    
+    trip: $scope.trippp,
+    from: $scope.selectedOrigin,
+    To: $scope.selectedDestination,
+    DepartureDate: $scope.depDate, 
+    ReturnDate: $scope.retDate,
+    NumberOfAdults: $scope.adultsss,
+    NumberOfChildren: $scope.children,
+    Class: $scope.tclass,
+    Email:$scope.email
+
+    }   
+    /* form data is passed to the bookin service*/ 
+   //bookingSrv.validateData(data);  
+
     $location.url('/book');
   }
 
   $scope.bookButton=function(){
 
   $scope.click5();
-
-  
  
   }
   $scope.filterTableDate=function(){

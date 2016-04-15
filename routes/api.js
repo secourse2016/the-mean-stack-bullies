@@ -9,7 +9,15 @@ router.post('/api/insertpayment', function(req, res) {
 		res.send('payment added to the database');
 	});
   
-});
+}); 
+
+
+// router.get('/api/validateData', function(req,res) { 
+
+  
+
+
+// })
 
 module.exports = router;
 
