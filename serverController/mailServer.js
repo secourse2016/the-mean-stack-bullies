@@ -15,7 +15,7 @@ exports.SendEmail(receiverMail,subject,htmlBody){
 	// 	html: '<h1> Hello maha</h1> <br> <h4>welcome to AirFrance we are happy to serve you</h4> <br><br><br> <h5>mail is send by your scrum master :P</h5>',
 	// }
        var mailOption = {
-		from: 'Hatem Morgan <hatemmorgan17@gmail.com>',
+		from: 'AirFrance Team <airfrance.airline.2016@gmail.com>',
 		to: receiverMail,
 		subject: subject,
 		html: htmlBody,
