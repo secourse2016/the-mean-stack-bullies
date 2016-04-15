@@ -40,6 +40,24 @@ router.post('/api/insertpayment', function(req, res) {
   
 });
 
+
+router.get('/api/getFlight/:origin/:dest/:departureTime', function(req, res) {
+    console.log("I am in the route guys");
+
+  var flightData = [
+  {
+  destination:req.params.dest,
+  origin :req.params.origin,
+  departureDateTime :req.params.departureTime
+  }];
+
+  flightControl.searchFlights(flightData,function(returnedFlights){
+    res.json(returnedFlights);
+   });
+
+  
+});
+
 module.exports = router;
 
     
