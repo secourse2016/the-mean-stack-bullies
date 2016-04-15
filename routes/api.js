@@ -44,7 +44,7 @@ router.post('/api/insertpayment', function(req, res) {
 
 
 router.post('/api/insertperson', function(req, res) {
-
+      console.log("hi");
       personController.addPersonIntoDatabase(req.body.person[0],function(){
         res.send('person added to the database');
       });

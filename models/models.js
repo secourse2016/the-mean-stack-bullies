@@ -102,7 +102,7 @@ mongoose.model('Reservation', reservationSchema);
 mongoose.model('Booking', bookingSchema);
 mongoose.model('Payment', paymentSchema);
 mongoose.model('inFlight', ingoingflightSchema);
-mongoose.model('People', pesonSchema);
+mongoose.model('Person', pesonSchema);
 
 
 

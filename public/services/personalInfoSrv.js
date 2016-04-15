@@ -6,7 +6,7 @@ app.factory('personalInfoSrv', function ($http) {
               url: '/api/insertperson',
               data: { person: pe }
           };
-
+          
           return $http(req)
 
               .success(function(data, status, headers, config) {
