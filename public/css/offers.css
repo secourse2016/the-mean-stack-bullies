@@ -4,12 +4,16 @@ margin-bottom: 40px;
 .offers {
 	background-color:lavender;
 	padding-top: 40px;
-	padding-bottom:40px;
+	padding-bottom:20px;
+	padding-left: 20px;
+	padding-right: 20px;
 }
 .offers .offer1{
-	background-image:url(../images/JFK1.jpg)  ;*/
-	padding:10px;
+	background-image:url(../images/JFK1.jpg) ;
+	padding:20px;
 	border:1px solid #DDD;
+	height: 300px;
+
 }
 .offers .offer1 h2{
 	margin:5px 0 15px;
@@ -18,28 +22,39 @@ margin-bottom: 40px;
 	font-size: 25px;
 	font-weight:bold;
 	color:#FFF;
+	margin-top: 60px;
+
+
 }
 
 .offers .offer1 a{
+	margin-top: 80px;
 	margin-bottom:5px;
+
 }
 
 
 .offers .offer2{
 	background-image:url(../images/BCN1.jpg)  ;*/
-	padding:10px;
+	padding:100px;
 	border:1px solid #DDD;
+	height: 300px;
+
+
 }
 .offers .offer2 h2{
-	margin:5px 0 15px;
+	margin:5px 0px 15px;
+	margin-top: 20px;
 }
 .offers .offer2 p {
 	font-size: 25px;
 	font-weight:bold;
 	color:#FFF;
+	margin-top: 60px;
 }
 
 .offers .offer2 a{
+	margin-top: 90px;
 	margin-bottom:5px;
 }
 
@@ -47,33 +62,41 @@ margin-bottom: 40px;
 	background-image:url(../images/THF1.jpg)  ;*/
 	padding:10px;
 	border:1px solid #DDD;
+	height: 300px;
 }
 .offers .offer3 h2{
 	margin:5px 0 15px;
+	margin-top: 20px;
 }
 .offers .offer3 p {
 	font-size: 25px;
 	font-weight:bold;
 	color:#FFF;
+	margin-top: 60px;
 }
 
 .offers .offer3 a{
+	margin-top: 90px;
 	margin-bottom:5px;
 }
 .offers .offer4{
 	background-image:url(../images/AHN1.jpg)  ;*/
 	padding:10px;
 	border:1px solid #DDD;
+	height: 300px;
 }
 .offers .offer4 h2{
 	margin:5px 0 15px;
+	margin-top: 20px;
 }
 .offers .offer4 p {
 	font-size: 25px;
 	font-weight:bold;
 	color:#FFF;
+	margin-top: 60px;
 }
 
 .offers .offer4 a{
+	margin-top: 90px;
 	margin-bottom:5px;
 }
