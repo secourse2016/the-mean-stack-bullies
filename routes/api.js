@@ -1,11 +1,8 @@
 var express = require('express');
 
-
 var bookControl = require('../serverController/bookingController.js');
-
 var paymentController= require('../serverController/paymentController.js');
-var paymentValidation= require('../Validations/paymentValidation.js');
-
+var paymentValidation= require('../Validations/paymentValidation.js'); 
 var router = express.Router();
 
 /*
@@ -31,13 +28,12 @@ var router = express.Router();
       });
   
   
-});
-
+})
     /**
      * Inserting payment route.
      */
-router.post('/api/insertpayment', function(req, res) {
-
+    router.post('/api/insertpayment', function(req, res){
+           
 			paymentController.addPaymentIntoDatabase(req.body.payment[0],function(){
 				res.send('payment added to the database');
 			});
@@ -45,8 +41,12 @@ router.post('/api/insertpayment', function(req, res) {
   
 }); 
 
-
-router.post('/api/validateData', function(req,res) { 
+ 
+router.post('/api/booking', function(req,res){  
+         console.log("in route");
+        bookControl.compareOnewayFlights(req.body.booking[0],function(){ 
+               res.send("booking added");
+        }); 
   
     
     

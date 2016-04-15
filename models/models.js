@@ -16,7 +16,8 @@ var outgoingflightSchema = schema({
             arrivalDateTime   : Date,
             origin            : String,
             destination       : String,
-            cost              : Number,
+            cost              : Number, 
+            seats             : Number, 
             currency          : String,
             class             : String,
             Airline           : String
@@ -28,7 +29,8 @@ var ingoingflightSchema = schema({
             aircraftType      : String,
             aircraftModel     : String,
             departureDateTime : Date,
-            arrivalDateTime   : Date,
+            arrivalDateTime   : Date, 
+            seats             : Number,
             origin            : String,
             destination       : String,
             cost              : Number,
@@ -187,10 +189,10 @@ Db.seed(mongoose.model('Airport'),require('../airports.json'),function(){
 };
 
 
- Db.drop(function(){
-    console.log("dropped");
-    seedingFunction(function(){
-    console.log("seeding database");
-});
- });
+//  Db.drop(function(){
+//     console.log("dropped");
+//     seedingFunction(function(){
+//     console.log("seeding database");
+// });
+//  });
 

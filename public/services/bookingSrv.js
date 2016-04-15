@@ -1,30 +1,32 @@
-app.factory('bookingSrv', function($http){ 
+app.factory('bookingSrv',function ($http){ 
   
   return { 
+     
 
-    validateData : function(data){ 
+     insertbooking : function(booking){  
 
       var req = {  
-        method : "GET", 
-      	url : "/api/validateData", 
-      	data : {data: data}
+        method : 'POST', 
+      	url : '/api/booking', 
+      	data : {booking: booking} 
 
-      } 
+        
+      };  
+
+       console.log("in service");
+
        return $http(req);
 
 
-    }
-
-
-
-  }
+    } 
 
 
 
 
+  }  
 
+   console.log("jwdajkgwahw"); 
 
-
-
+   
 
 });

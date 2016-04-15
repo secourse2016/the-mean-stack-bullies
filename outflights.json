@@ -8,7 +8,8 @@
             "arrivalDateTime"   : "",
             "origin"            : "DEL",
             "destination"       : "BOM",
-            "cost"              : "400",
+            "cost"              : "400", 
+            "seats"              : "300",
             "currency"          : "EUR",
             "class"             : "economy",
             "Airline"           : "AirFrance"
@@ -24,7 +25,8 @@
             "arrivalDateTime"   : "",
             "origin"            : "JED",
             "destination"       : "CAI",
-            "cost"              : "300",
+            "cost"              : "300", 
+            "seats"              : "300",
             "currency"          : "EUR",
             "class"             : "economy",
             "Airline"           : "AirFrance"
@@ -39,7 +41,8 @@
             "arrivalDateTime"   : "",
             "origin"            : "TPE",
             "destination"       : "HKG",
-            "cost"              : "630",
+            "cost"              : "630", 
+            "seats"              : "300",
             "currency"          : "EUR",
             "class"             : "economy",
             "Airline"           : "AirFrance"
@@ -54,7 +57,8 @@
             "arrivalDateTime"   : "",
             "origin"            : "CPT",
             "destination"       : "JNB",
-            "cost"              : "800",
+            "cost"              : "800", 
+            "seats"              : "300",
             "currency"          : "EUR",
             "class"             : "economy",
             "Airline"           : "AirFrance"
@@ -69,7 +73,8 @@
             "arrivalDateTime"   : "",
             "origin"            : "JED",
             "destination"       : "RUH",
-            "cost"              : "150",
+            "cost"              : "150", 
+            "seats"              : "300",
             "currency"          : "EUR",
             "class"             : "economy",
             "Airline"           : "AirFrance"
@@ -84,7 +89,8 @@
             "arrivalDateTime"   : "",
             "origin"            : "JFK",
             "destination"       : "LHR",
-            "cost"              : "930",
+            "cost"              : "930", 
+            "seats"              : "300",
             "currency"          : "EUR",
             "class"             : "economy",
             "Airline"           : "AirFrance"
@@ -99,7 +105,8 @@
             "arrivalDateTime"   : "",
             "origin"            : "LAX",
             "destination"       : "LAS",
-            "cost"              : "220",
+            "cost"              : "220", 
+            "seats"              : "300",
             "currency"          : "EUR",
             "class"             : "economy",
             "Airline"           : "AirFrance"
@@ -114,7 +121,8 @@
             "arrivalDateTime"   : "",
             "origin"            : "LAX",
             "destination"       : "SFO",
-            "cost"              : "640",
+            "cost"              : "640", 
+            "seats"              : "300",
             "currency"          : "EUR",
             "class"             : "economy",
             "Airline"           : "AirFrance"
@@ -129,7 +137,8 @@
             "arrivalDateTime"   : "",
             "origin"            : "BER",
             "destination"       : "FRA",
-            "cost"              : "300",
+            "cost"              : "300", 
+            "seats"              : "300",
             "currency"          : "EUR",
             "class"             : "economy",
             "Airline"           : "AirFrance"
@@ -144,7 +153,8 @@
             "arrivalDateTime"   : "",
             "origin"            : "MXP",
             "destination"       : "ROM",
-            "cost"              : "190",
+            "cost"              : "190", 
+            "seats"              : "300",
             "currency"          : "EUR",
             "class"             : "economy",
             "Airline"           : "AirFrance"
@@ -159,7 +169,8 @@
             "arrivalDateTime"   : "",
             "origin"            : "DEL",
             "destination"       : "BOM",
-            "cost"              : "1500",
+            "cost"              : "1500", 
+            "seats"              : "300",
             "currency"          : "EUR",
             "class"             : "Business",
             "Airline"           : "AirFrance"
@@ -174,7 +185,8 @@
             "arrivalDateTime"   : "",
             "origin"            : "JED",
             "destination"       : "CAI",
-            "cost"              : "1300",
+            "cost"              : "1300", 
+            "seats"              : "300",
             "currency"          : "EUR",
             "class"             : "Business",
             "Airline"           : "AirFrance"
@@ -189,7 +201,8 @@
             "arrivalDateTime"   : "",
             "origin"            : "TPE",
             "destination"       : "HKG",
-            "cost"              : "1600",
+            "cost"              : "1600", 
+            "seats"              : "300",
             "currency"          : "EUR",
             "class"             : "Business",
             "Airline"           : "AirFrance"
@@ -204,7 +217,8 @@
             "arrivalDateTime"   : "",
             "origin"            : "CPT",
             "destination"       : "JNB",
-            "cost"              : "1820",
+            "cost"              : "1820", 
+            "seats"              : "300",
             "currency"          : "EUR",
             "class"             : "Business",
             "Airline"           : "AirFrance"
@@ -219,7 +233,8 @@
             "arrivalDateTime"   : "",
             "origin"            : "JED",
             "destination"       : "RUH",
-            "cost"              : "960",
+            "cost"              : "960", 
+            "seats"              : "300",
             "currency"          : "EUR",
             "class"             : "Business",
             "Airline"           : "AirFrance"
@@ -234,7 +249,8 @@
             "arrivalDateTime"   : "",
             "origin"            : "JFK",
             "destination"       : "LHR",
-            "cost"              : "1716",
+            "cost"              : "1716", 
+            "seats"              : "300",
             "currency"          : "EUR",
             "class"             : "Business",
             "Airline"           : "AirFrance"
@@ -249,7 +265,8 @@
             "arrivalDateTime"   : "",
             "origin"            : "LAX",
             "destination"       : "LAS",
-            "cost"              : "790",
+            "cost"              : "790", 
+            "seats"              : "300",
             "currency"          : "EUR",
             "class"             : "Business",
             "Airline"           : "AirFrance"
@@ -264,7 +281,8 @@
             "arrivalDateTime"   : "",
             "origin"            : "LAX",
             "destination"       : "SFO",
-            "cost"              : "1390",
+            "cost"              : "1390", 
+            "seats"              : "300",
             "currency"          : "EUR",
             "class"             : "Business",
             "Airline"           : "AirFrance"
@@ -279,7 +297,8 @@
             "arrivalDateTime"   : "",
             "origin"            : "BER",
             "destination"       : "FRA",
-            "cost"              : "1016",
+            "cost"              : "1016", 
+            "seats"              : "300",
             "currency"          : "EUR",
             "class"             : "Business",
             "Airline"           : "AirFrance"
@@ -294,7 +313,8 @@
             "arrivalDateTime"   : "",
             "origin"            : "MXP",
             "destination"       : "ROM",
-            "cost"              : "930",
+            "cost"              : "930", 
+            "seats"              : "300",
             "currency"          : "EUR",
             "class"             : "Business",
             "Airline"           : "AirFrance"
@@ -308,7 +328,8 @@
             "arrivalDateTime"   : "",
             "origin"            : "DEL",
             "destination"       : "BOM",
-            "cost"              : "400",
+            "cost"              : "400", 
+            "seats"              : "300",
             "currency"          : "EUR",
             "class"             : "economy",
             "Airline"           : "AirFrance"
@@ -324,7 +345,8 @@
             "arrivalDateTime"   : "",
             "origin"            : "JED",
             "destination"       : "CAI",
-            "cost"              : "300",
+            "cost"              : "300", 
+            "seats"              : "300",
             "currency"          : "EUR",
             "class"             : "economy",
             "Airline"           : "AirFrance"
@@ -339,7 +361,8 @@
             "arrivalDateTime"   : "",
             "origin"            : "TPE",
             "destination"       : "HKG",
-            "cost"              : "630",
+            "cost"              : "630", 
+            "seats"              : "300",
             "currency"          : "EUR",
             "class"             : "economy",
             "Airline"           : "AirFrance"
@@ -354,7 +377,8 @@
             "arrivalDateTime"   : "",
             "origin"            : "CPT",
             "destination"       : "JNB",
-            "cost"              : "800",
+            "cost"              : "800", 
+            "seats"              : "300",
             "currency"          : "EUR",
             "class"             : "economy",
             "Airline"           : "AirFrance"
@@ -369,7 +393,8 @@
             "arrivalDateTime"   : "",
             "origin"            : "JED",
             "destination"       : "RUH",
-            "cost"              : "150",
+            "cost"              : "150", 
+            "seats"              : "300",
             "currency"          : "EUR",
             "class"             : "economy",
             "Airline"           : "AirFrance"
@@ -384,7 +409,8 @@
             "arrivalDateTime"   : "",
             "origin"            : "JFK",
             "destination"       : "LHR",
-            "cost"              : "930",
+            "cost"              : "930", 
+            "seats"              : "300",
             "currency"          : "EUR",
             "class"             : "economy",
             "Airline"           : "AirFrance"
@@ -399,7 +425,8 @@
             "arrivalDateTime"   : "",
             "origin"            : "LAX",
             "destination"       : "LAS",
-            "cost"              : "220",
+            "cost"              : "220", 
+            "seats"              : "300",
             "currency"          : "EUR",
             "class"             : "economy",
             "Airline"           : "AirFrance"
@@ -414,7 +441,8 @@
             "arrivalDateTime"   : "",
             "origin"            : "LAX",
             "destination"       : "SFO",
-            "cost"              : "640",
+            "cost"              : "640", 
+            "seats"              : "300",
             "currency"          : "EUR",
             "class"             : "economy",
             "Airline"           : "AirFrance"
@@ -429,7 +457,8 @@
             "arrivalDateTime"   : "",
             "origin"            : "BER",
             "destination"       : "FRA",
-            "cost"              : "300",
+            "cost"              : "300", 
+            "seats"              : "300",
             "currency"          : "EUR",
             "class"             : "economy",
             "Airline"           : "AirFrance"
@@ -445,7 +474,8 @@
             "origin"            : "MXP",
             "destination"       : "ROM",
             "cost"              : "190",
-            "currency"          : "EUR",
+            "seats"              : "300",
+            "currency"          : "EUR", 
             "class"             : "economy",
             "Airline"           : "AirFrance"
         
@@ -459,7 +489,8 @@
             "arrivalDateTime"   : "",
             "origin"            : "DEL",
             "destination"       : "BOM",
-            "cost"              : "1500",
+            "cost"              : "1500", 
+            "seats"              : "300",
             "currency"          : "EUR",
             "class"             : "Business",
             "Airline"           : "AirFrance"
@@ -474,7 +505,8 @@
             "arrivalDateTime"   : "",
             "origin"            : "JED",
             "destination"       : "CAI",
-            "cost"              : "1300",
+            "cost"              : "1300", 
+            "seats"              : "300",
             "currency"          : "EUR",
             "class"             : "Business",
             "Airline"           : "AirFrance"
@@ -489,7 +521,8 @@
             "arrivalDateTime"   : "",
             "origin"            : "TPE",
             "destination"       : "HKG",
-            "cost"              : "1600",
+            "cost"              : "1600", 
+            "seats"              : "300",
             "currency"          : "EUR",
             "class"             : "Business",
             "Airline"           : "AirFrance"
@@ -504,7 +537,8 @@
             "arrivalDateTime"   : "",
             "origin"            : "CPT",
             "destination"       : "JNB",
-            "cost"              : "1820",
+            "cost"              : "1820", 
+            "seats"              : "300",
             "currency"          : "EUR",
             "class"             : "Business",
             "Airline"           : "AirFrance"
@@ -520,6 +554,7 @@
             "origin"            : "JED",
             "destination"       : "RUH",
             "cost"              : "960",
+            "seats"              : "300",
             "currency"          : "EUR",
             "class"             : "Business",
             "Airline"           : "AirFrance"
@@ -534,7 +569,8 @@
             "arrivalDateTime"   : "",
             "origin"            : "JFK",
             "destination"       : "LHR",
-            "cost"              : "1716",
+            "cost"              : "1716", 
+            "seats"              : "300",
             "currency"          : "EUR",
             "class"             : "Business",
             "Airline"           : "AirFrance"
@@ -549,7 +585,8 @@
             "arrivalDateTime"   : "",
             "origin"            : "LAX",
             "destination"       : "LAS",
-            "cost"              : "790",
+            "cost"              : "790", 
+            "seats"              : "300",
             "currency"          : "EUR",
             "class"             : "Business",
             "Airline"           : "AirFrance"
@@ -564,7 +601,8 @@
             "arrivalDateTime"   : "",
             "origin"            : "LAX",
             "destination"       : "SFO",
-            "cost"              : "1390",
+            "cost"              : "1390", 
+            "seats"              : "300",
             "currency"          : "EUR",
             "class"             : "Business",
             "Airline"           : "AirFrance"
@@ -579,7 +617,8 @@
             "arrivalDateTime"   : "",
             "origin"            : "BER",
             "destination"       : "FRA",
-            "cost"              : "1016",
+            "cost"              : "1016", 
+            "seats"              : "300",
             "currency"          : "EUR",
             "class"             : "Business",
             "Airline"           : "AirFrance"
@@ -594,7 +633,8 @@
             "arrivalDateTime"   : "",
             "origin"            : "MXP",
             "destination"       : "ROM",
-            "cost"              : "930",
+            "cost"              : "930", 
+            "seats"              : "300",
             "currency"          : "EUR",
             "class"             : "Business",
             "Airline"           : "AirFrance"

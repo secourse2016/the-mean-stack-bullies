@@ -1,4 +1,4 @@
-app.controller('bookingCtrl', function($scope, $location,airportSrv,FlightsSrv) {
+app.controller('bookingCtrl', function($scope, $location,airportSrv,FlightsSrv,bookingSrv) {
 
     
   $scope.date= new Date();
@@ -46,9 +46,10 @@ app.controller('bookingCtrl', function($scope, $location,airportSrv,FlightsSrv) 
     Class: $scope.tclass,
     Email:$scope.email
 
-    }];   
+    }];    
+    console.log(data);
     /*form data is passed to the bookin service*/ 
-   bookingSrv.validateData(data);  
+   bookingSrv.insertbooking(data);  
 
     $location.url('/book');
   }
