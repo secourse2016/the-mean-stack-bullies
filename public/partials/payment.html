@@ -7,7 +7,7 @@
 
   <form class="form-horizontal" role="form" name="myForm"  novalidate>
 
-    <div id="check">
+    <div id="check" class="radiobuttons">
 
       <br>
       <br>
@@ -16,28 +16,37 @@
 
       <h1 class="payhead">Payment: </h1>
 
-      <input id="visa" class="payhead" type="radio" name="oneRound" ng-model="radioButton" value="visa" />
-      <label style="color:black;"for="visa">Visa</label>
-      <input id="mastercard" type="radio" name="oneRound" ng-model="radioButton" value="masterCard" />
-      <label style="color:black;"for="mastercard">MasterCard</label>
+
+      <input type="radio" name="oneRound" ng-model="radioButton" id="visa" value="visa" class="radio" ng-show="false"/>
+      <label for=visa>Visa</label>
+      <div id="mc">
+      <input type="radio" name="oneRound" ng-model="radioButton" value="masterCard" id="mastercard" class="radio" ng-show="false"/>
+      <label for="mastercard">MasterCard</label>
+    </div>
+  
+      <br>
+
+
 
     </div>
+    <br>
+    <br>
     <br>
     <br>
     <div class="inputp">
       <div class="plabel">
         <label class="plabel">Cardholder Name:</label>
-        <input type="text"     placeholder="Card Name" name="holderName" ng-model="holderN" required>
+        <input type="text" class="ilook" placeholder="Card Name" name="holderName" ng-model="holderN" required>
       </div>
       <br>
       <div class="plabel">
         <label class="plabel">Card Number:</label>
-        <input type="number"    placeholder="Enter card number" name="CardNumber" ng-model="CardN" required>
+        <input type="number" class="ilook"  placeholder="Enter card number" name="CardNumber" ng-model="CardN" required>
       </div>
       <br>
       <div class="plabel">
         <label class="plabel">CVV:</label>
-        <input type="number"   placeholder="Only 3 digits" name="CVV" ng-model="CVV" required>
+        <input type="number"  class="ilook" placeholder="Only 3 digits" name="CVV" ng-model="CVV" required>
       </div>
       <br>
       <div class="plabel">
@@ -110,9 +119,11 @@
     </div>
 
       <br>
+      <br>
+      <br>
 
 
-          <button  ng-click="submitPaymentForm()" class="payButton" type="button" >Confirm!</button>
+          <button  ng-click="submitPaymentForm()" class="payButton" type="button" >Pay</button>
 
 
 
