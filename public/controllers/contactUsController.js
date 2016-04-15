@@ -1,4 +1,4 @@
-app.controller('ContactUsController',function($scope){
+app.controller('ContactUsController',function($scope,contactUsSrv){
 	$scope.submitContactForm = function(){
 		var newContactForm = {
 			 firstName : $scope.firstName,
@@ -6,5 +6,12 @@ app.controller('ContactUsController',function($scope){
 			 email     : $scope.email,
 			 message   : $scope.message
 		};
+		contactUsSrv.submitContactUsFormToServer(newContactForm,function(err){
+              if(err){
+
+              }else{
+              	
+              }
+		});
 	}
 }); 
