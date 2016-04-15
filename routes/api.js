@@ -1,6 +1,8 @@
 var express = require('express');
 var paymentController= require('../serverController/paymentController.js');
 var paymentValidation= require('../Validations/paymentValidation.js');
+var flightControl =  require('../serverController/flightController.js');
+
 var router = express.Router();
 
 /*
@@ -37,6 +39,24 @@ router.post('/api/insertpayment', function(req, res) {
 				res.send('payment added to the database');
 			});
 	
+  
+});
+
+
+router.get('/api/getFlight/:origin/:dest/:departureTime', function(req, res) {
+    console.log("I am in the route guys");
+
+  var flightData = [
+  { 
+  destination:req.params.dest,
+  origin :req.params.origin,
+  departureDateTime :req.params.departureTime
+  }];
+
+  flightControl.searchFlights(flightData,function(returnedFlights){
+    res.json(returnedFlights);
+   });
+
   
 });
 
