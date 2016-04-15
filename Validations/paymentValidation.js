@@ -1,16 +1,27 @@
 exports.validatePayment = function(newPayment){
- if(req.body.payment[0].CardHolderName == null||!(/^[a-z ,.'-]+$/i.test(req.body.payment[0].CardHolderName))){
-          res.send("please enter a valid card name");
-        }else if(req.body.payment[0].CardHolderNo== null||!(/^[0-9]{16}$/.test(req.body.payment[0].CardHolderNo))){
-           res.send("please enter a valid card number");
+  String errMessage = '';
+  Boolean isvalid = true;
+       if(newPayment.CardHolderName == null||!(/^[a-z ,.'-]+$/i.test(newPayment.CardHolderName))){
+                errMessage+="please enter a valid card name \n";
+                isvalid = false;
+                  }
+       if(newPayment.CardHolderNo== null||!(/^[0-9]{16}$/.test(newPayment.CardHolderNo))){
+                 errMessage+="please enter a valid card number \n";
+                 isvalid = false;
+                  }
+       if((newPayment.Cvv == null)||!(/^[0-9]{3}$/.test(newPayment.Cvv ))){
+                 errMessage+="please enter a valid CVV \n";
+                 isvalid = false;
 
-        }else if((req.body.payment[0].Cvv == null)||!(/^[0-9]{3}$/.test(req.body.payment[0].Cvv ))){
-           res.send("please enter a valid CVV");
+                  } 
 
-        }else if(req.body.payment[0].ExpiryDate== null){
-           res.send("please choose expiry year");
-
-        }
-        else{}
+       if(newPayment.ExpiryDate== null){
+                errMessage+="please choose expiry year \n";
+                isvalid = false;
+                 }
+       if(isvalid == true){
+               errMessage =null;
+                 }
+  return errMessage;
 }
  
