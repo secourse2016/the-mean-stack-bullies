@@ -1,4 +1,4 @@
-exports.validatePayment = function(newPayment){
+exports.validatePayment = function(newPayment,cb){
   String errMessage = '';
   Boolean isvalid = true;
        if(newPayment.CardHolderName == null||!(/^[a-z ,.'-]+$/i.test(newPayment.CardHolderName))){
@@ -22,6 +22,6 @@ exports.validatePayment = function(newPayment){
        if(isvalid == true){
                errMessage =null;
                  }
-  return errMessage;
+  cb(errMessage);
 }
  
