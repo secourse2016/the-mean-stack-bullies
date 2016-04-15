@@ -85,16 +85,23 @@ router.post('/api/insertpayment', function(req, res) {
      * Inserting ContactUs route.
      */
       router.post('/api/contactUs', function(req, res) {
+        var errMessage ="";
         contactUsController.sendUserContactUsComfirmation(req.body.newContactUs[0],function(err){
              if(err){
               console.log(err);
+              message+=err+"\n";
+              res.send(message); 
              }
         contactUsController.sendUserContactUsComfirmation(req.body.newContactUs[0],function(err){
            if(err){
             console.log(err);
+             message+=err+"\n";
+             res.send(message); 
            }
-        }     
+        }
+         res.send(null); 
         });
+
       });
 
 
