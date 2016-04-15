@@ -1,6 +1,7 @@
 app.controller('bookingCtrl', function($scope, $location,airportSrv,FlightsSrv) {
 
-    
+
+
   $scope.date= new Date();
   $scope.limit=6;
   $scope.hideBookButton = false; 
