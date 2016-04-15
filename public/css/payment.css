@@ -2,12 +2,15 @@
   color:black;
 }
 
+
+
 #mainPay{
+  margin: 0 auto;
   background: blue;
   min-height:100%;
   height:auto;
   width:80%;
-  text-align: center;
+
 }
 
 
