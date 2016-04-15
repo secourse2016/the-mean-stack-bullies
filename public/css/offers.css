@@ -2,33 +2,38 @@
 margin-bottom: 40px;
 }
 .offers {
-	background-color: rgb(17,37,60);
+	
 	padding-top: 40px;
 	padding-bottom:20px;
 	padding-left: 20px;
 	padding-right: 20px;
 	color: white;
+	 background : url(../images/paris2.jpg) no-repeat center center fixed;
+  background-size: 100% 170%;
 }
 .offers .offer1{
 	background-image:url(../images/JFK1.jpg) ;
 	padding:20px;
 	border:1px solid #DDD;
 	height: 300px;
-	border-radius: 10px;
+	width:370px;
 	border:none;
 	background-repeat: no-repeat;
 	background-position: center bottom, center bottom;
 	background-attachment: scroll;
 
 }
+
 .offers .offer1 h2{
 	/*margin:5px 0 15px;*/
 	margin-top: 0px;
+	color:white;
+	font-weight: bold;
 }
 .offers .offer1 p {
 	font-size: 25px;
 	font-weight:bold;
-	color:#FFF;
+	color:grey;
 	margin-top: 60px;
 
 
@@ -44,24 +49,28 @@ margin-bottom: 40px;
 .offers .offer2{
 	background-image:url(../images/BCN1.jpg)  ;
 	padding:20px;
+	margin-left: 8%;
 	border:1px solid #DDD;
 	height: 300px;
-	border-radius: 10px;
+	width:350px;
 	border:none;
 	background-repeat: no-repeat;
+	background-size: 100% 100%;
 	background-position: 20% 20%;
 	background-attachment: scroll;
+	
 
 
 }
 .offers .offer2 h2{
 	margin:5px 0px 15px;
-	margin-top: 20px;
+	margin-top: 0px;
+	color:grey;
 }
 .offers .offer2 p {
 	font-size: 25px;
 	font-weight:bold;
-	color:#FFF;
+	color:grey;
 	margin-top: 60px;
 }
 
@@ -71,9 +80,12 @@ margin-bottom: 40px;
 }
 
 .offers .offer3{
-	background-image:url(../images/THF1.jpg)  ;*/
+	background-image:url(../images/THF1.jpg)  ;
+	margin-top: 0.5px;
+	margin-left: 9%;
 	padding:10px;
-border-radius: 10px;
+width:370px;
+
 	border:none;
 	height: 300px;
 	background-repeat: no-repeat;
@@ -82,12 +94,13 @@ border-radius: 10px;
 }
 .offers .offer3 h2{
 	margin:5px 0 15px;
-	margin-top: 20px;
+	margin-top: 0px;
+	color:grey;
 }
 .offers .offer3 p {
 	font-size: 25px;
 	font-weight:bold;
-	color:#FFF;
+	color:grey;
 	margin-top: 60px;
 }
 
@@ -98,7 +111,8 @@ border-radius: 10px;
 .offers .offer4{
 	background-image:url(../images/AHN1.jpg)  ;*/
 	padding:10px;
-	border-radius: 10px;
+	margin-top: -20px;
+	margin-left: 15%;
 	border:none;
 	height: 300px;
 	background-repeat: no-repeat;
@@ -108,11 +122,12 @@ border-radius: 10px;
 .offers .offer4 h2{
 	margin:5px 0 15px;
 	margin-top: 20px;
+	color:grey;
 }
 .offers .offer4 p {
 	font-size: 25px;
 	font-weight:bold;
-	color:#FFF;
+	color:grey;
 	margin-top: 60px;
 }
 
@@ -120,9 +135,15 @@ border-radius: 10px;
 	margin-top: 90px;
 	margin-bottom:5px;
 }
-#blackOffers
+
+/*#offer2Text
 {
-	background:red;
-	width:100%;
+	
+	width:23.4%;
 	height:100%;
-}
+	font-size: 40px;
+	background-color: rgba(2,2,2,0.5);
+	position:absolute;
+	top:0%;
+	z-index:1;
+}*/
