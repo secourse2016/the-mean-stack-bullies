@@ -3,7 +3,6 @@ var mongoose = require('mongoose');
 var schema = mongoose.Schema;
 var Db = require('../db.js');
 
-
 Db.init(function(){
 console.log("here");
 });
@@ -93,6 +92,7 @@ var paymentSchema = schema({
       ExpiryDate: Date
 
 });
+
 
 
 

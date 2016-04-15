@@ -16,5 +16,6 @@ app.factory('paySrv', function ($http) {
                  return "error";
           });
          }
+
      };
  });
