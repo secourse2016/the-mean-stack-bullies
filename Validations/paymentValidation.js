@@ -1,6 +1,7 @@
 exports.validatePayment = function(newPayment,cb){
-  String errMessage = '';
-  Boolean isvalid = true;
+  var errMessage ="";
+  var isvalid = true;
+
        if(newPayment.CardHolderName == null||!(/^[a-z ,.'-]+$/i.test(newPayment.CardHolderName))){
                 errMessage+="please enter a valid card name \n";
                 isvalid = false;

@@ -15,11 +15,12 @@ var router = express.Router();
      * validating of payment middleware.
      */
     router.post('/api/insertpayment', function(req, res,next) {
-
+       
       paymentValidation.validatePayment(req.body.payment[0],function(errmessage){
          if(errmessage){
           res.send(errmessage);
          }else{
+
           next();
          }
       });
