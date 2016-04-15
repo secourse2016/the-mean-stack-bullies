@@ -1,6 +1,7 @@
 var Db = require('../db.js');
 var mongoose = require('mongoose');
 var model = require('./models');
+
 Db.init(function(){
 console.log("here");
 });

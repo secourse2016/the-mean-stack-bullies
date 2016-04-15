@@ -7,22 +7,20 @@ auth: {
 }
 });
 
-// exports.SendEmail(receiverMail,subject,htmlBody){
-	
-// }
-var mailOption = {
-		from: 'Hatem Morgan <hatemmorgan17@gmail.com>',
-		to: 'maha.ehab.elleci@gmail.com',
-		subject: 'Air France Comfirmation',
-		html: '<h1> Hello maha</h1> <br> <h4>welcome to AirFrance we are happy to serve you</h4> <br><br><br> <h5>mail is send by your scrum master :P</h5>',
-	}
- //       var mailOption = {
+exports.SendEmail(receiverMail,subject,htmlBody){
+	// var mailOption = {
 	// 	from: 'Hatem Morgan <hatemmorgan17@gmail.com>',
-	// 	to: receiverMail,
-	// 	subject: subject,
-	// 	html: htmlBody,
+	// 	to: 'maha.ehab.elleci@gmail.com',
+	// 	subject: 'Air France Comfirmation',
+	// 	html: '<h1> Hello maha</h1> <br> <h4>welcome to AirFrance we are happy to serve you</h4> <br><br><br> <h5>mail is send by your scrum master :P</h5>',
+	// }
+       var mailOption = {
+		from: 'Hatem Morgan <hatemmorgan17@gmail.com>',
+		to: receiverMail,
+		subject: subject,
+		html: htmlBody,
 
-	// };
+	};
 	transporter.sendMail(mailOption,function(err,info){
 	    if(err){
 	    	return console.error(err);
@@ -30,3 +28,4 @@ var mailOption = {
 	    	console.log("message sent");
 	    }
 	})	
+}
