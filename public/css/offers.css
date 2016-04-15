@@ -14,6 +14,8 @@ margin-bottom: 40px;
 	padding:20px;
 	border:1px solid #DDD;
 	height: 300px;
+	border-radius: 10px;
+	border:none;
 	background-repeat: no-repeat;
 	background-position: center bottom, center bottom;
 	background-attachment: scroll;
@@ -41,12 +43,15 @@ margin-bottom: 40px;
 
 .offers .offer2{
 	background-image:url(../images/BCN1.jpg)  ;
-	padding:100px;
+	padding:20px;
 	border:1px solid #DDD;
 	height: 300px;
-    background-repeat: no-repeat;
-	background-position: center bottom, center bottom;
+	border-radius: 10px;
+	border:none;
+	background-repeat: no-repeat;
+	background-position: 20% 20%;
 	background-attachment: scroll;
+
 
 }
 .offers .offer2 h2{
@@ -68,7 +73,8 @@ margin-bottom: 40px;
 .offers .offer3{
 	background-image:url(../images/THF1.jpg)  ;*/
 	padding:10px;
-	border:1px solid #DDD;
+border-radius: 10px;
+	border:none;
 	height: 300px;
 	background-repeat: no-repeat;
 	background-position: center bottom, center bottom;
@@ -92,7 +98,8 @@ margin-bottom: 40px;
 .offers .offer4{
 	background-image:url(../images/AHN1.jpg)  ;*/
 	padding:10px;
-	border:1px solid #DDD;
+	border-radius: 10px;
+	border:none;
 	height: 300px;
 	background-repeat: no-repeat;
 	background-position: center bottom, center bottom;
