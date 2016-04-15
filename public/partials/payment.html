@@ -23,7 +23,7 @@
       <input type="radio" name="oneRound" ng-model="radioButton" value="masterCard" id="mastercard" class="radio" ng-show="false"/>
       <label for="mastercard">MasterCard</label>
     </div>
-  
+
       <br>
 
 
@@ -52,7 +52,7 @@
       <div class="plabel">
         <label class="side" style="color:rgb(17,37,60);"> Expiry Date:  </label>
 
-        <select    ng-model="expiryday" placeholder="Departure Date">
+        <select  class="styled-select sdate"  ng-model="expiryday" placeholder="Departure Date">
           <option>01</option>
           <option>02</option>
           <option>03</option>
@@ -86,7 +86,7 @@
           <option>31</option>
         </select>
 
-        <select id="expiryDate"   ng-model="expirymonth" placeholder="Departure Date" >
+        <select class="styled-select smonth" id="expiryDate"   ng-model="expirymonth" placeholder="Departure Date" >
           <option>JAN</option>
           <option>FEB</option>
           <option>MAR</option>
@@ -101,7 +101,7 @@
           <option>DEC</option>
         </select>
 
-        <select    ng-model="expiryyear" placeholder="Departure Date">
+        <select   class="styled-select syear" ng-model="expiryyear" placeholder="Departure Date">
           <option>2016</option>
           <option>2017</option>
           <option>2018</option>

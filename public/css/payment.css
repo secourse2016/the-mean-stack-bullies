@@ -157,3 +157,26 @@ input.radio:checked ~ label {
 }
 
 /*>>>>>>>>>RADIOBUTTON END<<<<<<<<<*/
+
+.styled-select {
+   width: 240px;
+   height: 34px;
+   color:rgb(17,37,60);;
+   overflow: hidden;
+   background: rgb(235,235,235);
+   border: 1px solid #ccc;
+   }
+
+
+.sdate{
+  width:48px;
+}
+
+.smonth{
+  width:78px;
+}
+
+
+.syear{
+  width:88px;
+}
