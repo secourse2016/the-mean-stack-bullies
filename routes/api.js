@@ -23,7 +23,7 @@ var router = express.Router();
      * validating of payment middleware.
      */
     router.post('/api/insertpayment', function(req, res,next) {
-       console.log("in the payment api");
+     
       paymentValidation.validatePayment(req.body.payment[0],function(errmessage){
          if(errmessage){
           res.send(errmessage);
@@ -34,6 +34,20 @@ var router = express.Router();
       });
         });
 
+   /**
+     * validating of contactUs middleware.
+     */
+    router.post('/api/contactUs', function(req, res,next) {
+
+      paymentValidation.validatePayment(req.body.newContactUs[0],function(errmessage){
+         if(errmessage){
+          res.send(errmessage);
+         }else{
+
+          next();
+         }
+      });
+        });
 
 
 
@@ -72,7 +86,7 @@ router.post('/api/insertpayment', function(req, res) {
      */
       router.post('/api/contactUs', function(req, res) {
 
-      contactUsController.addPaymentIntoDatabase(req.body.payment[0],function(){
+      contactUsController.addPaymentIntoDatabase(req.body.newContactUs[0],function(){
         res.send('payment added to the database');
       });
 
