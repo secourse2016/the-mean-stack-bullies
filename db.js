@@ -1,10 +1,14 @@
+var dotenv = require('dotenv');
+var x = dotenv.load();
+console.log(x);
 var mongoose = require('mongoose');
-var dbPath = "mongodb://localhost/AirFranceDB"
+// var dbPath = "mongodb://localhost/AirFranceDB"
 var db = null;
 module.exports = {
 	
 	init :function(cb){
-		mongoose.connect(dbPath);
+		console.log(process.env.DB_PATH);
+		mongoose.connect(process.env.DB_PATH);
 		var database = mongoose.connection;
 		database.on('error', function(){
 			console.error("database connection denied");
