@@ -1,16 +1,16 @@
  
-    <div ng-controller="paymentCtrl">  
+    <div >  
       <div id="mainPay" class="wow fadeInUpBig">
             <div class="whole">
-              <form class="form-horizontal" role="form"  ng-app="myApp" ng-controller="validateCtrl" 
+              <form class="form-horizontal" role="form"  
               name="myForm"  novalidate>
 
               <h2>Payment Form:</h2>
 
 
               <div id="check">
-                <input type="radio" name="oneRound" value="visa" >VISA </input>
-                <input type="radio" name="oneRound" value="masterCard" >Master Card</input>
+                <input type="radio" name="oneRound" ng-model="radioButton" value="visa" >VISA </input>
+                <input type="radio" name="oneRound" ng-model="radioButton" value="masterCard" >Master Card</input>
               </div>
               <br>
               <br>    
@@ -19,7 +19,10 @@
               <div id="cardName" class="form-group">
                 <label class="control-label col-sm-2" for="email">Cardholder Name:</label>
                 <div class="col-xs-4">
-                  <input type="text" class="form-control"   placeholder="Card Name" name="holderName" ng-model="holderName" required>
+                 <!--  <br><br> -->
+             <!--      <input type="text" ng-model="firstName">
+                    <br><br> -->
+                  <input type="text" class="form-control"   placeholder="Card Name" name="holderName" ng-model="holderN" required>
                 </div>
                 <span ng-show="myForm.holderName.$error.required">Name is required.</span>
               </div>
@@ -28,7 +31,7 @@
               <div id="cardNumber" class="form-group">
                 <label class="control-label col-sm-2" for="email">Card No.:</label>
                 <div class="col-xs-4">
-                  <input type="number" class="form-control"  placeholder="Enter card number" name="CardNumber" ng-model="CardNumber" required>
+                  <input type="number" class="form-control"  placeholder="Enter card number" name="CardNumber" ng-model="CardN" required>
                 </div>
                 <span ng-show="myForm.CardNumber.$error.required">required.</span>
               </div>
@@ -44,22 +47,57 @@
 
               <div id="date"class="form-inline">
                 <label> Expiry Date:  </label>
-                <select id="expiryDate" class="form-control" placeholder="Departure Date" >
-                  <option>January</option>
-                  <option>February</option>
-                  <option>March</option>
-                  <option>April</option>
-                  <option>May</option>
-                  <option>June</option>
-                  <option>July</option>
-                  <option>August</option>
-                  <option>September</option>
-                  <option>October</option>
-                  <option>November</option>
-                  <option>December</option>
+                
+                 <select class="form-control"  ng-model="expiryday" placeholder="Departure Date">
+                  <option>01</option>
+                  <option>02</option>
+                  <option>03</option>
+                  <option>04</option>
+                  <option>05</option>
+                  <option>06</option>
+                  <option>07</option>
+                  <option>08</option>
+                  <option>09</option>
+                  <option>10</option>
+                  <option>11</option>
+                  <option>12</option>
+                  <option>13</option>
+                  <option>14</option>
+                  <option>15</option>
+                  <option>16</option>
+                  <option>17</option>
+                  <option>18</option>
+                  <option>19</option>
+                  <option>20</option>
+                  <option>21</option>
+                  <option>22</option>
+                  <option>23</option>
+                  <option>24</option>
+                  <option>25</option>
+                  <option>26</option>
+                  <option>27</option>
+                  <option>28</option>
+                  <option>29</option>
+                  <option>30</option>
+                  <option>31</option>
+                </select>
+
+                <select id="expiryDate" class="form-control" ng-model="expirymonth" placeholder="Departure Date" >
+                  <option>JAN</option>
+                  <option>FEB</option>
+                  <option>MAR</option>
+                  <option>APR</option>
+                  <option>MAY</option>
+                  <option>JUN</option>
+                  <option>JUL</option>
+                  <option>AUG</option>
+                  <option>SEP</option>
+                  <option>OCT</option>
+                  <option>NOV</option>
+                  <option>DEC</option>
                 </select>
                 
-                <select class="form-control" >
+                <select class="form-control"  ng-model="expiryyear" placeholder="Departure Date">
                   <option>2016</option>
                   <option>2017</option>
                   <option>2018</option>
@@ -69,15 +107,17 @@
                   <option>2022</option>
                 </select>
 
+               
+
 
               </div>
-
+                          <button  ng-click="submitPaymentForm()" id="btnConfirm" class="btn btn-primary" type="button" >Confirm!</button>
 
             </form>
 
             <!-- dropdown -->
             
-            <button  ng-click="clicktest()" id="btnConfirm" class="btn btn-primary" type="button" >Confirm!</button>
+  
             
 
           </div>
