@@ -1,0 +1,306 @@
+
+
+<head>
+ <script src="../js/main.js"></script>
+
+</head>
+<div id="main" class="container-fluid">
+      
+
+   <!--START The top image background -->
+
+        <div id="topImage" > 
+
+         <div id="home-tabling-container" class="col-xs-12 col-md-10 col-lg-8" ng-controller="reservationsController" >
+           <div id="bookingForm" ng-show="showMe" >
+
+             <!-- Start Booking Form -->
+                <div ng-include="include">
+                  
+                </div>
+
+             <!-- end booking form -->
+
+        <!-- End Booking Form -->
+        <!-- Start Manage Booking  -->
+        
+
+        
+       <!--End Manage Booking-->
+       <button id="closeButton" class ="glyphicon glyphicon-remove" ng-click="close()"></button>
+       <p id="closeButtonText">close</p>
+     </div> 
+     <ul id="home-tabling-list" class="nav nav-tabs wow slideInLeft" data-wow-duration="2.5s" style="visibility: visible; animation-duration: 2.5s; animation-name: slideInLeft;">
+      <li class="" ng-click="click1()"><a data-toggle="tab" ><span class="glyphicon glyphicon-plane"></span><span class="tabText">
+        Book</span></a></li>
+
+        <li class="" ng-click="click2()" ng-active="activateButton"> <a data-toggle="tab" ><span class="glyphicon glyphicon-calendar"></span>
+          Timetable</span></a></li>
+
+          <li class="" ng-click="click3()"><a data-toggle="tab"><span class="glyphicon glyphicon-remove-circle"></span>
+            Manage Booking</span></a></li>
+
+          </ul>
+        </div>
+        <br> 
+        <div class="row row2" >
+          <div class="text-center wow fadeIn" data-wow-delay="0.2s"1>
+            <p id="paragraphScroll" class=" wow fadeIn" data-wow-delay="1s">scroll down to see more</p>
+            <div id="scroll"  class="glyphicon glyphicon-menu-down wow bounce col-xs-12 col-md-12 col-lg-12" data-wow-delay="1s" data-wow-iteration="200" ng-click="gotoBottom()"></div>
+
+
+          </div>
+        </div>
+        
+
+      </div>
+      <h2 id="welcomeTextDown" class=" wow fadeInLeft" data-wow-duration="2s" data-wow-delay="0.2s">
+        Welcome to Air France
+        <img id="franceLogo" src="./images/francelogo.png">
+      </h2>
+      <h5  class="wow fadeIn" data-wow-delay="0.2s"id="welcomeText2">We are happy to serve you</h5>
+
+    </section>
+    </div>  
+    <!--END The top image background -->
+    <!-- Start Offers Section -->
+    <section class="offers text-center">
+       <div class="containr">
+          <h1> Fly with us to amazing destinations for great prices</h1>
+<div id="myCarousel" class="carousel slide">
+<div class="carousel-inner">
+
+<div class="item active">
+
+          <div class="row">
+              <div class="col-md-3 col-sm-6 col-xs-12">
+                 <div class=" offer1  wow fadeInLeft"  data-wow-delay ="0.2s" data-wow-offset="10" data-wow-delay="1s">
+                 <div id="offer2Text" class="text-centre wow fadeInLeft"  data-wow-delay ="0.2s" data-wow-offset="10" data-wow-delay="1s">
+                   <h2> NEW YORK </h2>
+                     <p>starting from 1000£</p>
+                      <a href="#" class="btn btn-primary"> Book Now </a>
+                   </div>
+                   </div>
+                </div>
+              <div class="col-md-3 col-sm-6 col-xs-12">
+                  <div class="offer2 wow fadeInLeft"  data-wow-delay ="0.5s" data-wow-offset="10" data-wow-delay="3s">
+                     <div id="offer2Text" class="text-centre wow fadeInLeft"  data-wow-delay ="0.2s" data-wow-offset="10" data-wow-delay="1s">  
+                   <h2> BERCELONA </h2>
+                   <p>starting from 700£</p>
+                   <a href="#" class="btn btn-primary"> Book Now </a>
+                  </div>
+                  </div>
+               </div>
+             
+              <div class="col-md-3 col-sm-6 col-xs-12">
+                 <div class="offer3 wow fadeInLeft"  data-wow-delay ="0.7s" data-wow-offset="10" data-wow-delay="4s">
+                 <div id="offer2Text" class="text-centre wow fadeInLeft"  data-wow-delay ="0.2s" data-wow-offset="10" data-wow-delay="1s">  
+                   <h2> BERLIN </h2>
+                     <p>starting from 800£</p>
+                   <a href="#" class="btn btn-primary"> Book Now </a>
+                   </div>
+                   </div>
+              </div>
+           
+               <div class="col-md-3 col-sm-6 col-xs-12">
+                  <div class="offer4 wow fadeInLeft"  data-wow-delay ="0.9s" data-wow-offset="10" data-wow-delay="5s">
+                  <div id="offer2Text" class="text-centre wow fadeInLeft"  data-wow-delay ="0.2s" data-wow-offset="10" data-wow-delay="1s">  
+                  <h2> ATHENS </h2>
+               <p>starting from 900£</p>
+               <a href="#" class="btn btn-primary"> Book Now </a>
+               </div>
+               </div>
+             </div>
+          </div>
+        </div>
+        <div class="item ">
+          <div class="row">
+              <div class="col-md-3 col-sm-6 col-xs-12">
+                 <div class="offer1">
+                 
+                   <h2> NEW YORK </h2>
+                     <p>starting from 1000£</p>
+                      <a href="#" class="btn btn-primary"> Book Now </a>
+                   </div>
+                </div>
+              <div class="col-md-3 col-sm-6 col-xs-12">
+                  <div class="offer2">
+
+                   <h2> BERCELONA </h2>
+                   <p>starting from 700£</p>
+                   <a href="#" class="btn btn-primary"> Book Now </a>
+                  </div>
+               </div>
+             
+              <div class="col-md-3 col-sm-6 col-xs-12">
+                 
+                 
+                   <h2> BERLIN </h2>
+                     <p>starting from 800£</p>
+                   <a href="#" class="btn btn-primary"> Book Now </a>
+                   </div>
+                   
+        
+           
+               <div class="col-md-3 col-sm-6 col-xs-12">
+                  <div class="offer4">
+                  <h2> ATHENS </h2>
+               <p>starting from 900£</p>
+               <a href="#" class="btn btn-primary"> Book Now </a>
+               </div>
+             </div>
+          </div>
+        </div>
+
+ </section>
+             </div>            
+
+    <!-- End Offers Section -->
+    <!--Start History section-->
+    <button  class="glyphicon glyphicon-chevron-left wow fadeInLeftBig"  data-wow-duration="1.8s" data-wow-offset="100"id="scrollLeftBtn"></button>
+      <button class="glyphicon glyphicon-chevron-right wow fadeInRightBig" data-wow-duration="1.8s" data-wow-offset="100"  style="opacity:0.6;" id="scrollRightBtn"></button>
+    <section class="history text-center">
+         <div class="container cont2">
+        <div class="row row2">
+
+
+          <div id="beginning" class=" historyDivs col-lg-3 col-sm 12 wow fadeInLeftBig"  data-wow-offset="100" data-wow-duration="1.5s">
+
+            <div id="data2" >
+              <div id="beginningText" class="  wow fadeInUpBig"  data-wow-delay ="0.2s" data-wow-offset="10" data-wow-duration="1s">
+
+                <h3>1909-1930 THE BEGINNING</h3>
+                <p>France was passionate about the burgeoning world of aviation. In the excitement of the Roaring Twenties, the first airlines appeared. Pilots and passengers alike took part in the adventure.</p>
+              </div>
+
+            </div>
+          </div>
+          <div id="takeOff" class=" historyDivs col-lg-3  col-sm 12 wow fadeInUpBig"  data-wow-delay ="0.5s" data-wow-offset="100" data-wow-duration="1.5s">
+            <div id="data2" >
+              <div id="takeOffText" class="wow fadeInUpBig" data-wow-offset="5" data-wow-duration="2s">
+                <h3>1933-1945 TAKEOFF</h3>
+                <p>In 1933, Air France brought together the five main French air transporters. In just a few years, it entered the international stage as a major airline.</p>
+              </div>
+            </div>
+          </div>
+          <div id="flying" class=" historyDivs col-lg-3 col-sm 12 wow fadeInDownBig" data-wow-delay ="0.3s" data-wow-offset="100" data-wow-duration="1.5s">
+            <div id="data2" >
+             <div id="flyingText" class=" wow fadeInUpBig"   data-wow-delay ="0.3s" data-wow-offset="5" data-wow-duration="2.5s">
+              <h3>1946-1958 FLYING HIGH</h3>
+              <p>Boosted by the expanding air transport industry, the airline experienced a spectacular boom. With a renewed fleet, it increased its network's density and expanded into Africa, Asia and the Americas.</p>
+            </div>pay
+          </div>
+        </div>
+        <div id="jetAge" class=" historyDivs col-lg-3 col-sm 12 wow fadeInRightBig"  data-wow-offset="100" data-wow-duration="1.5s">
+         <div id="data2" >
+          <div id="jetAgeText" class=" wow fadeInUpBig"  data-wow-delay ="0.3s" data-wow-offset="5" data-wow-duration="2s">
+            <h3>1959-1969 JET AGE</h3>
+            <p>Caravelle, Boeing 707… Jets revolutionized air travel. These more powerful aircraft were able to transport more passengers quicker and further. Air France's traffic doubled in ten years.</p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    </div>
+    </div>
+    
+    
+     <div class="container cont2">
+      <div class="row row2">
+        <div id="maturity" class=" historyDivs col-lg-3 col-sm 12 wow fadeInRightBig"  data-wow-offset="100" data-wow-duration="1">
+          <div id="data2" >
+            <div id="maturityText" class=" wow fadeInUpBig"  data-wow-delay ="0.3s" data-wow-offset="1" data-wow-duration="1s">
+              <h3>1970-1989 MATURITY</h3>
+              <p>Air France entered the era of mass transport. Faced with competition and oil crises, the airline dealt with the turbulence and gave wings to one of the most beautiful birds in history - Concorde..</p>
+              
+            </div>    
+          </div>
+        </div>
+
+        
+        <div id="renewal" class=" historyDivs col-lg-3 col-sm 12 wow fadeInRightBig"  data-wow-offset="100" data-wow-duration="2s">
+          <div id="data2" >
+            <div id="renewalText" class=" wow fadeInUpBig"  data-wow-delay ="0.3s" data-wow-offset="1" data-wow-duration="1s">
+              <h3>1990-1999 RENEWAL</h3>
+              <p>Conditions began to deteriorate. Thanks to a recovery plan, Air France underwent thorough modernization. The airline aimed to 'make the sky the best place on earth'.</p>
+            </div>
+          </div>
+        </div>
+        <div id="worldLeader" class=" historyDivs col-lg-3  col-sm 12 wow fadeInRightBig"  data-wow-offset="100" data-wow-duration="2.5s">
+          <div id="data2" >
+            <div id="worldLeaderText" class="wow fadeInUpBig"  data-wow-delay ="0.3s" data-wow-offset="1" data-wow-duration="2.6s">
+              <h3>2000+ WORLD LEADER</h3>
+              <p>Along with KLM, Air France created one of the world leaders in air transport – passengers, cargo, and maintenance.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+
+
+
+    </section>
+    <!--End History section-->
+
+    <!--Start section Statistics-->
+    <section id="stats" class="stats text-center">
+      <div id="data" > 
+       <div class="container cont2">
+        <div class="row row2">
+          <div class="text-center wow fadeIn" data-wow-delay="0.2s">
+            <h2 id="statsText">Our Airline Statistics</h2>
+          </div>
+          <div class="statsDivs  col-lg-4">
+            <img class="icons " src="./icons/aircraft.png">
+            <h3>Air Crafts</h3>
+            <h5>228</h5>
+          </div>
+          <div class="statsDivs col-lg-4">
+            <img class="icons " src="./icons/destination.png">
+            <h3>Destinations</h3>
+            <h5>204</h5>
+          </div>
+          <div class="statsDivs col-lg-4">
+            <img class="icons" src="./icons/seat.png">
+            <h3>Seats</h3>
+            <h5>34,562</h5>
+          </div>
+        </div>
+      </div>  
+
+    </div>
+      <section class="footer" >
+        <div class="container">
+            <div class="row">
+              <div id="footerText"class="col-lg-6 col-md-8" >
+                  <p>CONNECT WITH US </p>
+              </div>
+              <div id="socialMediaIcons"class="col-lg-6 col-md-8">
+               <ul class="list-unstyled socialList">
+                 <li><img class="img-circle"src="../images/facebook.png"></li>
+                 <li><img class="img-circle" src="../images/twitter.png"></li>
+                 <li><img class="img-circle"src="../images/instagram.png"></li>
+               </ul>
+              </div>
+            </div>
+       
+         </div>
+    </div>
+
+
+    </section>
+    <!--End Section Statistics-->
+
+
+    <!--Start Section Features-->
+    
+   
+
+
+      
+
+
+</html>
+     

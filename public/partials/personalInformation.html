@@ -1,0 +1,83 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	 <script src="../js/wow.min.js"></script>
+      <script src="../js/jquery-2.2.0.min.js"></script>
+      <link rel="stylesheet" href="../css/personalInformation.css">
+</head>
+<body>
+<div id="mainDIV">
+<div id="fixAnimation">
+<div id="partialDiv" class="wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.2s"></div>
+<div id="partialDiv2" class="wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.4s" ></div>
+<div id="partialDiv3" class="wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.7s"></div>
+</div>
+
+ <div id="personalInfoDiv">
+<div id="personalInfoDivAbove">
+	<h2>Passenger Information</h2>
+
+</div>
+<div class="form-style-8">
+	<div id="firstNameDiv" >
+	<div class="glyphicon glyphicon-user"></div>
+	 <div id="firstNameText" >First Name</div>
+	
+	 <input	type="text" class="glyphicon glyphicon-user" id="firstName" placeholder ="First Name" ng-model="firstName">
+
+	 </div>	
+	 <div id="lastNameDiv">
+	 	
+	 	<div class="glyphicon glyphicon-user"></div>
+	  <div id="lastNameText">Last Name</div>
+	 	
+	 <input class=""type="text" id="lastName" placeholder ="Last Name" ng-model="lastName">
+	  </div>	
+
+
+	  	 <div id="passportNo">
+	 	
+	 	<div class="glyphicon glyphicon-user"></div>
+	  <div id="lastNameText">Passport</div>
+	 	
+	 <input class="" type="text" id="passport" placeholder ="Last Name" ng-model="passportnum">
+	  </div>
+
+	 <div id="ageDiv">
+	 <div class="glyphicon glyphicon-gift"></div>
+	 
+	 <input	type="number" id="age" placeholder ="Age" ng-model="age">
+	  </div>	
+	 <div id="passportDiv">
+	 <div class="glyphicon glyphicon-globe"></div>
+	  	
+	 <input	type="text"  placeholder ="Nationality" id="passport" ng-model="Nationality">
+	  </div>	
+	 <div id="issueDateDiv" class="input-group date">
+	 <div class="glyphicon glyphicon-calendar"></div>
+	  <div id="issueDateText">Issue Date</div>
+	  
+	 <input type="date" data-date-inline-picker="true"  ng-model="issueDate" />
+	  </div>	
+
+	 <div id="expiryDateDiv">
+	 <div class="glyphicon glyphicon-calendar"></div>
+	  <div id="expiryDateText">Expiry Date</div>
+	
+	 <input	type="date" id="expiryDate"  ng-model="expiryDate">
+	 </div>	
+<div id="line"></div>
+	<button  class="bookButton" ng-click="submitpersonFrom()" id="Confirm">Confirm</button>
+</div>
+</div>
+</div>
+</body>
+<script>
+      new WOW().init();
+    </script>
+
+</html>
+
+

@@ -1,0 +1,34 @@
+{
+  "name": "AirFrance_Airline_Project",
+  "version": "0.0.0",
+  "private": true,
+  "description": "AriFrance Arline web application for booking and paying for flights",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node_modules/.bin/mocha -w"
+  },
+  "author": "The MEAN Stack Bullies",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^0.8.5",
+    "body-parser": "~1.13.2",
+    "chai": "^3.5.0",
+    "cookie-parser": "~1.3.5",
+    "debug": "~2.2.0",
+    "dotenv": "^2.0.0",
+    "ejs": "~2.3.3",
+    "express": "~4.13.1",
+    "express-session": "^1.13.0",
+    "jsonwebtoken": "^5.7.0",
+    "mocha": "*",
+    "moment": "^2.12.0",
+    "mongoose": "^4.4.12",
+    "morgan": "~1.6.1",
+    "nodemailer": "^2.3.2",
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0",
+    "serve-favicon": "~2.3.0",
+    "supertest": "^1.2.0",
+    "underscore": "^1.8.3"
+  }
+}

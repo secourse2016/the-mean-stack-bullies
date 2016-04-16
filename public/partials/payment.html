@@ -1,0 +1,105 @@
+<link rel="stylesheet" href="../css/payment.css">
+
+<br>
+
+
+<div id="mainPay" class="wow fadeInUpBig">
+  <div class="header">
+      <br>
+      <h2 >Payment </h2>
+      
+      </div>
+  <form class="form-horizontal" role="form" name="myForm"  novalidate>
+
+
+    <div id="check" class="radiobuttons">
+
+     
+
+      <input type="radio" name="oneRound" ng-model="radioButton" id="visa" value="visa" class="radio" ng-show="false"/>
+      <label for=visa class="rlabel">Visa</label>
+      <div id="mc">
+      <input type="radio" name="oneRound" ng-model="radioButton" value="masterCard" id="mastercard" class="radio" ng-show="false"/>
+      <label class="rlabel" for="mastercard">MasterCard</label>
+    </div>
+
+      <br>
+
+
+
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="inputp">
+      <div class="plabel" id="cardholder">
+        <label class="plabel">Cardholder Name:</label>
+        <input type="text" class="ilook" placeholder="Card Name" name="holderName" ng-model="holderN" required>
+      </div>
+      
+      <div class="plabel" id="cardnumber">
+        <label class="plabel">Card Number:</label>
+        <input type="number" class="ilook"  placeholder="Enter card number" name="CardNumber" ng-model="CardN" required>
+      </div>
+      
+      <div class="plabel" id="CVV">
+        <label class="plabel">CVV:</label>
+        <input type="number"  class="ilook" placeholder="Only 3 digits" name="CVV" ng-model="CVV" required>
+      </div>
+      
+      <div class="plabel" id="expiry">
+        <label class="side" style="color:rgb(17,37,60);"> Expiry Date:  </label>
+
+
+        <select class="styled-select smonth" id="expiryDate"   ng-model="expirymonth" placeholder="Departure Date" >
+          <option>JAN</option>
+          <option>FEB</option>
+          <option>MAR</option>
+          <option>APR</option>
+          <option>MAY</option>
+          <option>JUN</option>
+          <option>JUL</option>
+          <option>AUG</option>
+          <option>SEP</option>
+          <option>OCT</option>
+          <option>NOV</option>
+          <option>DEC</option>
+        </select>
+
+        <select   class="styled-select syear" id="exyear" ng-model="expiryyear" placeholder="Departure Date">
+          <option>2016</option>
+          <option>2017</option>
+          <option>2018</option>
+          <option>2019</option>
+          <option>2020</option>
+          <option>2021</option>
+          <option>2022</option>
+        </select>
+
+
+
+      </div>
+
+
+    </div>
+
+      <br>
+      <br>
+      <br>
+
+
+          <button  id="paybutton" ng-click="submitPaymentForm()" class="payButton" type="button" >Pay</button>
+
+
+
+
+
+  </form>
+
+  <!-- dropdown -->
+
+
+
+
+</div>
