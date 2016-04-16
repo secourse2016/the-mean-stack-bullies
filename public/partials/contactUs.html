@@ -14,43 +14,34 @@
             <div class="col-md-12">
             </div>
             <div >
-            <form role="form"class="form-horizontal" style="text-align:center;">
+            <form role="form" action="" method="post" style="text-align:center;">
               <div class="col-lg-6" style="margin-left: 22%;">
 
                 <div >
-                  <label for="firstName">Your First Name</label>
+                  <label for="InputName">Your Name</label>
                   <div class="input-group">
-                    <input type="text" class="form-control" name="firstName" id="firstName" placeholder="Enter your firstName" ng-model="firstName" required>
+                    <input type="text" class="form-control" name="InputName" id="InputName" placeholder="Enter Name" required>
                     <span class="input-group-addon"><i class="glyphicon glyphicon-ok form-control-feedback"></i></span></div>
                   </div>
                   <div >
-
-                      <label for="lastName">Your Last Name</label>
-                  <div class="input-group">
-                    <input type="text" class="form-control" name="lastName" id="lastName" placeholder="Enter your lastName" ng-model="lastName" required>
-                    <span class="input-group-addon"><i class="glyphicon glyphicon-ok form-control-feedback"></i></span></div>
-                  </div>
-                  <div >
-
                     <label for="InputEmail">Your Email</label>
                     <div class="input-group">
-                      <input type="email" class="form-control" id="InputEmail" name="InputEmail" placeholder="Enter Email" ng-model="email" required  >
+                      <input type="email" class="form-control" id="InputEmail" name="InputEmail" placeholder="Enter Email" required  >
                       <span class="input-group-addon"><i class="glyphicon glyphicon-ok form-control-feedback"></i></span></div>
                     </div>
                     <div >
                       <label for="InputMessage">Message</label>
                       <div class="input-group">
-                        <textarea name="InputMessage" id="InputMessage" class="form-control" rows="5" ng-model="message" required ></textarea>
+                        <textarea name="InputMessage" id="InputMessage" class="form-control" rows="5" required></textarea>
                         <span class="input-group-addon"><i class="glyphicon glyphicon-ok form-control-feedback"></i></span></div>
                       </div>
                       <br>
                       <br>
-                      <button  ng-click="submitContactForm()" class="btn btn-info pull-right" type="button" >Submit</button>
-                
+                      <input type="submit" name="submit" id="submit" value="Submit" class="btn btn-info pull-right">
                     </div>
                   </form>
                   </div>
-                
+                  <hr class="featurette-divider hidden-lg">
 
                 </div>
 

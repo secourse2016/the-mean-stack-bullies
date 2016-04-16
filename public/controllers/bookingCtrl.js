@@ -26,7 +26,7 @@ app.controller('bookingCtrl', function($scope, $location,airportSrv,FlightsSrv) 
   }
   $scope.Book=function()
   {
-     $location.url('/passenger');
+     $location.url('/pi');
   }
   $scope.showReturnedDate=function(){
     $scope.hidedate=true;

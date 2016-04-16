@@ -1,0 +1,32 @@
+.viewflights{
+  background:white;
+  width:65%;
+  height:123%;
+  position: absolute;
+  top:20%;
+  left:30%;
+   border-radius: 5px;  
+  box-shadow: -10px -10px 40px grey;
+  /*box-shadow: -12px 12px 70px black;*/
+  margin: 0 auto;
+
+}
+
+.bookbody {
+  height:auto;
+}
+
+.headertitle{
+  background-color: rgb(17,37,60);
+  color:white;
+  height:100%;
+  padding-left:15%;
+  padding-bottom:5.8%;
+  font-family: 'Open Sans Condensed', arial, sans;
+  border-radius: 5px;
+
+}
+
+body {
+	background:rgb(221,233,237);
+}
