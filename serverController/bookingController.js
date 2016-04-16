@@ -40,55 +40,76 @@ exports.comapreFlights = function(formdata, cb){
 
 exports.compareOnewayFlights = function(formdata, cb){  
        
-     console.log("here-1"); 
-     console.log(formdata); 
-     console.log(formdata.from);
-    var aiatFrom = formdata.from;
-     console.log("here0");
-   aiat = aiatFrom.substring(aiatFrom.length-4,aiatFrom.length-1); 
-       console.log("here1"+aiatFrom);
-    var aiatTo = formdata.To;
-    aiatt= aiatTo.substring(aiatTo.length-4,aiatTo.length-1); 
-     console.log("here2"+aiatTo);
-    var seatsava =  formdata.NumberOfAdults[0] + formdata.NumberOfChildren[0];
+     
+     // console.log(formdata); 
+     // console.log(formdata.from); 
+ 
+    var aiatFrom = formdata.from; 
+    
+      
 
-     console.log("here3"+seatsava);
+   var origin = aiatFrom.substring(aiatFrom.length-4,aiatFrom.length-1); 
        
-   mongoose.model('outFlight').find(
+    var aiatTo = formdata.To;
+    var destination= aiatTo.substring(aiatTo.length-4,aiatTo.length-1); 
+    
+    var seatsava =  300 - (formdata.NumberOfAdults[0] + formdata.NumberOfChildren[0]);
 
-    { 
+     // console.log(seatsava);
+       
+   // mongoose.model('outFlight').find(
+
+   //  { 
         
-      origin : aiat, 
-      destination : aiatt,
-      departureDateTime : formdata.DepartureDate, 
-      seats : { $gte : seatsava}, 
-    }, function(err,flight){ 
-        console.log("hereeeee");
-      if(err){  
-        cb(err,false);
+   //    origin : aiat, 
+   //    destination : aiatt,
+   //    departureDateTime : formdata.DepartureDate, 
+   //    seats : { $gte : seatsava}, 
+   //  }, function(err,flight){ 
+   //      console.log("hereeeee");
+   //    if(err){  
+   //      console.log("here1"+err);
+   //      cb(err,false);
         
-      } 
+   //    } 
 
-      else{ 
+   //    else{ 
+       
+   //     //cb(null,true); 
+   //     insertBooking(formdata, function(err,added){ 
+   //        if(err){ 
+   //           console.log(err)
+   //        } 
 
-       cb(null,true); 
-       insertBooking(flight, function(err,added){ 
-          if(err){ 
-             console.log(err)
-          } 
+   //        else{ 
+   //              console.log("here2"+added);
 
-          else{ 
+   //           cb(null,true);
+   //        }
 
-
-             cb(null,true);
-          }
-
-       });
-      }
+   //     });
+   //    }
 
 
-    }); 
+   //  }); 
+ var FlightModel = mongoose.model('outFlight');
+var query = FlightModel.find(flightData);
+  query.where('destination',destination);
+  query.where('origin',origin);
+  var x = new Date(formdata.DepartureDate);
+  x.setMinutes(0);
+  x.setHours(0);
+  var y = new Date(formdata.DepartureDate);
+  y.setMinutes(59);
+  y.setHours(23);
+  console.log(y);
+  query.where('departureDateTime',{"$gte":x, "$lt": y});  
 
+
+
+  query.exec(function (err, docs) {
+       cb(docs);
+});
 
       
 
@@ -102,16 +123,16 @@ exports.comapreRoundtripFlights = function(formdata, cb){
 
 insertBooking = function(booking, cb){ 
 
-
+    
  var BookingModel = mongoose.model('Booking');
   var newbooking = new BookingModel(booking); 
-
+      console.log("here4"+newbooking);
   newbooking.save(function(err, booking){ 
       if(err){ 
          cb(err,null);
       } 
       else{ 
-
+         console.log("here3"+booking);
          cb(null,true); 
        }
    });

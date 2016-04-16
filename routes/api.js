@@ -81,7 +81,6 @@ var router = express.Router();
 | These routes are related to the Payments.
 |
 */
-<<<<<<< HEAD
     /**
      * validating of payment middleware.
      */
@@ -97,7 +96,7 @@ var router = express.Router();
       });
   
   
-})
+});
     /**
      * Inserting payment route.
      */
@@ -121,7 +120,6 @@ router.post('/api/booking', function(req,res){
     
 
 });
-=======
 
               /**
                * Inserting payment route.
@@ -232,7 +230,7 @@ router.post('/api/booking', function(req,res){
             });
    
 
->>>>>>> e1624b2ce5c5f910c2d93b623c84ba0a5e564039
+
 
 module.exports = router;
 

@@ -11,8 +11,10 @@ var outgoingflightSchema = schema({
             flightNumber      : String,
             aircraftType      : String,
             aircraftModel     : String,
-            departureDateTime : Date,
-            arrivalDateTime   : Date,
+            departureDate     : String,
+            departureTime     : String,
+            arrivalDate       : String,
+            arrivalTime       : String,
             origin            : String,
             destination       : String,
             cost              : Number, 
@@ -37,8 +39,10 @@ var ingoingflightSchema = schema({
             flightNumber      : String,
             aircraftType      : String,
             aircraftModel     : String,
-            departureDateTime : Date,
-            arrivalDateTime   : Date, 
+           departureDate      : String,
+            departureTime     : String,
+            arrivalDate       : String,
+            arrivalTime       : String,
             seats             : Number,
             origin            : String,
             destination       : String,
@@ -48,6 +52,7 @@ var ingoingflightSchema = schema({
             Airline           : String
 });
 var bookingSchema = schema({
+    trip:String,
     from: String,
     To: String,
     DepartureDate: Date,
