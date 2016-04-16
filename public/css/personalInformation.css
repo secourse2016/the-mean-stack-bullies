@@ -6,6 +6,7 @@ html
 body
 {
 	height:100%;
+	width:100%;
 	
 	background: rgb(221,233,237);
 }
@@ -31,13 +32,13 @@ body
 #personalInfoDiv
 {
 	background-color: white;
-	width:65%;
+	  width:65%;
   height:123%;
-	position: absolute;
-	top:35%;
-	left:33%;
-	 box-shadow: -12px 12px 70px black;
-	 border-radius: 5px;
+  position: absolute;
+  top:43.8%;
+  left:34%;
+	  box-shadow: -10px -10px 40px grey;
+  border-radius: 5px;
 	  font-family: 'Open Sans Condensed', arial, sans;
 }
 
@@ -176,7 +177,7 @@ background-image: url(../icons/payment.png);
     border-bottom: 1px solid #ddd;
     background: transparent;
         background-color:white;
-        border-bottom-color: black;
+        border-bottom-color: red;
     margin-bottom: 10px;
     font: 16px Arial, Helvetica, sans-serif;
    height:10px;
