@@ -4,34 +4,62 @@ var moment = require('moment');
 
 
 
-exports.comapreFlights = function(formdata, cb){
+exports.comapreFlights = function(formdata2, cb){
 
       if(formdata.trip == "one"){ 
-      	 compareOnewayFlights(formdata,function(err,found){ 
+
+                       var formdata = {
+              destination:formdata2.To,
+              origin :formdata2.from,
+              departureDateTime :formdata2.DepartureDate, 
+               
+              };
+
+      	 compareOnewayFlights(formdata2,formdata,'outFlight',function(err,flights){ 
               if(err) { 
-                  cb(err,found); 
-                  console.log(found);
+               
+                  console.log(err);
               } 
               else{  
-              	  cb(null,found); 
+              	  
                   console.log(found);
 
                }
+               cb(err,flights);
       	 });  
 
       	} 
 
       	if(formdata.trip=="round"){ 
-           
-           comapreRoundtripFlights(formdata, function(err,found){ 
+                           var formdata = {
+                destination:formdata2.To,
+                origin :formdata2.from,
+                departureDateTime :formdata2.DepartureDate, 
+                 
+                };
+           comapreRoundtripFlights(formdata2,formdata,'outFlight', function(err,outFlights){ 
                if(err){ 
-                    cb(err,found); 
+                  console.log(err);
                } 
 
                else{ 
+                  console.log(flights1);
+                               var formdata = {
+                              destination:formdata2.from,
+                              origin :formdata2.To,
+                              departureDateTime :formdata2.ReturnDate, 
+                               
+                              };
+                               comapreRoundtripFlights(formdata2,formdata,'inFlight' ,function(err,inFlights){ 
+                                   if(err){ 
+                                      console.log(err);
+                                   } else{
+                                       console.log(flights2);
+                                       cb(err,outFlight,inFlights);
+                                   }
+                                 });
 
-                   cb(null,found);
-               }
+                                   }
            });
       	}
 
@@ -40,15 +68,10 @@ exports.comapreFlights = function(formdata, cb){
 
 
 
-exports.compareOnewayFlights = function(formdata2, cb){  
+exports.compareOnewayFlights = function(formdata2,formdata,collectionName,cb){  
        
 
-var formdata = {
-destination:formdata2.To,
-origin :formdata2.from,
-departureDateTime :formdata2.DepartureDate, 
- 
-};
+
     var aiatFrom = formdata.origin; 
     
       
@@ -92,8 +115,9 @@ var query = FlightModel.find(formdata);
            else{ 
 
               console.log("HEEERERERE" + booking);
+            
            }
-
+           cb(err,docs);
 
         });
     }
