@@ -46,11 +46,11 @@ app.controller('paymentCtrl', function($scope, $location,paySrv) {
         */
 		$scope.submitPaymentForm=function() {
         
-        // var errMessage = paymentValidations();
-        // if(errMessage){
-        //   alert(errMessage);
-        // }
-        // else{
+        var errMessage = paymentValidations();
+        if(errMessage){
+          alert(errMessage);
+        }
+        else{
           var boolea=false;
           if($scope.radioButton=="visa"){
             boolea=true;
@@ -79,6 +79,6 @@ app.controller('paymentCtrl', function($scope, $location,paySrv) {
                      }
                 }
           );
-        // }
+        }
       }
 });
