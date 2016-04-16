@@ -6,7 +6,7 @@ exports.validatePerson = function(newPerson,cb){
           errMessage+="please enter a valid First name \n";
           isvalid = false;
           }
-         if(newPerson.lastName == null||!(/^[a-z ,.'-]+$/i.test(newPerson.lastName))){
+         if(newPerson.secondName == null||!(/^[a-z ,.'-]+$/i.test(newPerson.secondName))){
           errMessage+="please enter a valid Last name \n";
           isvalid = false;
           }
