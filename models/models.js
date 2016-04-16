@@ -22,6 +22,18 @@ var outgoingflightSchema = schema({
 });
 
 
+var reservationSchema = schema({
+    firstName: String,
+    lastName: String,
+    passport: String,
+    issueDate: Date,
+    expiryDate: Date,
+    receipt_number: String,
+    bookingRefNumber:String
+
+});
+
+
 var pesonSchema = schema({
             firstName      : String,
             secondName     : String,
@@ -29,6 +41,8 @@ var pesonSchema = schema({
             nationality    : String,
             passportNumber : String,
             issueDate      : Date,
+            // receipt_number: String,
+            // bookingRefNumber:String,
             expiryDate     : Date
 });
 
@@ -57,16 +71,6 @@ var bookingSchema = schema({
 
 });
 
-var reservationSchema = schema({
-    firstName: String,
-    lastName: String,
-    passport: String,
-    issueDate: Date,
-    expiryDate: Date,
-    receipt_number: String,
-    bookingRefNumber:String
-
-});
 
 
 var airportSchema = schema({
