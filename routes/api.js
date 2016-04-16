@@ -29,15 +29,13 @@ var router = express.Router();
                  * validating of payment middleware.
                  */
               router.post('/api/insertpayment', function(req, res,next) {
-               
-                paymentValidation.validatePayment(req.body.payment[0],function(errmessage){
-                   if(errmessage){
-                    res.send(errmessage);
-                   }else{
-
-                    next();
-                   }
-                });
+                      paymentValidation.validatePayment(req.body.payment[0],function(errmessage){
+                         if(errmessage){
+                          res.send(errmessage);
+                         }else{
+                          next();
+                         }
+                      });
                   });
 
                  /**
@@ -81,7 +79,6 @@ var router = express.Router();
                * Inserting payment route.
                */
             router.post('/api/insertpayment', function(req, res) {
-
             			paymentController.addPaymentIntoDatabase(req.body.payment[0],function(){
             				res.send('payment added to the database');
             			});
