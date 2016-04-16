@@ -1,5 +1,9 @@
 $(document).ready(function()
-{
+{	var i;
+	for(i=0;i<10000;i++)
+	{
+		console.log(i);
+	}
 	var counter=0;
 $("#scrollLeftBtn").click(function(){
 if(counter==0)

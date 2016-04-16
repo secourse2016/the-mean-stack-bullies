@@ -4,9 +4,9 @@
 
 html{
   height: 100%;
-  background : url(../images/cityNew.jpg) no-repeat center center fixed;
+  /*background : url(../images/cityNew.jpg) no-repeat center center fixed;
   background-size: 100% 102%;
-background-position: -80% 10%
+background-position: -80% 10%*/
  
 }
 
@@ -1228,9 +1228,11 @@ footer {
 }
 .viewflights{
   width:65%;
-  height:auto;
-  background-color: rgb(235,235,235);
-  box-shadow: 10px 10px 5px #888888;
+  height:123%;
+  position: absolute;
+  top:20%;
+  left:25%;
+  box-shadow: -10px -10px 40px grey;
   /*box-shadow: -12px 12px 70px black;*/
   margin: 0 auto;
 
