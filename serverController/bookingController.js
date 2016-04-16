@@ -14,7 +14,7 @@ exports.comapreFlights = function(formdata2, cb){
               departureDateTime :formdata2.DepartureDate, 
                
               };
-
+             
       	 compareOnewayFlights(formdata2,formdata,'outFlight',function(err,flights){ 
               if(err) { 
                
@@ -69,7 +69,7 @@ exports.comapreFlights = function(formdata2, cb){
 
 
 exports.compareOnewayFlights = function(formdata2,formdata,collectionName,cb){  
-       
+       console.log(|"in the target function");
 
 
     var aiatFrom = formdata.origin; 
