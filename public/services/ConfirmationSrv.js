@@ -1,4 +1,4 @@
-app.factory('ConfirmationSrv', function(){ 
+App.factory('ConfirmationSrv', function(){ 
 return{ 
    
    getReservation : function(){ 

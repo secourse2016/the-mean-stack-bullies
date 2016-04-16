@@ -10,9 +10,13 @@ app.config(function($routeProvider) {
             templateUrl : '/partials/home.html',
             controller  : 'myCtrl'
         })
+         .when('/pi', {
+            templateUrl : '/partials/personalInformation.html',
+            controller  : 'payCtrl'
+        })
         .when('/book', {
             templateUrl : '/partials/booking.html',
-            controller  : 'flightCtrl'
+            controller  : 'bookingCtrl'
         })
         .when('/pay', {
             templateUrl : '/partials/payment.html',
@@ -20,17 +24,13 @@ app.config(function($routeProvider) {
         })
         .when('/passenger', {
             templateUrl : '/partials/personalInformation.html',
-            controller  : 'personalInfoCtrl'
+            controller  : 'mainCtrl'
         })  
           .when('/contact', {
             templateUrl : '/partials/contactUs.html',
             controller  : 'ContactUsController'
         })
-        .when('/confirm', {
-            templateUrl : '/partials/confirmation.html',
-            controller  : 'confirmationCtrl'
-        })
-        .when('/team', {
+           .when('/team', {
             templateUrl : '/partials/team.html',
             controller  : 'TeamController'
         });
