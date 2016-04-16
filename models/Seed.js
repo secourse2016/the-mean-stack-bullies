@@ -34,9 +34,6 @@ function seedOutFlights(entity){
         hours = (Math.random() * 12) + 12;
     }  
        d.setHours(hours); 
-var dateFormat = require('dateformat'); 
-
-//dateFormat(now, "dddd, mmmm dS, yyyy, h:MM:ss TT");
 
         newOutFlights[i + (j * outflights.length)].departureDateTime= d;
         x.setHours(hours + (Math.random()* 8) + 2); 
