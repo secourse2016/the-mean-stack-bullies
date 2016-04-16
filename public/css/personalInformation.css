@@ -177,15 +177,14 @@ background-image: url(../icons/payment.png);
     border-bottom: 1px solid #ddd;
     background: transparent;
         background-color:white;
-        border-bottom-color: red;
+        border-bottom-color: rgb(152,58,49);
     margin-bottom: 10px;
     font: 16px Arial, Helvetica, sans-serif;
-   height:10px;
-    width: 130px;
-  -webkit-transition: width .35s ease-in-out;
-  transition: width .35s ease-in-out;
-   -webkit-transition: height .35s ease-in-out;
-  transition: height .35s ease-in-out;
+   height:40px;
+    width: 160px;
+  -webkit-transition: border-bottom-color 0.5s ease-in-out;
+  transition: border-bottom-color 0.5s ease-in-out;
+
 
 }
 .form-style-8 textarea{
@@ -218,14 +217,13 @@ background-image: url(../icons/payment.png);
     border-bottom: 2px solid black;
 }
 
-.form-style-8 input:hover
+.form-style-8 input:focus
 {
 
-    border-bottom-color: black;
--webkit-transition: height .35s ease-in-out;
-  transition: height .35s ease-in-out;
- height:40px;
-    width: 160px;
+    border-bottom-color: rgb(17,34,160);
+-webkit-transition: border-bottom-color 0.5s ease-in-out;
+  transition: border-bottom-color 0.5s ease-in-out;
+ 
 
 }
 
