@@ -31,7 +31,7 @@ function seedOutFlights(entity){
          hours = Math.random() * 12;
      
     }else{
-        hours = (Math.random() * 12) + 12;
+        hours = (Math.random() * 12) + 11;
     }  
        d.setHours(hours); 
 
@@ -39,6 +39,7 @@ function seedOutFlights(entity){
         x.setHours(hours + (Math.random()* 8) + 2); 
 
      newOutFlights[i + (j * outflights.length)].arrivalDateTime= x ;
+     newOutFlights[i + (j * outflights.length)].seats= 100 ;
     }
   }
   return newOutFlights;
