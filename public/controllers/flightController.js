@@ -27,7 +27,9 @@ departureDateTime :new Date()
 
     $scope.Book=function()
   {
+     
      $location.url('/passenger');
+    
   }
 
 });
