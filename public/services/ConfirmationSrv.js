@@ -1,4 +1,5 @@
-app.factory('ConfirmationSrv', function(){ 
+<<<<<<< HEAD
+App.factory('ConfirmationSrv', function(){ 
 return{ 
    
    getReservation : function(){ 
@@ -54,3 +55,46 @@ return{
 
 
 });
+=======
+app.factory('ConfirmationSrv', function($http){ 
+
+console.log("in facto");
+       return {
+         getallInfo : function(cb) {
+          var req = {
+              method: 'GET',
+              url: '/api/getallInfo'
+              
+          };
+
+
+
+          return $http(req).then(function back(response) {
+            cb(response.data);
+          },
+            function myError(response) {
+            cb(response.statusText);
+            });
+         
+         },
+
+         getPersonInfo: function(cb){
+             var req = {
+              method: 'GET',
+              url: '/api/getPersonInfo'
+              
+          };
+
+           return $http(req).then(function back(response) {
+            cb(response.data);
+             },
+            function myError(response) {
+            cb(response.statusText);
+            });
+
+         }
+
+
+      };
+  });
+>>>>>>> b49124efd31e8a37bf4ed2ab8cdbb63150534eb6

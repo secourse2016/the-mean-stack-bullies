@@ -42,8 +42,12 @@ app.controller('paymentCtrl', function($scope, $location,paySrv) {
         * payment form submitting function
         */
 		$scope.submitPaymentForm=function() {
+<<<<<<< HEAD
+     		var errMessage = paymentValidations();
+=======
         
         var errMessage = paymentValidations();
+>>>>>>> b49124efd31e8a37bf4ed2ab8cdbb63150534eb6
         if(errMessage){
           alert(errMessage);
         }
@@ -55,6 +59,21 @@ app.controller('paymentCtrl', function($scope, $location,paySrv) {
           else{
             boolea=false;
           }
+<<<<<<< HEAD
+          var date =$scope.expiryday+" "+$scope.expirymonth+" "+$scope.expiryyear;
+          console.log(date);
+          var pa=[{
+       			visa:boolea,
+        		MasterCard: (!boolea),
+       			CardHolderName: $scope.holderN,
+        		CardHolderNo: $scope.CardN,
+       			Cvv: $scope.CVV,
+        		ExpiryDate: date
+       		}];
+       		paySrv.insertPayment(pa);
+    		}
+  		}
+=======
 
           var date ="01 "+$scope.expirymonth+" "+$scope.expiryyear;
 
@@ -80,4 +99,5 @@ app.controller('paymentCtrl', function($scope, $location,paySrv) {
           );
         }
       }
+>>>>>>> b49124efd31e8a37bf4ed2ab8cdbb63150534eb6
 });

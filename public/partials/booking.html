@@ -4,6 +4,23 @@
 <div id="partialDiv2" class="wow fadeInRightBig" data-wow-duration="1s" data-wow-delay="0.4s" ></div>
 <div id="partialDiv3" class="wow fadeInRightBig" data-wow-duration="1s" data-wow-delay="0.7s"></div>
 </div>
+<<<<<<< HEAD
+<div id="timeTableSection"  ng-controller="bookingCtrl" class="viewflights bookbody">
+  <div ng-controller="bookingCtrl"  data-ng-init="changeTable()">
+    
+    
+    <div class="headertitle">
+      <br>
+     
+      <h2>Choose a Flight</h2>
+      
+    </div>
+    <br>
+
+
+    <br>
+    <br>
+=======
 <div id="timeTableSection"  ng-controller="flightCtrl" class="viewflights bookbody">
   <div ng-controller="flightCtrl"  data-ng-init="changeTable()"   >
     <div class="headertitle">
@@ -17,33 +34,33 @@
     
     <br>
       
+>>>>>>> b49124efd31e8a37bf4ed2ab8cdbb63150534eb6
     <div ng-repeat="flight in arr | limitTo:2| orderBy:'date'">
     <table class="tx sp" >
-     
+
 
       <thead>
-        <tr class="sp1">  
+        <tr class="sp1">
+        <th class="text-left sp1 spx" style=" font-size: 30px; color:white;">{{flight.originCity}}</th>
+        <th class="text-left sp1 spx" style=" font-size: 30px; color:white;">{{flight.aircraft}} <img id="franceLogo" src="./icons/sky2.png"></div></th>
+       <th  class="text-left sp1 spx" style=" font-size: 30px; color:white;">{{flight.destinationCity}}</th>
+       <th  class="text-left sp1 spx" style=" font-size: 30px; color:white;">#BX321</th>
 
-        <th class="text-left sp1 spx" style=" font-size: 30px; color:white;">{{flight.origin}}</th>
-        <th class="text-left sp1 spx" style=" font-size: 30px; color:white;">{{flight.aircraftType}} <img id="franceLogo" src="./icons/sky2.png"></div></th>
-       <th  class="text-left sp1 spx" style=" font-size: 30px; color:white;">{{flight.destination}}</th>
-       <th  class="text-left sp1 spx" style=" font-size: 30px; color:white;">#
-       {{flight.flightNumber}}</th>
-         
-  
+
 
 
 
 
      </tr>
 
-      <tr class="sp">  
-        
+      <tr class="sp">
+
          <th class="text-left sp">Economy</th>
           <th class="text-left sp"></th>
          <th class="text-left sp"></th>
          <th  class="text-left sp1 spx" style=" font-size: 30px; color:white;"></th>
-         
+
+
 
 
 
@@ -54,13 +71,13 @@
 
 
 
-<tr >  
- 
-   
-    <td class="text-left sp"><div>{{flight.origin}} <br> {{flight.departureDateTime}}</div></td>
-   <td class="text-left sp"><div>$<br>{{flight.cost}}</div></td>
-    <td class="text-left sp"><div>{{flight.destination}}<br>{{flight.arrivalDateTime}}</div></td>
-    <td class="text-left sp"><div class="chooseflight">  
+<tr >
+
+
+    <td class="text-left sp"><div>{{flight.originIata}} <br> {{flight.date}}</div></td>
+   <td class="text-left sp"><div>$<br>500</div></td>
+    <td class="text-left sp"><div>{{flight.destinationIata}}<br>{{flight.flightNumber.type}}</div></td>
+    <td class="text-left sp"><div class="chooseflight">
         <input type="radio" name="radio" id={{$index}} class="radio" ng-show="false"/>
         <label for={{$index}}>Choose</label>
                             </div></td>
@@ -69,26 +86,26 @@
 
 </tr>
 
-      <tr class="sp">  
-        
+      <tr class="sp">
+
          <th class="text-left sp">Business</th>
           <th class="text-left sp"></th>
          <th class="text-left sp"></th>
          <th  class="text-left sp1 spx" style=" font-size: 30px; color:white;"></th>
-         
+
 
 
 
 
      </tr>
 
-<tr >  
+<tr >
  <!-- TAKE CARE FOR HARDCODED RADIO BUTTONS INDECES -->
-   
-    <td class="text-left sp"><div>{{flight.origin}} <br> {{flight.departureDateTime}}</div></td>
-     <td class="text-left sp"><div>$<br>{{flight.cost}}</div></td>
-    <td class="text-left sp"><div>{{flight.destination}}<br>{{flight.arrivalDateTime}}</div></td>
-    <td class="text-left sp"><div class="chooseflight">  
+
+    <td class="text-left sp"><div>{{flight.originIata}} <br> {{flight.date}}</div></td>
+     <td class="text-left sp"><div>$<br>500</div></td>
+    <td class="text-left sp"><div>{{flight.destinationIata}}<br>{{flight.flightNumber.type}}</div></td>
+    <td class="text-left sp"><div class="chooseflight">
         <input type="radio" name="radio" id=500+{{$index}} class="radio" ng-show="false"/>
         <label for=500+{{$index}} >Choose</label>
                             </div></td>
@@ -112,6 +129,9 @@
 
 </div>
 
+<<<<<<< HEAD
+</div>
+=======
 
 
 
@@ -124,3 +144,4 @@
 
 
  
+>>>>>>> b49124efd31e8a37bf4ed2ab8cdbb63150534eb6

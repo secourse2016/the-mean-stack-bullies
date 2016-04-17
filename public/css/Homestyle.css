@@ -4,7 +4,13 @@
 
 html{
   height: 100%;
+<<<<<<< HEAD
+  /*background : url(../images/cityNew.jpg) no-repeat center center fixed;
+  background-size: 100% 102%;
+background-position: -80% 10%*/
+=======
   
+>>>>>>> b49124efd31e8a37bf4ed2ab8cdbb63150534eb6
  
 }
 
@@ -370,7 +376,11 @@ background-color: rgba(2,2,2,.56);
 
 .history
 {
+<<<<<<< HEAD
+  height:120%;
+=======
   height:100%;
+>>>>>>> b49124efd31e8a37bf4ed2ab8cdbb63150534eb6
   width:1000%;
   position: relative;
   top:-6%;
@@ -379,15 +389,25 @@ background-color: rgba(2,2,2,.56);
   z-index: -30;
 
 }
+<<<<<<< HEAD
+=======
 
+>>>>>>> b49124efd31e8a37bf4ed2ab8cdbb63150534eb6
 
 
 #data2
  {
+<<<<<<< HEAD
+  background-color: rgba(2,2,2,0.2);
+  width: 100%;
+  position: relative;
+  top:-2.5%;
+=======
   background-color: rgba(2,2,2,0.6);
   width: 100%;
   position: relative;
   top:-3%;
+>>>>>>> b49124efd31e8a37bf4ed2ab8cdbb63150534eb6
   height:100%;
 
 
@@ -574,6 +594,9 @@ color:#fff;
  .stats
  {
 
+<<<<<<< HEAD
+  height:60%;
+=======
   height:90%;
   background : url(../images/cityNew.jpg) no-repeat center center fixed;
   background-size: 100% 102%;
@@ -581,6 +604,7 @@ background-position: -80% 10%;
   position:relative;
   top:-9.2%;
 
+>>>>>>> b49124efd31e8a37bf4ed2ab8cdbb63150534eb6
  }
  #data
  {
@@ -1042,7 +1066,24 @@ overflow-y: scroll;
         left: 50%;
       }
       
+<<<<<<< HEAD
+      .whole{
+      position:relative;
+      color:white;
+      top: 15%;
+      left: 25%;
       
+      border-radius: 20px;
+   
+      padding: 20px; 
+      width: 700px;
+      height: 350px;   
+
+      }
+
+=======
+      
+>>>>>>> b49124efd31e8a37bf4ed2ab8cdbb63150534eb6
     #check{
       position: relative;
       left: -12%;
@@ -1268,11 +1309,19 @@ color:#EEE;
 
 #scrollLeftBtn
 {
+<<<<<<< HEAD
+  height:109.6%;
+  width:5%;
+  font-size: 50px;
+  position: absolute;
+  top:175.5%;
+=======
   height:90.9%;
   width:5%;
   font-size: 50px;
   position: absolute;
   top:171.1%;
+>>>>>>> b49124efd31e8a37bf4ed2ab8cdbb63150534eb6
   background-color:rgb(17,37,60);
   left:-1%;
   border:none;
@@ -1286,11 +1335,19 @@ color:#EEE;
 }
 #scrollRightBtn
 {
+<<<<<<< HEAD
+  height:109.6%;
+  width:4%;
+  position: absolute;
+  font-size: 50px;
+   top:175.5%;
+=======
   height:90.9%;
   width:4%;
   position: absolute;
   font-size: 50px;
     top:171.1%;
+>>>>>>> b49124efd31e8a37bf4ed2ab8cdbb63150534eb6
   left:96%;
   border:none;
   background-color:rgb(17,37,60);
@@ -1306,7 +1363,11 @@ color:#EEE;
 .footer{
     background-color: rgb(17,37,60);
     color:white;
+<<<<<<< HEAD
+    height:60%;
+=======
     height:40%;
+>>>>>>> b49124efd31e8a37bf4ed2ab8cdbb63150534eb6
     text-align: right;
     padding-top: 100px;
 }
