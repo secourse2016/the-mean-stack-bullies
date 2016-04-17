@@ -18,7 +18,7 @@
     "dotenv": "^2.0.0",
     "ejs": "~2.3.3",
     "express": "~4.13.1",
-    "express-session": "^1.13.0",
+    "express-session": "^1.7.6",
     "jsonwebtoken": "^5.7.0",
     "mocha": "*",
     "moment": "^2.12.0",
