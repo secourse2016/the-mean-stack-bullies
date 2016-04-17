@@ -3,7 +3,6 @@ var mongoose = require('mongoose');
 var schema = mongoose.Schema;
 var Db = require('../db.js');
 
-
 Db.init(function(){
 console.log("here");
 });
@@ -22,6 +21,30 @@ var outgoingflightSchema = schema({
             Airline           : String
 });
 
+
+var reservationSchema = schema({
+    firstName: String,
+    lastName: String,
+    passport: String,
+    issueDate: Date,
+    expiryDate: Date,
+    receipt_number: String,
+    bookingRefNumber:String
+
+});
+
+
+var pesonSchema = schema({
+            firstName      : String,
+            secondName     : String,
+            age            : Number,
+            nationality    : String,
+            passportNumber : String,
+            issueDate      : Date,
+            // receipt_number: String,
+            // bookingRefNumber:String,
+            expiryDate     : Date
+});
 
 var ingoingflightSchema = schema({
             flightNumber      : String,
@@ -48,16 +71,6 @@ var bookingSchema = schema({
 
 });
 
-var reservationSchema = schema({
-    firstName: String,
-    lastName: String,
-    passport: String,
-    issueDate: Date,
-    expiryDate: Date,
-    receipt_number: String,
-    bookingRefNumber:String
-
-});
 
 
 var airportSchema = schema({
@@ -86,12 +99,14 @@ var paymentSchema = schema({
 
 
 
+
 mongoose.model('Airport', airportSchema);
 mongoose.model('outFlight', outgoingflightSchema);
 mongoose.model('Reservation', reservationSchema);
 mongoose.model('Booking', bookingSchema);
 mongoose.model('Payment', paymentSchema);
 mongoose.model('inFlight', ingoingflightSchema);
+mongoose.model('Person', pesonSchema);
 
 
 

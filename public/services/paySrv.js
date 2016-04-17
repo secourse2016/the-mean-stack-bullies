@@ -7,14 +7,7 @@ app.factory('paySrv', function ($http) {
               data: { payment: pa }
           };
 
-          return $http(req)
-
-              .success(function(data, status, headers, config) {
-                  return data;
-              })
-              .error(function(data, status, headers, config) {
-                 return "error";
-          });
+          return $http(req);
          }
          // getFlights : function() {
          //   return $http.get('/api/data/flights');
