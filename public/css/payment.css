@@ -7,7 +7,8 @@
   .payhead {
     color:rgb(17,37,60);
     text-align: left;
-    margin-left: -45%
+    margin-left: -45%;
+    
   }
 
   .radiobuttons{
@@ -62,10 +63,10 @@
     border-radius: 5px;
     background-color: white;
     box-shadow: -10px -10px 40px grey;
-    margin-top: 8.41%;
+    margin-top: 9%;
     margin-left: 30%;
     height:auto;
-    width:65%;
+    width:64%;
     text-align:center;
     margin-bottom: -200%;
     min-height:100%;
@@ -336,7 +337,53 @@
    text-align: left;
     background: rgb(17,37,60);
     color:white;
-    padding-bottom: 0.6%; 
+    padding-bottom: 2%; 
     font-family: 'Open Sans Condensed', arial, sans;
   }
 
+#fixAnimation
+{
+  width:70%;
+  height:100%;
+
+    overflow: hidden;
+  position: absolute;
+  top:0%;
+  left:1.5%;
+  z-index: -100;
+}
+
+#partialDiv
+{
+    background-image: url(../icons/flights.png);
+      background-repeat: no-repeat;
+  width:40%;
+  height:20%;
+  position: fixed;
+  top:40%;
+  left:8%;
+}
+#partialDiv2
+{
+  background-image: url(../images/pw.png);
+  background-repeat: no-repeat;
+
+  width:50%;
+  height:30%;
+  position: fixed;
+ 
+   top:60%;
+  left:8%;
+
+}
+#partialDiv3
+{
+background-image: url(../images/paymentBig.png);
+  background-repeat: no-repeat;
+  width:40%;
+  height:20%;
+  position: fixed;
+  top:79%;
+  left:4%;
+
+}
