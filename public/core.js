@@ -30,11 +30,7 @@ app.config(function($routeProvider) {
             templateUrl : '/partials/contactUs.html',
             controller  : 'ContactUsController'
         })
-        .when('/confirm', {
-            templateUrl : '/partials/confirmation.html',
-            controller  : 'confirmationCtrl'
-        })
-        .when('/team', {
+           .when('/team', {
             templateUrl : '/partials/team.html',
             controller  : 'TeamController'
         });

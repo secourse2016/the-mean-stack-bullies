@@ -85,7 +85,11 @@ Db.seed(mongoose.model('Airport'),require('../airports.json'),function(){
                     Db.seed(mongoose.model('Booking'),require('../bookings.json'),function(){
 
                         Db.seed(mongoose.model('Payment'),require('../payments.json'),function(){
-                            cb();
+
+                            Db.seed(mongoose.model('Person'),require('../persons.json'),function(){
+
+                                cb();
+                            });    
 
                         });
                     });
