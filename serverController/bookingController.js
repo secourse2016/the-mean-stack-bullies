@@ -25,7 +25,7 @@ exports.comapreFlights = function(formdata2, cb){
                   console.log(err);
               } 
               else{  
-              	   console.log("PPAAASSED ONE TRIP");
+              	   console.log("out flights ->"+flights);
                   
 
                }
@@ -40,7 +40,6 @@ exports.comapreFlights = function(formdata2, cb){
                 destination:formdata2.To,
                 origin :formdata2.from,
                 departureDateTime :formdata2.DepartureDate, 
-                 
                 };  
                
            checkForFlights(formdata2,formdata,'outFlight', function(err,outFlights){ 
@@ -49,7 +48,7 @@ exports.comapreFlights = function(formdata2, cb){
                } 
 
                else{ 
-                       console.log("IN ELSE PART");
+                   console.log("out flights ->"+outFlights);
                              var formdata = {
                               destination:formdata2.from,
                               origin :formdata2.To,
@@ -57,12 +56,12 @@ exports.comapreFlights = function(formdata2, cb){
                                
                               }; 
                               console.log(formdata) 
-                              console.log("NUMBERR OFF" + formdata.NumberOfChildren);
+                              // console.log("NUMBERR OFF" + formdata.NumberOfChildren);
                                checkForFlights(formdata2,formdata,'inFlight' ,function(err,inFlights){ 
                                    if(err){ 
                                       console.log(err);
                                    } else{
-                                       console.log(flights2);
+                                       console.log("in flights ->"+inFlights);
                                        cb(err,outFlight,inFlights);
                                    }
                                  });
@@ -76,10 +75,10 @@ exports.comapreFlights = function(formdata2, cb){
 
 
 
-checkForFlights = function(formdata2,formdata,collectionName,cb){   
-     console.log("INN CHECKKK YO");
-     console.log(">>>>>>>> formdata" + formdata); 
-     console.log(">>>>>>> formdata2" + formdata2);
+function checkForFlights (formdata2,formdata,collectionName,cb){   
+     // console.log("INN CHECKKK YO");
+     // console.log(">>>>>>>> formdata" + formdata); 
+     // console.log(">>>>>>> formdata2" + formdata2);
     var aiatFrom = formdata.origin; 
 
     var origin = aiatFrom.substring(aiatFrom.length-4,aiatFrom.length-1); 
@@ -88,7 +87,7 @@ checkForFlights = function(formdata2,formdata,collectionName,cb){
     var destination= aiatTo.substring(aiatTo.length-4,aiatTo.length-1); 
 
  
-      console.log("INN CHECKKK" +formdata2)
+      // console.log("INN CHECKKK" +formdata2)
  
   var FlightModel = mongoose.model(collectionName);
   var query = FlightModel.find(formdata); 
@@ -121,7 +120,7 @@ checkForFlights = function(formdata2,formdata,collectionName,cb){
            } 
            else{ 
 
-              console.log("HEEERERERE" + booking);
+              // console.log("HEEERERERE" + booking);
             
            }
            cb(err,docs);
@@ -133,21 +132,21 @@ checkForFlights = function(formdata2,formdata,collectionName,cb){
 
 } 
 
-insertBooking = function(booking, cb){ 
+// insertBooking = function(booking, cb){ 
 
     
- var BookingModel = mongoose.model('Booking');
-  var newbooking = new BookingModel(booking); 
-      console.log("here4"+newbooking);
-  newbooking.save(function(err, booking){ 
-      if(err){ 
-         cb(err,null);
-      } 
-      else{ 
-         console.log("here3"+booking);
-         cb(null,booking); 
-       }
-   });
+//  var BookingModel = mongoose.model('Booking');
+//   var newbooking = new BookingModel(booking); 
+//       console.log("here4"+newbooking);
+//   newbooking.save(function(err, booking){ 
+//       if(err){ 
+//          cb(err,null);
+//       } 
+//       else{ 
+//          console.log("here3"+booking);
+//          cb(null,booking); 
+//        }
+//    });
 
 
 }

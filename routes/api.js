@@ -65,10 +65,25 @@ var router = express.Router();
 
                     next();
                    }
-                });
-            
-            
+                });     
           });
+
+                    /**
+                     * validating of payment middleware.
+                     */
+              router.post('/api/insertpayment', function(req, res,next) {
+                 
+                paymentValidation.validatePayment(req.body.payment[0],function(errmessage){
+                   if(errmessage){
+                    res.send(errmessage);
+                   }else{
+
+                    next();
+                   }
+                });
+  
+  
+});
 
 
 /*
@@ -79,22 +94,7 @@ var router = express.Router();
 | These routes are related to the Payments.
 |
 */
-    /**
-     * validating of payment middleware.
-     */
-    router.post('/api/insertpayment', function(req, res,next) {
-       
-      paymentValidation.validatePayment(req.body.payment[0],function(errmessage){
-         if(errmessage){
-          res.send(errmessage);
-         }else{
 
-          next();
-         }
-      });
-  
-  
-});
     /**
      * Inserting payment route.
      */
@@ -106,29 +106,26 @@ var router = express.Router();
 	
   
 }); 
+/*
+|==========================================================================
+| Booking Routes
+|==========================================================================
+|
+| These routes are related to the Booking.
+|
+*/
 
+    /**
+     * Inserting Booking route.
+     */
  
 router.post('/api/booking', function(req,res){  
          console.log("in route");
         bookControl.comapreFlights(req.body.booking[0],function(){ 
                res.send("booking added");
         }); 
-  
-    
-    
 
 });
-
-              /**
-               * Inserting payment route.
-               */
-            router.post('/api/insertpayment', function(req, res) {
-            			paymentController.addPaymentIntoDatabase(req.body.payment[0],function(){
-            				res.send('payment added to the database');
-            			});
-            	
-              
-            });
 
 
 
