@@ -9,7 +9,8 @@
   },
   "author": "The MEAN Stack Bullies",
   "license": "ISC",
-  "dependencies": {
+  "dependencies": { 
+    "dateformat":"*",
     "bcrypt": "^0.8.5",
     "body-parser": "~1.13.2",
     "chai": "^3.5.0",

@@ -1,4 +1,4 @@
-app.controller('bookingCtrl', function($scope, $location,airportSrv,FlightsSrv) {
+app.controller('bookingCtrl', function($scope, $location,airportSrv,FlightsSrv,bookingSrv) {
 
     
   $scope.date= new Date();
@@ -31,15 +31,35 @@ app.controller('bookingCtrl', function($scope, $location,airportSrv,FlightsSrv) 
   $scope.showReturnedDate=function(){
     $scope.hidedate=true;
   }
-  $scope.bookFlight=function(){
+  $scope.bookFlight=function(){   
+
+     console.log($scope.depDate);
+    /*form data is retrieved here*/ 
+     var data = [{  
+    
+    trip: $scope.trippp,
+    from: $scope.selectedOrigin,
+    To: $scope.selectedDestination,
+    DepartureDate: $scope.depDate, 
+    ReturnDate: $scope.retDate,
+    NumberOfAdults: $scope.adultsss,
+    NumberOfChildren: $scope.children,
+    Class: $scope.tclass,
+    Email:$scope.email
+
+    }];  
+
+  
+    console.log(data);
+    /*form data is passed to the bookin service*/ 
+   bookingSrv.insertbooking(data);  
+
     $location.url('/book');
   }
 
   $scope.bookButton=function(){
 
   $scope.click5();
-
-  
  
   }
   $scope.filterTableDate=function(){

@@ -1,4 +1,5 @@
-app.factory('paySrv', function ($http) {
+app.factory('paySrv', function ($http) { 
+  
      return {
          insertPayment : function(pa) {
           var req = {

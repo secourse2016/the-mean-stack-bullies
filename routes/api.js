@@ -1,4 +1,8 @@
 var express = require('express');
+
+var bookControl = require('../serverController/bookingController.js');
+var paymentController= require('../serverController/paymentController.js');
+var paymentValidation= require('../Validations/paymentValidation.js'); 
      /**
        * requiring server controllers.
        */
@@ -14,6 +18,7 @@ var personController= require('../serverController/personController.js');
 var personValidation= require('../Validations/personValidation.js');
 
 var flightControl =  require('../serverController/flightController.js');
+
 
 var router = express.Router();
 
@@ -74,6 +79,45 @@ var router = express.Router();
 | These routes are related to the Payments.
 |
 */
+    /**
+     * validating of payment middleware.
+     */
+    router.post('/api/insertpayment', function(req, res,next) {
+       
+      paymentValidation.validatePayment(req.body.payment[0],function(errmessage){
+         if(errmessage){
+          res.send(errmessage);
+         }else{
+
+          next();
+         }
+      });
+  
+  
+});
+    /**
+     * Inserting payment route.
+     */
+    router.post('/api/insertpayment', function(req, res){
+           
+			paymentController.addPaymentIntoDatabase(req.body.payment[0],function(){
+				res.send('payment added to the database');
+			});
+	
+  
+}); 
+
+ 
+router.post('/api/booking', function(req,res){  
+         console.log("in route");
+        bookControl.comapreFlights(req.body.booking[0],function(){ 
+               res.send("booking added");
+        }); 
+  
+    
+    
+
+});
 
               /**
                * Inserting payment route.
@@ -182,6 +226,7 @@ var router = express.Router();
               
             });
    
+
 
 
 module.exports = router;

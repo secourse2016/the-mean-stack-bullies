@@ -5,9 +5,9 @@
                   <h1>Book a flight!</h1>
                   <div>
                     <div class="col-xs-2">
-                      <input type="radio" name="oneRound" value="round" ng-click="hideReturnedDate()">Round Trip </input>
+                      <input ng-model="trippp" type="radio" name="oneRound" value="round" ng-click="hideReturnedDate()">Round Trip </input>
                     </div>
-                    <input type="radio" name="oneRound" value="one" ng-click="showReturnedDate()">One Way</input>
+                    <input ng-model="trippp" type="radio" name="oneRound" value="one" ng-click="showReturnedDate()">One Way</input>
                   </div>
 
 
@@ -27,12 +27,12 @@
 
                     <div >
                       <label>Departure Date</label>
-                      <input type="date" class="form-control"  name="name" placeholder="Departure Date">
+                      <input ng-model = "depDate" type="date" class="form-control"  name="name" placeholder="Departure Date">
                     </div>
 
                     <div >
-                      <label></label>
-                      <select class="form-control">
+                      <label>Adults</label>
+                      <select ng-model="adultsss"class="form-control">
                         <option>1 Adult</option>
                         <option>2 Adults</option>
                         <option>3 Adults</option>
@@ -46,7 +46,7 @@
 
                     <div>
                       <label>Class</label>
-                      <select class="form-control">
+                      <select ng-model="tclass" class="form-control">
                         <option>Economy</option>
                         <option>Bussines</option>
                         <option>First</option>
@@ -82,7 +82,7 @@
 
                     <div ng-hide="hidedate">  
                       <label>Return Date</label>
-                      <input type="date" class="form-control" name="name" placeholder="Departure Date">
+                      <input ng-model="retDate" type="date" class="form-control" name="name" placeholder="Departure Date">
                     </div>  
 
                     <div ng-hide="!hidedate"> 
@@ -104,8 +104,8 @@
 
 
                     <div>
-                      <label></label>
-                      <select class="form-control">
+                      <label>Children</label>
+                      <select ng-model="children"class="form-control">
                         <option>0 Child (2-11 years)</option>
                         <option>1 Child</option>
                         <option>2 Children</option>
@@ -122,7 +122,7 @@
 
                     <div >
                       <label>Email</label>
-                      <input type="email" class="form-control">
+                      <input ng-model="email" type="email" class="form-control">
                     </div>  
 
 
