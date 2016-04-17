@@ -32,11 +32,6 @@ app.controller('paymentCtrl', function($scope, $location,paySrv) {
            isvalid =false;
           }
 
-         if($scope.expiryday== null){
-           errMessage+="please choose choose expiry day \n";
-           isvalid =false;
-         }
-
          if(isvalid == true){
           errMessage = null;
          }
