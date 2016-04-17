@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 app.factory('ConfirmationSrv', function($http){ 
 
 console.log("in facto");
@@ -52,6 +53,10 @@ console.log("in facto");
 
 
 // return{ 
+=======
+App.factory('ConfirmationSrv', function(){ 
+return{ 
+>>>>>>> 35ae6aa0f77b25052c129a0e7fac6787105dfb6a
    
 //    getReservation : function(){ 
      

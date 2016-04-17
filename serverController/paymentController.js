@@ -14,5 +14,5 @@ exports.addPaymentIntoDatabase =function(payment,cb){
         console.log("lo");
          cb(payment);
       });
-	console.log("ereeee");
+	console.log("hereeee");
 }

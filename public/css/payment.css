@@ -11,8 +11,7 @@
   margin-left: 36%;
 }
 
-
-
+6
 #mc{
   padding-left: 20%;
 }
@@ -20,10 +19,11 @@
 #mainPay{
   background-color: rgb(235,235,235);
   box-shadow: 10px 10px 5px #888888;
-  margin: 0 auto;
+  margin-top: 8.65%;
+  margin-left: 30%;
   min-height:100%;
   height:auto;
-  width:60%;
+  width:65%;
   text-align:center;
   min-height:100%;
   color:rgb(17,37,60);
@@ -180,3 +180,15 @@ input.radio:checked ~ label {
 .syear{
   width:88px;
 }
+
+
+.header {
+ /*margin-top:-2%;*/
+ margin-top:-2%;
+ height:100%;
+  background: rgb(17,37,60);
+  color:white;
+  padding-bottom: 9%;
+}
+
+
