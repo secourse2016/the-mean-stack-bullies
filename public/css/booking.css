@@ -21,18 +21,33 @@
   color:white;
   height:100%;
   padding-left:15%;
+<<<<<<< HEAD
   padding-bottom:5.8%;
+=======
+  padding-bottom:1.78%;
+>>>>>>> b49124efd31e8a37bf4ed2ab8cdbb63150534eb6
   font-family: 'Open Sans Condensed', arial, sans;
   border-radius: 5px;
 
 }
+<<<<<<< HEAD
 
 body {
 	background:rgb(221,233,237);
+=======
+.headertitle h2 
+{
+  
+  margin-top:1%;
+}
+body {
+  background:rgb(221,233,237);
+>>>>>>> b49124efd31e8a37bf4ed2ab8cdbb63150534eb6
 }
 
 #fixAnimation
 {
+<<<<<<< HEAD
   width:80%;
   height:100%;
 
@@ -40,6 +55,16 @@ body {
   position: absolute;
   top:0%;
   left:1.5%;
+=======
+  width:70%;
+  height:100%;
+
+    overflow: hidden;
+  position: absolute;
+  top:0%;
+  left:1.5%;
+  z-index: -100;
+>>>>>>> b49124efd31e8a37bf4ed2ab8cdbb63150534eb6
 }
 
 #partialDiv
@@ -76,3 +101,7 @@ background-image: url(../icons/payment.png);
   left:8%;
 
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> b49124efd31e8a37bf4ed2ab8cdbb63150534eb6

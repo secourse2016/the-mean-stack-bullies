@@ -21,21 +21,30 @@ margin-bottom: 40px;
 	background-repeat: no-repeat;
 	background-position: center bottom, center bottom;
 	background-attachment: scroll;
+<<<<<<< HEAD
 	margin-bottom: 10px;
 	margin-left:10px;
 	margin-right: 10px;
+=======
+>>>>>>> b49124efd31e8a37bf4ed2ab8cdbb63150534eb6
 
 }
 
 .offers .offer1 h2{
 	/*margin:5px 0 15px;*/
 	margin-top: 0px;
+<<<<<<< HEAD
 	color:black;
 	
+=======
+	color:white;
+	font-weight: bold;
+>>>>>>> b49124efd31e8a37bf4ed2ab8cdbb63150534eb6
 }
 .offers .offer1 p {
 	font-size: 25px;
 	font-weight:bold;
+<<<<<<< HEAD
 	color:info;
 	margin-top: 60px;
 	width:100px;
@@ -54,6 +63,16 @@ margin-bottom: 40px;
 }
 .offers .offer1 a{
 	
+=======
+	color:grey;
+	margin-top: 60px;
+
+
+}
+
+.offers .offer1 a{
+	margin-top: 60px;
+>>>>>>> b49124efd31e8a37bf4ed2ab8cdbb63150534eb6
 	margin-bottom:5px;
 
 }
@@ -71,21 +90,30 @@ margin-bottom: 40px;
 	background-size: 100% 100%;
 	background-position: 20% 20%;
 	background-attachment: scroll;
+<<<<<<< HEAD
 	margin-bottom: 10px;
 	margin-right: 10px;
 	margin-left: 10px;
+=======
+	
+>>>>>>> b49124efd31e8a37bf4ed2ab8cdbb63150534eb6
 
 
 }
 .offers .offer2 h2{
 	margin:5px 0px 15px;
 	margin-top: 0px;
+<<<<<<< HEAD
 	color:black;
 	
+=======
+	color:grey;
+>>>>>>> b49124efd31e8a37bf4ed2ab8cdbb63150534eb6
 }
 .offers .offer2 p {
 	font-size: 25px;
 	font-weight:bold;
+<<<<<<< HEAD
 	color:info;
 	margin-top: 60px;
 	width:100px;
@@ -108,15 +136,33 @@ margin-bottom: 40px;
 
 .offers .offer3{
 	background:url(../images/THF1.jpg)  ;
+=======
+	color:grey;
+	margin-top: 60px;
+}
+
+.offers .offer2 a{
+	margin-top: 90px;
+	margin-bottom:5px;
+}
+
+.offers .offer3{
+	background-image:url(../images/THF1.jpg)  ;
+>>>>>>> b49124efd31e8a37bf4ed2ab8cdbb63150534eb6
 	margin-top: 0.5px;
 	margin-left: 9%;
 	padding:10px;
 width:350px;
+<<<<<<< HEAD
+=======
+
+>>>>>>> b49124efd31e8a37bf4ed2ab8cdbb63150534eb6
 	border:none;
 	height: 300px;
 	background-repeat: no-repeat;
 	background-position: center bottom, center bottom;
 	background-attachment: scroll;
+<<<<<<< HEAD
 	margin-left:10px;
     margin-right: 10px;
 }
@@ -149,10 +195,32 @@ width:350px;
 }
 .offers .offer4{
 	background:url(../images/AHN1.jpg)  ;
+=======
+}
+.offers .offer3 h2{
+	margin:5px 0 15px;
+	margin-top: 0px;
+	color:grey;
+}
+.offers .offer3 p {
+	font-size: 25px;
+	font-weight:bold;
+	color:grey;
+	margin-top: 60px;
+}
+
+.offers .offer3 a{
+	margin-top: 90px;
+	margin-bottom:5px;
+}
+.offers .offer4{
+	background-image:url(../images/AHN1.jpg)  ;*/
+>>>>>>> b49124efd31e8a37bf4ed2ab8cdbb63150534eb6
 	padding:10px;
 	margin-top: -20px;
 	margin-left: 15%;
 	border:none;
+<<<<<<< HEAD
 	height: 325px;
 	background-repeat: no-repeat;
 	background-position: center bottom, center bottom;
@@ -165,10 +233,22 @@ width:350px;
 	margin-top: 30px;
 	color:black;
 	
+=======
+	height: 300px;
+	background-repeat: no-repeat;
+	background-position: center bottom, center bottom;
+	background-attachment: scroll;
+}
+.offers .offer4 h2{
+	margin:5px 0 15px;
+	margin-top: 20px;
+	color:grey;
+>>>>>>> b49124efd31e8a37bf4ed2ab8cdbb63150534eb6
 }
 .offers .offer4 p {
 	font-size: 25px;
 	font-weight:bold;
+<<<<<<< HEAD
 	
 	margin-top: 60px;
 	width:100px;
@@ -188,6 +268,16 @@ width:350px;
 	color:black;
 	font-size:20px; 
 }
+=======
+	color:grey;
+	margin-top: 60px;
+}
+
+.offers .offer4 a{
+	margin-top: 90px;
+	margin-bottom:5px;
+}
+>>>>>>> b49124efd31e8a37bf4ed2ab8cdbb63150534eb6
 
 #offer2Text
 {

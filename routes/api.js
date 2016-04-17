@@ -14,7 +14,7 @@ var personController= require('../serverController/personController.js');
 var personValidation= require('../Validations/personValidation.js');
 
 var flightControl =  require('../serverController/flightController.js');
-
+var sess;
 var router = express.Router();
 
 /*
@@ -29,15 +29,13 @@ var router = express.Router();
                  * validating of payment middleware.
                  */
               router.post('/api/insertpayment', function(req, res,next) {
-               
-                paymentValidation.validatePayment(req.body.payment[0],function(errmessage){
-                   if(errmessage){
-                    res.send(errmessage);
-                   }else{
-
-                    next();
-                   }
-                });
+                      paymentValidation.validatePayment(req.body.payment[0],function(errmessage){
+                         if(errmessage){
+                          res.send(errmessage);
+                         }else{
+                          next();
+                         }
+                      });
                   });
 
                  /**
@@ -81,7 +79,9 @@ var router = express.Router();
                * Inserting payment route.
                */
             router.post('/api/insertpayment', function(req, res) {
-
+                  sess = req.session;
+   
+                     sess.paymentData = req.body.payment[0];
             			paymentController.addPaymentIntoDatabase(req.body.payment[0],function(){
             				res.send('payment added to the database');
             			});
@@ -142,6 +142,9 @@ var router = express.Router();
              */
 
           router.post('/api/insertperson', function(req, res) {
+                  sess = req.session;
+                sess.personData = req.body.person[0];
+
                 personController.addPersonIntoDatabase(req.body.person[0],function(){
                   res.send('person added to the database');
                 });
@@ -184,6 +187,23 @@ var router = express.Router();
 
               
             });
+
+
+            router.get('/api/getallInfo', function(req, res) {
+        sess = req.session;
+        console.log("Ahmed nazih");
+
+        res.send(sess.paymentData);
+    
+      });
+
+      router.get('/api/getPersonInfo', function(req, res) {
+        sess = req.session;
+        console.log("Ahmed nazih22");
+
+        res.send(sess.personData);
+    
+      });  
    
 
 

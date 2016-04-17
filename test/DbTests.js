@@ -28,7 +28,6 @@ describe("Seeding the Databases for the first time", function() {
 
  		before(function(done){
        	   db.drop(function(){
-     		//	model.seedingFunction();
      		console.log("dropped");
      		  done();
         	 });

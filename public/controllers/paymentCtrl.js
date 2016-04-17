@@ -31,10 +31,7 @@ app.controller('paymentCtrl', function($scope, $location,paySrv) {
            errMessage+="please choose choose expiry month \n";
            isvalid =false;
           }
-         if($scope.expiryday== null){
-           errMessage+="please choose choose expiry day \n";
-           isvalid =false;
-         }
+
          if(isvalid == true){
           errMessage = null;
          }
@@ -45,7 +42,12 @@ app.controller('paymentCtrl', function($scope, $location,paySrv) {
         * payment form submitting function
         */
 		$scope.submitPaymentForm=function() {
+<<<<<<< HEAD
      		var errMessage = paymentValidations();
+=======
+        
+        var errMessage = paymentValidations();
+>>>>>>> b49124efd31e8a37bf4ed2ab8cdbb63150534eb6
         if(errMessage){
           alert(errMessage);
         }
@@ -57,6 +59,7 @@ app.controller('paymentCtrl', function($scope, $location,paySrv) {
           else{
             boolea=false;
           }
+<<<<<<< HEAD
           var date =$scope.expiryday+" "+$scope.expirymonth+" "+$scope.expiryyear;
           console.log(date);
           var pa=[{
@@ -70,4 +73,31 @@ app.controller('paymentCtrl', function($scope, $location,paySrv) {
        		paySrv.insertPayment(pa);
     		}
   		}
+=======
+
+          var date ="01 "+$scope.expirymonth+" "+$scope.expiryyear;
+
+          var pa=[{
+            visa:boolea,
+            MasterCard: (!boolea),
+            CardHolderName: $scope.holderN,
+            CardHolderNo: $scope.CardN,
+            Cvv: $scope.CVV,
+            ExpiryDate: date
+          }];
+
+          paySrv.insertPayment(pa).then(
+               function(result) {
+                     if(result.data=="payment added to the database"){
+                        
+                        $location.url('/confirm');
+                     }
+                     else{
+                      alert(result.data);
+                     }
+                }
+          );
+        }
+      }
+>>>>>>> b49124efd31e8a37bf4ed2ab8cdbb63150534eb6
 });
