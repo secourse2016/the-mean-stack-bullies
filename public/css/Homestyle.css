@@ -4,9 +4,7 @@
 
 html{
   height: 100%;
-  /*background : url(../images/cityNew.jpg) no-repeat center center fixed;
-  background-size: 100% 102%;
-background-position: -80% 10%*/
+  
  
 }
 
@@ -36,7 +34,7 @@ background-position: -80% 10%*/
 
 .bookButton:hover {
      background-color: rgb(17,37,60);
-    color: rgb(152,58,49);
+    color: red;
 }
 
 
@@ -235,7 +233,7 @@ input.radio:hover:not(:checked) ~ label {
 input.radio:checked ~ label:before {
   content:'\2714';
   text-indent: .9em; 
-  color: rgb(152,58,49);
+  color: red;
   background-color: rgb(17,37,60);
 }
 
@@ -372,21 +370,24 @@ background-color: rgba(2,2,2,.56);
 
 .history
 {
-  height:120%;
+  height:100%;
   width:1000%;
   position: relative;
+  top:-6%;
   left:1%;
   overflow: hidden;
+  z-index: -30;
 
 }
 
 
+
 #data2
  {
-  background-color: rgba(2,2,2,0.2);
+  background-color: rgba(2,2,2,0.6);
   width: 100%;
   position: relative;
-  top:-2.5%;
+  top:-3%;
   height:100%;
 
 
@@ -573,7 +574,13 @@ color:#fff;
  .stats
  {
 
-  height:60%;
+  height:90%;
+  background : url(../images/cityNew.jpg) no-repeat center center fixed;
+  background-size: 100% 102%;
+background-position: -80% 10%;
+  position:relative;
+  top:-9.2%;
+
  }
  #data
  {
@@ -609,7 +616,12 @@ color:#ccc;
   font-size: 30px;
 }
 /*End section Statistics*/
-
+.statsDivs span
+{
+  color:#ccc;
+  font-weight: bold;
+  font-size: 30px;
+}
 /*Start section Features*/
 h4
 {
@@ -1030,20 +1042,7 @@ overflow-y: scroll;
         left: 50%;
       }
       
-      .whole{
-      position:relative;
-      color:white;
-      top: 15%;
-      left: 25%;
       
-      border-radius: 20px;
-   
-      padding: 20px; 
-      width: 700px;
-      height: 350px;   
-
-      }
-
     #check{
       position: relative;
       left: -12%;
@@ -1269,11 +1268,11 @@ color:#EEE;
 
 #scrollLeftBtn
 {
-  height:109.6%;
+  height:90.9%;
   width:5%;
   font-size: 50px;
   position: absolute;
-  top:175.5%;
+  top:171.1%;
   background-color:rgb(17,37,60);
   left:-1%;
   border:none;
@@ -1287,11 +1286,11 @@ color:#EEE;
 }
 #scrollRightBtn
 {
-  height:109.6%;
+  height:90.9%;
   width:4%;
   position: absolute;
   font-size: 50px;
-   top:175.5%;
+    top:171.1%;
   left:96%;
   border:none;
   background-color:rgb(17,37,60);
@@ -1307,7 +1306,7 @@ color:#EEE;
 .footer{
     background-color: rgb(17,37,60);
     color:white;
-    height:60%;
+    height:40%;
     text-align: right;
     padding-top: 100px;
 }
