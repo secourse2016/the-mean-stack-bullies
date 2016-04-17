@@ -4,24 +4,23 @@
 
 
 <div id="mainPay" class="wow fadeInUpBig">
-
+  <div class="header">
+      <br>
+      <h2 >Payment </h2>
+      
+      </div>
   <form class="form-horizontal" role="form" name="myForm"  novalidate>
+
 
     <div id="check" class="radiobuttons">
 
-      <br>
-      <br>
-      <br>
-      <br>
-
-      <h1 class="payhead">Payment: </h1>
-
+     
 
       <input type="radio" name="oneRound" ng-model="radioButton" id="visa" value="visa" class="radio" ng-show="false"/>
-      <label for=visa>Visa</label>
+      <label for=visa class="rlabel">Visa</label>
       <div id="mc">
       <input type="radio" name="oneRound" ng-model="radioButton" value="masterCard" id="mastercard" class="radio" ng-show="false"/>
-      <label for="mastercard">MasterCard</label>
+      <label class="rlabel" for="mastercard">MasterCard</label>
     </div>
 
       <br>
@@ -34,57 +33,24 @@
     <br>
     <br>
     <div class="inputp">
-      <div class="plabel">
+      <div class="plabel" id="cardholder">
         <label class="plabel">Cardholder Name:</label>
         <input type="text" class="ilook" placeholder="Card Name" name="holderName" ng-model="holderN" required>
       </div>
-      <br>
-      <div class="plabel">
+      
+      <div class="plabel" id="cardnumber">
         <label class="plabel">Card Number:</label>
         <input type="number" class="ilook"  placeholder="Enter card number" name="CardNumber" ng-model="CardN" required>
       </div>
-      <br>
-      <div class="plabel">
+      
+      <div class="plabel" id="CVV">
         <label class="plabel">CVV:</label>
         <input type="number"  class="ilook" placeholder="Only 3 digits" name="CVV" ng-model="CVV" required>
       </div>
-      <br>
-      <div class="plabel">
+      
+      <div class="plabel" id="expiry">
         <label class="side" style="color:rgb(17,37,60);"> Expiry Date:  </label>
 
-        <select  class="styled-select sdate"  ng-model="expiryday" placeholder="Departure Date">
-          <option>01</option>
-          <option>02</option>
-          <option>03</option>
-          <option>04</option>
-          <option>05</option>
-          <option>06</option>
-          <option>07</option>
-          <option>08</option>
-          <option>09</option>
-          <option>10</option>
-          <option>11</option>
-          <option>12</option>
-          <option>13</option>
-          <option>14</option>
-          <option>15</option>
-          <option>16</option>
-          <option>17</option>
-          <option>18</option>
-          <option>19</option>
-          <option>20</option>
-          <option>21</option>
-          <option>22</option>
-          <option>23</option>
-          <option>24</option>
-          <option>25</option>
-          <option>26</option>
-          <option>27</option>
-          <option>28</option>
-          <option>29</option>
-          <option>30</option>
-          <option>31</option>
-        </select>
 
         <select class="styled-select smonth" id="expiryDate"   ng-model="expirymonth" placeholder="Departure Date" >
           <option>JAN</option>
@@ -101,7 +67,7 @@
           <option>DEC</option>
         </select>
 
-        <select   class="styled-select syear" ng-model="expiryyear" placeholder="Departure Date">
+        <select   class="styled-select syear" id="exyear" ng-model="expiryyear" placeholder="Departure Date">
           <option>2016</option>
           <option>2017</option>
           <option>2018</option>
@@ -123,7 +89,7 @@
       <br>
 
 
-          <button  ng-click="submitPaymentForm()" class="payButton" type="button" >Pay</button>
+          <button  id="paybutton" ng-click="submitPaymentForm()" class="payButton" type="button" >Pay</button>
 
 
 

@@ -31,10 +31,12 @@ app.controller('paymentCtrl', function($scope, $location,paySrv) {
            errMessage+="please choose choose expiry month \n";
            isvalid =false;
           }
+
          if($scope.expiryday== null){
            errMessage+="please choose choose expiry day \n";
            isvalid =false;
          }
+
          if(isvalid == true){
           errMessage = null;
          }
@@ -58,7 +60,9 @@ app.controller('paymentCtrl', function($scope, $location,paySrv) {
           else{
             boolea=false;
           }
-          var date =$scope.expiryday+" "+$scope.expirymonth+" "+$scope.expiryyear;
+
+          var date ="01 "+$scope.expirymonth+" "+$scope.expiryyear;
+
           var pa=[{
             visa:boolea,
             MasterCard: (!boolea),

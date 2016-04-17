@@ -12,7 +12,9 @@ app.controller('ContactUsController',function($scope,contactUsSrv,$location){
               if(err){
                  console.log(err);
               }else{
+
                 $location.url('/');
+
               }
 		});
 	}
