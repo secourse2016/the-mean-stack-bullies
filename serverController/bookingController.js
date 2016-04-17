@@ -4,25 +4,29 @@ var moment = require('moment');
 
 
 
-exports.comapreFlights = function(formdata2, cb){
+exports.comapreFlights = function(formdata2, cb){ 
+          console.log(formdata2.trip);
+      console.log("Im in comapreFlights"); 
 
-      if(formdata.trip == "one"){ 
+      if(formdata2.trip == "one"){  
+           console.log("IMM IN ONE TRIIP");
 
-                       var formdata = {
+          var formdata = {
               destination:formdata2.To,
               origin :formdata2.from,
-              departureDateTime :formdata2.DepartureDate, 
+              departureDateTime :formdata2.DepartureDate
                
-              };
+              }; 
+            
              
-      	 compareOnewayFlights(formdata2,formdata,'outFlight',function(err,flights){ 
+      	 checkForFlights(formdata2,formdata,'outFlight',function(err,flights){ 
               if(err) { 
                
                   console.log(err);
               } 
               else{  
-              	  
-                  console.log(found);
+              	   console.log("PPAAASSED ONE TRIP");
+                  
 
                }
                cb(err,flights);
@@ -30,27 +34,31 @@ exports.comapreFlights = function(formdata2, cb){
 
       	} 
 
-      	if(formdata.trip=="round"){ 
-                           var formdata = {
+      	if(formdata2.trip=="round"){  
+          console.log("IM IN ROUND TRIP");
+                var formdata = {
                 destination:formdata2.To,
                 origin :formdata2.from,
                 departureDateTime :formdata2.DepartureDate, 
                  
-                };
-           comapreRoundtripFlights(formdata2,formdata,'outFlight', function(err,outFlights){ 
+                };  
+               
+           checkForFlights(formdata2,formdata,'outFlight', function(err,outFlights){ 
                if(err){ 
                   console.log(err);
                } 
 
                else{ 
-                  console.log(flights1);
-                               var formdata = {
+                       console.log("IN ELSE PART");
+                             var formdata = {
                               destination:formdata2.from,
                               origin :formdata2.To,
                               departureDateTime :formdata2.ReturnDate, 
                                
-                              };
-                               comapreRoundtripFlights(formdata2,formdata,'inFlight' ,function(err,inFlights){ 
+                              }; 
+                              console.log(formdata) 
+                              console.log("NUMBERR OFF" + formdata.NumberOfChildren);
+                               checkForFlights(formdata2,formdata,'inFlight' ,function(err,inFlights){ 
                                    if(err){ 
                                       console.log(err);
                                    } else{
@@ -61,43 +69,42 @@ exports.comapreFlights = function(formdata2, cb){
 
                                    }
            });
-      	}
+      	 }
 
-}
-
-
+} 
 
 
-exports.compareOnewayFlights = function(formdata2,formdata,collectionName,cb){  
-       console.log(|"in the target function");
 
 
+checkForFlights = function(formdata2,formdata,collectionName,cb){   
+     console.log("INN CHECKKK YO");
+     console.log(">>>>>>>> formdata" + formdata); 
+     console.log(">>>>>>> formdata2" + formdata2);
     var aiatFrom = formdata.origin; 
-    
-      
 
-   var origin = aiatFrom.substring(aiatFrom.length-4,aiatFrom.length-1); 
-       console.log(origin);
+    var origin = aiatFrom.substring(aiatFrom.length-4,aiatFrom.length-1); 
+    
     var aiatTo = formdata.destination;
     var destination= aiatTo.substring(aiatTo.length-4,aiatTo.length-1); 
-      console.log(destination);
+
  
+      console.log("INN CHECKKK" +formdata2)
+ 
+  var FlightModel = mongoose.model(collectionName);
+  var query = FlightModel.find(formdata); 
 
-
-var FlightModel = mongoose.model('outFlight');
-var query = FlightModel.find(formdata);
   query.where('destination',destination);
   query.where('origin',origin);
 
   var x = new Date(formdata.departureDateTime);
   x.setMinutes(0);
-  x.setHours(0);
+  x.setHours(0); 
+
   var y = new Date(formdata.departureDateTime);
   y.setMinutes(59);
   y.setHours(23);
-  console.log("here"+y);
-  query.where('departureDateTime',{"$gte":x, "$lte": y});  
 
+  query.where('departureDateTime',{"$gte":x, "$lte": y});  
   query.where('seats',{"$gt":0});
 
   query.exec(function (err, docs) {
@@ -107,7 +114,7 @@ var query = FlightModel.find(formdata);
     }else{
         formdata2.NumberOfChildren = Number(formdata2.NumberOfChildren[0]); 
         formdata2.NumberOfAdults = Number(formdata2.NumberOfAdults[0]);
-        console.log(docs); 
+  
         insertBooking(formdata2, function(err, booking){ 
            if(err){ 
             console.log(err);
@@ -123,12 +130,6 @@ var query = FlightModel.find(formdata);
     }
 });
       
-
-} 
-exports.comapreRoundtripFlights = function(formdata, cb){  
-     
-
-
 
 } 
 
@@ -150,4 +151,3 @@ insertBooking = function(booking, cb){
 
 
 }
-

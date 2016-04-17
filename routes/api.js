@@ -112,7 +112,7 @@ var router = express.Router();
  
 router.post('/api/booking', function(req,res){  
          console.log("in route");
-        bookControl.compareOnewayFlights(req.body.booking[0],function(){ 
+        bookControl.comapreFlights(req.body.booking[0],function(){ 
                res.send("booking added");
         }); 
   

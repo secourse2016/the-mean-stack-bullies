@@ -16,17 +16,9 @@ app.factory('bookingSrv',function ($http){
        console.log("in service");
 
        return $http(req);
-
-
     } 
 
-
-
-
   }  
-
-   console.log("jwdajkgwahw"); 
-
    
 
 });
