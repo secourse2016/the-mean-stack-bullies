@@ -135,6 +135,8 @@ router.post('/api/booking', function(req,res){
                           outFlights:outFlights,
                           inFlights:inFlights
                         };
+                        sess = req.session;
+                        sess.flightData = returnedjson;
                        res.json(returnedjson);
                      }
                            
@@ -197,7 +199,7 @@ router.post('/api/booking', function(req,res){
 
           router.post('/api/insertperson', function(req, res) {
                   sess = req.session;
-                sess.personData = req.body.person[0];
+                  sess.personData = req.body.person[0];
 
                 // personController.addPersonIntoDatabase(req.body.person[0],function(){
                   res.send('person added to the session');
@@ -219,36 +221,60 @@ router.post('/api/booking', function(req,res){
              */
 
   
-        router.get('/api/getFlight/:origin/:dest/:departureTime', function(req, res) {
+        // router.get('/api/getFlight/:origin/:dest/:departureTime', function(req, res) {
 
-            router.post('/api/insertperson', function(req, res) {
-                  personController.addPersonIntoDatabase(req.body.person[0],function(){
-                    res.send('person added to the database');
-                  });
-            });       
+        //     router.post('/api/insertperson', function(req, res) {
+        //           personController.addPersonIntoDatabase(req.body.person[0],function(){
+        //             res.send('person added to the database');
+        //           });
+        //     });       
 
 
-              var flightData = [
-              { 
-              destination:req.params.dest,
-              origin :req.params.origin,
-              departureDateTime :req.params.departureTime
-              }];
+        //       var flightData = [
+        //       { 
+        //       destination:req.params.dest,
+        //       origin :req.params.origin,
+        //       departureDateTime :req.params.departureTime
+        //       }];
 
-              flightControl.searchFlights(flightData,function(returnedFlights){
-                res.json(returnedFlights);
-               });
+        //       flightControl.searchFlights(flightData,function(returnedFlights){
+        //         res.json(returnedFlights);
+        //        });
 
           
-        });
+        // });
 
+            /**
+             * get Flights route.
+             */
+           router.get('/api/flights',function(req,res){
+              sess = req.session;
+              res.send(sess.flightData);
+           });      
+ 
+/*
+|==========================================================================
+| Cancel Reservation Routes
+|==========================================================================
+|
+| These routes are related to the Reservation.
+  |
+  */
+     
+            /**
+             * get Reservations route.
+             */
        router.get('/api/getReservation/:refNum', function(req, res) {
               manageController.searchBookings (req.params.refNum,function(returnedRes,returnedBooking){
                
 
                   res.json( {reservation : returnedRes[0],booking:returnedBooking[0]});
                });
-        });
+        });       
+            
+            /**
+             * get Reservations route.
+             */
         router.post('/api/cancelReservation', function(req, res) {
               manageController.cancelReservation (req.body.refNum,function(){
                   
