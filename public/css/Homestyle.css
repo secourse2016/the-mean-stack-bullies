@@ -698,7 +698,10 @@ background-color: rgb(0, 33, 71);
   
   
 }
-
+#bookingForm::-webkit-scrollbar {
+    width: 10px;  /* remove scrollbar space */
+    background: rgb(221,233,237);  /* optional: just make scrollbar invisible */
+}
 #bookingForm
 {
   
@@ -707,9 +710,10 @@ background-color: rgb(0, 33, 71);
   width: 130%;
   height: 1100%;
   border-radius: 9px;
-  color:rgb(17,37,60);
-  overflow:hidden;
-  overflow-y:scroll;
+  color:black;
+  
+  overflow: scroll;
+  overflow-x:hidden; 
   position: absolute;
  
   background: rgb(221,233,237);
@@ -717,6 +721,7 @@ background-color: rgb(0, 33, 71);
   top:-1104%;
   left:2%;
 }
+
 #closeButton
 {
   position:absolute;
@@ -972,7 +977,6 @@ position: relative;
 left:9%;
 top:1%;
 max-height:130%;
-overflow: hidden; 
 padding-bottom: 3%;
 }
 #bookBtn
@@ -1028,7 +1032,6 @@ max-height:100%;
 color:black;
 font-weight: bold;
 
-   
 }
 #table2
 {
@@ -1040,10 +1043,7 @@ font-weight: bold;
 {
   height: 100%;
   width:100%;
-
-
-overflow: hidden;
-overflow-y:scroll;
+overflow-x:hidden; 
 
 
 }
@@ -1365,3 +1365,12 @@ position: relative;
 left:-50%;
 }
 /*End Section Footer*/
+#tag
+{
+
+      resize:none;
+      overflow: hidden;
+    background: rgb(17,37,60); 
+      border-top: 1px solid #eee;
+      color:white;
+  }
