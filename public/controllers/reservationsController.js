@@ -11,7 +11,8 @@ app.controller('reservationsController', function($scope,cancelationReservation)
            choosenReservation = 0;
       	   reservations =  cancelationReservation.getReservation($scope.enteredReferenceNum,function(reservationData)
             {
-                if (resrvationData.length != 0)
+              console.log("data " + reservationData);
+                if (reservationData.length != 0)
                 {
 
                    $scope.reservationExist = true;
