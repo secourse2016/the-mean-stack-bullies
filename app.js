@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 var session = require('express-session');
 var jwt     = require('jsonwebtoken');
 var api = require('./routes/api');
+require('dotenv').config();
 //var authenticate = require('./routes/authenticate');
 
 var app = express();
@@ -35,7 +36,7 @@ console.log(req.headers);
 
       //var jwtSecret = process.env.JWTSECRET;
 
-      var jwtSecret = "a23das013d,wo20emd020dk202m201;1";
+      var jwtSecret =  process.env.JWTSECRET;
      // var jwtSecret = "a23das013d,s;1";
       // Get JWT contents:
       try 
