@@ -17,9 +17,10 @@ exports.insertBookingData = function (booking, cb){
 
 };
 
-exports.insertReservationData = function(flightID,booking_id,cb){
+exports.insertReservationData = function(inFlightID,outFlightID,booking_id,cb){
    var reserve = {
-        flight_id:flightID,
+        inFlight_id:inFlightID,
+        outFlight_id:outFlightID,
         bookingRefNumber:booking_id
    };
 

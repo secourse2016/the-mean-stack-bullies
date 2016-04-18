@@ -24,7 +24,8 @@ var outgoingflightSchema = schema({
 
 
 var reservationSchema = schema({
-    flight_id:String,
+    inFlight_id:String,
+    outFlight_id:String,
     bookingRefNumber:String
 
 });

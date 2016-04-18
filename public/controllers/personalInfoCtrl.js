@@ -50,7 +50,7 @@ app.controller('personalInfoCtrl', function($scope, $location,personalInfoSrv) {
           
           var person=[{
                firstName      : $scope.firstName,
-     		   secondName    : $scope.lastName,
+     		       secondName    : $scope.lastName,
     		   age            : $scope.age,
     		   nationality    : $scope.Nationality,
       		   passportNumber: $scope.passportnum,

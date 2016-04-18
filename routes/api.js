@@ -8,6 +8,7 @@ var paymentValidation= require('../Validations/paymentValidation.js');
      /**
        * requiring server controllers.
        */
+
 var contactUsController= require('../serverController/contactUsServerController.js');
 var saveAllBookingDataController= require('../serverController/saveAllBookingDataController.js');
 var bookControl = require('../serverController/bookingController.js');
@@ -113,6 +114,7 @@ var router = express.Router();
                   sess = req.session;
    
                      sess.paymentData = req.body.payment[0];
+                     console.log("payment data added to session --->"+req.body.payment[0]);
                   // paymentController.addPaymentIntoDatabase(req.body.payment[0],function(){
                     res.send('payment added to the session');
                   // });
@@ -219,7 +221,7 @@ router.post('/api/booking', function(req,res){
           router.post('/api/insertperson', function(req, res) {
                   sess = req.session;
                   sess.personData = req.body.person[0];
-
+                  console.log("person data added to the session");
                 // personController.addPersonIntoDatabase(req.body.person[0],function(){
                   res.send('person added to the session');
                 // });
@@ -269,7 +271,21 @@ router.post('/api/booking', function(req,res){
            router.get('/api/flights',function(req,res){
               sess = req.session;
               res.send(sess.flightData);
-           });      
+           }); 
+
+            /**
+             * insert Flights route.
+             */  
+
+           router.post('/api/insertFlight',function(req,res){
+                  sess = req.session;
+                  sess.flightIDs = req.body.flightsID;
+                  console.log("flight added to session");
+                  console.log("flight id ---->"+ req.body.flightsID.inFlight_id+"   "+req.body.flightsID.ouFlight_id);
+                // personController.addPersonIntoDatabase(req.body.person[0],function(){
+                  res.send('person added to the session');
+
+           });   
  
 /*
 |==========================================================================
@@ -339,7 +355,7 @@ router.post('/api/booking', function(req,res){
         
       });
  
-      router.get('/api/getPersonInfo', function(req, res) {
+      router.get('/api/getPersonInfocomfirmation', function(req, res) {
         sess = req.session;
         res.send(sess.personData);
     
@@ -359,16 +375,33 @@ router.post('/api/booking', function(req,res){
              */
               router.get('/api/completeBookingData', function(req, res) {
                 sess = req.session;
-
+                 console.log("in the completeBookingData route");
                saveAllBookingDataController.insertBookingData(sess.bookingData,function(err,booking){
                         if(err){
                           console.log(err);
                           res.send(err);
                         }else{
                                  console.log("new booking added"+booking);
-                                 //saveAllBookingDataController.insertReservationData(.toString(),booking._id,function(){
+                                 saveAllBookingDataController.insertReservationData(sess.flightIDs.inFlight_id , sess.flightIDs.ouFlight_id , booking._id,function(err, reserve){
+                                       if(err){
+                                        console.log(err);
+                                       }else{
+                                        console.log("new reservation added"+reserve);
+                                        saveAllBookingDataController.insertPersonalInformation(sess.personData,booking._id,function(err,person){
+                                               if(err){
+                                                console.log(err);
+                                               }else{
+                                                console.log("new person added"+person);
+                                            saveAllBookingDataController.insertPaymentInformation(sess.paymentData,booking._id,function(err,payment){
+                                               console.log("new payment added"+payment);
+                                               var message = "Booking is comfirmed";
+                                               res.send(message);
+                                            });    
+                                                }
 
-                                 //});
+                                              });
+                                       }
+                                 });
                         }
                });
              

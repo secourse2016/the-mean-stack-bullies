@@ -6,6 +6,9 @@ console.log("in flight controller");
   $scope.newof2=[];
   $scope.show=false;
   
+  var inFlightID = null ;
+  var outFlightID = null ;
+
    flightSrv.getFlights(function(response){
        if(response.err){
          alert("somthing went wrong please try again");
@@ -44,12 +47,12 @@ console.log("in flight controller");
                $scope.returnedFlights = response.inFlights;
                  $scope.newof2=[];
            
-             var newi=0;
+             var newi=0;  
              for(var ind=0;ind<$scope.returnedFlights.length;ind+=2)
              {
               $scope.newof2[newi]={
-                "e_id":$scope.outgoingFlights[ind]._id,
-                "b_id":$scope.outgoingFlights[ind+1]._id,
+                "e_id":$scope.returnedFlights[ind]._id,
+                "b_id":$scope.returnedFlights[ind+1]._id,
                 "origin":$scope.returnedFlights[ind].origin,
                 "departureDateTime":$scope.returnedFlights[ind].departureDateTime,
                 "ecost":$scope.returnedFlights[ind].cost,
@@ -68,9 +71,38 @@ console.log("in flight controller");
    });
   
   $scope.Book=function()
-  {
-     $location.url('/passenger');
+  {    
+    console.log(inFlightID+"  "+outFlightID);
+       if(!inFlightID && !outFlightID){
+        alert("you have to choose a flight");
+       }else{
+          if(inFlightID && outFlightID){
+            console.log("hereeeee");
+            flightSrv.insertFlight(inFlightID,outFlightID,function(err){
+                if(err){
+                  alert(err);
+                }else{
+                  $location.url('/passenger');
+                }
+            });
+          }
+
+         
+       }
+    
   }
-  
+
+  $scope.radioActionOrigin=function(id)
+  {
+      // console.log("origin");
+      // console.log(id);
+      outFlightID = id;
+  }
+  $scope.radioActionDest=function(id)
+  {
+      // console.log("dest");
+      // console.log(id);
+    inFlightID = id;
+  }
 
 });
