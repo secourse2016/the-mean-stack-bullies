@@ -1028,7 +1028,7 @@ font-weight: bold;
 {
 position: relative;
 left:9%;
-max-height:100%;
+max-height:auto;
 color:black;
 font-weight: bold;
 
