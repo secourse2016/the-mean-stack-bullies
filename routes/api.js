@@ -225,13 +225,12 @@ router.post('/api/booking', function(req,res){
         });
 
        router.get('/api/getReservation/:refNum', function(req, res) {
-              manageController.searchBookings (req.params.refNum,function(returnedRes){
+              manageController.searchBookings (req.params.refNum,function(returnedRes,returnedBooking){
+
+                var result={};
+                for(var key in returnedRes) result[key]=returnedRes[key];
+                for(var key in returnedBooking) result[key]=returnedBooking[key];
                 res.json(returnedRes);
-               });
-        });
-         router.get('/api/getReservationPersonalInfo/:refNum', function(req, res) {
-              manageController.searchReservations(req.params.refNum,function(returnedInfo){
-                res.json(returnedInfo);
                });
         });
 
