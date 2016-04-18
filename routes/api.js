@@ -19,6 +19,8 @@ var personValidation= require('../Validations/personValidation.js');
 
 var flightControl =  require('../serverController/flightController.js');
 
+var manageController =  require('../serverController/ManageBookingController.js');
+
 var sess;
 
 var router = express.Router();
@@ -225,6 +227,16 @@ router.post('/api/booking', function(req,res){
            router.get('/api/getReservation/:refNum', function(req, res) {
 
 
+                  var flightData = [
+                  { 
+                  destination:req.params.dest,
+                  origin :req.params.origin,
+                  departureDateTime :req.params.departureTime
+                  }];
+
+                  flightControl.searchFlights(flightData,function(returnedFlights){
+                    res.json(returnedFlights);
+                   });
 
               
             });
