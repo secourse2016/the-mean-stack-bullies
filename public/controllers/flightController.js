@@ -25,14 +25,9 @@ departureDateTime :new Date()
             $scope.arr = returnedFlights;
    });
 
-    $scope.Book=function()
+  $scope.Book=function()
   {
-     if($scope.checkbox==null){
-      alert("hamada helal");
-     }
-     else{
      $location.url('/passenger');
-    }  
   }
 
 });
