@@ -4,8 +4,8 @@
 <div id="partialDiv2" class="wow fadeInRightBig" data-wow-duration="1s" data-wow-delay="0.4s" ></div>
 <div id="partialDiv3" class="wow fadeInRightBig" data-wow-duration="1s" data-wow-delay="0.7s"></div>
 </div>
-<div id="timeTableSection"  ng-controller="flightCtrl" class="viewflights bookbody">
-  <div ng-controller="flightCtrl"  data-ng-init="changeTable()"   >
+<div id="timeTableSection"   class="viewflights bookbody">
+  <div  data-ng-init="changeTable()"   >
     <div class="headertitle">
       <br>
      
@@ -17,7 +17,7 @@
     
     <br>
        <!-- outgoing flights -->
-    <div ng-repeat="flight in outgoingFlights |  orderBy:'date'">
+    <div ng-repeat="flight in newof |  orderBy:'date'">
     <table class="tx sp" >
      
 
@@ -58,11 +58,11 @@
  
    
     <td class="text-left sp"><div>{{flight.origin}} <br> {{flight.departureDateTime}}</div></td>
-   <td class="text-left sp"><div>$<br>{{flight.cost}}</div></td>
+   <td class="text-left sp"><div>{{flight.currency}}<br>{{flight.ecost}}</div></td>
     <td class="text-left sp"><div>{{flight.destination}}<br>{{flight.arrivalDateTime}}</div></td>
     <td class="text-left sp"><div class="chooseflight">  
-        <input type="radio" name="radio" id={{$index}} class="radio" ng-show="false"/>
-        <label for={{$index}}>Choose</label>
+        <input type="radio" name="radio" id="{{flight.e_id}}" class="radio" ng-show="false"/>
+        <label for="{{flight.e_id}}">Choose</label>
                             </div></td>
 
 </tr>
@@ -86,30 +86,36 @@
  <!-- TAKE CARE FOR HARDCODED RADIO BUTTONS INDECES -->
    
     <td class="text-left sp"><div>{{flight.origin}} <br> {{flight.departureDateTime}}</div></td>
-     <td class="text-left sp"><div>$<br>{{flight.cost}}</div></td>
+     <td class="text-left sp"><div>{{flight.currency}}<br>{{flight.bcost}}</div></td>
     <td class="text-left sp"><div>{{flight.destination}}<br>{{flight.arrivalDateTime}}</div></td>
     <td class="text-left sp"><div class="chooseflight">  
-        <input type="radio" name="radio" id=500+{{$index}} class="radio" ng-show="false"/>
-        <label for=500+{{$index}} >Choose</label>
+        <input type="radio" name="radio" id="{{flight.b_id}}" class="radio" ng-show="false"/>
+        <label for="{{flight.b_id}}" >Choose</label>
                             </div></td>
 
 </tr>
 
 
 </table>
-<br>
-<br>
+
 
 <br>
 <br>
+
+
 
 </div>
-<br>
-<br>
-  <!--  
-     <h1>Return flights</h1>
 
-    <div ng-repeat="flight in returnedFlights |  orderBy:'date'">
+<br>
+<br>
+  
+     <h1 style="padding-left: 10%" ng-show=show>Return flights</h1>
+<br>
+<br>
+     <br>
+<br>
+
+  <div ng-repeat="flight in newof2 |  orderBy:'date'">
     <table class="tx sp" >
      
 
@@ -150,11 +156,11 @@
  
    
     <td class="text-left sp"><div>{{flight.origin}} <br> {{flight.departureDateTime}}</div></td>
-   <td class="text-left sp"><div>$<br>{{flight.cost}}</div></td>
+   <td class="text-left sp"><div>{{flight.currency}}<br>{{flight.ecost}}</div></td>
     <td class="text-left sp"><div>{{flight.destination}}<br>{{flight.arrivalDateTime}}</div></td>
     <td class="text-left sp"><div class="chooseflight">  
-        <input type="radio" name="radio" id={{$index}} class="radio" ng-show="false"/>
-        <label for={{$index}}>Choose</label>
+        <input type="radio" name="radio" id="{{flight.e_id}}" class="radio" ng-show="false"/>
+        <label for="{{flight.e_id}}">Choose</label>
                             </div></td>
 
 </tr>
@@ -175,14 +181,14 @@
      </tr>
 
 <tr >  
- <!-- TAKE CARE FOR HARDCODED RADIO BUTTONS INDECES 
+ <!-- TAKE CARE FOR HARDCODED RADIO BUTTONS INDECES -->
    
     <td class="text-left sp"><div>{{flight.origin}} <br> {{flight.departureDateTime}}</div></td>
-     <td class="text-left sp"><div>$<br>{{flight.cost}}</div></td>
+     <td class="text-left sp"><div>{{flight.currency}}<br>{{flight.bcost}}</div></td>
     <td class="text-left sp"><div>{{flight.destination}}<br>{{flight.arrivalDateTime}}</div></td>
     <td class="text-left sp"><div class="chooseflight">  
-        <input type="radio" name="radio" id=500+{{$index}} class="radio" ng-show="false"/>
-        <label for=500+{{$index}} >Choose</label>
+        <input type="radio" name="radio" id="{{flight.b_id}}" class="radio" ng-show="false"/>
+        <label for="{{flight.b_id}}">Choose</label>
                             </div></td>
 
 </tr>
@@ -195,8 +201,8 @@
 <br>
 <br>
 
-</div> 
----------->
+</div>
+
 </div>
 <div style="text-align:center;">
 

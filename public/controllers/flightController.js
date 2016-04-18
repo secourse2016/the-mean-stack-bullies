@@ -1,42 +1,76 @@
 app.controller('flightCtrl', function($scope,$location, flightSrv) {
 console.log("in flight controller");
-// var flightData = [
-// {
-// destination:"CAI",
-// origin :"JED",
-// departureDateTime :new Date()
-// }];
-   flightSrv.getOutgoingFlights(function(outFlights){
-    console.log("outFlight Controller "+outFlights);
-    $scope.outgoingFlights = outFlights;
-     flightSrv.getIngoingFlights(function(inFlights){
-     console.log("inFlight Controller "+inFlights);
-     $scope.returnedFlights = inFlights;
-
-     });
-     
+  $scope.outgoingFlights = [];
+  $scope.returnedFlights = [];
+  $scope.newof=[];
+  $scope.newof2=[];
+  $scope.show=false;
+  
+   flightSrv.getFlights(function(response){
+       if(response.err){
+         alert("somthing went wrong please try again");
+       }else{
+         if(response.outFlights ){
+            //console.log("in booking controller "+response.outFlights[0].origin);
+            $scope.outgoingFlights = response.outFlights;
+              $scope.newof=[];
+            console.log($scope.outgoingFlights);
+             var newi=0;
+             for(var ind=0;ind<$scope.outgoingFlights.length;ind+=2)
+             {
+              $scope.newof[newi]={
+                "e_id":$scope.outgoingFlights[ind]._id,
+                "b_id":$scope.outgoingFlights[ind+1]._id,
+                "origin":$scope.outgoingFlights[ind].origin,
+                "departureDateTime":$scope.outgoingFlights[ind].departureDateTime,
+                "ecost":$scope.outgoingFlights[ind].cost,
+                "bcost":$scope.outgoingFlights[ind+1].cost,
+                "destination":$scope.outgoingFlights[ind].destination,
+                "arrivalDateTime":$scope.outgoingFlights[ind].arrivalDateTime,
+                "currency":$scope.outgoingFlights[ind].currency,
+                "flightNumber":$scope.outgoingFlights[ind].flightNumber,
+                "aircraftType":$scope.outgoingFlights[ind].aircraftType
+              }
+              newi++;
+             }
+              console.log($scope.newof);
+            
+             
+              
+             
+          }
+            if(response.inFlights){
+              //console.log("in booking controller "+response.outFlights[0].origin);
+               $scope.returnedFlights = response.inFlights;
+                 $scope.newof2=[];
+           
+             var newi=0;
+             for(var ind=0;ind<$scope.returnedFlights.length;ind+=2)
+             {
+              $scope.newof2[newi]={
+                "e_id":$scope.outgoingFlights[ind]._id,
+                "b_id":$scope.outgoingFlights[ind+1]._id,
+                "origin":$scope.returnedFlights[ind].origin,
+                "departureDateTime":$scope.returnedFlights[ind].departureDateTime,
+                "ecost":$scope.returnedFlights[ind].cost,
+                "bcost":$scope.returnedFlights[ind+1].cost,
+                "destination":$scope.returnedFlights[ind].destination,
+                "arrivalDateTime":$scope.returnedFlights[ind].arrivalDateTime,
+                "currency":$scope.returnedFlights[ind].currency,
+                "flightNumber":$scope.returnedFlights[ind].flightNumber,
+                "aircraftType":$scope.returnedFlights[ind].aircraftType
+              }
+              newi++;
+             }
+             $scope.show=true;
+            };
+       }
    });
-  // flightSrv.getFlights(flightData,function (returnedFlights)
-  //  {
-
-
-  //     for (var i =0;i<returnedFlights.length;i++)
-  //     {
-  //       var date = new Date(   returnedFlights[i].departureDateTime );
-  //       returnedFlights[i].departureDateTime =  date.getDate() + "/" + date.getMonth() +"/" 
-  //       + date.getFullYear() + " " + date.getHours() + ":" +date.getMinutes();
-
-  //         date = new Date(   returnedFlights[i].arrivalDateTime );
-  //       returnedFlights[i].arrivalDateTime =  date.getDate() + "/" + date.getMonth() +"/" 
-  //       + date.getFullYear() + " " + date.getHours() + ":" +date.getMinutes();
-    
-  //     }
-  //           $scope.arr = returnedFlights;
-  //  });
-
+  
   $scope.Book=function()
   {
      $location.url('/passenger');
   }
+  
 
 });
