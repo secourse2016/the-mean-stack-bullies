@@ -333,7 +333,7 @@ router.post('/api/booking', function(req,res){
             /**
              * getting payment information from session route.
              */
-              router.get('/api/completeBookingData', function(req, res) {
+              router.post('/api/completeBookingData', function(req, res) {
                 sess = req.session;
 
                saveAllBookingDataController.insertBookingData(sess.bookingData,function(err,booking){
@@ -347,6 +347,17 @@ router.post('/api/booking', function(req,res){
                                         console.log(err);
                                        }else{
                                         console.log("new reservation added"+reserve);
+                                        saveAllBookingDataController.insertPersonalInformation(sess.personData,booking._id,function(personalInformation,booking_id,function(err,person){
+                                               if(err){
+                                                console.log(err);
+                                               }else{
+                                                console.log("new person added"+person);
+                                            saveAllBookingDataController.insertPersonalInformation(sess.paymentData,booking._id,function(err,payment){
+                                               console.log("new payment added"+payment);
+                                            });    
+                                                }
+
+                                              });
                                        }
                                  });
                         }
