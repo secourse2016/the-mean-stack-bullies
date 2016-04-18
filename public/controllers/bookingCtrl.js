@@ -33,9 +33,16 @@ app.controller('bookingCtrl', function($scope, $location,airportSrv,flightSrv,Fl
   }
   $scope.bookFlight=function(){   
 
-     console.log($scope.depDate);
-    /*form data is retrieved here*/ 
-     var data = [{  
+     var errMessage = bookingFormValidation(); 
+     var empty=true;
+       
+          if(errMessage){ 
+             alert(errMessage);
+          }
+
+        
+    else{
+     var data = [{ 
     
     trip: $scope.trippp,
     from: $scope.selectedOrigin,
@@ -47,19 +54,19 @@ app.controller('bookingCtrl', function($scope, $location,airportSrv,flightSrv,Fl
     Class: $scope.tclass,
     Email:$scope.email
 
-    }];  
-
-  
-    console.log(data);
-    /*form data is passed to the bookin service*/ 
+    }];    
+   
      bookingSrv.insertbooking(data,function(response){
+
                if(response.outFlights){
                 $location.url('/book');
               }else{
                 alert("no flights with criteria avialable");
               }
        });   
+
   }
+}
 
   $scope.bookButton=function(){
 
@@ -143,6 +150,94 @@ app.controller('bookingCtrl', function($scope, $location,airportSrv,flightSrv,Fl
   $scope.showMore=function(){
     $scope.limit+=6;
   }
+ 
+  function bookingFormValidation(){  
+      var valid= true; 
+      var err="";
+     var evalid = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+        if($scope.trippp == undefined){ 
+             err+= "Please select your trip type"; 
+              valid = false;
+        }
+
+        if($scope.selectedOrigin == undefined){  
+             err += "Please enter your origin airport";
+                valid = false; 
+        } 
+        if($scope.selectedDestination == undefined){ 
+               err+= "Please enter your destination"; 
+               valid = false;
+         }  
+
+        if(($scope.depDate == undefined)||   
+          ($scope.depDate.getFullYear() < new Date().getFullYear()) || 
+          ($scope.depDate.getMonth()+1 < new Date().getMonth()+1) && 
+                ($scope.depDate.getFullYear() == new Date().getFullYear()) || 
+          ($scope.depDate.getDate() < new Date().getDate()) && 
+             ($scope.depDate.getMonth()+1 == new Date().getMonth()+1) &&
+             ($scope.depDate.getFullYear() == new Date().getFullYear())) { 
+
+                err+= "Please enter a valid departure date"; 
+                valid = false;
+        }
+
+
+        if($scope.trippp == "round"){ 
+
+           if(($scope.retDate== undefined)||   
+          ($scope.retDate.getFullYear() < new Date().getFullYear()) || 
+          ($scope.retDate.getMonth()+1 < new Date().getMonth()+1) && 
+                ($scope.retDate.getFullYear() == new Date().getFullYear()) || 
+          ($scope.retDate.getDate() < new Date().getDate()) && 
+             ($scope.retDate.getMonth()+1 == new Date().getMonth()+1) &&
+             ($scope.retDate.getFullYear() == new Date().getFullYear())){
+
+              err+= "Please enter a valid return date"; 
+              valid = false;
+
+        
+           } 
+
+        } 
+
+         if($scope.adultsss == undefined){ 
+             err+= "Please select number of adults";
+             valid = false;
+
+        }   
+
+        if($scope.children == undefined){ 
+            err+="Please select number of children";
+            valid = false;
+        } 
+
+        if($scope.tclass == undefined){  
+          err+= "Please select the seating class"; 
+          valid = false;
+
+        } 
+
+        if($scope.email == undefined || !(evalid.test($scope.email))) { 
+           err+= "Please enter a valid email"; 
+           valid = false;
+
+
+        }
+
+                  
+         
+      if(valid == true){ 
+           err=null;
+      } 
+
+      return(err);
+
+  }
+
+
+
+
  });
 
 

@@ -76,7 +76,7 @@ console.log("in flight controller");
        if(!inFlightID && !outFlightID){
         alert("you have to choose a flight");
        }else{
-          if(inFlightID && outFlightID){
+          if(inFlightID && outFlightID || outFlightID){
             console.log("hereeeee");
             flightSrv.insertFlight(inFlightID,outFlightID,function(err){
                 if(err){

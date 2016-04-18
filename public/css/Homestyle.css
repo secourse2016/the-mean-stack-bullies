@@ -380,7 +380,8 @@ transition: background 1.5s linear;
   height:100%;
   width:1000%;
   position: relative;
-  top:-6%;
+  top:0%;
+  margin-top: -4.5%;
   left:1%;
   overflow: hidden;
   z-index: -30;
@@ -394,7 +395,7 @@ transition: background 1.5s linear;
   background-color: rgba(2,2,2,0.6);
   width: 100%;
   position: relative;
-  top:-3%;
+  top:1%;
   height:100%;
 
 
@@ -1287,11 +1288,11 @@ color:#EEE;
 
 #scrollLeftBtn
 {
-  height:90.9%;
+    height:82.5%;
   width:5%;
   font-size: 50px;
   position: absolute;
-  top:126.1%;
+  top:100%;
   background-color:rgb(17,37,60);
   left:-1%;
   border:none;
@@ -1305,11 +1306,11 @@ color:#EEE;
 }
 #scrollRightBtn
 {
-  height:90.9%;
+  height:82.5%;
   width:4%;
   position: absolute;
   font-size: 50px;
-     top:126.1%;
+     top:100%;
   left:96%;
   border:none;
   background-color:rgb(17,37,60);

@@ -6,7 +6,13 @@ app.factory('flightSrv', function ($http) {
 
           var req = {
               method: 'GET',
-              url: '/api/flights'
+              url: '/api/flights',
+            headers:
+              {
+                'x-access-token':
+                  'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJPbmxpbmUgSldUIEJ1aWxkZXIiLCJpYXQiOjE0NjA5ODU3MzQsImV4cCI6MTQ5MjUyMTczNCwiYXVkIjoid3d3LmV4YW1wbGUuY29tIiwic3ViIjoianJvY2tldEBleGFtcGxlLmNvbSIsIkdpdmVuTmFtZSI6IkpvaG5ueSIsIlN1cm5hbWUiOiJSb2NrZXQiLCJFbWFpbCI6Impyb2NrZXRAZXhhbXBsZS5jb20iLCJSb2xlIjpbIk1hbmFnZXIiLCJQcm9qZWN0IEFkbWluaXN0cmF0b3IiXX0.cBVsJtA9S-5vRW_-0bcNBqks-L2EUD_9-vV61LF19oo'
+
+              }
           };
 
           return $http(req).then(
@@ -25,7 +31,14 @@ app.factory('flightSrv', function ($http) {
                  var req = {
                    method:'POST',
                    url:'/api/insertFlight',
+
                    data:{flightsID: flightsID}
+                      ,headers:
+              {
+                'x-access-token':
+                  'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJPbmxpbmUgSldUIEJ1aWxkZXIiLCJpYXQiOjE0NjA5ODU3MzQsImV4cCI6MTQ5MjUyMTczNCwiYXVkIjoid3d3LmV4YW1wbGUuY29tIiwic3ViIjoianJvY2tldEBleGFtcGxlLmNvbSIsIkdpdmVuTmFtZSI6IkpvaG5ueSIsIlN1cm5hbWUiOiJSb2NrZXQiLCJFbWFpbCI6Impyb2NrZXRAZXhhbXBsZS5jb20iLCJSb2xlIjpbIk1hbmFnZXIiLCJQcm9qZWN0IEFkbWluaXN0cmF0b3IiXX0.cBVsJtA9S-5vRW_-0bcNBqks-L2EUD_9-vV61LF19oo'
+
+              }
                  };
               return $http(req).then(
               function success(response){
@@ -74,12 +87,18 @@ app.factory('flightSrv', function ($http) {
 app.factory('FlightsSrv', function ($http) {
      return {
          getFlights : function(cb) {
-                        // var req = {
-                        //       method: 'GET',
-                        //       url: '/api/flightsForTimetable'
-                        // };
+                         var req = {
+                               method: 'GET',
+                               url: '/api/flightsForTimetable',
+                               headers:
+              {
+                'x-access-token':
+                  'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJPbmxpbmUgSldUIEJ1aWxkZXIiLCJpYXQiOjE0NjA5ODU3MzQsImV4cCI6MTQ5MjUyMTczNCwiYXVkIjoid3d3LmV4YW1wbGUuY29tIiwic3ViIjoianJvY2tldEBleGFtcGxlLmNvbSIsIkdpdmVuTmFtZSI6IkpvaG5ueSIsIlN1cm5hbWUiOiJSb2NrZXQiLCJFbWFpbCI6Impyb2NrZXRAZXhhbXBsZS5jb20iLCJSb2xlIjpbIk1hbmFnZXIiLCJQcm9qZWN0IEFkbWluaXN0cmF0b3IiXX0.cBVsJtA9S-5vRW_-0bcNBqks-L2EUD_9-vV61LF19oo'
 
-                        return $http.get('/api/flightsForTimetable')
+              }
+                         };
+
+                        return $http(req)
 
                               .success(function(data, status, headers, config) {
                                   // return data;
