@@ -33,9 +33,7 @@ console.log("url");
 console.log("bes");
         // check header or url parameters or post parameters for token
         var token = req.body.wt || req.query.wt || req.headers['x-access-token'];   
- console.log(token);
         var jwtSecret =  process.env.JWTSECRET;
-        console.log(jwtSecret);
        // var jwtSecret = "a23das013d,s;1";
         // Get JWT contents:
         try 
@@ -43,7 +41,6 @@ console.log("bes");
           var payload = jwt.verify(token, jwtSecret);
           req.payload = payload;
 
-          console.log("right token");
           next();
 
 

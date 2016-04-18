@@ -303,11 +303,21 @@ router.post('/api/booking', function(req,res){
        router.get('/api/getReservation/:refNum', function(req, res) {
               manageController.searchBookings (req.params.refNum,function(returnedRes
                 ,returnedBooking,returnedPerson,err){
-                  if (err == true)
-                    res.json("not found");
 
+                console.log("test");
+                  if (err == true)
+                  {
+                    res.json("not found");
+                  }
+                  else
+                  {
+                     if (returnedRes != undefined)
                   res.json( {reservation : returnedRes[0],booking:returnedBooking[0],
                     person:returnedPerson[0]});
+                else
+                  res.json("not found");
+
+                  }
                });
         });       
             
