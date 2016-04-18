@@ -228,8 +228,7 @@ router.post('/api/booking', function(req,res){
               manageController.searchBookings (req.params.refNum,function(returnedRes,returnedBooking){
                
 
-                    console.log({reservation : returnedRes[0],booking:returnedBooking[0]});
-                  res.json( {reservation : returnedRes,booking:returnedBooking});
+                  res.json( {reservation : returnedRes[0],booking:returnedBooking[0]});
                });
         });
 

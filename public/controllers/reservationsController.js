@@ -12,17 +12,25 @@ app.controller('reservationsController', function($scope,cancelationReservation)
       	   reservations =  cancelationReservation.getReservation($scope.enteredReferenceNum,function(reservationData)
             {
               console.log("data " + reservationData);
-                if (reservationData.length != 0)
+              for(var key2 in reservationData.reservation) 
+                    {
+console.log(reservationData.reservation[key2]);
+                        console.log(key2);
+                    }
+
+                if (reservationData.reservation.length != 0)
                 {
 
-                   $scope.reservationExist = true;
-                        $scope.names = ["First Name : " + reservationData[0].firstName
-                        ,"Last Name : " + reservationData[0].lastName,
-                        "Passport number : " + reservationData[0].passport,
-                       "Booking reference number : " + reservationData[0].bookingRefNumber];
 
-                       $scope.flightDetails = ["From " + reservationData[0].from
-                       + " To " + reservationData[0].To ,"Date : " + reservationData[0].DepartureDate];
+console.log("name " + reservationData.reservation.firstName);
+                   $scope.reservationExist = true;
+                        $scope.names = ["First Name : " + reservationData.reservation.firstName
+                        ,"Last Name : " + reservationData.reservation.lastName,
+                        "Passport number : " + reservationData.reservation.passport,
+                       "Booking reference number : " + reservationData.reservation.bookingRefNumber];
+
+                       $scope.flightDetails = ["From " + reservationData.booking.from
+                       + " To " + reservationData.booking.To ,"Date : " + reservationData.booking.DepartureDate];
                 }
                 else
 
@@ -31,6 +39,7 @@ app.controller('reservationsController', function($scope,cancelationReservation)
                    $scope.names = ["Reference Number Not Found, Please check it and try again."];
                    $scope.flightDetails = [""];
                 }
+              
             });
 
       	   for ( i = 0;i<reservations.length;i++)
