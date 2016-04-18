@@ -7,11 +7,11 @@ exports.searchBookings =function(refNum,cb){
      var reservationModel = mongoose.model('Reservation');
 	var bookingModel = mongoose.model('Booking');
 	var resQuery = reservationModel.find();
-	resQuery.where('refNum',refNum);
+	resQuery.where('bookingRefNumber',refNum);
 	
 
 	var bookingQuery = bookingModel.find();
-	bookingQuery.where('refNum',refNum);
+	bookingQuery.where('_id',refNum);
 
 	resQuery.exec(function (err, resDocs) {
 		bookingQuery.exec(function(err2,bookDocs) {
@@ -22,12 +22,14 @@ exports.searchBookings =function(refNum,cb){
 exports.cancelReservation =function(refNum,cb){
 
 
-     var reservationModel = mongoose.model('Reservation');
+    var reservationModel = mongoose.model('Reservation');
 	var bookingModel = mongoose.model('Booking');
-
-	bookingModel.find({ refNum:refNum }).remove().exec();
-	reservationModel.find({ refNum:refNum }).remove().exec();
-	
+	var paymentModel = mongoose.model('Payment');
+	var personModel = mongoose.model('Person');
+	bookingModel.find({ _id:refNum }).remove().exec();
+	reservationModel.find({ bookingRefNumber:refNum }).remove().exec();
+	paymentModel.find({ bookingRefNumber:refNum }).remove().exec();
+	personModel.find({ bookingRefNumber:refNum }).remove().exec();
 	cb();
 	
 	}
