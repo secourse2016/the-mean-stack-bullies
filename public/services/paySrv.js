@@ -16,11 +16,14 @@ app.factory('paySrv', function ($http) {
                       method: 'GET',
                       url: '/api/completeBookingData'
                     };
-                              return $http(req).then(
+                              return $http(req2).then(
                           function mySucces(response) {
-                                  return data;
+                            cb(true);
+                            console.log("succeeed in completeBookingData http get request"+response)
+                                
                        },function myError(response) {
-                                 cb(console.log("error"));
+                                console.log("error")
+                                 cb(false);
                                 });  
               })
               .error(function(data, status, headers, config) {

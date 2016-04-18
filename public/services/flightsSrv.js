@@ -15,6 +15,8 @@ app.factory('flightSrv', function ($http) {
      },      function myError(response) {
                  cb(response.statusText);
                   });
+          
+          },
           insertFlight : function(inFlight_id,ouFlight_id,cb){
                   var flightsID = {
                     inFlight_id:inFlight_id,
@@ -28,10 +30,11 @@ app.factory('flightSrv', function ($http) {
               return $http(req).then(
               function success(response){
                 console.log("flights ids added to sessions");
+                cb(null);
               }, function error(response){
                  console.log("error");
+                 cb("something went wrong please try again");
               });   
-          }
           // setIngoingFlights : function(inGoingFlights){
 
           //      inFlights = inGoingFlights ;

@@ -94,6 +94,7 @@ var router = express.Router();
                   sess = req.session;
    
                      sess.paymentData = req.body.payment[0];
+                     console.log("payment data added to session --->"+req.body.payment[0]);
                   // paymentController.addPaymentIntoDatabase(req.body.payment[0],function(){
                     res.send('payment added to the session');
                   // });
@@ -200,7 +201,7 @@ router.post('/api/booking', function(req,res){
           router.post('/api/insertperson', function(req, res) {
                   sess = req.session;
                   sess.personData = req.body.person[0];
-
+                  console.log("person data added to the session");
                 // personController.addPersonIntoDatabase(req.body.person[0],function(){
                   res.send('person added to the session');
                 // });
@@ -259,7 +260,8 @@ router.post('/api/booking', function(req,res){
            router.post('/api/insertFlight',function(req,res){
                   sess = req.session;
                   sess.flightIDs = req.body.flightsID;
-
+                  console.log("flight added to session");
+                  console.log("flight id ---->"+ req.body.flightsID.inFlight_id+"   "+req.body.flightsID.ouFlight_id);
                 // personController.addPersonIntoDatabase(req.body.person[0],function(){
                   res.send('person added to the session');
 
@@ -333,7 +335,7 @@ router.post('/api/booking', function(req,res){
         
       });
  
-      router.get('/api/getPersonInfo', function(req, res) {
+      router.get('/api/getPersonInfocomfirmation', function(req, res) {
         sess = req.session;
         res.send(sess.personData);
     
@@ -353,7 +355,7 @@ router.post('/api/booking', function(req,res){
              */
               router.get('/api/completeBookingData', function(req, res) {
                 sess = req.session;
-
+                 console.log("in the completeBookingData route");
                saveAllBookingDataController.insertBookingData(sess.bookingData,function(err,booking){
                         if(err){
                           console.log(err);
@@ -370,7 +372,7 @@ router.post('/api/booking', function(req,res){
                                                 console.log(err);
                                                }else{
                                                 console.log("new person added"+person);
-                                            saveAllBookingDataController.insertPersonalInformation(sess.paymentData,booking._id,function(err,payment){
+                                            saveAllBookingDataController.insertPaymentInformation(sess.paymentData,booking._id,function(err,payment){
                                                console.log("new payment added"+payment);
                                                var message = "Booking is comfirmed";
                                                res.send(message);
