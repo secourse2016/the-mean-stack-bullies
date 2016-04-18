@@ -47,10 +47,9 @@ app.controller('bookingCtrl', function($scope, $location,airportSrv,FlightsSrv,b
     Class: $scope.tclass,
     Email:$scope.email
 
-    }];   
-  
-    console.log(data[0].DepartureDate.getDate());
-   console.log(new Date().getDate());
+    }];    
+    console.log(data[0].DepartureDate);
+    console.log(data[0].DepartureDate.getFullYear());
     console.log(data);
     /*form data is passed to the bookin service*/ 
    bookingSrv.insertbooking(data);  

@@ -76,7 +76,7 @@ var router = express.Router();
 }); 
                //middleware for validating the booking data
 
-              router.post('/api/booking', function(req. res, next) { 
+              router.post('/api/booking', function(req, res, next) { 
 
                 bookingValidation.validateBooking(req.body.booking[0], function(err){ 
                            if(err){ 
