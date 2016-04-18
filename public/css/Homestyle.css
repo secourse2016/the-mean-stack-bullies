@@ -150,7 +150,7 @@ div.table-title {
 }
  
 .sp td {
-  background:#FFFFFF;
+  background:#EBEBEB;
   padding:20px;
   text-align:left;
   vertical-align:middle;
@@ -1028,7 +1028,7 @@ font-weight: bold;
 {
 position: relative;
 left:9%;
-max-height:100%;
+height:auto;
 color:black;
 font-weight: bold;
 
