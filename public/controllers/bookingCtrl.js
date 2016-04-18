@@ -26,7 +26,7 @@ app.controller('bookingCtrl', function($scope, $location,airportSrv,FlightsSrv,b
   }
   $scope.Book=function()
   {
-     $location.url('/passenger');
+      $location.url('/passenger');
   }
   $scope.showReturnedDate=function(){
     $scope.hidedate=true;
@@ -105,7 +105,7 @@ app.controller('bookingCtrl', function($scope, $location,airportSrv,FlightsSrv,b
 
        //   });
         
-       $scope.image="../images/default.jpg"; 
+       $scope.image="../images/paris2.jpg"; 
        $scope.datedivbool=false;
     }      
     else{
