@@ -26,10 +26,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({secret: 'key12'}));
 // routes
 
+/*
 
 app.use(function(req, res, next) {
 
-console.log(req.headers);
       // check header or url parameters or post parameters for token
       var token = req.body.wt || req.query.wt || req.headers['x-access-token'];   
     console.log("{{{{ TOKEN }}}} => ", token);
@@ -37,6 +37,7 @@ console.log(req.headers);
       //var jwtSecret = process.env.JWTSECRET;
 
       var jwtSecret =  process.env.JWTSECRET;
+      console.log(jwtSecret);
      // var jwtSecret = "a23das013d,s;1";
       // Get JWT contents:
       try 
@@ -57,7 +58,7 @@ console.log(req.headers);
 
     });
 
-
+*/
 app.use('/', api);
 
 //app.use('/authenticate', authenticate);
