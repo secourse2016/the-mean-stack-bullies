@@ -232,10 +232,12 @@ router.post('/api/booking', function(req,res){
                });
         });
         router.post('/api/cancelReservation/:refNum', function(req, res) {
-              manageController.cancelReservation (req.params.refNum){
+              manageController.cancelReservation (req.params.refNum,function(){
+                  
+                    res.send("Reservation cancelled successfuly");
+                   
+                });
                
-                res.send('person added to the database');
-               });
         });
 
             router.get('/api/getallInfo', function(req, res) {

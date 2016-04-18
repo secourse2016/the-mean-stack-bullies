@@ -6,10 +6,7 @@ app.controller('reservationsController', function($scope,cancelationReservation)
 	   // $http.get("./reservation.json")
     //   .then(function(response) {
 
-
-           found = false;
-           choosenReservation = 0;
-      	   reservations =  cancelationReservation.getReservation($scope.enteredReferenceNum,function(reservationData)
+      	     cancelationReservation.getReservation($scope.enteredReferenceNum,function(reservationData)
             {
            
                 if (reservationData.reservation != undefined)
@@ -35,11 +32,22 @@ console.log("name " + reservationData.reservation.firstName);
                 }
               
             });
-
-      	
-
     
-	}
+	 }
+
+   $scope.cancelationReservation = function()
+  {
+            cancelationReservation.cancelationReservation($scope.enteredReferenceNum,function(returned)
+            {
+              alert(returned );
+            
+                   $scope.reservationExist = false;
+                   $scope.names = [""];
+                   $scope.flightDetails = [""];
+            });
+    
+   }
+   
 
 
 });
