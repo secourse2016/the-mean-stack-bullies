@@ -33,9 +33,13 @@ app.controller('bookingCtrl', function($scope, $location,airportSrv,flightSrv,Fl
   }
   $scope.bookFlight=function(){   
 
-   
-    /*form data is retrieved here*/ 
+     var errMessage = bookingFormValidation();
+        if(errMessage){
+          alert(errMessage);
+        }
+    else{
      var data = [{  
+    
     
     trip: $scope.trippp,
     from: $scope.selectedOrigin,
@@ -48,10 +52,7 @@ app.controller('bookingCtrl', function($scope, $location,airportSrv,flightSrv,Fl
     Email:$scope.email
 
     }];    
-    // console.log(data[0].DepartureDate);
-    // console.log(data[0].DepartureDate.getFullYear());
-    // console.log(data);
-    /*form data is passed to the bookin service*/ 
+   
      bookingSrv.insertbooking(data,function(response){
       if(response.err){
         alert("err occured please try again");
@@ -67,7 +68,10 @@ app.controller('bookingCtrl', function($scope, $location,airportSrv,flightSrv,Fl
         
           $location.url('/book');
       }
-   });  
+   }); 
+
+    }     
+          
   }
 
   $scope.bookButton=function(){
@@ -146,6 +150,104 @@ app.controller('bookingCtrl', function($scope, $location,airportSrv,flightSrv,Fl
   $scope.showMore=function(){
     $scope.limit+=6;
   }
+ 
+  function bookingFormValidation(){  
+      var valid= true; 
+     var bookingFormValidationErrors = {
+            selectTripError : "", 
+            selectOriginError :"", 
+            selectDestinationError :"", 
+            selectDepartureDateError :"", 
+            selectReturnDateError:"",
+            selectChildreError :"",
+            selectAdultError : "", 
+            selectClassError:"", 
+            validEmailError:""
+    };    
+     var evalid = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+        if($scope.trippp == undefined){ 
+              selectTripError = "Please select your trip type"; 
+              valid = false;
+        }
+
+        if($scope.selectedOrigin == undefined){  
+              selectOriginError = "Please enter your origin airport";
+                valid = false; 
+        } 
+        if($scope.selectedDestination == undefined){ 
+               selectDestinationError = "Please enter your destination"; 
+               valid = false;
+         }  
+
+        if(($scope.depDate == undefined)||   
+          ($scope.depDate.getFullYear() < new Date().getFullYear()) || 
+          ($scope.depDate.getMonth()+1 < new Date().getMonth()+1) && 
+                ($scope.depDate.getFullYear() == new Date().getFullYear()) || 
+          ($scope.depDate.getDate() < new Date().getDate()) && 
+             ($scope.depDate.getMonth()+1 == new Date().getMonth()+1) &&
+             ($scope.depDate.getFullYear() == new Date().getFullYear())) { 
+
+                selectDepartureDateError = "Please enter a valid departure date"; 
+                valid = false;
+        }
+
+
+        if($scope.trippp == "round"){ 
+
+           if(($scope.retDate== undefined)||   
+          ($scope.retDate.getFullYear() < new Date().getFullYear()) || 
+          ($scope.retDate.getMonth()+1 < new Date().getMonth()+1) && 
+                ($scope.retDate.getFullYear() == new Date().getFullYear()) || 
+          ($scope.retDate.getDate() < new Date().getDate()) && 
+             ($scope.retDate.getMonth()+1 == new Date().getMonth()+1) &&
+             ($scope.retDate.getFullYear() == new Date().getFullYear())){
+
+              selectReturnDateError = "Please enter a valid return date"; 
+              valid = false;
+
+        
+           } 
+
+        } 
+
+         if($scope.adultsss == undefined){ 
+             selectAdultError= "Please select number of adults";
+             valid = false;
+
+        }   
+
+        if($scope.children == undefined){ 
+            selectChildreError="Please select number of children";
+            valid = false;
+        } 
+
+        if($scope.tclass == undefined){  
+          selectClassError = "Please select the seating class"; 
+          valid = false;
+
+        } 
+
+        if($scope.email == undefined || !(evalid.test($scope.email))) { 
+           validEmailError = "Please enter a valid email"; 
+           valid = false;
+
+
+        }
+
+                  
+         
+      if(valid == true){ 
+           err=null;
+      } 
+
+      return(err);
+
+  }
+
+
+
+
  });
 
 
