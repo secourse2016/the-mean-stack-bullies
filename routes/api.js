@@ -117,7 +117,7 @@ var router = express.Router();
      */
  
 router.post('/api/booking', function(req,res){  
-         console.log("in route");
+      
         bookControl.comapreFlights(req.body.booking[0],function(err,outFlights,inFlights){ 
                     sess = req.session;
                      sess.bookingData = req.body.booking[0];

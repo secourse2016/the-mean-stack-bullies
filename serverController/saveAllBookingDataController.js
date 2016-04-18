@@ -37,6 +37,39 @@ exports.insertReservationData = function(flightID,booking_id,cb){
    });
 };
 
+exports.decreaseSeatsByOne = function(flightIDOutging,flightIDInGoing,cb){
+  
+  var inFlightModel = mongoose.model('inFlight');
+  var outFlightModel = mongoose.model('outFlight');
+     // console.log("here4"+newbooking);
+
+   if (flightIDOutging != undefined)
+   {
+    outFlightModel.findOne({ _id:  flightIDOutging }, function (err, doc){
+      if (!err)
+      {
+      doc.seats = doc.seats - 1;
+      doc.save();
+      }
+    });
+  }
+
+
+  if (flightIDInGoing != undefined)
+  {
+    inFlightModel.findOne({ _id:  flightIDInGoing }, function (err, doc){
+      if (!err)
+      {
+        doc.seats = doc.seats - 1;
+        doc.save();
+      }
+    });
+}
+
+  cb("Update done");
+};
+
+
 exports.insertPersonalInformation = function(personalInformation,booking_id,cb){
     personalInformation.bookingRefNumber = booking_id;
    var PersonModel = mongoose.model('Person');
