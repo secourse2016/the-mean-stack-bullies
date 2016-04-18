@@ -31,13 +31,10 @@ app.use(function(req, res, next) {
 
       // check header or url parameters or post parameters for token
       var token = req.body.wt || req.query.wt || req.headers['x-access-token'];   
-    console.log("{{{{ TOKEN }}}} => ", token);
-
+ 
       //var jwtSecret = process.env.JWTSECRET;
 
       var jwtSecret =  process.env.JWTSECRET;
-      console.log(jwtSecret);
-     // var jwtSecret = "a23das013d,s;1";
       // Get JWT contents:
       try 
       {

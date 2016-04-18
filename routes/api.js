@@ -280,11 +280,13 @@ router.post('/api/booking', function(req,res){
              * get Reservations route.
              */
        router.get('/api/getReservation/:refNum', function(req, res) {
-              manageController.searchBookings (req.params.refNum,function(returnedRes,returnedBooking,err){
+              manageController.searchBookings (req.params.refNum,function(returnedRes
+                ,returnedBooking,returnedPerson,err){
                   if (err == true)
                     res.json("not found");
 
-                  res.json( {reservation : returnedRes[0],booking:returnedBooking[0]});
+                  res.json( {reservation : returnedRes[0],booking:returnedBooking[0],
+                    person:returnedPerson[0]});
                });
         });       
             
