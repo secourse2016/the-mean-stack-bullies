@@ -26,7 +26,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({secret: 'key12'}));
 // routes
 
-/*
+
 app.use(function(req, res, next) {
 
       // check header or url parameters or post parameters for token
@@ -57,7 +57,7 @@ app.use(function(req, res, next) {
 
     });
 
-*/
+
 app.use('/', api);
 
 //app.use('/authenticate', authenticate);

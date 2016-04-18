@@ -265,8 +265,9 @@ router.post('/api/booking', function(req,res){
              * get Reservations route.
              */
        router.get('/api/getReservation/:refNum', function(req, res) {
-              manageController.searchBookings (req.params.refNum,function(returnedRes,returnedBooking){
-               
+              manageController.searchBookings (req.params.refNum,function(returnedRes,returnedBooking,err){
+                  if (err == true)
+                    res.json("not found");
 
                   res.json( {reservation : returnedRes[0],booking:returnedBooking[0]});
                });
@@ -276,7 +277,8 @@ router.post('/api/booking', function(req,res){
              * get Reservations route.
              */
         router.post('/api/cancelReservation', function(req, res) {
-              manageController.cancelReservation (req.body.refNum,function(){
+          console.log(req.body);
+              manageController.cancelReservation (req.body.ref,function(){
                   
                     res.send("Reservation cancelled successfuly");
                    

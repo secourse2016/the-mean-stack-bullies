@@ -31,10 +31,10 @@ app.factory('cancelationReservation',function($http){
 
 
              return $http(req).success(function(data, status, headers, config) {
-                  return data;
+                  cb(data);
               })
               .error(function(data, status, headers, config) {
-                 return "error";
+                      cb("Error while trying to cancel your reservation, please try again later");
           });
          }
      };  
