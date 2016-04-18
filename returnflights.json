@@ -133,6 +133,140 @@
             "Airline"           : "AirFrance"
         
     },
+    {
+            "flightNumber"      : "AF2804",
+            "aircraftType"      : "Boeing",
+            "aircraftModel"     : "747",
+            "origin"            : "BOM",
+            "destination"       : "DEL",
+            "cost"              : "400",
+            "currency"          : "EUR",
+            "class"             : "economy",
+            "Airline"           : "AirFrance"
+    },
+    {
+        
+            "flightNumber"      :"AF2805",
+            "aircraftType"      : "Airbus",
+            "aircraftModel"     : "a320",
+            "origin"            : "CAI",
+            "destination"       : "JED",
+            "cost"              : "300",
+            "currency"          : "EUR",
+            "class"             : "economy",
+            "Airline"           : "AirFrance"
+        
+    },
+    {
+        
+            "flightNumber"      :"AF2806",
+            "aircraftType"      : "Airbus",
+            "aircraftModel"     : "a380",
+            "origin"            : "HKG",
+            "destination"       : "TPE",
+            "cost"              : "630",
+            "currency"          : "EUR",
+            "class"             : "economy",
+            "Airline"           : "AirFrance"
+        
+    },
+    
+    {
+        
+            "flightNumber"      :"AF2807",
+            "aircraftType"      : "Airbus",
+            "aircraftModel"     : "a380",
+            "origin"            : "JNB",
+            "destination"       : "CPT",
+            "cost"              : "800",
+            "currency"          : "EUR",
+            "class"             : "economy",
+            "Airline"           : "AirFrance"
+        
+    },
+    
+    {
+        
+            "flightNumber"      :"AF2808",
+            "aircraftType"      : "Boeing",
+            "aircraftModel"     : "777",
+            "origin"            : "RUH",
+            "destination"       : "JED",
+            "cost"              : "150",
+            "currency"          : "EUR",
+            "class"             : "economy",
+            "Airline"           : "AirFrance"
+        
+    },
+  
+    {
+        
+            "flightNumber"      :"AF2809",
+            "aircraftType"      : "Boeing",
+            "aircraftModel"     : "777",
+            "origin"            : "LHR",
+            "destination"       : "JFK",
+            "cost"              : "930",
+            "currency"          : "EUR",
+            "class"             : "economy",
+            "Airline"           : "AirFrance"
+    },
+    
+    {
+        
+            "flightNumber"      :"AF2810",
+            "aircraftType"      : "Boeing",
+            "aircraftModel"     : "747",
+            "origin"            : "LAS",
+            "destination"       : "LAX",
+            "cost"              : "220",
+            "currency"          : "EUR",
+            "class"             : "economy",
+            "Airline"           : "AirFrance"
+        
+    },
+   
+    {
+        
+            "flightNumber"      :"AF2811",
+            "aircraftType"      : "Boeing",
+            "aircraftModel"     : "747",
+            "origin"            : "SFO",
+            "destination"       : "LAX",
+            "cost"              : "640",
+            "currency"          : "EUR",
+            "class"             : "economy",
+            "Airline"           : "AirFrance"
+        
+    },
+    
+    {
+        
+            "flightNumber"      :"AF2812",
+            "aircraftType"      : "Boeing",
+            "aircraftModel"     : "777",
+            "origin"            : "FRA",
+            "destination"       : "BER",
+            "cost"              : "300",
+            "currency"          : "EUR",
+            "class"             : "economy",
+            "Airline"           : "AirFrance"
+        
+    },
+    
+    {
+        
+            "flightNumber"      :"AF2813",
+            "aircraftType"      : "Airbus",
+            "aircraftModel"     : "a320",
+            "origin"            : "ROM",
+            "destination"       : "MXP",
+            "cost"              : "190",
+            "currency"          : "EUR",
+            "class"             : "economy",
+            "Airline"           : "AirFrance"
+        
+    },
  
     {
             "flightNumber"      : "AF2804",
@@ -270,140 +404,7 @@
             "Airline"           : "AirFrance"
         
     },
-    {
-            "flightNumber"      : "AF2804",
-            "aircraftType"      : "Boeing",
-            "aircraftModel"     : "747",
-            "origin"            : "BOM",
-            "destination"       : "DEL",
-            "cost"              : "400",
-            "currency"          : "EUR",
-            "class"             : "economy",
-            "Airline"           : "AirFrance"
-    },
-    {
-        
-            "flightNumber"      :"AF2805",
-            "aircraftType"      : "Airbus",
-            "aircraftModel"     : "a320",
-            "origin"            : "CAI",
-            "destination"       : "JED",
-            "cost"              : "300",
-            "currency"          : "EUR",
-            "class"             : "economy",
-            "Airline"           : "AirFrance"
-        
-    },
-    {
-        
-            "flightNumber"      :"AF2806",
-            "aircraftType"      : "Airbus",
-            "aircraftModel"     : "a380",
-            "origin"            : "HKG",
-            "destination"       : "TPE",
-            "cost"              : "630",
-            "currency"          : "EUR",
-            "class"             : "economy",
-            "Airline"           : "AirFrance"
-        
-    },
     
-    {
-        
-            "flightNumber"      :"AF2807",
-            "aircraftType"      : "Airbus",
-            "aircraftModel"     : "a380",
-            "origin"            : "JNB",
-            "destination"       : "CPT",
-            "cost"              : "800",
-            "currency"          : "EUR",
-            "class"             : "economy",
-            "Airline"           : "AirFrance"
-        
-    },
-    
-    {
-        
-            "flightNumber"      :"AF2808",
-            "aircraftType"      : "Boeing",
-            "aircraftModel"     : "777",
-            "origin"            : "RUH",
-            "destination"       : "JED",
-            "cost"              : "150",
-            "currency"          : "EUR",
-            "class"             : "economy",
-            "Airline"           : "AirFrance"
-        
-    },
-  
-    {
-        
-            "flightNumber"      :"AF2809",
-            "aircraftType"      : "Boeing",
-            "aircraftModel"     : "777",
-            "origin"            : "LHR",
-            "destination"       : "JFK",
-            "cost"              : "930",
-            "currency"          : "EUR",
-            "class"             : "economy",
-            "Airline"           : "AirFrance"
-    },
-    
-    {
-        
-            "flightNumber"      :"AF2810",
-            "aircraftType"      : "Boeing",
-            "aircraftModel"     : "747",
-            "origin"            : "LAS",
-            "destination"       : "LAX",
-            "cost"              : "220",
-            "currency"          : "EUR",
-            "class"             : "economy",
-            "Airline"           : "AirFrance"
-        
-    },
-   
-    {
-        
-            "flightNumber"      :"AF2811",
-            "aircraftType"      : "Boeing",
-            "aircraftModel"     : "747",
-            "origin"            : "SFO",
-            "destination"       : "LAX",
-            "cost"              : "640",
-            "currency"          : "EUR",
-            "class"             : "economy",
-            "Airline"           : "AirFrance"
-        
-    },
-    
-    {
-        
-            "flightNumber"      :"AF2812",
-            "aircraftType"      : "Boeing",
-            "aircraftModel"     : "777",
-            "origin"            : "FRA",
-            "destination"       : "BER",
-            "cost"              : "300",
-            "currency"          : "EUR",
-            "class"             : "economy",
-            "Airline"           : "AirFrance"
-        
-    },
-    
-    {
-        
-            "flightNumber"      :"AF2813",
-            "aircraftType"      : "Airbus",
-            "aircraftModel"     : "a320",
-            "origin"            : "ROM",
-            "destination"       : "MXP",
-            "cost"              : "190",
-            "currency"          : "EUR",
-            "class"             : "economy",
-            "Airline"           : "AirFrance"
-        
-    },
  
     {
             "flightNumber"      : "AF2804",

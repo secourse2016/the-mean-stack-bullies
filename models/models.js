@@ -24,12 +24,7 @@ var outgoingflightSchema = schema({
 
 
 var reservationSchema = schema({
-    firstName: String,
-    lastName: String,
-    passport: String,
-    issueDate: Date,
-    expiryDate: Date,
-    receipt_number: String,
+    flight_id:String,
     bookingRefNumber:String
 
 });
@@ -42,8 +37,7 @@ var pesonSchema = schema({
             nationality    : String,
             passportNumber : String,
             issueDate      : Date,
-            // receipt_number: String,
-            // bookingRefNumber:String,
+            bookingRefNumber:String,
             expiryDate     : Date
 });
 
@@ -95,7 +89,9 @@ var paymentSchema = schema({
       CardHolderName: String,
       CardHolderNo: Number,
       Cvv: Number,
-      ExpiryDate: Date
+      ExpiryDate: Date,
+      bookingRefNumber:String
+
 
 });
 
