@@ -5,7 +5,7 @@ console.log("in facto");
          getallInfo : function(cb) {
           var req = {
               method: 'GET',
-              url: '/api/getallInfo'
+              url: '/api/PaymentInfocomfirmation'
               
           };
 
@@ -23,7 +23,7 @@ console.log("in facto");
          getPersonInfo: function(cb){
              var req = {
               method: 'GET',
-              url: '/api/getPersonInfo'
+              url: '/api/getPersonInfocomfirmation'
               
           };
 

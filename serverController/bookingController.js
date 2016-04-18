@@ -19,22 +19,22 @@ exports.comapreFlights = function(formdata2, cb){
               }; 
             
              
-      	 checkForFlights(formdata2,OutFlightConditions,'outFlight',true,function(err,flights){ 
+         checkForFlights(formdata2,OutFlightConditions,'outFlight',true,function(err,flights){ 
               if(err) { 
                
                   console.log(err);
               } 
               else{  
-              	   console.log("out flights ->"+flights);
+                   console.log("out flights ->"+flights);
                   
 
                }
                cb(err,flights);
-      	 });  
+         });  
 
-      	} 
+        } 
 
-      	if(formdata2.trip=="round"){  
+        if(formdata2.trip=="round"){  
           console.log("IM IN ROUND TRIP");
                 var OutFlightConditions = {
                 destination:formdata2.To,
@@ -62,14 +62,14 @@ exports.comapreFlights = function(formdata2, cb){
                                    if(err){ 
                                       console.log(err);
                                    } else{
-                                       //console.log("in flights ->"+inFlights);
+                                       console.log("in flights ->"+inFlights);
                                        cb(err,outFlights,inFlights);
                                    }
                                  });
 
                                    }
            });
-      	 }
+         }
 
 } 
 
@@ -116,18 +116,19 @@ function checkForFlights(formdata2,formdata,collectionName,insertflag,cb){
         formdata2.NumberOfAdults = Number(formdata2.NumberOfAdults[0]);
               if(insertflag == true){
                 console.log("hersssss");
-                  insertBooking(formdata2, function(err, booking){ 
-                   if(err){ 
-                    console.log(err);
-                   } 
-                   else{ 
+                //   insertBooking(formdata2, function(err, booking){ 
+                //    if(err){ 
+                //     console.log(err);
+                //    } 
+                //    else{ 
 
-                      // console.log("HEEERERERE" + booking);
+                //       // console.log("HEEERERERE" + booking);
                     
-                   }
-                   cb(err,docs);
+                //    }
+                //    cb(err,docs);
 
-                });
+                // });
+                cb(err,docs);
               }else{
                 //console.log(docs);
                 cb(err,docs);
@@ -139,21 +140,21 @@ function checkForFlights(formdata2,formdata,collectionName,insertflag,cb){
 
 } 
 
-function insertBooking(booking, cb){ 
+// function insertBooking(booking, cb){ 
 
     
- var BookingModel = mongoose.model('Booking');
-  var newbooking = new BookingModel(booking); 
-     // console.log("here4"+newbooking);
-  newbooking.save(function(err, booking){ 
-      if(err){ 
-         cb(err,null);
-      } 
-      else{ 
-         //console.log("here3"+booking);
-         cb(null,booking); 
-       }
-   });
+//  var BookingModel = mongoose.model('Booking');
+//   var newbooking = new BookingModel(booking); 
+//      // console.log("here4"+newbooking);
+//   newbooking.save(function(err, booking){ 
+//       if(err){ 
+//          cb(err,null);
+//       } 
+//       else{ 
+//          //console.log("here3"+booking);
+//          cb(null,booking); 
+//        }
+//    });
 
 
-}
+// }

@@ -69,7 +69,7 @@ app.controller('paymentCtrl', function($scope, $location,paySrv) {
 
           paySrv.insertPayment(pa).then(
                function(result) {
-                     if(result.data=="payment added to the database"){
+                     if(result.data=="payment added to the session"){
                         
                         $location.url('/confirm');
                      }
