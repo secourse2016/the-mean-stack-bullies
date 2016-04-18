@@ -231,6 +231,12 @@ router.post('/api/booking', function(req,res){
                   res.json( {reservation : returnedRes[0],booking:returnedBooking[0]});
                });
         });
+        router.post('/api/cancelReservation/:refNum', function(req, res) {
+              manageController.cancelReservation (req.params.refNum){
+               
+                res.send('person added to the database');
+               });
+        });
 
             router.get('/api/getallInfo', function(req, res) {
         sess = req.session;
