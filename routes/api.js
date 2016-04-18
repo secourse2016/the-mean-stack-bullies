@@ -333,7 +333,7 @@ router.post('/api/booking', function(req,res){
             /**
              * getting payment information from session route.
              */
-              router.post('/api/completeBookingData', function(req, res) {
+              router.get('/api/completeBookingData', function(req, res) {
                 sess = req.session;
 
                saveAllBookingDataController.insertBookingData(sess.bookingData,function(err,booking){
@@ -354,6 +354,8 @@ router.post('/api/booking', function(req,res){
                                                 console.log("new person added"+person);
                                             saveAllBookingDataController.insertPersonalInformation(sess.paymentData,booking._id,function(err,payment){
                                                console.log("new payment added"+payment);
+                                               var message = "Booking is comfirmed";
+                                               res.send(message);
                                             });    
                                                 }
 

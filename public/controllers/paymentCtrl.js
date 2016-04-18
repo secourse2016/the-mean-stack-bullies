@@ -67,7 +67,7 @@ app.controller('paymentCtrl', function($scope, $location,paySrv) {
             ExpiryDate: date
           }];
 
-          paySrv.insertPayment(pa).then(
+          paySrv.insertPayment(pa,
                function(result) {
                      if(result.data=="payment added to the session"){
                         
