@@ -241,7 +241,7 @@ app.controller('bookingCtrl', function($scope, $location,airportSrv,flightSrv,Fl
            err=null;
       } 
 
-      return(err);
+      return(bookingFormValidationErrors);
 
   }
 
