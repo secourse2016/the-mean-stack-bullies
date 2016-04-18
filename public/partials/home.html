@@ -9,7 +9,7 @@
 
    <!--START The top image background -->
 
-        <div id="topImage" > 
+        <div id="topImage" ng-controller="bookingCtrl" data-ng-init="changeTable()" ng-style="{'background': 'url('+image+') no-repeat center center fixed','background-size':'100% 160%'}"> 
 
          <div id="home-tabling-container" class="col-xs-12 col-md-10 col-lg-8" ng-controller="reservationsController" >
            <div id="bookingForm" ng-show="showMe" >

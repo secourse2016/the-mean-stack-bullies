@@ -85,7 +85,7 @@ app.controller('bookingCtrl', function($scope, $location,airportSrv,FlightsSrv) 
 
        //   });
         
-       $scope.image="../images/default.jpg"; 
+       $scope.image="../images/paris2.jpg"; 
        $scope.datedivbool=false;
     }      
     else{
