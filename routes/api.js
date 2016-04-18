@@ -85,6 +85,7 @@ var router = express.Router();
                 bookingValidation.validateBooking(req.body.booking[0], function(err){ 
                            if(err){ 
                              res.send(err);
+                             console.log("THERE IS A FORM ERROR"+err);
                            } 
                            else{ 
 
@@ -135,7 +136,7 @@ var router = express.Router();
      */
  
 router.post('/api/booking', function(req,res){  
-         console.log("in route");
+         console.log("INNN BOOOKING ROUTTTE");
         bookControl.comapreFlights(req.body.booking[0],function(err,outFlights,inFlights){ 
                     sess = req.session;
                      sess.bookingData = req.body.booking[0];

@@ -48,9 +48,9 @@ app.controller('bookingCtrl', function($scope, $location,airportSrv,flightSrv,Fl
     Email:$scope.email
 
     }];    
-    console.log(data[0].DepartureDate);
-    console.log(data[0].DepartureDate.getFullYear());
-    console.log(data);
+    // console.log(data[0].DepartureDate);
+    // console.log(data[0].DepartureDate.getFullYear());
+    // console.log(data);
     /*form data is passed to the bookin service*/ 
      bookingSrv.insertbooking(data,function(response){
       if(response.err){
@@ -63,7 +63,8 @@ app.controller('bookingCtrl', function($scope, $location,airportSrv,flightSrv,Fl
             if(response.inFlights){
               console.log("in booking controller "+response.outFlights[0].origin);
               flightSrv.setIngoingFlights(response.inFlights);
-            }
+            } 
+        
           $location.url('/book');
       }
    });  
