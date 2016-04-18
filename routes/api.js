@@ -231,8 +231,8 @@ router.post('/api/booking', function(req,res){
                   res.json( {reservation : returnedRes[0],booking:returnedBooking[0]});
                });
         });
-        router.post('/api/cancelReservation/:refNum', function(req, res) {
-              manageController.cancelReservation (req.params.refNum,function(){
+        router.post('/api/cancelReservation', function(req, res) {
+              manageController.cancelReservation (req.body.refNum,function(){
                   
                     res.send("Reservation cancelled successfuly");
                    
