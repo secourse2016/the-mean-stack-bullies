@@ -5,7 +5,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session');
-
+var jwt     = require('jsonwebtoken');
 var api = require('./routes/api');
 //var authenticate = require('./routes/authenticate');
 
@@ -26,7 +26,39 @@ app.use(session({secret: 'key12'}));
 // routes
 
 
+app.use(function(req, res, next) {
+
+console.log(req.headers);
+      // check header or url parameters or post parameters for token
+      var token = req.body.wt || req.query.wt || req.headers['x-access-token'];   
+    console.log("{{{{ TOKEN }}}} => ", token);
+
+      //var jwtSecret = process.env.JWTSECRET;
+
+      var jwtSecret = "a23das013d,wo20emd020dk202m201;1";
+     // var jwtSecret = "a23das013d,s;1";
+      // Get JWT contents:
+      try 
+      {
+        var payload = jwt.verify(token, jwtSecret);
+        req.payload = payload;
+
+        console.log("right token");
+        next();
+
+
+      } 
+      catch (err) 
+      {
+        console.error('[ERROR]: JWT Error reason:', err);
+        res.status(403).sendFile(path.join(__dirname, '../public', '403.html'));
+      }
+
+    });
+
+
 app.use('/', api);
+
 //app.use('/authenticate', authenticate);
 
 // catch 404 and forward to error handler

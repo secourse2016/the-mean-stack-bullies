@@ -268,11 +268,11 @@ router.post('/api/booking', function(req,res){
             /**
              * getting payment information from session route.
              */
-              router.get('/api/PaymentInfocomfirmation', function(req, res) {
-            sess = req.session;
-            console.log("Ahmed nazih");
+      router.get('/api/PaymentInfocomfirmation', function(req, res) {
+    sess = req.session;
+    console.log("Ahmed nazih");
 
-            res.send(sess.paymentData);
+    res.send(sess.paymentData);
         
       });
  
