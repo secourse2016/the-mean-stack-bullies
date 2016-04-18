@@ -35,7 +35,7 @@ console.log("name " + reservationData.reservation.firstName);
     
 	 }
 
-   $scope.cancelationReservation = function()
+   $scope.cancelReservation = function()
   {
             cancelationReservation.cancelationReservation($scope.enteredReferenceNum,function(returned)
             {
