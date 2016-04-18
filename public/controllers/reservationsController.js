@@ -11,14 +11,8 @@ app.controller('reservationsController', function($scope,cancelationReservation)
            choosenReservation = 0;
       	   reservations =  cancelationReservation.getReservation($scope.enteredReferenceNum,function(reservationData)
             {
-              console.log("data " + reservationData);
-              for(var key2 in reservationData.reservation) 
-                    {
-console.log(reservationData.reservation[key2]);
-                        console.log(key2);
-                    }
-
-                if (reservationData.reservation.length != 0)
+           
+                if (reservationData.reservation != undefined)
                 {
 
 
@@ -42,20 +36,7 @@ console.log("name " + reservationData.reservation.firstName);
               
             });
 
-      	   for ( i = 0;i<reservations.length;i++)
-      	   { 
-      	   	 if (reservations[i].bookingRefNumber == $scope.enteredReferenceNum)
-      	   	 {
-              choosenReservation = i;
-        
-   	 	    	found = true;
-                
-
-
-   	 	    	break;
-      
-      	   	 }
-           }
+      	
 
     
 	}
