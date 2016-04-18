@@ -207,7 +207,7 @@ router.post('/api/booking', function(req,res){
                   personController.addPersonIntoDatabase(req.body.person[0],function(){
                     res.send('person added to the database');
                   });
-            });      
+            });       
 
 
               var flightData = [
@@ -225,11 +225,14 @@ router.post('/api/booking', function(req,res){
         });
 
        router.get('/api/getReservation/:refNum', function(req, res) {
-              manageController.searchBookings(req.params.refNum,function(returnedRes,returnedBooked){
-                res.json(returnedFlights);
+              manageController.searchBookings (req.params.refNum,function(returnedRes){
+                res.json(returnedRes);
                });
-
-          
+        });
+         router.get('/api/getReservationPersonalInfo/:refNum', function(req, res) {
+              manageController.searchReservations(req.params.refNum,function(returnedInfo){
+                res.json(returnedInfo);
+               });
         });
 
             router.get('/api/getallInfo', function(req, res) {

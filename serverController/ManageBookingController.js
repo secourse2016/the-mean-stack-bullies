@@ -1,7 +1,7 @@
 var models = require('../models/models.js');
 var mongoose = require('mongoose');
 
-exports.searchBookings =function(refNum,cb){
+exports.searchReservations =function(refNum,cb){
      var reservationModel = mongoose.model('Reservation');
 	var bookingModel = mongoose.model('bookingSchema');
 
@@ -10,14 +10,24 @@ exports.searchBookings =function(refNum,cb){
 	resQuery.where('refNum',refNum);
 	
 
+
+
+	resQuery.exec(function (err, resDocs) {
+		cb(resDocs);
+	});
+	
+}
+exports.searchBooking =function(refNum,cb){
+	var bookingModel = mongoose.model('bookingSchema');
+
 	var bookingQuery = bookingModel.find();
 	bookingQuery.where('refNum',refNum);
 
 
-	resQuery.exec(function (err, resDocs) {
-		bookingQuery.exec(function(err2,bookDocs))
+	bookingQuery.exec(function(err,bookDocs)
+	{
 
-		cb(resDocs,bookDocs);
+		cb(bookDocs);
 	});
 	
 }
