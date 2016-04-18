@@ -1,13 +1,14 @@
 var nodemailer =require('nodemailer');
-var transporter = nodemailer.createTransport({
-service: 'Gmail',
-auth: {
-    user: 'airfrance.airline.2016@gmail.com',
-    pass: 'TheMeanStackBullies'
-}
-});
+
 
 exports.SendEmail = function(receiverMail,subject,htmlBody,cb){
+	var transporter = nodemailer.createTransport({
+service: 'Gmail',
+auth: {
+    user: process.env.MAIL,
+    pass: process.env.PASS
+}
+});
 	// var mailOption = {
 	// 	from: 'Hatem Morgan <hatemmorgan17@gmail.com>',
 	// 	to: 'maha.ehab.elleci@gmail.com',

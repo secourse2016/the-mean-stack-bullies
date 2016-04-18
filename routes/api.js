@@ -118,7 +118,7 @@ var router = express.Router();
      */
  
 router.post('/api/booking', function(req,res){  
-         console.log("in route");
+      
         bookControl.comapreFlights(req.body.booking[0],function(err,outFlights,inFlights){ 
                     sess = req.session;
                      sess.bookingData = req.body.booking[0];
@@ -280,8 +280,9 @@ router.post('/api/booking', function(req,res){
              * get Reservations route.
              */
        router.get('/api/getReservation/:refNum', function(req, res) {
-              manageController.searchBookings (req.params.refNum,function(returnedRes,returnedBooking){
-               
+              manageController.searchBookings (req.params.refNum,function(returnedRes,returnedBooking,err){
+                  if (err == true)
+                    res.json("not found");
 
                   res.json( {reservation : returnedRes[0],booking:returnedBooking[0]});
                });
@@ -291,7 +292,8 @@ router.post('/api/booking', function(req,res){
              * get Reservations route.
              */
         router.post('/api/cancelReservation', function(req, res) {
-              manageController.cancelReservation (req.body.refNum,function(){
+          console.log(req.body);
+              manageController.cancelReservation (req.body.ref,function(){
                   
                     res.send("Reservation cancelled successfuly");
                    
@@ -327,11 +329,11 @@ router.post('/api/booking', function(req,res){
             /**
              * getting payment information from session route.
              */
-              router.get('/api/PaymentInfocomfirmation', function(req, res) {
-            sess = req.session;
-            console.log("Ahmed nazih");
+      router.get('/api/PaymentInfocomfirmation', function(req, res) {
+    sess = req.session;
+    console.log("Ahmed nazih");
 
-            res.send(sess.paymentData);
+    res.send(sess.paymentData);
         
       });
  
