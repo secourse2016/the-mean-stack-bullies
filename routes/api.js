@@ -3,7 +3,7 @@ var express = require('express');
      /**
        * requiring server controllers.
        */
-var paymentController= require('../serverController/paymentController.js');
+var paymentController = require('../serverController/paymentController.js');
 var contactUsController= require('../serverController/contactUsServerController.js');
 var saveAllBookingDataController= require('../serverController/saveAllBookingDataController.js');
 var bookControl = require('../serverController/bookingController.js');
@@ -250,7 +250,20 @@ router.post('/api/booking', function(req,res){
            router.get('/api/flights',function(req,res){
               sess = req.session;
               res.send(sess.flightData);
-           });      
+           }); 
+
+            /**
+             * insert Flights route.
+             */  
+
+           route.post('/api/insertFlight',function(req,res){
+                  sess = req.session;
+                  sess.flightIDs = req.body.;
+
+                // personController.addPersonIntoDatabase(req.body.person[0],function(){
+                  res.send('person added to the session');
+
+           });   
  
 /*
 |==========================================================================
@@ -329,9 +342,13 @@ router.post('/api/booking', function(req,res){
                           res.send(err);
                         }else{
                                  console.log("new booking added"+booking);
-                                 //saveAllBookingDataController.insertReservationData(.toString(),booking._id,function(){
-
-                                 //});
+                                 saveAllBookingDataController.insertReservationData(sess.flightIDs.inFlight_id , sess.flightIDs.ouFlight_id , booking._id,function(err, reserve){
+                                       if(err){
+                                        console.log(err);
+                                       }else{
+                                        console.log("new reservation added"+reserve);
+                                       }
+                                 });
                         }
                });
              
