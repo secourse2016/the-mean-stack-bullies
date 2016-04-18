@@ -256,9 +256,9 @@ router.post('/api/booking', function(req,res){
              * insert Flights route.
              */  
 
-           route.post('/api/insertFlight',function(req,res){
+           router.post('/api/insertFlight',function(req,res){
                   sess = req.session;
-                  sess.flightIDs = req.body.;
+                  sess.flightIDs = req.body.flightsID;
 
                 // personController.addPersonIntoDatabase(req.body.person[0],function(){
                   res.send('person added to the session');
@@ -347,7 +347,7 @@ router.post('/api/booking', function(req,res){
                                         console.log(err);
                                        }else{
                                         console.log("new reservation added"+reserve);
-                                        saveAllBookingDataController.insertPersonalInformation(sess.personData,booking._id,function(personalInformation,booking_id,function(err,person){
+                                        saveAllBookingDataController.insertPersonalInformation(sess.personData,booking._id,function(err,person){
                                                if(err){
                                                 console.log(err);
                                                }else{
