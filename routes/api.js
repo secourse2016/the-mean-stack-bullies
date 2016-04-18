@@ -226,9 +226,13 @@ router.post('/api/booking', function(req,res){
 
        router.get('/api/getReservation/:refNum', function(req, res) {
               manageController.searchBookings (req.params.refNum,function(returnedRes,returnedBooking){
+                console.log("serach booking " + returnedRes);
+                 console.log("serach booking " + returnedBooking  );
                   var joinedQuery={};
-                  for(var key in returnedRes) result[key]=returnedRes[key];
-                  for(var key in returnedBooking) result[key]=returnedBooking[key];
+                  for(var key in returnedRes[0]) joinedQuery[key]=returnedRes[0][key];
+                  for(var key in returnedBooking[0]) joinedQuery[key]=returnedBooking[0][key];
+
+                    console.log("jointed" + joinedQuery);
                   res.json(joinedQuery);
                });
         });
