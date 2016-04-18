@@ -27,7 +27,12 @@ departureDateTime :new Date()
 
     $scope.Book=function()
   {
+     if($scope.checkbox==null){
+      alert("hamada helal");
+     }
+     else{
      $location.url('/passenger');
+    }  
   }
 
 });

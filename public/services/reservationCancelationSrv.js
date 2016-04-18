@@ -1,18 +1,19 @@
 
 app.factory('cancelationReservation',function(){
    return {
-       getReservation : function(){
-         var reservation = [
+       getReservation : function(fl,cb) {
 
+          var req = {
+              method: 'GET',
+              url: '/api/getReservation/' + fl[0].refNum;
+          };
 
-    {"firstName":"John", "lastName":"Doe","age":19,"passport":"A",
- "passport_number":1423213,"issueDate":"2011-07-14 19:43:37 +0100","expiryDate":"2015-07-14 19:43:37 +0100",
- "receipt_number" : "A7E3","bookingRefNumber":"A300","confirmed":true,"flightNumber":"Ae345"}
- ,
-  
- {"firstName":"Aly", "lastName":"Ameen","age":21,"passport":"A",
- "passport_number":1423213,"issueDate":"2011-07-14 19:43:37 +0100","expiryDate":"2015-07-14 19:43:37 +0100",
- "receipt_number" : "A7E3","bookingRefNumber":"A301","confirmed":true,"flightNumber":"rT67I"}
+                  return $http(req).then(function mySucces(response) {
+               cb(response.data);
+            }, function myError(response) {
+                 cb(response.statusText);
+            });
+         }
 
 ];
   return reservation;

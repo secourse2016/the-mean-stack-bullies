@@ -233,8 +233,6 @@ router.post('/api/booking', function(req,res){
 
       router.get('/api/getPersonInfo', function(req, res) {
         sess = req.session;
-        console.log("Ahmed nazih22");
-
         res.send(sess.personData);
     
       });  
