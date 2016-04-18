@@ -33,7 +33,7 @@ app.controller('bookingCtrl', function($scope, $location,airportSrv,FlightsSrv,b
   }
   $scope.bookFlight=function(){   
 
-     console.log($scope.depDate);
+   
     /*form data is retrieved here*/ 
      var data = [{  
     
@@ -47,9 +47,10 @@ app.controller('bookingCtrl', function($scope, $location,airportSrv,FlightsSrv,b
     Class: $scope.tclass,
     Email:$scope.email
 
-    }];  
-
+    }];   
   
+    console.log(data[0].DepartureDate.getDate());
+   console.log(new Date().getDate());
     console.log(data);
     /*form data is passed to the bookin service*/ 
    bookingSrv.insertbooking(data);  

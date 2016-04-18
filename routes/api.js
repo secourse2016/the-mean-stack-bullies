@@ -2,7 +2,8 @@ var express = require('express');
 
 var bookControl = require('../serverController/bookingController.js');
 var paymentController= require('../serverController/paymentController.js');
-var paymentValidation= require('../Validations/paymentValidation.js'); 
+var paymentValidation= require('../Validations/paymentValidation.js');  
+var bookingValidation = require('../Validations/bookingValidation.js');
      /**
        * requiring server controllers.
        */
@@ -72,6 +73,21 @@ var router = express.Router();
                 });
   
   
+}); 
+               //middleware for validating the booking data
+
+              router.post('/api/booking', function(req. res, next) { 
+
+                bookingValidation.validateBooking(req.body.booking[0], function(err){ 
+                           if(err){ 
+                             res.send(err);
+                           } 
+                           else{ 
+
+                                next();
+                           }
+                });
+
 });
 
 
