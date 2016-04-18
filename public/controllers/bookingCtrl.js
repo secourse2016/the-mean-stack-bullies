@@ -35,19 +35,14 @@ app.controller('bookingCtrl', function($scope, $location,airportSrv,flightSrv,Fl
 
      var errMessage = bookingFormValidation(); 
      var empty=true;
-        for(var property in errMessage){  
-           if(errMessage.property !== null){ 
-             alert(errMessage.property); 
-           }
-           else{  
-              empty=false;
-           }
+       
+          if(errMessage){ 
+             alert(errMessage);
+          }
 
-}
         
-    if(empty==true){
-     var data = [{  
-    
+    else{
+     var data = [{ 
     
     trip: $scope.trippp,
     from: $scope.selectedOrigin,
@@ -158,30 +153,20 @@ app.controller('bookingCtrl', function($scope, $location,airportSrv,flightSrv,Fl
  
   function bookingFormValidation(){  
       var valid= true; 
-     var bookingFormValidationErrors = {
-            selectTripError : null, 
-            selectOriginError :null, 
-            selectDestinationError :null, 
-            selectDepartureDateError :null, 
-            selectReturnDateError:null,
-            selectChildreError :null,
-            selectAdultError : null, 
-            selectClassError:null, 
-            validEmailError:null
-    };    
+      var err="";
      var evalid = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
         if($scope.trippp == undefined){ 
-              selectTripError = "Please select your trip type"; 
+             err+= "Please select your trip type"; 
               valid = false;
         }
 
         if($scope.selectedOrigin == undefined){  
-              selectOriginError = "Please enter your origin airport";
+             err += "Please enter your origin airport";
                 valid = false; 
         } 
         if($scope.selectedDestination == undefined){ 
-               selectDestinationError = "Please enter your destination"; 
+               err+= "Please enter your destination"; 
                valid = false;
          }  
 
@@ -193,7 +178,7 @@ app.controller('bookingCtrl', function($scope, $location,airportSrv,flightSrv,Fl
              ($scope.depDate.getMonth()+1 == new Date().getMonth()+1) &&
              ($scope.depDate.getFullYear() == new Date().getFullYear())) { 
 
-                selectDepartureDateError = "Please enter a valid departure date"; 
+                err+= "Please enter a valid departure date"; 
                 valid = false;
         }
 
@@ -208,7 +193,7 @@ app.controller('bookingCtrl', function($scope, $location,airportSrv,flightSrv,Fl
              ($scope.retDate.getMonth()+1 == new Date().getMonth()+1) &&
              ($scope.retDate.getFullYear() == new Date().getFullYear())){
 
-              selectReturnDateError = "Please enter a valid return date"; 
+              err+= "Please enter a valid return date"; 
               valid = false;
 
         
@@ -217,24 +202,24 @@ app.controller('bookingCtrl', function($scope, $location,airportSrv,flightSrv,Fl
         } 
 
          if($scope.adultsss == undefined){ 
-             selectAdultError= "Please select number of adults";
+             err+= "Please select number of adults";
              valid = false;
 
         }   
 
         if($scope.children == undefined){ 
-            selectChildreError="Please select number of children";
+            err+="Please select number of children";
             valid = false;
         } 
 
         if($scope.tclass == undefined){  
-          selectClassError = "Please select the seating class"; 
+          err+= "Please select the seating class"; 
           valid = false;
 
         } 
 
         if($scope.email == undefined || !(evalid.test($scope.email))) { 
-           validEmailError = "Please enter a valid email"; 
+           err+= "Please enter a valid email"; 
            valid = false;
 
 
@@ -246,7 +231,7 @@ app.controller('bookingCtrl', function($scope, $location,airportSrv,flightSrv,Fl
            err=null;
       } 
 
-      return(bookingFormValidationErrors);
+      return(err);
 
   }
 
