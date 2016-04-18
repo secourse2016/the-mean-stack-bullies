@@ -1,4 +1,4 @@
-app.controller('bookingCtrl', function($scope, $location,airportSrv,FlightsSrv,bookingSrv) {
+app.controller('bookingCtrl', function($scope, $location,airportSrv,flightSrv,FlightsSrv,bookingSrv) {
 
     
   $scope.date= new Date();
@@ -26,7 +26,7 @@ app.controller('bookingCtrl', function($scope, $location,airportSrv,FlightsSrv,b
   }
   $scope.Book=function()
   {
-     $location.url('/passenger');
+      $location.url('/passenger');
   }
   $scope.showReturnedDate=function(){
     $scope.hidedate=true;
@@ -52,9 +52,21 @@ app.controller('bookingCtrl', function($scope, $location,airportSrv,FlightsSrv,b
     console.log(data[0].DepartureDate.getFullYear());
     console.log(data);
     /*form data is passed to the bookin service*/ 
-   bookingSrv.insertbooking(data);  
-
-    $location.url('/book');
+     bookingSrv.insertbooking(data,function(response){
+      if(response.err){
+        alert("err occured please try again");
+      }else{
+        if(response.outFlights){
+            //console.log("in booking controller "+response.outFlights[0].origin);
+            flightSrv.setOutgoingFlights(response.outFlights);
+          }
+            if(response.inFlights){
+              console.log("in booking controller "+response.outFlights[0].origin);
+              flightSrv.setIngoingFlights(response.inFlights);
+            }
+          $location.url('/book');
+      }
+   });  
   }
 
   $scope.bookButton=function(){
@@ -105,7 +117,7 @@ app.controller('bookingCtrl', function($scope, $location,airportSrv,FlightsSrv,b
 
        //   });
         
-       $scope.image="../images/default.jpg"; 
+       $scope.image="../images/paris2.jpg"; 
        $scope.datedivbool=false;
     }      
     else{
@@ -133,4 +145,8 @@ app.controller('bookingCtrl', function($scope, $location,airportSrv,FlightsSrv,b
   $scope.showMore=function(){
     $scope.limit+=6;
   }
-});
+ });
+
+
+
+

@@ -1,18 +1,37 @@
 app.factory('flightSrv', function ($http) {
+      var inFlights = [];
+      var outFlights = [];
      return {
-         getFlights : function(fl,cb) {
+    //      getFlights : function(fl,cb) {
 
-          var req = {
-              method: 'GET',
-              url: '/api/getFlight/' + fl[0].origin + '/' + fl[0].destination
-              + '/' + fl[0].departureDateTime 
-          };
+    //       var req = {
+    //           method: 'GET',
+    //           url: '/api/getFlight/' + fl[0].origin + '/' + fl[0].destination
+    //           + '/' + fl[0].departureDateTime 
+    //       };
 
-          return $http(req).then(function mySucces(response) {
-       cb(response.data);
-    }, function myError(response) {
-         cb(response.statusText);
-    });
+    //       return $http(req).then(function mySucces(response) {
+    //    cb(response.data);
+    // }, function myError(response) {
+    //      cb(response.statusText);
+    // }),
+          setIngoingFlights : function(inGoingFlights){
+
+               inFlights = inGoingFlights ;
+          },
+           setOutgoingFlights : function(outGoingFlights){
+            console.log("in flightSRv "+outGoingFlights);
+               outFlights = outGoingFlights ;
+          },
+           getIngoingFlights : function(cb){
+           console.log("in get in flightSRv "+outFlights);
+               cb(inFlights);
+          },
+           getOutgoingFlights : function(cb){
+            console.log("in get out flightSRv "+outFlights);
+               cb(outFlights) ;
+          }
+
          }
          // getFlights : function() {
          //   return $http.get('/api/data/flights');
@@ -29,7 +48,7 @@ app.factory('flightSrv', function ($http) {
          // getSelectedDestinationAirport: function() {
          //   return this.selectedDestinationAirport;
          // }
-     };
+    
  });
 
 app.factory('FlightsSrv', function () {

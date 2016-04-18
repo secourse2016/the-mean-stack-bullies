@@ -60,7 +60,7 @@ app.controller('personalInfoCtrl', function($scope, $location,personalInfoSrv) {
           
           personalInfoSrv.insertPerson(person).then(
                function(result) {
-                     if(result.data=="person added to the database"){
+                     if(result.data=="person added to the session"){
                         console.log(result.data);
                         $location.url('/pay');
                      }

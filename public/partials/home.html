@@ -9,7 +9,7 @@
 
    <!--START The top image background -->
 
-        <div id="topImage" > 
+        <div id="topImage" ng-controller="bookingCtrl" data-ng-init="changeTable()" ng-style="{'background': 'url('+image+') no-repeat center center fixed','background-size':'100% 160%'}"> 
 
          <div id="home-tabling-container" class="col-xs-12 col-md-10 col-lg-8" ng-controller="reservationsController" >
            <div id="bookingForm" ng-show="showMe" >
@@ -245,7 +245,7 @@
     <!--End History section-->
 
     <!--Start section Statistics-->
-    <section id="stats" class="stats text-center">
+       <section id="stats" class="stats text-center">
       <div id="data" > 
        <div class="container cont2">
         <div class="row row2">
@@ -253,19 +253,21 @@
             <h2 id="statsText">Our Airline Statistics</h2>
           </div>
           <div class="statsDivs  col-lg-4">
-            <img class="icons " src="./icons/aircraft.png">
+            <img class="icons wow slideInDown " data-wow-duration="1.5s"src="./icons/aircraft.png">
             <h3>Air Crafts</h3>
-            <h5>228</h5>
+            <h5 class="count">228</h5>
           </div>
           <div class="statsDivs col-lg-4">
-            <img class="icons " src="./icons/destination.png">
+            <img class="icons wow rotateIn" data-wow-duration="2s" src="./icons/destination.png">
             <h3>Destinations</h3>
-            <h5>204</h5>
+            <h5 class="count">204</h5>
           </div>
           <div class="statsDivs col-lg-4">
-            <img class="icons" src="./icons/seat.png">
+            <img class="icons wow slideInRight" data-wow-duration="1.5s" src="./icons/seat.png">
             <h3>Seats</h3>
-            <h5>34,562</h5>
+            <span class="count">34</span>
+            <span>,</span>
+            <span class="count"> 562</span>
           </div>
         </div>
       </div>  
@@ -289,11 +291,11 @@
          </div>
     </div>
 
-
+      <p class="copyright">© Air France corporation all rights reserved</p> 
     </section>
     <!--End Section Statistics-->
 
-
+    
     <!--Start Section Features-->
     
    
