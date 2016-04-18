@@ -53,20 +53,12 @@ app.controller('bookingCtrl', function($scope, $location,airportSrv,flightSrv,Fl
     console.log(data);
     /*form data is passed to the bookin service*/ 
      bookingSrv.insertbooking(data,function(response){
-      if(response.err){
-        alert("err occured please try again");
-      }else{
-        if(response.outFlights){
-            //console.log("in booking controller "+response.outFlights[0].origin);
-            flightSrv.setOutgoingFlights(response.outFlights);
-          }
-            if(response.inFlights){
-              console.log("in booking controller "+response.outFlights[0].origin);
-              flightSrv.setIngoingFlights(response.inFlights);
-            }
-          $location.url('/book');
-      }
-   });  
+               if(response.outFlights){
+                $location.url('/book');
+              }else{
+                alert("no flights with criteria avialable");
+              }
+       });   
   }
 
   $scope.bookButton=function(){
@@ -96,37 +88,43 @@ app.controller('bookingCtrl', function($scope, $location,airportSrv,flightSrv,Fl
   }
   $scope.changeTable=function(iata){
     $scope.hideTable=false;
-    if(iata==undefined){
+    if(iata===undefined){
       $scope.destination=null;
           $scope.hide=false;
           $scope.hideBookButton=true;
           // FlightsSrv.getFlights().success(function(flights) {
-                $scope.arr = FlightsSrv.getFlights();
-                var x;
-                var today=new Date();
-                for(x=0;x< $scope.arr.length;x++)
-                {
-                  var d=new Date($scope.arr[x].date);
-                  if((d.getYear()<today.getYear()) || (d.getYear()==today.getYear && d.getMonth()<today.getMonth()) || (d.getYear()==today.getYear && d.getMonth()==today.getMonth() && d.getDate()<today.getDate()))
-                  {
-                      $scope.arr.splice(x,1);
-                      x--;
-                  }
+                FlightsSrv.getFlights(function(data){
+                    var dweee=data.outF.concat(data.inF);
+                    $scope.arr=dweee;
+                    var x;
+                    var today=new Date();
+                    for(x=0;x< $scope.arr.length;x++)
+                    {
+                      var d=new Date($scope.arr[x].departureDateTime);
+                      if((d.getYear()<today.getYear()) || (d.getYear()==today.getYear && d.getMonth()<today.getMonth()) || (d.getYear()==today.getYear && d.getMonth()==today.getMonth() && d.getDate()<today.getDate()))
+                      {
+                          $scope.arr.splice(x,1);
+                          x--;
+                      }
 
-                }
+                    }
+
 
        //   });
         
-       $scope.image="../images/paris2.jpg"; 
-       $scope.datedivbool=false;
+                     $scope.image="../images/paris2.jpg"; 
+                     $scope.datedivbool=false;
+                     
+                });
     }      
     else{
-
+       
        var result=[];
        var array=$scope.arr;
        var i;
        for(i=0;i<array.length;i++){
-          if(array[i].destinationIata==iata){
+          if(array[i].origin==iata){
+            console.log("TAAAAAAAAAAAAAAAAAAAAAAAAAAAG");
             result.push(array[i]);
           }
        }

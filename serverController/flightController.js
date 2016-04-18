@@ -20,7 +20,35 @@ exports.searchFlights =function(flightData,cb){
 	query.exec(function (err, docs) {
 
 
-	cb(docs);
-});
+		cb(docs);
+	});
 	
+}
+
+exports.getFlightsForTimeTable=function(cb){
+	var OutFlightModel = mongoose.model('outFlight');
+	var InFlightModel = mongoose.model('inFlight');
+	var x=new Date();
+	var y=new Date();
+	// var hours=x.getHours();
+	// var days=x.getDays();
+	y.setMinutes(59);
+	y.setHours(23);
+
+	var outquery = OutFlightModel.find();
+	var inquery = InFlightModel.find();
+
+	outquery.where('departureDateTime',{"$gte":x, "$lt": y  });
+	inquery.where('departureDateTime',{"$gte":x, "$lt": y  });
+
+	outquery.exec(function (err, outdocs) {
+			inquery.exec(function (err, indocs) {
+				// console.log("outdocs :      --------------------->"+outdocs);
+				// console.log("indocs  :      --------------------->"+indocs);
+				cb(outdocs,indocs);
+			});
+
+		
+	});
+
 }
