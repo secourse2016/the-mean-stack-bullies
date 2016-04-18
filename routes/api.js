@@ -19,6 +19,8 @@ var personController= require('../serverController/personController.js');
 var personValidation= require('../Validations/personValidation.js');
 
 
+var manageController =  require('../serverController/ManageBookingController.js');
+
 var sess;
 
 var router = express.Router();
@@ -217,29 +219,44 @@ router.post('/api/booking', function(req,res){
              */
 
   
-            router.get('/api/getFlight/:origin/:dest/:departureTime', function(req, res) {
+        router.get('/api/getFlight/:origin/:dest/:departureTime', function(req, res) {
 
-                router.post('/api/insertperson', function(req, res) {
-                      personController.addPersonIntoDatabase(req.body.person[0],function(){
-                        res.send('person added to the database');
-                      });
-                });      
+            router.post('/api/insertperson', function(req, res) {
+                  personController.addPersonIntoDatabase(req.body.person[0],function(){
+                    res.send('person added to the database');
+                  });
+            });       
 
 
-                  var flightData = [
-                  { 
-                  destination:req.params.dest,
-                  origin :req.params.origin,
-                  departureDateTime :req.params.departureTime
-                  }];
+              var flightData = [
+              { 
+              destination:req.params.dest,
+              origin :req.params.origin,
+              departureDateTime :req.params.departureTime
+              }];
 
-                  flightControl.searchFlights(flightData,function(returnedFlights){
-                    res.json(returnedFlights);
-                   });
+              flightControl.searchFlights(flightData,function(returnedFlights){
+                res.json(returnedFlights);
+               });
 
-              
-            });
+          
+        });
 
+       router.get('/api/getReservation/:refNum', function(req, res) {
+              manageController.searchBookings (req.params.refNum,function(returnedRes,returnedBooking){
+               
+
+                  res.json( {reservation : returnedRes[0],booking:returnedBooking[0]});
+               });
+        });
+        router.post('/api/cancelReservation', function(req, res) {
+              manageController.cancelReservation (req.body.refNum,function(){
+                  
+                    res.send("Reservation cancelled successfuly");
+                   
+                });
+               
+        });
 /*
 |==========================================================================
 | comfirmation Routes
@@ -258,17 +275,13 @@ router.post('/api/booking', function(req,res){
             res.send(sess.paymentData);
         
       });
-            /**
-             * getting personal information from session route.
-             */
-          router.get('/api/getPersonInfocomfirmation', function(req, res) {
-            sess = req.session;
-            console.log("Ahmed nazih22");
-
-            res.send(sess.personData);
-        
-          });  
-   
+ 
+      router.get('/api/getPersonInfo', function(req, res) {
+        sess = req.session;
+        res.send(sess.personData);
+    
+      });  
+           
 
 /*
 |==========================================================================

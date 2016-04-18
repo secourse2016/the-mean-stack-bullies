@@ -34,7 +34,7 @@ console.log("in flight controller");
   //           $scope.arr = returnedFlights;
   //  });
 
-    $scope.Book=function()
+  $scope.Book=function()
   {
      $location.url('/passenger');
   }
