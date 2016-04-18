@@ -226,11 +226,10 @@ router.post('/api/booking', function(req,res){
 
        router.get('/api/getReservation/:refNum', function(req, res) {
               manageController.searchBookings (req.params.refNum,function(returnedRes,returnedBooking){
-
-                var result={};
-                for(var key in returnedRes) result[key]=returnedRes[key];
-                for(var key in returnedBooking) result[key]=returnedBooking[key];
-                res.json(returnedRes);
+                  var joinedQuery={};
+                  for(var key in returnedRes) result[key]=returnedRes[key];
+                  for(var key in returnedBooking) result[key]=returnedBooking[key];
+                  res.json(joinedQuery);
                });
         });
 

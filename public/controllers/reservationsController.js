@@ -5,9 +5,32 @@ app.controller('reservationsController', function($scope,cancelationReservation)
 	{
 	   // $http.get("./reservation.json")
     //   .then(function(response) {
-      	   reservations =  cancelationReservation.getReservation();
-      	   found = false;
+
+
+           found = false;
            choosenReservation = 0;
+      	   reservations =  cancelationReservation.getReservation($scope.enteredReferenceNum,function(reservationData)
+            {
+                if (resrvationData.length != 0)
+                {
+
+                   $scope.reservationExist = true;
+                        $scope.names = ["First Name : " + reservationData[0].firstName
+                        ,"Last Name : " + reservationData[0].lastName,
+                        "Passport number : " + reservationData[0].passport,
+                       "Booking reference number : " + reservationData[0].bookingRefNumber];
+
+                       $scope.flightDetails = ["From " + reservationData[0].from
+                       + " To " + reservationData[0].To ,"Date : " + reservationData[0].DepartureDate];
+                }
+                else
+
+                {
+                   $scope.reservationExist = false;
+                   $scope.names = ["Reference Number Not Found, Please check it and try again."];
+                   $scope.flightDetails = [""];
+                }
+            });
 
       	   for ( i = 0;i<reservations.length;i++)
       	   { 
@@ -15,10 +38,6 @@ app.controller('reservationsController', function($scope,cancelationReservation)
       	   	 {
               choosenReservation = i;
         
-          	if (reservations[i].confirmed)
-   	 	    		$scope.status = "Status : Confirmed";
-   	 	    	else
-   	 	    		$scope.status ="Status : Not Confirmed";
    	 	    	found = true;
                 
 
@@ -27,38 +46,7 @@ app.controller('reservationsController', function($scope,cancelationReservation)
       
       	   	 }
            }
-           if (!found)
-           {
-          	 $scope.reservationExist = false;
 
-             $scope.names = ["Reference Number Not Found, Please check it and try again."];
-             $scope.flightDetails = [""];
-           }
-           else
-           {
-              $scope.result= "";
-              $scope.reservationExist = true;
-             //  $http.get("./flights.json")
-             // .then(function(flightsResponse) {
-              flights = cancelationReservation.getFlights();
-                for ( i = 0;i<flights.length;i++)
-                {
-             	    if (reservations[choosenReservation].flightNumber == flights[i].flightNumber.unique)
-                  {
-                        $scope.names = ["First Name : " + reservations[i].firstName
-                        ,"Last Name : " + reservations[i].lastName,
-                        "Passport number : " + reservations[i].passport_number,
-                       "Booking reference number : " + reservations[i].bookingRefNumber];
-
-                       $scope.flightDetails = ["From " + flights[i].originCity
-                       + " To " + flights[i].destinationCity ,"Date : " + flights[i].date,"Duration : " + flights[i].duration + " hours"] ;
-                       break; 
-                  }
-                }
-          //  });
-           }
-
-    //   });
     
 	}
 

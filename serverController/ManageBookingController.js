@@ -15,9 +15,9 @@ exports.searchBookings =function(refNum,cb){
 
 
 	resQuery.exec(function (err, resDocs) {
-		bookingQuery.exec(function(err2,bookDocs))
+		bookingQuery.exec(function(err2,bookDocs) {
 
-		cb(resDocs,bookDocs);
+			cb(resDocs,bookDocs);
+		});
 	});
-	
 }
