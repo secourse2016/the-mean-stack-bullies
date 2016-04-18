@@ -201,45 +201,36 @@ router.post('/api/booking', function(req,res){
              */
 
   
-            router.get('/api/getFlight/:origin/:dest/:departureTime', function(req, res) {
+        router.get('/api/getFlight/:origin/:dest/:departureTime', function(req, res) {
 
-                router.post('/api/insertperson', function(req, res) {
-                      personController.addPersonIntoDatabase(req.body.person[0],function(){
-                        res.send('person added to the database');
-                      });
-                });      
-
-
-                  var flightData = [
-                  { 
-                  destination:req.params.dest,
-                  origin :req.params.origin,
-                  departureDateTime :req.params.departureTime
-                  }];
-
-                  flightControl.searchFlights(flightData,function(returnedFlights){
-                    res.json(returnedFlights);
-                   });
-
-              
-            });
-
-           router.get('/api/getReservation/:refNum', function(req, res) {
+            router.post('/api/insertperson', function(req, res) {
+                  personController.addPersonIntoDatabase(req.body.person[0],function(){
+                    res.send('person added to the database');
+                  });
+            });      
 
 
-                  var flightData = [
-                  { 
-                  destination:req.params.dest,
-                  origin :req.params.origin,
-                  departureDateTime :req.params.departureTime
-                  }];
+              var flightData = [
+              { 
+              destination:req.params.dest,
+              origin :req.params.origin,
+              departureDateTime :req.params.departureTime
+              }];
 
-                  flightControl.searchFlights(flightData,function(returnedFlights){
-                    res.json(returnedFlights);
-                   });
+              flightControl.searchFlights(flightData,function(returnedFlights){
+                res.json(returnedFlights);
+               });
 
-              
-            });
+          
+        });
+
+       router.get('/api/getReservation/:refNum', function(req, res) {
+              manageController.searchBookings(req.params.refNum,function(returnedRes,returnedBooked){
+                res.json(returnedFlights);
+               });
+
+          
+        });
 
             router.get('/api/getallInfo', function(req, res) {
         sess = req.session;
