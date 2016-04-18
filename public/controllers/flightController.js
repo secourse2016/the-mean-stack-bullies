@@ -8,7 +8,7 @@ console.log("in flight controller");
 // }];
    flightSrv.getOutgoingFlights(function(outFlights){
     console.log("outFlight Controller "+outFlights);
-    $scope.outgoingFlights = outFlight;
+    $scope.outgoingFlights = outFlights;
      flightSrv.getIngoingFlights(function(inFlights){
      console.log("inFlight Controller "+inFlights);
      $scope.returnedFlights = inFlights;

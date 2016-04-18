@@ -26,7 +26,7 @@ app.controller('bookingCtrl', function($scope, $location,airportSrv,flightSrv,bo
   }
   $scope.Book=function()
   {
-     $location.url('/passenger');
+      $location.url('/passenger');
   }
   $scope.showReturnedDate=function(){
     $scope.hidedate=true;
@@ -52,7 +52,7 @@ app.controller('bookingCtrl', function($scope, $location,airportSrv,flightSrv,bo
   
     console.log(data);
     /*form data is passed to the bookin service*/ 
-   bookingSrv.insertbooking(data,function(response){
+     bookingSrv.insertbooking(data,function(response){
       if(response.err){
         alert("err occured please try again");
       }else{
@@ -67,8 +67,6 @@ app.controller('bookingCtrl', function($scope, $location,airportSrv,flightSrv,bo
           $location.url('/book');
       }
    });  
-
-    
   }
 
   $scope.bookButton=function(){
@@ -96,55 +94,59 @@ app.controller('bookingCtrl', function($scope, $location,airportSrv,flightSrv,bo
        }
        $scope.arr = result;
   }
-  $scope.changeTable=function(iata){
-    $scope.hideTable=false;
-    if(iata==undefined){
-      $scope.destination=null;
-          $scope.hide=false;
-          $scope.hideBookButton=true;
-          // FlightsSrv.getFlights().success(function(flights) {
-                $scope.arr = FlightsSrv.getFlights();
-                var x;
-                var today=new Date();
-                for(x=0;x< $scope.arr.length;x++)
-                {
-                  var d=new Date($scope.arr[x].date);
-                  if((d.getYear()<today.getYear()) || (d.getYear()==today.getYear && d.getMonth()<today.getMonth()) || (d.getYear()==today.getYear && d.getMonth()==today.getMonth() && d.getDate()<today.getDate()))
-                  {
-                      $scope.arr.splice(x,1);
-                      x--;
-                  }
+//   $scope.changeTable=function(iata){
+//     $scope.hideTable=false;
+//     if(iata==undefined){
+//       $scope.destination=null;
+//           $scope.hide=false;
+//           $scope.hideBookButton=true;
+//           // FlightsSrv.getFlights().success(function(flights) {
+//                 $scope.arr = FlightsSrv.getFlights();
+//                 var x;
+//                 var today=new Date();
+//                 for(x=0;x< $scope.arr.length;x++)
+//                 {
+//                   var d=new Date($scope.arr[x].date);
+//                   if((d.getYear()<today.getYear()) || (d.getYear()==today.getYear && d.getMonth()<today.getMonth()) || (d.getYear()==today.getYear && d.getMonth()==today.getMonth() && d.getDate()<today.getDate()))
+//                   {
+//                       $scope.arr.splice(x,1);
+//                       x--;
+//                   }
 
-                }
+//                 }
 
-       //   });
+//        //   });
         
-       $scope.image="../images/paris2.jpg"; 
-       $scope.datedivbool=false;
-    }      
-    else{
+//        $scope.image="../images/paris2.jpg"; 
+//        $scope.datedivbool=false;
+//     }      
+//     else{
 
-       var result=[];
-       var array=$scope.arr;
-       var i;
-       for(i=0;i<array.length;i++){
-          if(array[i].destinationIata==iata){
-            result.push(array[i]);
-          }
-       }
-       $scope.arr = result;
-       $scope.datedivbool=true;
-       if(result.length!=0){
-        $scope.image="../images/"+iata+".jpg"; 
-       }
-       else{
-        $scope.hideTable=true;
-       }
+//        var result=[];
+//        var array=$scope.arr;
+//        var i;
+//        for(i=0;i<array.length;i++){
+//           if(array[i].destinationIata==iata){
+//             result.push(array[i]);
+//           }
+//        }
+//        $scope.arr = result;
+//        $scope.datedivbool=true;
+//        if(result.length!=0){
+//         $scope.image="../images/"+iata+".jpg"; 
+//        }
+//        else{
+//         $scope.hideTable=true;
+//        }
 
 
-    }
-  }
-  $scope.showMore=function(){
-    $scope.limit+=6;
-  }
-});
+//     }
+//   }
+//   $scope.showMore=function(){
+//     $scope.limit+=6;
+//   }
+ });
+
+
+
+
