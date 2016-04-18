@@ -1,9 +1,14 @@
 var express = require('express');
 
+var bookControl = require('../serverController/bookingController.js');
+var paymentController= require('../serverController/paymentController.js');
+var paymentValidation= require('../Validations/paymentValidation.js');  
+
+
      /**
        * requiring server controllers.
        */
-var paymentController = require('../serverController/paymentController.js');
+
 var contactUsController= require('../serverController/contactUsServerController.js');
 var saveAllBookingDataController= require('../serverController/saveAllBookingDataController.js');
 var bookControl = require('../serverController/bookingController.js');
@@ -13,11 +18,10 @@ var flightControl =  require('../serverController/flightController.js');
      * requiring server validations.
      */
 
-var paymentValidation= require('../Validations/paymentValidation.js');
 var paymentValidation= require('../Validations/paymentValidation.js'); 
 var personController= require('../serverController/personController.js');
 var personValidation= require('../Validations/personValidation.js');
-
+var bookingValidation = require('../Validations/bookingValidation.js');
 
 var manageController =  require('../serverController/ManageBookingController.js');
 
@@ -74,6 +78,22 @@ var router = express.Router();
                 });
   
   
+}); 
+               //middleware for validating the booking data
+
+              router.post('/api/booking', function(req, res, next) { 
+
+                bookingValidation.validateBooking(req.body.booking[0], function(err){ 
+                           if(err){ 
+                             res.send(err);
+                             console.log("THERE IS A FORM ERROR"+err);
+                           } 
+                           else{ 
+
+                                next();
+                           }
+                });
+
 });
 
 
@@ -118,7 +138,8 @@ var router = express.Router();
      */
  
 router.post('/api/booking', function(req,res){  
-      
+
+
         bookControl.comapreFlights(req.body.booking[0],function(err,outFlights,inFlights){ 
                     sess = req.session;
                      sess.bookingData = req.body.booking[0];

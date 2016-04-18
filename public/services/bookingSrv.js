@@ -30,6 +30,9 @@ app.factory('bookingSrv',function ($http){
           });
     } 
 
+
+    
+
   }  
    
 
