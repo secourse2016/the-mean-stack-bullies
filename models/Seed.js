@@ -3,29 +3,32 @@ var mongoose = require('mongoose');
 var model = require('./models');
 
 Db.init(function(){
-console.log("here");
 });
 
 function seedOutFlights(entity){
+  console.log("hereesss");
   var newOutFlights = [];
   for(var j=0 ; j<48;j++)
   {
+  var count =0;
   
-
  var outflights = require(entity);
 
  
 
-       for(var i=0 ; i<outflights.length ;i++){
+       for(var i=0 ; i<outflights.length ;i+=2){
     // Day flights
+   
+//console.log("--------");
        var d =new Date();
      d.setDate(d.getDate() + j);    
 
     var x = new Date();
      x.setDate(x.getDate() + j);
-    newOutFlights[i + (j * outflights.length)]= JSON.parse(JSON.stringify(outflights[i]));
-      
-      
+    newOutFlights[i + (j * outflights.length)]= JSON.parse(JSON.stringify(outflights[count]));
+    newOutFlights[i+1 + (j * outflights.length)]= JSON.parse(JSON.stringify(outflights[count+20]));
+      // console.log(i + (j * outflights.length));
+      // console.log(i+1 + (j * outflights.length));
     var hours= 0;
     if(i<20){
          hours = Math.random() * 12;
@@ -34,20 +37,25 @@ function seedOutFlights(entity){
         hours = (Math.random() * 12) + 11;
     }  
        d.setHours(hours); 
+       x.setHours(hours + (Math.random()* 8) + 2); 
+       newOutFlights[i + (j * outflights.length)].departureDateTime= d;
+       newOutFlights[i + (j * outflights.length)].arrivalDateTime= x ;
+       newOutFlights[i + (j * outflights.length)].seats= 100 ;
 
-        newOutFlights[i + (j * outflights.length)].departureDateTime= d;
-        x.setHours(hours + (Math.random()* 8) + 2); 
 
-     newOutFlights[i + (j * outflights.length)].arrivalDateTime= x ;
-     newOutFlights[i + (j * outflights.length)].seats= 100 ;
+        newOutFlights[i+1 + (j * outflights.length)].departureDateTime= d;
+        newOutFlights[i+1 + (j * outflights.length)].arrivalDateTime= x ;
+        newOutFlights[i+1 + (j * outflights.length)].seats= 100 ;
+        // incrementing count
+         count+=1;
     }
   }
   return newOutFlights;
  // console.log(newOutFlights[0]);
- // console.log(newOutFlights[30]);
- // console.log(newOutFlights[1879]);
- // console.log(newOutFlights[1880]);
-}
+ // console.log(newOutFlights[1]);
+ // console.log(newOutFlights[4]);
+ // console.log(newOutFlights[5]);
+};
 
 
 
