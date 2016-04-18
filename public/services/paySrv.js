@@ -25,7 +25,7 @@ app.factory('paySrv', function ($http) {
               })
               .error(function(data, status, headers, config) {
                  return "error";
-          });
+              });
          }
 
      };

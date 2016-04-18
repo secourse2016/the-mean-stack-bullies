@@ -6,7 +6,7 @@
                  
                     <div class="col-xs-5"  >
                       <lable style="font-family: arial;color: red">
-                        Search Destination: 
+                        Search Origin: 
                       </lable>
                       <input class="form-control" id="tag"type="text" ng-click="changeTable()" ng-model="destination" typeahead-on-select="changeTable($item.iata)" uib-typeahead="airport.name+' ('+airport.iata+')' for airport in airports | airportsFilters:destination| limitTo:10" placeholder="Destination: ">
 
@@ -41,24 +41,26 @@
                   <table id="table" class="table table-striped" ng-hide="hideTable">
                     <!-- /  fillTable(destination); -->
                     <tr class="row" style="color: white;">  
-                     <td>Type</td>
-                     <td>Aircraft</td>
-                     <td>Capacity</td>
-                     <td>Origin City</td>
-                     <td>Destination City</td>
-                     <td>Date</td>
+                     <td>flightNumber</td>
+                    <td>aircraftType</td>
+                    <td>cost</td>
+                    <td>origin</td>
+                    <td>destination</td>
+                    <td>departureDateTime</td>
+                    <td>arrivalDateTime</td>
 
 
                    </tr>
 
 
-                   <tr class="row" ng-repeat="flight in arr | limitTo:limit | orderBy:'date'" ng-animate=" 'animate' " style="color: white">  
-                    <td>{{flight.flightNumber.type}}</td>
-                    <td>{{flight.aircraft}}</td>
-                    <td>{{flight.capacity}}</td>
-                    <td>{{flight.originCity}}</td>
-                    <td>{{flight.destinationCity}}</td>
-                    <td>{{flight.date}}</td>
+                   <tr class="row" ng-repeat="flight in arr | limitTo:limit  " ng-animate= "'animate' " style="color: white">  
+                    <td>{{flight.flightNumber}}</td>
+                    <td>{{flight.aircraftType}}</td>
+                    <td>{{flight.cost}}</td>
+                    <td>{{flight.origin}}</td>
+                    <td>{{flight.destination}}</td>
+                    <td>{{flight.departureDateTime}}</td>
+                    <td>{{flight.arrivalDateTime}}</td>
 
                   </tr>
 

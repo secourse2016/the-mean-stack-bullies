@@ -296,6 +296,24 @@ router.post('/api/booking', function(req,res){
                 });
                
         });
+
+
+
+        router.get('/api/flightsForTimetable', function(req, res) {
+                 flightControl.getFlightsForTimeTable(function(outfli,infli){
+                      var x={
+                        outF:outfli,
+                        inF:infli
+                      };
+                      console.log("outdocs dsfsf :      --------------------->"+outfli);
+                      console.log("indocs  sdfdf :      --------------------->"+infli);
+                      res.send(x);
+                 });
+               
+        });
+
+
+
 /*
 |==========================================================================
 | comfirmation Routes
