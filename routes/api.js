@@ -222,6 +222,12 @@ router.post('/api/booking', function(req,res){
               
             });
 
+           router.get('/api/getReservation/:refNum', function(req, res) {
+
+
+
+              
+            });
 
             router.get('/api/getallInfo', function(req, res) {
         sess = req.session;
