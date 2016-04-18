@@ -53,20 +53,12 @@ app.controller('bookingCtrl', function($scope, $location,airportSrv,flightSrv,Fl
     console.log(data);
     /*form data is passed to the bookin service*/ 
      bookingSrv.insertbooking(data,function(response){
-      if(response.err){
-        alert("err occured please try again");
-      }else{
-        if(response.outFlights){
-            //console.log("in booking controller "+response.outFlights[0].origin);
-            flightSrv.setOutgoingFlights(response.outFlights);
-          }
-            if(response.inFlights){
-              console.log("in booking controller "+response.outFlights[0].origin);
-              flightSrv.setIngoingFlights(response.inFlights);
-            }
-          $location.url('/book');
-      }
-   });  
+               if(response.outFlights){
+                $location.url('/book');
+              }else{
+                alert("no flights with criteria avialable");
+              }
+       });   
   }
 
   $scope.bookButton=function(){
