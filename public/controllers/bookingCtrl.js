@@ -33,11 +33,19 @@ app.controller('bookingCtrl', function($scope, $location,airportSrv,flightSrv,Fl
   }
   $scope.bookFlight=function(){   
 
-     var errMessage = bookingFormValidation();
-        if(errMessage){
-          alert(errMessage);
-        }
-    else{
+     var errMessage = bookingFormValidation(); 
+     var empty=true;
+        for(var property in errMessage){  
+           if(errMessage.property !== null){ 
+             alert(errMessage.property); 
+           }
+           else{  
+              empty=false;
+           }
+
+}
+        
+    if(empty==true){
      var data = [{  
     
     
@@ -62,7 +70,7 @@ app.controller('bookingCtrl', function($scope, $location,airportSrv,flightSrv,Fl
               }
        });   
 
-  } 
+  }
 }
 
   $scope.bookButton=function(){
@@ -151,15 +159,15 @@ app.controller('bookingCtrl', function($scope, $location,airportSrv,flightSrv,Fl
   function bookingFormValidation(){  
       var valid= true; 
      var bookingFormValidationErrors = {
-            selectTripError : "", 
-            selectOriginError :"", 
-            selectDestinationError :"", 
-            selectDepartureDateError :"", 
-            selectReturnDateError:"",
-            selectChildreError :"",
-            selectAdultError : "", 
-            selectClassError:"", 
-            validEmailError:""
+            selectTripError : null, 
+            selectOriginError :null, 
+            selectDestinationError :null, 
+            selectDepartureDateError :null, 
+            selectReturnDateError:null,
+            selectChildreError :null,
+            selectAdultError : null, 
+            selectClassError:null, 
+            validEmailError:null
     };    
      var evalid = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
