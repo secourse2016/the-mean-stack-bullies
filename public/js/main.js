@@ -90,6 +90,31 @@ $(window).scroll(function() {
   }
    }
 });
+
+// $(window).scroll(function() {
+//    var hT = $('.count2').offset().top,
+//        hH = $('.count2').outerHeight(),
+//        wH = $(window).height(),
+//        wS = $(this).scrollTop();
+//    if (wS > (hT+hH-wH)){
+//    	if(scrolled==false)
+//    	{
+//    	scrolled=true;
+
+//       $('.count').each(function () {
+//     $(this).prop('Counter',0).animate({
+//         Counter: $(this).text()
+//     }, {
+//         duration: 1000,
+//         easing: 'swing',
+//         step: function (now) {
+//             $(this).text(Math.ceil(now));
+//         }
+//     });
+// });
+//   }
+//    }
+// });
  // $(".login").animate({
  
 	//  top:'10px'
