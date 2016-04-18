@@ -67,14 +67,14 @@ app.controller('paymentCtrl', function($scope, $location,paySrv) {
             ExpiryDate: date
           }];
 
-          paySrv.insertPayment(pa).then(
-               function(result) {
-                     if(result.data=="payment added to the session"){
+          paySrv.insertPayment(pa,
+               function(flag) {
+                     if(flag == true){
                         
                         $location.url('/confirm');
                      }
                      else{
-                      alert(result.data);
+                      alert("something went wrong please try again");
                      }
                 }
           );
