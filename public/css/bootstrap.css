@@ -2324,6 +2324,10 @@ th {
 }
 .table-striped > tbody > tr:nth-of-type(odd) {
   background-color: rgb(17,37,60);
+  color:white;
+}
+.table-striped > tbody > tr:nth-of-type(even) {
+  color:rgb(17,37,60);
 }
 .table-hover > tbody > tr:hover {
   background-color: #f5f5f5;

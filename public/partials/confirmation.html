@@ -92,8 +92,11 @@ top:2%;
               <th> expiryDate</th> 
               <th>Departure Time</th> 
               <th>Estimated Arrival Time</th>   
-              <th>Seat Class</th>
-              <th>Seat Number</th> 
+              <th>From</th>
+              <th>To</th> 
+              <th>Number Of Adults</th> 
+              <th>Number Of Children</th> 
+              <th>Email</th> 
             </tr>  
         </thread>  
          <tbody> 
@@ -105,10 +108,13 @@ top:2%;
               <td>{{persons.passportNumber}}</td>
               <td>{{persons.issueDate}}</td> 
               <td>{{persons.expiryDate}}</td>
-              <td>{{persons.jjj}</td>
-              <td>{{reservations[0].EstimatedArrivalTime}}</td>
-              <td>{{reservations[0].SeatClass}}</td>
-              <td>{{reservations[0].SeatNum}}</td>  
+              <td>{{booking.DepartureDate}}</td>
+              <td>{{booking.ReturnDate}}</td>
+              <td>{{booking.from}}</td>
+              <td>{{booking.To}}</td> 
+              <td>{{booking.NumberOfAdults}}</td>
+              <td>{{booking.NumberOfChildren}}</td> 
+               <td>{{booking.Email}}</td>    
             </tr> 
             </tbody>
       </table> 
@@ -130,12 +136,12 @@ top:2%;
      </div>
       <div class="modal-body"> 
       <ul class="list-group">
-  <li class="list-group-item">Payment Method :  <img ng-src="{{payments[0].PaymentMethod}}" style="width:70px;height:60px;">  
+  <!-- <li class="list-group-item">Payment Method :  <img ng-src="{{payments[0].PaymentMethod}}" style="width:70px;height:60px;">   -->
 
   </li>
   <li class="list-group-item">Card Number : {{payments.CardHolderNo}}</li>
   <li class="list-group-item">CVV : {{payments.Cvv}}</li> 
-  <li class="list-group-item">Amount : {{payments.Amount}}</li>
+  <!-- <li class="list-group-item">Amount : {{payments.Amount}}</li> -->
   <li class="list-group-item">Issue Date : {{payments.ExpiryDate}}</li>
   <li class="list-group-item">Passport Num : {{persons.passportNumber}}</li>   
   </ul> 

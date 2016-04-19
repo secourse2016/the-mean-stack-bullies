@@ -18,6 +18,13 @@ console.log("in conf");
   		 			$scope.persons = data;
   		 });
 
+        ConfirmationSrv.getbookingnfo(function(data)
+       {
+        console.log("bokoing data");
+            console.log(data);
+            $scope.booking = data;
+       });
+
 
  // $scope.reservations =  ConfirmationSrv.getReservation(); 
  // $scope.payments = ConfirmationSrv.getPayments();  

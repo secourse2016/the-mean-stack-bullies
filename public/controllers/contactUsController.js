@@ -1,5 +1,4 @@
 app.controller('ContactUsController',function($scope,contactUsSrv,$location){
-	console.log("hereees");
 	$scope.submitContactForm = function(){
 		var newContactForm = [{
 			 firstName : $scope.firstName,

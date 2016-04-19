@@ -96,6 +96,7 @@ app.controller('bookingCtrl', function($scope, $location,airportSrv,flightSrv,Fl
   $scope.changeTable=function(iata){
     $scope.hideTable=false;
     if(iata===undefined){
+      // $scope.destination="";
       $scope.destination=null;
           $scope.hide=false;
           $scope.hideBookButton=true;
@@ -131,7 +132,6 @@ app.controller('bookingCtrl', function($scope, $location,airportSrv,flightSrv,Fl
        var i;
        for(i=0;i<array.length;i++){
           if(array[i].origin==iata){
-            console.log("TAAAAAAAAAAAAAAAAAAAAAAAAAAAG");
             result.push(array[i]);
           }
        }
