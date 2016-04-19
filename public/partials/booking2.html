@@ -43,6 +43,7 @@
                     <tr class="row" style="color: white;">  
                      <td>Flight Number</td>
                     <td>AircraftType</td>
+                    <td>Class</td>
                     <td>Cost</td>
                     <td>Origin</td>
                     <td>Destination</td>
@@ -56,6 +57,7 @@
                    <tr class="row" ng-repeat="flight in arr | limitTo:limit  " ng-animate= "'animate' " >  
                     <td>{{flight.flightNumber}}</td>
                     <td>{{flight.aircraftType}}</td>
+                    <td>{{flight.class}}</td>
                     <td>{{flight.cost}}</td>
                     <td>{{flight.origin}}</td>
                     <td>{{flight.destination}}</td>
