@@ -369,6 +369,15 @@ router.post('/api/booking', function(req,res){
     res.send(sess.paymentData);
         
       });
+
+
+      router.get('/api/BookingInfocomfirmation', function(req, res) {
+          sess = req.session;
+          console.log("Session booking dataaaaaa ----------------------------------------");
+
+          res.send(sess.bookingData);
+        
+      });
  
       router.get('/api/getPersonInfocomfirmation', function(req, res) {
         sess = req.session;

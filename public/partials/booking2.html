@@ -14,12 +14,12 @@
                     </div>
 
                     <br> <br> <br>
-                    <div class="col-sm-5" ng-show="datedivbool" id="DateDiv">
+                    <div class="col-sm-5" ng-show="false" id="DateDiv">
                       <lable style="color:red;font-family: arial;">
                         Select Date
                       </lable>
 
-                      <input class="form-control" id="dateTextBox" type="date" ng-model="dateString">
+                      <input class="form-control" id="dateTextBox" type="date" ng-model="dateString" style="background:rgb(17,37,60);">
 
 
                       <button class="btn-primary" ng-click="filterTableDate()">Filter By Date</button>
@@ -41,19 +41,19 @@
                   <table id="table" class="table table-striped" ng-hide="hideTable">
                     <!-- /  fillTable(destination); -->
                     <tr class="row" style="color: white;">  
-                     <td>flightNumber</td>
-                    <td>aircraftType</td>
-                    <td>cost</td>
-                    <td>origin</td>
-                    <td>destination</td>
-                    <td>departureDateTime</td>
-                    <td>arrivalDateTime</td>
+                     <td>Flight Number</td>
+                    <td>AircraftType</td>
+                    <td>Cost</td>
+                    <td>Origin</td>
+                    <td>Destination</td>
+                    <td>Departure</td>
+                    <td>Arrival</td>
 
 
                    </tr>
 
 
-                   <tr class="row" ng-repeat="flight in arr | limitTo:limit  " ng-animate= "'animate' " style="color: white">  
+                   <tr class="row" ng-repeat="flight in arr | limitTo:limit  " ng-animate= "'animate' " >  
                     <td>{{flight.flightNumber}}</td>
                     <td>{{flight.aircraftType}}</td>
                     <td>{{flight.cost}}</td>
