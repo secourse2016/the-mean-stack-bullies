@@ -48,20 +48,21 @@ var router = express.Router();
   |
   */   
 
-  app.get('/db/seed', function(req, res) {
+  router.get('/db/seed', function(req, res) {
         Db.init(function(){
              Db.drop(function(){
              console.log("dropped");
-             Seed.seedingFunction(function(){
-             console.log("seeding database completed successfully");
-        });
+                 Seed.seedingFunction(function(){
+                     console.log("seeding database completed successfully");
+                 });
 
-        });
+           });
          
-    });      
+        }); 
+ });            
 
     /* DELETE DB */
-    app.get('/db/delete', function(req, res) {
+    router.get('/db/delete', function(req, res) {
       Db.drop(function(){
              console.log("dropped");
            });

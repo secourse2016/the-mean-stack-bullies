@@ -57,10 +57,15 @@ function seedOutFlights(entity){
  // console.log(newOutFlights[5]);
 };
 
+ Db.drop(function(){
+    console.log("dropped");
+    seedingFunction(function(){
+    console.log("seeding database completed successfully");
+  });
+ });
 
 
-
-exports.seedingFunction=function(cb){
+var seedingFunction=exports.seedingFunction=function(cb){
 Db.seed(mongoose.model('Airport'),require('../airports.json'),function(){
 
     mongoose.model('outFlight').count( {}, function(err, count) { 
@@ -110,9 +115,9 @@ Db.seed(mongoose.model('Airport'),require('../airports.json'),function(){
 };
 
 
- Db.drop(function(){
-    console.log("dropped");
-    this.seedingFunction(function(){
-    console.log("seeding database completed successfully");
-  });
- });
+ // Db.drop(function(){
+ //    console.log("dropped");
+ //    this.seedingFunction(function(){
+ //    console.log("seeding database completed successfully");
+ //  });
+ // });
