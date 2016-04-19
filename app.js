@@ -27,35 +27,33 @@ app.use(session({secret: 'key12'}));
 // routes
 
 
-// app.use(function(req, res, next) {
+app.use(function(req, res, next) {
+console.log("url");
+ 
+console.log("bes");
+        // check header or url parameters or post parameters for token
+        var token = req.body.wt || req.query.wt || req.headers['x-access-token'];   
+        var jwtSecret =  process.env.JWTSECRET;
+       // var jwtSecret = "a23das013d,s;1";
+        // Get JWT contents:
+        try 
+        {
+          var payload = jwt.verify(token, jwtSecret);
+          req.payload = payload;
 
-//       // check header or url parameters or post parameters for token
-//       var token = req.body.wt || req.query.wt || req.headers['x-access-token'];   
-//     console.log("{{{{ TOKEN }}}} => ", token);
-
-//       //var jwtSecret = process.env.JWTSECRET;
-
-//       var jwtSecret =  process.env.JWTSECRET;
-//       console.log(jwtSecret);
-//      // var jwtSecret = "a23das013d,s;1";
-//       // Get JWT contents:
-//       try 
-//       {
-//         var payload = jwt.verify(token, jwtSecret);
-//         req.payload = payload;
-
-//         console.log("right token");
-//         next();
+          next();
 
 
-//       } 
-//       catch (err) 
-//       {
-//         console.error('[ERROR]: JWT Error reason:', err);
-//         res.status(403).sendFile(path.join(__dirname, '../public', '403.html'));
-//       }
+        } 
+        catch (err) 
+        {
+          console.error('[ERROR]: JWT Error reason:', err);
+          res.status(403).sendFile(path.join(__dirname, '../public', '403.html'));
+        }
+    
 
-//     });
+});
+    
 
   
 app.use('/', api);

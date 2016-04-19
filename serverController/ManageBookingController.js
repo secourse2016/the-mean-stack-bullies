@@ -5,11 +5,15 @@ exports.searchBookings =function(refNum,cb){
 
 
 	console.log("book here");
-     var reservationModel = mongoose.model('Reservation');
+    var reservationModel = mongoose.model('Reservation');
 	var bookingModel = mongoose.model('Booking');
+	var personModel = mongoose.model('Person');
 	var resQuery = reservationModel.find();
 	resQuery.where('bookingRefNumber',refNum);
 	
+	var personQuery = personModel.find();
+	personQuery.where('bookingRefNumber',refNum);
+
 
 	console.log("book here");
 	var ObjectId = mongoose.Types.ObjectId; 
@@ -27,9 +31,14 @@ try
 	console.log("book here");
 		console.log(err);
 		bookingQuery.exec(function(err2,bookDocs) {
-					console.log(err2);
-			cb(resDocs,bookDocs,false);
-		});
+			console.log(err2);
+			personQuery.exec(function(err3,personDocs)
+			{
+				console.log(err3);
+				cb(resDocs,bookDocs,personDocs,false);
+			})
+		
+		})
 	});
 }
 catch(err)

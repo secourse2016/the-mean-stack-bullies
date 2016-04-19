@@ -15,9 +15,9 @@ app.controller('reservationsController', function($scope,cancelationReservation)
 
 console.log("name " + reservationData.reservation.firstName);
                    $scope.reservationExist = true;
-                        $scope.names = ["First Name : " + reservationData.reservation.firstName
-                        ,"Last Name : " + reservationData.reservation.lastName,
-                        "Passport number : " + reservationData.reservation.passport,
+                        $scope.names = ["First Name : " + reservationData.person.firstName
+                        ,"Last Name : " + reservationData.person.secondName,
+                        "Passport number : " + reservationData.person.passportNumber,
                        "Booking reference number : " + reservationData.reservation.bookingRefNumber];
 
                        $scope.flightDetails = ["From " + reservationData.booking.from

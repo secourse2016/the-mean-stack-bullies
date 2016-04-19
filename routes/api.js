@@ -301,11 +301,23 @@ router.post('/api/booking', function(req,res){
              * get Reservations route.
              */
        router.get('/api/getReservation/:refNum', function(req, res) {
-              manageController.searchBookings (req.params.refNum,function(returnedRes,returnedBooking,err){
-                  if (err == true)
-                    res.json("not found");
+              manageController.searchBookings (req.params.refNum,function(returnedRes
+                ,returnedBooking,returnedPerson,err){
 
-                  res.json( {reservation : returnedRes[0],booking:returnedBooking[0]});
+                console.log("test");
+                  if (err == true)
+                  {
+                    res.json("not found");
+                  }
+                  else
+                  {
+                     if (returnedRes != undefined)
+                  res.json( {reservation : returnedRes[0],booking:returnedBooking[0],
+                    person:returnedPerson[0]});
+                else
+                  res.json("not found");
+
+                  }
                });
         });       
             
