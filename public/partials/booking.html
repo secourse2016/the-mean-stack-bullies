@@ -58,7 +58,7 @@
  
    
     <td class="text-left sp"><div>{{flight.origin}} <br> {{flight.departureDateTime}}</div></td>
-   <td class="text-left sp"><div>{{flight.currency}}<br>{{flight.ecost}}</div></td>
+    <td class="text-left sp"><div>{{flight.currency}}<br>{{flight.ecost}}<br>Seats: {{flight.eseats}}</div></td>
     <td class="text-left sp"><div>{{flight.destination}}<br>{{flight.arrivalDateTime}}</div></td>
     <td class="text-left sp"><div class="chooseflight">  
         <input type="radio" name="radio"  id="{{flight.e_id}}" class="radio" ng-show="false" ng-click="radioActionOrigin(flight.e_id)"  />
@@ -86,7 +86,7 @@
  <!-- TAKE CARE FOR HARDCODED RADIO BUTTONS INDECES -->
    
     <td class="text-left sp"><div>{{flight.origin}} <br> {{flight.departureDateTime}}</div></td>
-     <td class="text-left sp"><div>{{flight.currency}}<br>{{flight.bcost}}</div></td>
+      <td class="text-left sp"><div>{{flight.currency}}<br>{{flight.bcost}}<br>Seats: {{flight.bseats}}</div></td>
     <td class="text-left sp"><div>{{flight.destination}}<br>{{flight.arrivalDateTime}}</div></td>
     <td class="text-left sp"><div class="chooseflight">  
         <input type="radio" name="radio" ng-model="b"id="{{flight.b_id}}" class="radio" ng-show="false"  ng-click="radioActionOrigin(flight.b_id)" />
@@ -156,7 +156,7 @@
  
    
     <td class="text-left sp"><div>{{flight.origin}} <br> {{flight.departureDateTime}}</div></td>
-   <td class="text-left sp"><div>{{flight.currency}}<br>{{flight.ecost}}</div></td>
+   <td class="text-left sp"><div>{{flight.currency}}<br>{{flight.ecost}}<br>Seats: {{flight.eseats}}</div></td>
     <td class="text-left sp"><div>{{flight.destination}}<br>{{flight.arrivalDateTime}}</div></td>
     <td class="text-left sp"><div class="chooseflight">  
         <input type="radio" ng-model="a" name="radio2" id="{{flight.e_id}}" class="radio" ng-show="false"  ng-click="radioActionDest(flight.e_id)" />
@@ -184,7 +184,7 @@ s
  <!-- TAKE CARE FOR HARDCODED RADIO BUTTONS INDECES -->
    
     <td class="text-left sp"><div>{{flight.origin}} <br> {{flight.departureDateTime}}</div></td>
-     <td class="text-left sp"><div>{{flight.currency}}<br>{{flight.bcost}}</div></td>
+      <td class="text-left sp"><div>{{flight.currency}}<br>{{flight.bcost}}<br>Seats: {{flight.bseats}}</div></td>
     <td class="text-left sp"><div>{{flight.destination}}<br>{{flight.arrivalDateTime}}</div></td>
     <td class="text-left sp"><div class="chooseflight">  
         <input type="radio" ng-model="a" name="radio2" id="{{flight.b_id}}" class="radio" ng-show="false"  ng-click="radioActionDest(flight.b_id)" />
