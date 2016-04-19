@@ -2,8 +2,16 @@ var express = require('express');
 
 var bookControl = require('../serverController/bookingController.js');
 var paymentController= require('../serverController/paymentController.js');
-var paymentValidation= require('../Validations/paymentValidation.js');  
+var paymentValidation= require('../Validations/paymentValidation.js'); 
 
+     /**
+       * requiring database files.
+       */
+
+
+var Db = require('../db.js');
+var mongoose = require('mongoose');
+var Seed = require('../models/Seed.js');
 
      /**
        * requiring server controllers.
@@ -28,6 +36,38 @@ var manageController =  require('../serverController/ManageBookingController.js'
 var sess;
 
 var router = express.Router();
+
+
+
+/*
+|==========================================================================
+| Database Routes
+|==========================================================================
+|
+| These routes are related to the Database.
+  |
+  */   
+
+  app.get('/db/seed', function(req, res) {
+        Db.init(function(){
+             Db.drop(function(){
+             console.log("dropped");
+             Seed.seedingFunction(function(){
+             console.log("seeding database completed successfully");
+        });
+
+        });
+         
+    });      
+
+    /* DELETE DB */
+    app.get('/db/delete', function(req, res) {
+      Db.drop(function(){
+             console.log("dropped");
+           });
+    });    
+
+
 
 /*
 |==========================================================================
@@ -417,9 +457,19 @@ router.post('/api/booking', function(req,res){
                                                }else{
                                                 console.log("new person added"+person);
                                             saveAllBookingDataController.insertPaymentInformation(sess.paymentData,booking._id,function(err,payment){
-                                               console.log("new payment added"+payment);
-                                               var message = "Booking is comfirmed";
-                                               res.send(message);
+                                               console.log("ID------------------------->"+sess.flightIDs.inFlight_id);
+                                               saveAllBookingDataController.decreaseSeatsByOne( sess.flightIDs.ouFlight_id ,sess.flightIDs.inFlight_id ,function(err1,docs){
+                                                    if(err1){
+                                                      console.log("error---------------------------------->"+err1);
+                                                      // res.send(err1);
+                                                    }
+                                                    else{
+                                                      console.log("new payment added"+payment);
+                                                      var message = "Booking is comfirmed";
+                                                      res.send(message);
+                                                  }
+                                               });
+                                               
                                             });    
                                                 }
 

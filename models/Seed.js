@@ -60,7 +60,7 @@ function seedOutFlights(entity){
 
 
 
-seedingFunction=function(cb){
+exports.seedingFunction=function(cb){
 Db.seed(mongoose.model('Airport'),require('../airports.json'),function(){
 
     mongoose.model('outFlight').count( {}, function(err, count) { 
@@ -112,7 +112,7 @@ Db.seed(mongoose.model('Airport'),require('../airports.json'),function(){
 
  Db.drop(function(){
     console.log("dropped");
-    seedingFunction(function(){
+    this.seedingFunction(function(){
     console.log("seeding database completed successfully");
-});
+  });
  });

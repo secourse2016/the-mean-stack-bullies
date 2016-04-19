@@ -44,30 +44,33 @@ exports.decreaseSeatsByOne = function(flightIDOutging,flightIDInGoing,cb){
   var outFlightModel = mongoose.model('outFlight');
      // console.log("here4"+newbooking);
 
-   if (flightIDOutging != undefined)
+   if (flightIDOutging != null)
    {
     outFlightModel.findOne({ _id:  flightIDOutging }, function (err, doc){
       if (!err)
       {
-      doc.seats = doc.seats - 1;
+        console.log("doc----------------------------->"+doc);
+      doc.seats=doc.seats-1;
       doc.save();
       }
     });
   }
 
 
-  if (flightIDInGoing != undefined)
+  if (flightIDInGoing != null)
   {
     inFlightModel.findOne({ _id:  flightIDInGoing }, function (err, doc){
       if (!err)
       {
-        doc.seats = doc.seats - 1;
-        doc.save();
+        console.log("dovc-------------------"+doc);
+         doc.seats=doc.seats-1;
+      doc.save();
+        cb(null,doc);
       }
     });
 }
 
-  cb("Update done");
+  
 };
 
 
