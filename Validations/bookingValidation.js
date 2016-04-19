@@ -26,6 +26,12 @@ exports.validateBooking = function(booking, cb){
          // console.log("HHHERRE");  
          // console.log("TYPE OFF YEAAARRR   " + typeof Number(moment(booking.DepartureDate).format("YYYY")));
          // console.log("DAAAY  " + Number(moment(booking.DepartureDate).format("DD")));
+        if(Number(moment(booking.DepartureDate).format("YYYY")) > Number(moment(new Date()).format("YYYY"))+1){ 
+
+                 err+="You can not book a flight more than 1 year ahead"; 
+                 valid = false;
+        } 
+        
         if((booking.DepartureDate == undefined)||   
           (Number(moment(booking.DepartureDate).format("YYYY")) < Number(moment(new Date()).format("YYYY"))) || 
           ((Number(moment(booking.DepartureDate).format("MM")) < Number(moment(new Date()).format("MM"))) && 

@@ -35,13 +35,12 @@ app.controller('bookingCtrl', function($scope, $location,airportSrv,flightSrv,Fl
 
      var errMessage = bookingFormValidation(); 
      var empty=true;
-       
           if(errMessage){ 
-             alert(errMessage);
+              alert(errMessage);
           }
-
-        
-    else{
+       
+    else{ 
+      console.log("HEANA");
      var data = [{ 
     
     trip: $scope.trippp,
@@ -162,13 +161,17 @@ app.controller('bookingCtrl', function($scope, $location,airportSrv,flightSrv,Fl
         }
 
         if($scope.selectedOrigin == undefined){  
-             err += "Please enter your origin airport";
+             err += "Please enter your origin airport \n";
                 valid = false; 
         } 
         if($scope.selectedDestination == undefined){ 
-               err+= "Please enter your destination"; 
+               err+= "Please enter your destination \n"; 
                valid = false;
-         }  
+         } 
+       if($scope.depDate && ($scope.depDate.getFullYear() > new Date().getFullYear()+1)) { 
+            err+="You can not book a flight more than 1 year ahead \n"; 
+            valid = false;
+       }
 
         if(($scope.depDate == undefined)||   
           ($scope.depDate.getFullYear() < new Date().getFullYear()) || 
@@ -178,7 +181,7 @@ app.controller('bookingCtrl', function($scope, $location,airportSrv,flightSrv,Fl
              ($scope.depDate.getMonth()+1 == new Date().getMonth()+1) &&
              ($scope.depDate.getFullYear() == new Date().getFullYear())) { 
 
-                err+= "Please enter a valid departure date"; 
+                err+= "Please enter a valid departure date \n"; 
                 valid = false;
         }
 
@@ -193,7 +196,7 @@ app.controller('bookingCtrl', function($scope, $location,airportSrv,flightSrv,Fl
              ($scope.retDate.getMonth()+1 == new Date().getMonth()+1) &&
              ($scope.retDate.getFullYear() == new Date().getFullYear())){
 
-              err+= "Please enter a valid return date"; 
+              err+= "Please enter a valid return date \n"; 
               valid = false;
 
         
@@ -202,24 +205,24 @@ app.controller('bookingCtrl', function($scope, $location,airportSrv,flightSrv,Fl
         } 
 
          if($scope.adultsss == undefined){ 
-             err+= "Please select number of adults";
+             err+= "Please select number of adults \n";
              valid = false;
 
         }   
 
         if($scope.children == undefined){ 
-            err+="Please select number of children";
+            err+="Please select number of children \n";
             valid = false;
         } 
 
         if($scope.tclass == undefined){  
-          err+= "Please select the seating class"; 
+          err+= "Please select the seating class \n"; 
           valid = false;
 
         } 
 
         if($scope.email == undefined || !(evalid.test($scope.email))) { 
-           err+= "Please enter a valid email"; 
+           err+= "Please enter a valid email \m"; 
            valid = false;
 
 
