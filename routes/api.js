@@ -178,12 +178,17 @@ var router = express.Router();
      * Inserting Booking route.
      */
  
-router.post('/api/booking', function(req,res){  
-
-
+router.post('/api/booking', function(req,res){ 
+                      sess = req.session;
+                     sess.bookingData = req.body.booking[0]; 
+                     console.log("test nullsss in api book ----------->"+sess.bookingData.NumberOfAdults) ; 
+                     console.log("test nullsss in api book ----------->"+sess.bookingData.NumberOfChildren) ; 
+                  
         bookControl.comapreFlights(req.body.booking[0],function(err,outFlights,inFlights){ 
-                    sess = req.session;
-                     sess.bookingData = req.body.booking[0];
+                    
+                   
+                     
+
                      console.log("sesssion = "+ sess.bookingData);
                      if(err){
                       returnedjson = {
@@ -198,7 +203,7 @@ router.post('/api/booking', function(req,res){
                           outFlights:outFlights,
                           inFlights:inFlights
                         };
-                        sess = req.session;
+                        //sess = req.session;
                         sess.flightData = returnedjson;
                        res.json(returnedjson);
                      }
@@ -206,6 +211,18 @@ router.post('/api/booking', function(req,res){
         }); 
 
 });
+
+
+        router.get('/api/getBookingNumberOfAdultsAndChildren', function(req, res) {
+              sess = req.session;
+              console.log("test nullsss in api route ----------->"+sess.bookingData.NumberOfAdults) ; 
+              console.log("test nullsss in api rouet----------->"+sess.bookingData.NumberOfChildren) ; 
+              var numbers={
+                NumberOfAdults : sess.bookingData.NumberOfAdults,
+                NumberOfChildren : sess.bookingData.NumberOfChildren
+              };
+              res.send(numbers);
+        }); 
 
 
 
@@ -268,6 +285,7 @@ router.post('/api/booking', function(req,res){
                   res.send('person added to the session');
                 // });
                 });
+
 
  
 /*
@@ -425,11 +443,12 @@ router.post('/api/booking', function(req,res){
         res.send(sess.personData);
     
       });  
+
            
 
 /*
 |==========================================================================
-| Seesions Routes
+| Sessions Routes
 |==========================================================================
 |
 | These routes are related to the Sessions.
