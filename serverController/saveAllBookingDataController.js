@@ -44,33 +44,41 @@ exports.decreaseSeatsByOne = function(flightIDOutging,flightIDInGoing,cb){
   var outFlightModel = mongoose.model('outFlight');
      // console.log("here4"+newbooking);
 
+
+
    if (flightIDOutging != null)
    {
-    outFlightModel.findOne({ _id:  flightIDOutging }, function (err, doc){
+    outFlightModel.findOne({ _id:  flightIDOutging }, function (err, doc1){
       if (!err)
       {
-        console.log("doc----------------------------->"+doc);
-      doc.seats=doc.seats-1;
-      doc.save();
+        console.log("doc1----------------------------->"+doc1);
+      doc1.seats=doc1.seats-1;
+      doc1.save();
+
+    if (flightIDInGoing != null)
+      {
+        inFlightModel.findOne({ _id:  flightIDInGoing }, function (err, doc2){
+          if (!err)
+          {
+            console.log("dov2-------------------"+doc2);
+             doc2.seats=doc2.seats-1;
+          doc2.save();
+           cb(null,doc2);
+          }else{
+            cb(err,null);
+          }
+        });
+      }else{
+        cb(null,doc1);
+      }
+       
+      }else{
+        cb(err,null);
       }
     });
+  }else{
+    cb("NO flight choosen",null);
   }
-
-
-  if (flightIDInGoing != null)
-  {
-    inFlightModel.findOne({ _id:  flightIDInGoing }, function (err, doc){
-      if (!err)
-      {
-        console.log("dovc-------------------"+doc);
-         doc.seats=doc.seats-1;
-      doc.save();
-        cb(null,doc);
-      }
-    });
-}
-
-  
 };
 
 
