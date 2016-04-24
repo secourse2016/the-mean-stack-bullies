@@ -29,30 +29,28 @@ exports.getFlightsForTimeTable=function(cb){
 	var OutFlightModel = mongoose.model('outFlight');
 	var InFlightModel = mongoose.model('inFlight');
 	var x=new Date();
-	// var y=new Date();
+	var y=new Date();
 	// var hours=x.getHours();
 	// var days=x.getDays();
-	// y.setMinutes(59);
-	// y.setHours(23);
+	// x.setDate(x.getDate()+1);
+	// y.setDate(y.getDate()+1);
+	x.setHours(0);
+	x.setMinutes(0);
+	y.setMinutes(59);
+	y.setHours(23);
 
 
-	var a = (
-    function (x) {
-        	x.setDate(x.getDate() + 1);
-        	x.setMinutes(59);
-        	x.setHours(23);
-        	return x;
-    	}(new Date())
-    );
-
+	
 	var outquery = OutFlightModel.find();
 	var inquery = InFlightModel.find();
 
-	outquery.where('departureDateTime',{"$gte":x, "$lt": a  });
-	inquery.where('departureDateTime',{"$gte":x, "$lt": a  });
+	outquery.where('departureDateTime',{"$gte":x, "$lt": y  });
+	inquery.where('departureDateTime',{"$gte":x, "$lt": y  });
 
 	outquery.exec(function (err, outdocs) {
 			inquery.exec(function (err, indocs) {
+				// console.log("outdocs: ------------------->"+outdocs);
+				// console.log("ondocs: ------------------->"+indocs);
 				cb(outdocs,indocs);
 			});
 

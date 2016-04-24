@@ -112,8 +112,8 @@ function checkForFlights(formdata2,formdata,collectionName,insertflag,cb){
       console.log(err);
     
     }else{
-        formdata2.NumberOfChildren = Number(formdata2.NumberOfChildren[0]); 
-        formdata2.NumberOfAdults = Number(formdata2.NumberOfAdults[0]);
+       // formdata2.NumberOfChildren = Number(formdata2.NumberOfChildren[0]); 
+       // formdata2.NumberOfAdults = Number(formdata2.NumberOfAdults[0]);
               if(insertflag == true){
                 console.log("hersssss");
                 //   insertBooking(formdata2, function(err, booking){ 
