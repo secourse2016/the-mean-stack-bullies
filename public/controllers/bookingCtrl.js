@@ -51,8 +51,8 @@ app.controller('bookingCtrl', function($scope, $location,airportSrv,flightSrv,Fl
     ReturnDate: $scope.retDate,
     NumberOfAdults: adult,
     NumberOfChildren: child,
-    Class: $scope.tclass,
-    Email:$scope.email
+    Class: "Economy12",
+    Email:"email@sa.com"
 
     }]; 
     console.log("test nullsss in ctrl----------->"+data[0].NumberOfAdults) ; 
@@ -245,18 +245,18 @@ app.controller('bookingCtrl', function($scope, $location,airportSrv,flightSrv,Fl
             valid = false;
         } 
 
-        if($scope.tclass == undefined){  
-          err+= "Please select the seating class \n"; 
-          valid = false;
+        // if($scope.tclass == undefined){  
+        //   err+= "Please select the seating class \n"; 
+        //   valid = false;
 
-        } 
+        // } 
 
-        if($scope.email == undefined || !(evalid.test($scope.email))) { 
-           err+= "Please enter a valid email \m"; 
-           valid = false;
+        // if($scope.email == undefined || !(evalid.test($scope.email))) { 
+        //    err+= "Please enter a valid email \m"; 
+        //    valid = false;
 
 
-        }
+        // }
 
                   
          
