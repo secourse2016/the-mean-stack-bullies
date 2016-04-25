@@ -4,17 +4,16 @@ app.controller('bookingCtrl', function($scope, $location,airportSrv,flightSrv,Fl
   $scope.date= new Date();
   $scope.limit=6;
   $scope.hideBookButton = false; 
-      airportSrv.getAirports().then(function(airport) {
-        //First function handles success
-      
+  airportSrv.getAirports(function(airports) {
+    //First function handles success
+    if(airports){
          $scope.airports = airports;
-          console.log("responded");
-        
-    }, function(response) {
-        //Second function handles error
-        console.log("not responded");
-    
-    });
+         console.log(airports[0]);
+      console.log("responded");
+    }else{
+       console.log("not responded");
+    } 
+  });
      
   $scope.$watch('dateString',function(dateString){
     $scope.date=new Date(dateString);

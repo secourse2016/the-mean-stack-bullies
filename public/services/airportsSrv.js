@@ -1,6 +1,6 @@
 app.factory('airportSrv',function($http){
    return {
-   	getAirports : function(){
+   	getAirports : function(cb){
    	  var tokenReq = {
               method: 'GET',
               url: '/getToken'
@@ -17,6 +17,7 @@ app.factory('airportSrv',function($http){
 
           return $http(req).then(
             function mySucces(response) {
+             // console.log("in the airport server response = "+response.data[0].iata);
                     cb(response.data);
      },      function myError(response) {
 
@@ -39,41 +40,43 @@ app.filter("airportsFilters",function(){
       var filteredAirports = [];
    if(search){
    	angular.forEach(airports,function(airport){
+             // console.log("name ->"+airport.name);
    		     if(airport.name || airport.iata || airport.city ){
-              if(airport.iata && angular.lowercase(airport.iata).indexOf(angular.lowercase(search))!=-1
-                  && airport.name && angular.lowercase(airport.name).indexOf(angular.lowercase(search))!=-1 
-                  && airport.city && angular.lowercase(airport.city).indexOf(angular.lowercase(search))!=-1  ){
+            console.log("heree");
+              if(airport.iata && (airport.iata!=null) && angular.lowercase(airport.iata).indexOf(angular.lowercase(search))!=-1
+                  && airport.name  && (airport.name!=null) && angular.lowercase(airport.name).indexOf(angular.lowercase(search))!=-1 
+                  && airport.city  && (airport.city!=null) && angular.lowercase(airport.city).indexOf(angular.lowercase(search))!=-1  ){
                    
                   filteredAirports[count]=airport;
                count++;
                
               }else{
-                if(airport.iata && angular.lowercase(airport.iata).indexOf(angular.lowercase(search))!=-1
-                   && airport.city && angular.lowercase(airport.city).indexOf(angular.lowercase(search))!=-1){
+                if(airport.iata  && (airport.iata!=null) && angular.lowercase(airport.iata).indexOf(angular.lowercase(search))!=-1
+                   && airport.city && (airport.city!=null) && angular.lowercase(airport.city).indexOf(angular.lowercase(search))!=-1){
           
               filteredAirports[count]=airport;
                count++;
             }else{
             
-                if(airport.name && angular.lowercase(airport.name).indexOf(angular.lowercase(search))!=-1 
-                   && airport.city && angular.lowercase(airport.city).indexOf(angular.lowercase(search))!=-1  ){
+                if(airport.name  && (airport.name!=null) && angular.lowercase(airport.name).indexOf(angular.lowercase(search))!=-1 
+                   && airport.city && (airport.city!=null) && angular.lowercase(airport.city).indexOf(angular.lowercase(search))!=-1  ){
                     filteredAirports[count]=airport;
                     count++;
                 }else{
-                  if(airport.iata && angular.lowercase(airport.iata).indexOf(angular.lowercase(search))!=-1
-                     && airport.name && angular.lowercase(airport.name).indexOf(angular.lowercase(search))!=-1  ){
+                  if(airport.iata  && (airport.iata!=null) && angular.lowercase(airport.iata).indexOf(angular.lowercase(search))!=-1
+                     && airport.name  && (airport.name!=null) && angular.lowercase(airport.name).indexOf(angular.lowercase(search))!=-1  ){
                        filteredAirports[count]=airport;
                         count++;
                   }else{
-                  if(airport.city && angular.lowercase(airport.city).indexOf(angular.lowercase(search))!=-1){
+                  if(airport.city && (airport.city!=null) && angular.lowercase(airport.city).indexOf(angular.lowercase(search))!=-1){
                     filteredAirports[count]=airport;
                     count++;
                   }else{
-                    if(airport.name && angular.lowercase(airport.name).indexOf(angular.lowercase(search))!=-1 ){
+                    if(airport.name  && (airport.name!=null) && angular.lowercase(airport.name).indexOf(angular.lowercase(search))!=-1 ){
                     filteredAirports[count]=airport;
                     count++;
                   }else{
-                    if(airport.iata && angular.lowercase(airport.iata).indexOf(angular.lowercase(search))!=-1){
+                    if(airport.iata  && (airport.iata!=null) && angular.lowercase(airport.iata).indexOf(angular.lowercase(search))!=-1){
                         filteredAirports[count]=airport;
                         count++;
                     }
@@ -90,6 +93,7 @@ app.filter("airportsFilters",function(){
    	});
 
    } 
+   console.log(filteredAirports.length);
    return filteredAirports;   
  };
 });

@@ -148,6 +148,7 @@ var router = express.Router();
 */
    router.get('/api/airports',function(req,res){
        AirportsController.getAirports(function(err,airports){
+          //console.log("airports ->"+airports);
           res.json(airports);
        });
    });
@@ -398,8 +399,8 @@ router.post('/api/booking', function(req,res){
                         outF:outfli,
                         inF:infli
                       };
-                      console.log("outdocs dsfsf :      --------------------->"+outfli);
-                      console.log("indocs  sdfdf :      --------------------->"+infli);
+                      // console.log("outdocs dsfsf :      --------------------->"+outfli);
+                      // console.log("indocs  sdfdf :      --------------------->"+infli);
                       res.send(x);
                  });
                

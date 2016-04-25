@@ -75,7 +75,7 @@ var airportSchema = schema({
     lon: {type:String,default:null},
     iso: String,
     status: Number,
-    city:String,
+    city:{type:String,default:""},
     name: String,
     continent: String,
     type: String,
