@@ -19,17 +19,15 @@
       $scope.Array[index]=index;
     }
     $scope.personalArray=new Array(Adults+Children);
-    if((Adults+Children)==1)
-    {
-       $scope.lastPassenger=false;
+
+    if((Adults+Children)==1){
+        $scope.lastPassenger=false;
     }
-    else
-    {
-       $scope.lastPassenger=true;
+    else{
+        $scope.lastPassenger=true;
     }
     console.log(Array.length);
   });
-  
 
 
   $scope.currentIndex=0;
@@ -213,12 +211,12 @@
        		   expiryDate     : $scope.expiryDate
             }];
             
-
+             $scope.personalArray[$scope.currentIndex]=person[0];
            
                 
                 
             
-            personalInfoSrv.insertPerson(person).then(
+            personalInfoSrv.insertPerson($scope.personalArray).then(
                  function(result) {
                        if(result.data=="person added to the session"){
                           console.log(result.data);

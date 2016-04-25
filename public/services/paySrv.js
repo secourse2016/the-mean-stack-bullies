@@ -30,8 +30,9 @@ app.factory('paySrv', function ($http) {
                     };
                               return $http(req2).then(
                           function mySucces(response) {
+                            console.log("succeeed in completeBookingData http get request"+response);
                             cb(true);
-                            console.log("succeeed in completeBookingData http get request"+response)
+                            
                                 
                        },function myError(response) {
                                 console.log("error")

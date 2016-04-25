@@ -62,6 +62,8 @@ console.log("in facto");
           };
 
            return $http(req).then(function back(response) {
+            console.log("this is the array yarab :");
+            console.log(response.data);
             cb(response.data);
              },
             function myError(response) {

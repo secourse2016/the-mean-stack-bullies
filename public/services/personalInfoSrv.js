@@ -4,7 +4,7 @@ app.factory('personalInfoSrv', function ($http) {
           var req = {
               method: 'POST',
               url: '/api/insertperson',
-              data: { person: pe }
+              data: { people: pe }
                  ,headers:
               {
                 'x-access-token':
