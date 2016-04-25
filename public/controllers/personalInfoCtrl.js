@@ -58,17 +58,16 @@ app.controller('personalInfoCtrl', function($scope, $location,personalInfoSrv) {
      		   expiryDate     : $scope.expiryDate
           }];
           
-          personalInfoSrv.insertPerson(person).then(
-               function(result) {
-                     if(result.data=="person added to the session"){
-                        console.log(result.data);
+          personalInfoSrv.insertPerson(person,function(result){
+            if(result=="person added to the session"){
+                        console.log(result);
                         $location.url('/pay');
                      }
                      else{
-                      alert(result.data);
+                      alert("An error occured please try again");
                      }
-                }
-          );
+          });
+           
         }
     }
 });

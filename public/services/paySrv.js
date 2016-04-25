@@ -2,15 +2,18 @@ app.factory('paySrv', function ($http) {
   
      return {
          insertPayment : function(pa,cb) {
+          var tokenReq = {
+        method: 'GET',
+        url: '/getToken'
+      };
+      return $http(tokenReq).success(function(response){
           var req = {
               method: 'POST',
               url: '/api/insertpayment',
               data: { payment: pa }
                  ,headers:
               {
-                'x-access-token':
-                  'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJPbmxpbmUgSldUIEJ1aWxkZXIiLCJpYXQiOjE0NjA5ODU3MzQsImV4cCI6MTQ5MjUyMTczNCwiYXVkIjoid3d3LmV4YW1wbGUuY29tIiwic3ViIjoianJvY2tldEBleGFtcGxlLmNvbSIsIkdpdmVuTmFtZSI6IkpvaG5ueSIsIlN1cm5hbWUiOiJSb2NrZXQiLCJFbWFpbCI6Impyb2NrZXRAZXhhbXBsZS5jb20iLCJSb2xlIjpbIk1hbmFnZXIiLCJQcm9qZWN0IEFkbWluaXN0cmF0b3IiXX0.cBVsJtA9S-5vRW_-0bcNBqks-L2EUD_9-vV61LF19oo'
-
+                'x-access-token':response
               }
           };
 
@@ -22,11 +25,9 @@ app.factory('paySrv', function ($http) {
                       method: 'GET',
                       url: '/api/completeBookingData',
                        headers:
-              {
-                'x-access-token':
-                  'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJPbmxpbmUgSldUIEJ1aWxkZXIiLCJpYXQiOjE0NjA5ODU3MzQsImV4cCI6MTQ5MjUyMTczNCwiYXVkIjoid3d3LmV4YW1wbGUuY29tIiwic3ViIjoianJvY2tldEBleGFtcGxlLmNvbSIsIkdpdmVuTmFtZSI6IkpvaG5ueSIsIlN1cm5hbWUiOiJSb2NrZXQiLCJFbWFpbCI6Impyb2NrZXRAZXhhbXBsZS5jb20iLCJSb2xlIjpbIk1hbmFnZXIiLCJQcm9qZWN0IEFkbWluaXN0cmF0b3IiXX0.cBVsJtA9S-5vRW_-0bcNBqks-L2EUD_9-vV61LF19oo'
-
-              }
+                                {
+                                  'x-access-token':response
+                                }
                     };
                               return $http(req2).then(
                           function mySucces(response) {
@@ -34,13 +35,17 @@ app.factory('paySrv', function ($http) {
                             console.log("succeeed in completeBookingData http get request"+response)
                                 
                        },function myError(response) {
-                                console.log("error")
-                                 cb(false);
+                              console.log(response.statusText);
+                               alert("An error occured please try again");
                                 });  
               })
               .error(function(data, status, headers, config) {
                  return "error";
               });
+            }).error(function(){
+                 console.log(response.statusText);
+                 alert("An error occured please try again");
+            })
          }
 
      };
