@@ -22,6 +22,7 @@ var saveAllBookingDataController= require('../serverController/saveAllBookingDat
 var bookControl = require('../serverController/bookingController.js');
 var paymentController= require('../serverController/paymentController.js');
 var flightControl =  require('../serverController/flightController.js');
+var AirportsController =  require('../serverController/airportsServerController.js');
     /**
      * requiring server validations.
      */
@@ -136,6 +137,21 @@ var router = express.Router();
                 });
 
 });
+
+/*
+|==========================================================================
+| Airports Routes
+|==========================================================================
+|
+| These routes are related Airports.
+|
+*/
+   router.get('/api/airports',function(req,res){
+       AirportsController.getAirports(function(err,airports){
+          //console.log("airports ->"+airports);
+          res.json(airports);
+       });
+   });
 
 
 /*
@@ -383,8 +399,8 @@ router.post('/api/booking', function(req,res){
                         outF:outfli,
                         inF:infli
                       };
-                      console.log("outdocs dsfsf :      --------------------->"+outfli);
-                      console.log("indocs  sdfdf :      --------------------->"+infli);
+                      // console.log("outdocs dsfsf :      --------------------->"+outfli);
+                      // console.log("indocs  sdfdf :      --------------------->"+infli);
                       res.send(x);
                  });
                
