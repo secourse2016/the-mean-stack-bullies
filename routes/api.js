@@ -22,6 +22,7 @@ var saveAllBookingDataController= require('../serverController/saveAllBookingDat
 var bookControl = require('../serverController/bookingController.js');
 var paymentController= require('../serverController/paymentController.js');
 var flightControl =  require('../serverController/flightController.js');
+var AirportsController =  require('../serverController/airportsServerController.js');
     /**
      * requiring server validations.
      */
@@ -136,6 +137,20 @@ var router = express.Router();
                 });
 
 });
+
+/*
+|==========================================================================
+| Airports Routes
+|==========================================================================
+|
+| These routes are related Airports.
+|
+*/
+   router.get('/api/airports',function(req,res){
+       AirportsController.getAirports(function(err,airports){
+          res.json(airports);
+       });
+   });
 
 
 /*

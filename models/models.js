@@ -72,13 +72,14 @@ var bookingSchema = schema({
 
 var airportSchema = schema({
     iata:String,
-    lon: Number,
+    lon: {type:String,default:null},
     iso: String,
     status: Number,
+    city:String,
     name: String,
     continent: String,
     type: String,
-    lat: Number,
+    lat: {type:String,default:null},
     size: String
 
 });

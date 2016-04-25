@@ -4,10 +4,10 @@ app.controller('bookingCtrl', function($scope, $location,airportSrv,flightSrv,Fl
   $scope.date= new Date();
   $scope.limit=6;
   $scope.hideBookButton = false; 
-      airportSrv.getAirports().then(function(response) {
+      airportSrv.getAirports().then(function(airport) {
         //First function handles success
       
-         $scope.airports = response.data;
+         $scope.airports = airports;
           console.log("responded");
         
     }, function(response) {
