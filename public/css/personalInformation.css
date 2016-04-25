@@ -200,6 +200,11 @@
 
 
 	}
+	.form-style-8 select:focus
+	{
+		 border-bottom-color: rgb(17,37,60);
+
+	}
 	.form-style-8 textarea{
 	    resize:none;
 	    overflow: hidden;
