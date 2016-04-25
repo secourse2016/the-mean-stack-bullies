@@ -19,6 +19,7 @@
       $scope.Array[index]=index;
     }
     $scope.personalArray=new Array(Adults+Children);
+
     if((Adults+Children)==1){
         $scope.lastPassenger=false;
     }
@@ -27,6 +28,7 @@
     }
     console.log(Array.length);
   });
+
 
   $scope.currentIndex=0;
 
