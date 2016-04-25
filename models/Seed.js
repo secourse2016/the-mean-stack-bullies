@@ -57,12 +57,12 @@ function seedOutFlights(entity){
  // console.log(newOutFlights[5]);
 };
 
- // Db.drop(function(){
- //    console.log("dropped");
- //    seedingFunction(function(){
- //    console.log("seeding database completed successfully");
- //  });
- // });
+ Db.drop(function(){
+    console.log("dropped");
+    seedingFunction(function(){
+    console.log("seeding database completed successfully");
+  });
+ });
 
 
 var seedingFunction=exports.seedingFunction=function(cb){
