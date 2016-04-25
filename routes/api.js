@@ -146,8 +146,9 @@ var router = express.Router();
 | These routes are related to the Payments.
 |
 */
+            /*handeling stripe charges*/ 
 
-
+       
               /**
                * Inserting payment route.
                */

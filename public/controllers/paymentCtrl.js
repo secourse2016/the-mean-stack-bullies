@@ -57,15 +57,26 @@ app.controller('paymentCtrl', function($scope, $location,paySrv) {
           }
 
           var date ="01 "+$scope.expirymonth+" "+$scope.expiryyear;
+            
+             
 
-          var pa=[{
+            Stripe.card.createToken({
+            number: $scope.CardN,
+            cvc: $scope.CVV,
+            exp_month: getMonthNumber($scope.expirymonth),
+            exp_year: $scope.expiryyear
+            
+            }, stripeResponseHandler); 
+              
+            var pa=[{
             visa:boolea,
             MasterCard: (!boolea),
             CardHolderName: $scope.holderN,
             CardHolderNo: $scope.CardN,
             Cvv: $scope.CVV,
             ExpiryDate: date
-          }];
+          }]; 
+
 
           paySrv.insertPayment(pa,
                function(flag) {
@@ -79,5 +90,54 @@ app.controller('paymentCtrl', function($scope, $location,paySrv) {
                 }
           );
         }
-      }
+      } 
+    
+    stripeResponseHandler = function(status,response){
+            if(response.error){ 
+               console.log(response);
+               console.log("STRIPE ERRR");
+            } 
+
+            else{ 
+
+               console.log(response);
+              paySrv.tokenizePayment(response.id, function(status){ 
+                  if(status=="OK"){ 
+                     
+                     console.log("PASSED FRONT END STRIPE");
+
+                  } 
+                  else{ 
+
+                        alert("WRONG");
+                  } 
+
+                });
+            }
+
+
+    } 
+
+    getMonthNumber = function(month){ 
+         
+         switch(month){ 
+            
+            case "JAN" : return 01;
+            case "FEB" : return 02;
+            case "MAR" : return 03; 
+            case "APR" : return 04;
+            case "MAY" : return 05;
+            case "JUN" : return 06; 
+            case "JUL" : return 07; 
+            case "AUG" : return 08;
+            case "SEP" : return 09; 
+            case "OCT" : return 10; 
+            case "NOV" : return 11; 
+            case "DEC" : return 12;
+
+
+           }
+
+    }
+
 });
