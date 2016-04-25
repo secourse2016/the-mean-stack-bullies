@@ -38,7 +38,10 @@ app.controller('personalInfoCtrl', function($scope, $location,personalInfoSrv) {
     }
 
 
-
+    $scope.testRoute=function(){
+       var ahmed=personalInfoSrv.getBookingNumberOfAdultsAndChildren();
+        console.log(ahmed);
+    }
 
 	$scope.submitpersonFrom=function() {
 		        
