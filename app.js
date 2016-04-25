@@ -26,19 +26,27 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({secret: 'key12',cookie:{maxAge:60000*30}}));
 // routes
 
+app.get('/getToken',function(req,res){
+//   console.log("here in token route");
+// var newJwt = jwt.create(process.env.JWTSECRET);
+// console.log(newJwt);
+// var token = newJwt.compact();
+// console.log(token);
+var token = jwt.sign({}, process.env.JWTSECRET);
+console.log(token);
+res.send(token);
+});
 
-app.use(function(req, res, next) {
-console.log("url");
- 
-console.log("bes");
+app.use('/api',function(req, res, next) {
+
         // check header or url parameters or post parameters for token
         var token = req.body.wt || req.query.wt || req.headers['x-access-token'];   
         var jwtSecret =  process.env.JWTSECRET;
-       // var jwtSecret = "a23das013d,s;1";
         // Get JWT contents:
         try 
         {
           var payload = jwt.verify(token, jwtSecret);
+         // console.log("payload -->"+payload);
           req.payload = payload;
 
           next();

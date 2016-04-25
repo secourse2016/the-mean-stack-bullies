@@ -19,7 +19,7 @@
                       type="text"
                       placeholder="Flying From"
                       ng-model="selectedOrigin"
-                      uib-typeahead="airport.name+' ('+airport.iata+')' for airport in airports | airportsFilters:selectedOrigin| limitTo:10"
+                      uib-typeahead="airport.city+' '+airport.name+' ('+airport.iata+')' for airport in airports | airportsFilters:selectedOrigin| limitTo:10"
                       class="form-control",
                       typeahead-on-select="SetOriginAirport($item.iata)">
                     </div>
@@ -68,7 +68,7 @@
                       type="text"
                       placeholder="Flying To"
                       ng-model="selectedDestination"
-                      uib-typeahead="airport.name+' ('+airport.iata+')' for airport in airports | airportsFilters:selectedDestination| limitTo:10"
+                      uib-typeahead="airport.city+' '+airport.name+' ('+airport.iata+')' for airport in airports | airportsFilters:selectedDestination| limitTo:10"
                       class="form-control",
                       typeahead-on-select="SetDestinationAirport($item.iata)">
                     </div>  

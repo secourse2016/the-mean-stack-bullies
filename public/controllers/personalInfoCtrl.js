@@ -33,7 +33,6 @@
   $scope.currentIndex=0;
 
 
-
   	function presonValidations(){
           var isvalid =true;
           var errMessage = "";
@@ -192,41 +191,72 @@
         return true;
       }
       
-    }
-  	$scope.submitpersonFrom=function() {
+  }
+	$scope.submitpersonFrom=function() {
+		        
+        var errMessage = presonValidations();
+        if(errMessage){
+          alert(errMessage);
+        }
+        else{
+          
+          var person=[{
+               firstName      : $scope.firstName,
+     		       secondName    : $scope.lastName,
+    		   age            : $scope.age,
+    		   nationality    : $scope.Nationality,
+      		   passportNumber: $scope.passportnum,
+     		   issueDate      : $scope.issueDate,
+     		   expiryDate     : $scope.expiryDate
+          }];
+          
+          personalInfoSrv.insertPerson(person,function(result){
+            if(result=="person added to the session"){
+                        console.log(result);
+                        $location.url('/pay');
+                     }
+                     else{
+                      alert("An error occured please try again");
+                     }
+          });
+          } 
+        }
+// >>>>>>> 23245027426c299d64d798310a72cc486498bdac
+//     }
+//   	$scope.submitpersonFrom=function() {
   		        
-          var errMessage = presonValidations();
-          if(errMessage){
-            alert(errMessage);
-          }
-          else{
+//           var errMessage = presonValidations();
+//           if(errMessage){
+//             alert(errMessage);
+//           }
+//           else{
             
-            var person=[{
-                 firstName      : $scope.firstName,
-       		       secondName    : $scope.lastName,
-      		   age            : $scope.age,
-      		   nationality    : $scope.Nationality,
-        		   passportNumber: $scope.passportnum,
-       		   issueDate      : $scope.issueDate,
-       		   expiryDate     : $scope.expiryDate
-            }];
+//             var person=[{
+//                  firstName      : $scope.firstName,
+//        		       secondName    : $scope.lastName,
+//       		   age            : $scope.age,
+//       		   nationality    : $scope.Nationality,
+//         		   passportNumber: $scope.passportnum,
+//        		   issueDate      : $scope.issueDate,
+//        		   expiryDate     : $scope.expiryDate
+//             }];
             
-             $scope.personalArray[$scope.currentIndex]=person[0];
+//              $scope.personalArray[$scope.currentIndex]=person[0];
            
                 
                 
             
-            personalInfoSrv.insertPerson($scope.personalArray).then(
-                 function(result) {
-                       if(result.data=="person added to the session"){
-                          console.log(result.data);
-                          $location.url('/pay');
-                       }
-                       else{
-                        alert(result.data);
-                       }
-                  }
-            );
-          }
-      }
+//             personalInfoSrv.insertPerson($scope.personalArray).then(
+//                  function(result) {
+//                        if(result.data=="person added to the session"){
+//                           console.log(result.data);
+//                           $location.url('/pay');
+//                        }
+//                        else{
+//                         alert(result.data);
+//                        }
+//                   }
+//             );
+//           }
+//       }
   });
