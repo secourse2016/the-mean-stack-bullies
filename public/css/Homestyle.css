@@ -42,6 +42,11 @@ width: 100%;
     color: red;
 }
 
+.bookButton:focus {
+     background-color: rgb(17,37,60);
+    color: red;
+}
+
 
 /*begin table*/
 div.table-title {
