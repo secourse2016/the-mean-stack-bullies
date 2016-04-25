@@ -39,7 +39,8 @@ app.controller('bookingCtrl', function($scope, $location,airportSrv,flightSrv,Fl
           }
        
     else{ 
-      console.log("HEANA");
+      var adult=parseInt( $scope.adultsss);
+      var child= parseInt($scope.children);
      var data = [{ 
     
     trip: $scope.trippp,
@@ -47,12 +48,14 @@ app.controller('bookingCtrl', function($scope, $location,airportSrv,flightSrv,Fl
     To: $scope.selectedDestination,
     DepartureDate: $scope.depDate, 
     ReturnDate: $scope.retDate,
-    NumberOfAdults: $scope.adultsss,
-    NumberOfChildren: $scope.children,
-    Class: $scope.tclass,
-    Email:$scope.email
+    NumberOfAdults: adult,
+    NumberOfChildren: child,
+    Class: "Economy12",
+    Email:"email@sa.com"
 
-    }];    
+    }]; 
+    console.log("test nullsss in ctrl----------->"+data[0].NumberOfAdults) ; 
+    console.log("test nullsss in ctrl----------->"+data[0].NumberOfChildren) ;  
    
      bookingSrv.insertbooking(data,function(response){
 
@@ -92,6 +95,7 @@ app.controller('bookingCtrl', function($scope, $location,airportSrv,flightSrv,Fl
        $scope.arr = result;
   }
   $scope.changeTable=function(iata){
+  
     $scope.hideTable=false;
     if(iata===undefined){
       // $scope.destination="";
@@ -103,21 +107,31 @@ app.controller('bookingCtrl', function($scope, $location,airportSrv,flightSrv,Fl
                     var dweee=data.outF.concat(data.inF);
                     $scope.arr=dweee;
                     var x;
-                    var today=new Date();
+                    
                     for(x=0;x< $scope.arr.length;x++)
                     {
+                      var today=new Date();
                       var d=new Date($scope.arr[x].departureDateTime);
                       if((d.getYear()<today.getYear()) || (d.getYear()==today.getYear && d.getMonth()<today.getMonth()) || (d.getYear()==today.getYear && d.getMonth()==today.getMonth() && d.getDate()<today.getDate()))
                       {
                           $scope.arr.splice(x,1);
                           x--;
                       }
+                    
+                      if(Date.parse(today)<Date.parse($scope.arr[x].arrivalDateTime)){
+                        if(Date.parse(today)<Date.parse($scope.arr[x].departureDateTime)){
+                            $scope.arr[x].status="Not Yet";
+                        }
+                        else{
+                             $scope.arr[x].status="Flying";
+                        }
+                        
+                      }
 
+                      else{  
+                        $scope.arr[x].status="Arrived";
+                      }
                     }
-
-
-       //   });
-        
                      $scope.image="../images/paris2.jpg"; 
                      $scope.datedivbool=false;
                      
@@ -132,6 +146,22 @@ app.controller('bookingCtrl', function($scope, $location,airportSrv,flightSrv,Fl
           if(array[i].origin==iata){
             result.push(array[i]);
           }
+
+          var today=new Date();
+          if(Date.parse(today)<Date.parse($scope.arr[i].arrivalDateTime)){
+                        if(Date.parse(today)<Date.parse($scope.arr[i].departureDateTime)){
+                            $scope.arr[i].status="Not Yet";
+                        }
+                        else{
+                             $scope.arr[i].status="Flying";
+                        }
+                        
+                      }
+
+                      else{  
+                        $scope.arr[i].status="Arrived";
+                      }
+
        }
        $scope.arr = result;
        $scope.datedivbool=true;
@@ -214,18 +244,18 @@ app.controller('bookingCtrl', function($scope, $location,airportSrv,flightSrv,Fl
             valid = false;
         } 
 
-        if($scope.tclass == undefined){  
-          err+= "Please select the seating class \n"; 
-          valid = false;
+        // if($scope.tclass == undefined){  
+        //   err+= "Please select the seating class \n"; 
+        //   valid = false;
 
-        } 
+        // } 
 
-        if($scope.email == undefined || !(evalid.test($scope.email))) { 
-           err+= "Please enter a valid email \m"; 
-           valid = false;
+        // if($scope.email == undefined || !(evalid.test($scope.email))) { 
+        //    err+= "Please enter a valid email \m"; 
+        //    valid = false;
 
 
-        }
+        // }
 
                   
          

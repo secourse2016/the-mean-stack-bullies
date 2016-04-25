@@ -1,6 +1,6 @@
 var models = require('../models/models.js');
 var mongoose = require('mongoose');
-
+var count = 0;
 exports.insertBookingData = function (booking, cb){     
  var BookingModel = mongoose.model('Booking');
   var newbooking = new BookingModel(booking); 
@@ -38,7 +38,7 @@ exports.insertReservationData = function(inFlightID,outFlightID,booking_id,cb){
    });
 };
 
-exports.decreaseSeatsByOne = function(flightIDOutging,flightIDInGoing,cb){
+exports.decreaseSeatsByNumber = function(number,flightIDOutging,flightIDInGoing,cb){
   
   var inFlightModel = mongoose.model('inFlight');
   var outFlightModel = mongoose.model('outFlight');
@@ -52,7 +52,7 @@ exports.decreaseSeatsByOne = function(flightIDOutging,flightIDInGoing,cb){
       if (!err)
       {
         console.log("doc1----------------------------->"+doc1);
-      doc1.seats=doc1.seats-1;
+      doc1.seats=doc1.seats-number;
       doc1.save();
 
     if (flightIDInGoing != null)
@@ -61,14 +61,15 @@ exports.decreaseSeatsByOne = function(flightIDOutging,flightIDInGoing,cb){
           if (!err)
           {
             console.log("dov2-------------------"+doc2);
-             doc2.seats=doc2.seats-1;
-          doc2.save();
-           cb(null,doc2);
+             doc2.seats=doc2.seats-number;
+             doc2.save();
+             cb(null,doc2);
           }else{
             cb(err,null);
           }
         });
-      }else{
+      }
+      else{
         cb(null,doc1);
       }
        
@@ -76,26 +77,35 @@ exports.decreaseSeatsByOne = function(flightIDOutging,flightIDInGoing,cb){
         cb(err,null);
       }
     });
-  }else{
+  }
+  else{
     cb("NO flight choosen",null);
   }
 };
 
 
-exports.insertPersonalInformation = function(personalInformation,booking_id,cb){
-    personalInformation.bookingRefNumber = booking_id;
-   var PersonModel = mongoose.model('Person');
-	var newPerson = new PersonModel(personalInformation);
-	newPerson.save(function (err,person) {
-       if (err) {
-       	 console.error(err);
-       	 cb(err,null);
-       }else{
-       	console.log(person);
-         cb(null,person);
-       }
-        
-      });
+var insertPersonalInformation = exports.insertPersonalInformation = function(personalInformation,booking_id,count,cb){
+    if(count >= personalInformation.length ){
+      console.log("true cond satisfied");
+      cb(null,true);
+    }else{
+      personalInformation[count].bookingRefNumber = booking_id;
+      var PersonModel = mongoose.model('Person');
+      var newPerson = new PersonModel(personalInformation[count]);
+      newPerson.save(function (err,person) {
+           if (err) {
+             console.log("error when saving"+err);
+             cb(err,false);
+           }else{
+            console.log("count is :"+count);
+            insertPersonalInformation(personalInformation,booking_id,count+1,cb);
+           }
+            
+          });
+    }
+  //for(i=0;i<personalInformation.length;i++){
+      
+  //}
 };
 
 

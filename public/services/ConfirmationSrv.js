@@ -79,6 +79,16 @@ app.factory('ConfirmationSrv', function($http){
               
           };
 
+// <<<<<<< HEAD
+//            return $http(req).then(function back(response) {
+//             console.log("this is the array yarab :");
+//             console.log(response.data);
+//             cb(response.data);
+//              },
+//             function myError(response) {
+//             cb(response.statusText);
+//             });
+// =======
            return $http(req).success(function(response) {
             cb(response);
              }).error(function(response){
@@ -91,6 +101,7 @@ app.factory('ConfirmationSrv', function($http){
                     console.log(response.statusText);
                   alert("An error occured please try again");
          });
+// >>>>>>> 23245027426c299d64d798310a72cc486498bdac
 
 
       }

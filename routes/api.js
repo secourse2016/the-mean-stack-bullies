@@ -94,15 +94,25 @@ var router = express.Router();
                    */
 
               router.post('/api/insertperson', function(req, res,next) {
-                 
-                personValidation.validatePerson(req.body.person[0],function(errmessage){
-                   if(errmessage){
-                    res.send(errmessage);
-                   }else{
+                 console.log("inside the main insertperson");
+                 var i;
+                 var bool="";
+                 for(i=0;i<req.body.people.length;i++){
+                    personValidation.validatePerson(req.body.people[i],function(errmessage){
+                      if(errmessage){
+                        bool+=errmessage;
+                       }  
+                    });
 
+                 }
+                 if(bool!=""){
+                    res.send(bool);
+                 }
+                 else{
                     next();
-                   }
-                });     
+                 }
+                 
+                     
           });
 
                     /**
@@ -194,12 +204,17 @@ var router = express.Router();
      * Inserting Booking route.
      */
  
-router.post('/api/booking', function(req,res){  
-
-
+router.post('/api/booking', function(req,res){ 
+                      sess = req.session;
+                     sess.bookingData = req.body.booking[0]; 
+                     console.log("test nullsss in api book ----------->"+sess.bookingData.NumberOfAdults) ; 
+                     console.log("test nullsss in api book ----------->"+sess.bookingData.NumberOfChildren) ; 
+                  
         bookControl.comapreFlights(req.body.booking[0],function(err,outFlights,inFlights){ 
-                    sess = req.session;
-                     sess.bookingData = req.body.booking[0];
+                    
+                   
+                     
+
                      console.log("sesssion = "+ sess.bookingData);
                      if(err){
                       returnedjson = {
@@ -214,7 +229,7 @@ router.post('/api/booking', function(req,res){
                           outFlights:outFlights,
                           inFlights:inFlights
                         };
-                        sess = req.session;
+                        //sess = req.session;
                         sess.flightData = returnedjson;
                        res.json(returnedjson);
                      }
@@ -222,6 +237,18 @@ router.post('/api/booking', function(req,res){
         }); 
 
 });
+
+
+        router.get('/api/getBookingNumberOfAdultsAndChildren', function(req, res) {
+              sess = req.session;
+              console.log("test nullsss in api route ----------->"+sess.bookingData.NumberOfAdults) ; 
+              console.log("test nullsss in api rouet----------->"+sess.bookingData.NumberOfChildren) ; 
+              var numbers={
+                NumberOfAdults : sess.bookingData.NumberOfAdults,
+                NumberOfChildren : sess.bookingData.NumberOfChildren
+              };
+              res.send(numbers);
+        }); 
 
 
 
@@ -278,12 +305,16 @@ router.post('/api/booking', function(req,res){
 
           router.post('/api/insertperson', function(req, res) {
                   sess = req.session;
-                  sess.personData = req.body.person[0];
+                  // sess.personData = req.body.people[0];
+                  sess.personArray=req.body.people;
+                  console.log(req.body.people);
+                  // console.log("req body.people--------------->"+req.body);
                   console.log("person data added to the session");
                 // personController.addPersonIntoDatabase(req.body.person[0],function(){
                   res.send('person added to the session');
                 // });
                 });
+
 
  
 /*
@@ -438,14 +469,15 @@ router.post('/api/booking', function(req,res){
  
       router.get('/api/getPersonInfocomfirmation', function(req, res) {
         sess = req.session;
-        res.send(sess.personData);
+        res.send(sess.personArray);
     
       });  
+
            
 
 /*
 |==========================================================================
-| Seesions Routes
+| Sessions Routes
 |==========================================================================
 |
 | These routes are related to the Sessions.
@@ -468,29 +500,36 @@ router.post('/api/booking', function(req,res){
                                         console.log(err);
                                        }else{
                                         console.log("new reservation added"+reserve);
-                                        saveAllBookingDataController.insertPersonalInformation(sess.personData,booking._id,function(err,person){
-                                               if(err){
-                                                console.log(err);
-                                               }else{
-                                                console.log("new person added"+person);
-                                            saveAllBookingDataController.insertPaymentInformation(sess.paymentData,booking._id,function(err,payment){
-                                               console.log("ID------------------------->"+sess.flightIDs.inFlight_id);
-                                               saveAllBookingDataController.decreaseSeatsByOne( sess.flightIDs.ouFlight_id ,sess.flightIDs.inFlight_id ,function(err1,docs){
-                                                    if(err1){
-                                                      console.log("error---------------------------------->"+err1);
-                                                      // res.send(err1);
-                                                    }
-                                                    else{
-                                                      console.log("new payment added"+payment);
-                                                      var message = "Booking is comfirmed";
-                                                      res.send(message);
-                                                  }
-                                               });
-                                               
-                                            });    
-                                                }
+                                        var i;
+                                        
+                                        saveAllBookingDataController.insertPersonalInformation(sess.personArray,booking._id,0,function(err,flag){
+                                              
+                                            if(err){
+                                                 console.log("error"+err);
+                                            }
+                                            else{
+                                                console.log("new person added"+flag);
+                                                saveAllBookingDataController.insertPaymentInformation(sess.paymentData,booking._id,function(err,payment){
+                                                        saveAllBookingDataController.decreaseSeatsByNumber( sess.personArray.length,sess.flightIDs.ouFlight_id ,sess.flightIDs.inFlight_id ,function(err1,docs){
+                                                        console.log("ID------------------------->"+sess.flightIDs.inFlight_id);
+                                                            if(err1){
+                                                              console.log("error---------------------------------->"+err1);
+                                                              // res.send(err1);
+                                                            }
+                                                            else{
+                                                              console.log("new payment added"+payment);
+                                                              var message = "Booking is comfirmed";
+                                                              res.send(message);
+                                                           }
+                                                       });  
+                                                });    
+                                            }
 
-                                              });
+                                          });
+                                            
+
+                                        
+                             
                                        }
                                  });
                         }

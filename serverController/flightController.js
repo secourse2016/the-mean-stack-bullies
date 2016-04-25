@@ -30,12 +30,14 @@ exports.getFlightsForTimeTable=function(cb){
 	var InFlightModel = mongoose.model('inFlight');
 	var x=new Date();
 	var y=new Date();
-	// var hours=x.getHours();
-	// var days=x.getDays();
 	
+	x.setHours(0);
+	x.setMinutes(0);
 	y.setMinutes(59);
 	y.setHours(23);
 
+
+	
 	var outquery = OutFlightModel.find();
 	var inquery = InFlightModel.find();
 
@@ -44,8 +46,7 @@ exports.getFlightsForTimeTable=function(cb){
 
 	outquery.exec(function (err, outdocs) {
 			inquery.exec(function (err, indocs) {
-				// console.log("outdocs :      --------------------->"+outdocs);
-				// console.log("indocs  :      --------------------->"+indocs);
+
 				cb(outdocs,indocs);
 			});
 
