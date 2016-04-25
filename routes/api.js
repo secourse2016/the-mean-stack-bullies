@@ -93,15 +93,25 @@ var router = express.Router();
                    */
 
               router.post('/api/insertperson', function(req, res,next) {
-                 
-                personValidation.validatePerson(req.body.person[0],function(errmessage){
-                   if(errmessage){
-                    res.send(errmessage);
-                   }else{
+                 console.log("inside the main insertperson");
+                 var i;
+                 var bool="";
+                 for(i=0;i<req.body.people.length;i++){
+                    personValidation.validatePerson(req.body.people[i],function(errmessage){
+                      if(errmessage){
+                        bool+=errmessage;
+                       }  
+                    });
 
+                 }
+                 if(bool!=""){
+                    res.send(bool);
+                 }
+                 else{
                     next();
-                   }
-                });     
+                 }
+                 
+                     
           });
 
                     /**
@@ -279,8 +289,10 @@ router.post('/api/booking', function(req,res){
 
           router.post('/api/insertperson', function(req, res) {
                   sess = req.session;
-                  sess.personData = req.body.person[0];
-                  sess.personArray=req.body;
+                  // sess.personData = req.body.people[0];
+                  sess.personArray=req.body.people;
+                  console.log(req.body.people);
+                  // console.log("req body.people--------------->"+req.body);
                   console.log("person data added to the session");
                 // personController.addPersonIntoDatabase(req.body.person[0],function(){
                   res.send('person added to the session');
@@ -441,7 +453,7 @@ router.post('/api/booking', function(req,res){
  
       router.get('/api/getPersonInfocomfirmation', function(req, res) {
         sess = req.session;
-        res.send(sess.personData);
+        res.send(sess.personArray);
     
       });  
 
@@ -473,37 +485,34 @@ router.post('/api/booking', function(req,res){
                                        }else{
                                         console.log("new reservation added"+reserve);
                                         var i;
-                                        for(i=0;i<x.sess.personArray;i++){
-                                                saveAllBookingDataController.insertPersonalInformation(sess.personArray[i],booking._id,function(err,person){
+                                        
+                                        saveAllBookingDataController.insertPersonalInformation(sess.personArray,booking._id,0,function(err,flag){
                                               
-                                                  if(err){
-                                                       console.log(err);
-                                                  }
-                                                  else{
-                                                      console.log("new person added"+person);
-                                                      saveAllBookingDataController.decreaseSeatsByOne( sess.flightIDs.ouFlight_id ,sess.flightIDs.inFlight_id ,function(err1,docs){
-                                                          if(i==0){
-                                                              saveAllBookingDataController.insertPaymentInformation(sess.paymentData,booking._id,function(err,payment){
-                                                              console.log("ID------------------------->"+sess.flightIDs.inFlight_id);
-                                                                  if(err1){
-                                                                    console.log("error---------------------------------->"+err1);
-                                                                    // res.send(err1);
-                                                                  }
-                                                                  else{
-                                                                    console.log("new payment added"+payment);
-                                                                    var message = "Booking is comfirmed";
-                                                                    res.send(message);
-                                                                 }
-                                                             });
-                                                         }
-                                                         
-                                                      });    
-                                                  }
+                                            if(err){
+                                                 console.log("error"+err);
+                                            }
+                                            else{
+                                                console.log("new person added"+flag);
+                                                saveAllBookingDataController.insertPaymentInformation(sess.paymentData,booking._id,function(err,payment){
+                                                        saveAllBookingDataController.decreaseSeatsByNumber( sess.personArray.length,sess.flightIDs.ouFlight_id ,sess.flightIDs.inFlight_id ,function(err1,docs){
+                                                        console.log("ID------------------------->"+sess.flightIDs.inFlight_id);
+                                                            if(err1){
+                                                              console.log("error---------------------------------->"+err1);
+                                                              // res.send(err1);
+                                                            }
+                                                            else{
+                                                              console.log("new payment added"+payment);
+                                                              var message = "Booking is comfirmed";
+                                                              res.send(message);
+                                                           }
+                                                       });  
+                                                });    
+                                            }
 
-                                                });
+                                          });
                                             
 
-                                        }
+                                        
                              
                                        }
                                  });
