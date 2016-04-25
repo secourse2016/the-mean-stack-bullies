@@ -53,7 +53,11 @@ module.exports = {
 	   						mongoose.model('Payment').remove({}, function(err) { 
 	   							if(err) console.log("connot be removed");
 	   							console.log('Payment removed') ;
+	   							mongoose.model('Person').remove({}, function(err) { 
+	   							if(err) console.log("connot be removed");
+	   							console.log('Person removed') ;
 	   							cb();
+							});
 							});
 						});
 					});

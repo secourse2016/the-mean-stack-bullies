@@ -46,7 +46,7 @@ app.use('/api',function(req, res, next) {
         try 
         {
           var payload = jwt.verify(token, jwtSecret);
-          console.log("payload -->"+payload);
+         // console.log("payload -->"+payload);
           req.payload = payload;
 
           next();
