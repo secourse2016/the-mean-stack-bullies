@@ -18,7 +18,8 @@ app.factory('bookingSrv',function ($http){
       };  
 
        console.log("in service");
-
+       console.log("test nullsss in service ----------->"+booking[0].NumberOfAdults) ; 
+       console.log("test nullsss in service ----------->"+booking[0].NumberOfChildren) ; 
        return $http(req)
 
               .success(function(response) {
