@@ -32,7 +32,7 @@ app.factory('personalInfoSrv', function ($http) {
             });
 
          },
-     getBookingNumberOfAdultsAndChildren : function(){
+     getBookingNumberOfAdultsAndChildren : function(cb){
         var tokenReq = {
               method: 'GET',
               url: '/getToken'
@@ -49,12 +49,13 @@ app.factory('personalInfoSrv', function ($http) {
       };
 
         return $http(req)
-              .success(function(data, status, headers, config) {
-                    // console.log("test---------------->"+data);
-                    return data;
+              .success(function(response) {
+                     console.log("in the person service"+response);
+                   cb(response);
               })
-              .error(function(data, status, headers, config) {
-                   return "error";
+              .error(function(response) {
+                   console.log(response.statusText);
+                alert("An error occured please try again");
               });
             }).error(function(response){
                 console.log(response.statusText);

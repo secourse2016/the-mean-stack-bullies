@@ -1,5 +1,5 @@
   app.controller('personalInfoCtrl', function($scope, $location,personalInfoSrv) {
-  number=personalInfoSrv.getBookingNumberOfAdultsAndChildren();
+  
   var index;
   Adults=0;
   Children=0;
@@ -9,9 +9,11 @@
   $scope.i0={"background-color":"rgb(152,58,49)"};
   $scope.ageShow=true;
 
-  number.then(function(data){
-    Adults=data.data.NumberOfAdults;
-    Children=data.data.NumberOfChildren;
+  personalInfoSrv.getBookingNumberOfAdultsAndChildren(function(data){
+
+      Adults=data.NumberOfAdults;
+    Children=data.NumberOfChildren;
+    console.log(Adults+"   "+Children);
     // $scope.Array=new Array(Adults+Children);
     // console.log($scope.Array.length);
     for(index=0;index<(Adults+Children);index++)
@@ -192,71 +194,72 @@
       }
       
   }
-	$scope.submitpersonFrom=function() {
+	// $scope.submitpersonFrom=function() {
 		        
-        var errMessage = presonValidations();
-        if(errMessage){
-          alert(errMessage);
-        }
-        else{
+ //        var errMessage = presonValidations();
+ //        if(errMessage){
+ //          alert(errMessage);
+ //        }
+ //        else{
           
-          var person=[{
-               firstName      : $scope.firstName,
-     		       secondName    : $scope.lastName,
-    		   age            : $scope.age,
-    		   nationality    : $scope.Nationality,
-      		   passportNumber: $scope.passportnum,
-     		   issueDate      : $scope.issueDate,
-     		   expiryDate     : $scope.expiryDate
-          }];
+ //          var person=[{
+ //               firstName      : $scope.firstName,
+ //     		       secondName    : $scope.lastName,
+ //    		   age            : $scope.age,
+ //    		   nationality    : $scope.Nationality,
+ //      		   passportNumber: $scope.passportnum,
+ //     		   issueDate      : $scope.issueDate,
+ //     		   expiryDate     : $scope.expiryDate
+ //          }];
           
-          personalInfoSrv.insertPerson(person,function(result){
-            if(result=="person added to the session"){
-                        console.log(result);
-                        $location.url('/pay');
-                     }
-                     else{
-                      alert("An error occured please try again");
-                     }
-          });
-          } 
-        }
+ //          personalInfoSrv.insertPerson(person,function(result){
+ //            if(result=="person added to the session"){
+ //                        console.log(result);
+ //                        $location.url('/pay');
+ //                     }
+ //                     else{
+ //                      alert("An error occured please try again");
+ //                     }
+ //          });
+ //          } 
+ //        }
 // >>>>>>> 23245027426c299d64d798310a72cc486498bdac
 //     }
-//   	$scope.submitpersonFrom=function() {
+  	$scope.submitpersonFrom=function() {
   		        
-//           var errMessage = presonValidations();
-//           if(errMessage){
-//             alert(errMessage);
-//           }
-//           else{
+          var errMessage = presonValidations();
+          if(errMessage){
+            alert(errMessage);
+          }
+          else{
             
-//             var person=[{
-//                  firstName      : $scope.firstName,
-//        		       secondName    : $scope.lastName,
-//       		   age            : $scope.age,
-//       		   nationality    : $scope.Nationality,
-//         		   passportNumber: $scope.passportnum,
-//        		   issueDate      : $scope.issueDate,
-//        		   expiryDate     : $scope.expiryDate
-//             }];
+            var person=[{
+                 firstName      : $scope.firstName,
+       		       secondName    : $scope.lastName,
+      		   age            : $scope.age,
+      		   nationality    : $scope.Nationality,
+        		   passportNumber: $scope.passportnum,
+       		   issueDate      : $scope.issueDate,
+       		   expiryDate     : $scope.expiryDate
+            }];
             
-//              $scope.personalArray[$scope.currentIndex]=person[0];
+             $scope.personalArray[$scope.currentIndex]=person[0];
            
                 
                 
             
-//             personalInfoSrv.insertPerson($scope.personalArray).then(
-//                  function(result) {
-//                        if(result.data=="person added to the session"){
-//                           console.log(result.data);
-//                           $location.url('/pay');
-//                        }
-//                        else{
-//                         alert(result.data);
-//                        }
-//                   }
-//             );
-//           }
-//       }
+            personalInfoSrv.insertPerson($scope.personalArray,function(result){
+              console.log("hereeeeee switch to payment view");
+              if(result=="person added to the session"){
+
+                          console.log(result);
+                          $location.url('/pay');
+                       }
+                       else{
+                        alert(result);
+                       }
+                     });
+            
+          }
+      }
   });
