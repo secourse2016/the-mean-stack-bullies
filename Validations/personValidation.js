@@ -14,7 +14,7 @@ exports.validatePerson = function(newPerson,cb){
           errMessage+="please enter a valid Nationality \n";
           isvalid = false;
           }
-         if((newPerson.age == null)||!(/^[0-9]{2}$/.test(newPerson.age ))){
+         if((newPerson.age == null)||!(/^[0-9]{1,2}$/.test(newPerson.age ))){
            errMessage+="please enter a valid age \n";
            isvalid =false;
           }

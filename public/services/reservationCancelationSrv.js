@@ -2,14 +2,17 @@
 app.factory('cancelationReservation',function($http){
    return {
        getReservation : function(refNum,cb) {
+        var tokenReq = {
+        method: 'GET',
+        url: '/getToken'
+      };
+      return $http(tokenReq).success(function(response){
           var req = {
               method: 'GET',
               url: '/api/getReservation/' + refNum,
               headers:
               {
-                'x-access-token':
-                  'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJPbmxpbmUgSldUIEJ1aWxkZXIiLCJpYXQiOjE0NjA5ODU3MzQsImV4cCI6MTQ5MjUyMTczNCwiYXVkIjoid3d3LmV4YW1wbGUuY29tIiwic3ViIjoianJvY2tldEBleGFtcGxlLmNvbSIsIkdpdmVuTmFtZSI6IkpvaG5ueSIsIlN1cm5hbWUiOiJSb2NrZXQiLCJFbWFpbCI6Impyb2NrZXRAZXhhbXBsZS5jb20iLCJSb2xlIjpbIk1hbmFnZXIiLCJQcm9qZWN0IEFkbWluaXN0cmF0b3IiXX0.cBVsJtA9S-5vRW_-0bcNBqks-L2EUD_9-vV61LF19oo'
-
+                'x-access-token':response
               }
           };
 
@@ -19,19 +22,25 @@ app.factory('cancelationReservation',function($http){
             }, function myError(response) {
                  cb(response.statusText);
             });
+            }).error(function(response){
+               console.log(response.statusText);
+               alert("An error occured please try again");
+            });      
          }
          ,
           cancelReservation : function(refNum,cb) {
-
+            var tokenReq = {
+                method: 'GET',
+                url: '/getToken'
+              };
+      return $http(tokenReq).success(function(response){
          var req = {
               method: 'POST',
               url: '/api/cancelReservation',
               data: { ref: refNum }
                  ,headers:
               {
-                'x-access-token':
-                  'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJPbmxpbmUgSldUIEJ1aWxkZXIiLCJpYXQiOjE0NjA5ODU3MzQsImV4cCI6MTQ5MjUyMTczNCwiYXVkIjoid3d3LmV4YW1wbGUuY29tIiwic3ViIjoianJvY2tldEBleGFtcGxlLmNvbSIsIkdpdmVuTmFtZSI6IkpvaG5ueSIsIlN1cm5hbWUiOiJSb2NrZXQiLCJFbWFpbCI6Impyb2NrZXRAZXhhbXBsZS5jb20iLCJSb2xlIjpbIk1hbmFnZXIiLCJQcm9qZWN0IEFkbWluaXN0cmF0b3IiXX0.cBVsJtA9S-5vRW_-0bcNBqks-L2EUD_9-vV61LF19oo'
-
+                'x-access-token':response
               }
           };
 
@@ -42,6 +51,10 @@ app.factory('cancelationReservation',function($http){
               .error(function(data, status, headers, config) {
                       cb("Error while trying to cancel your reservation, please try again later");
           });
+            }).error(function(response){
+              console.log(response.statusText);
+               alert("An error occured please try again");
+            })
          }
      };  
 });

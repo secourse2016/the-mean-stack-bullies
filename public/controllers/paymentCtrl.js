@@ -13,7 +13,7 @@ app.controller('paymentCtrl', function($scope, $location,paySrv,chargeSrv) {
            errMessage+="please enter a valid card number \n";
            isvalid = false;
           }
-         if(($scope.CVV == null)||!(/^[0-9]{3}$/.test($scope.CVV ))){
+         if(($scope.CVV == null)||!(/^[0-9]{3}$/.test($scope.CVV))){
            errMessage+="please enter a valid CVV \n";
            isvalid =false;
           }
@@ -48,17 +48,7 @@ app.controller('paymentCtrl', function($scope, $location,paySrv,chargeSrv) {
           alert(errMessage);
         }
         else{
-          var boolea=false;
-          if($scope.radioButton=="visa"){
-            boolea=true;
-          }
-          else{
-            boolea=false;
-          }
-
-          var date ="01 "+$scope.expirymonth+" "+$scope.expiryyear;
             
-             
 
             Stripe.card.createToken({
             number: $scope.CardN,
@@ -68,6 +58,29 @@ app.controller('paymentCtrl', function($scope, $location,paySrv,chargeSrv) {
             
             }, stripeResponseHandler); 
               
+            
+} 
+}
+
+    stripeResponseHandler = function(status,response){ 
+      console.log("DAAAMMIIT");
+            if(response.error){ 
+               console.log(response);
+               console.log("STRIPE ERRR");
+            } 
+
+            else{  
+            var boolea=false;
+          if($scope.radioButton=="visa"){
+            boolea=true;
+          }
+          else{
+            boolea=false;
+          }
+
+          var date ="01 "+$scope.expirymonth+" "+$scope.expiryyear;
+
+               console.log(response);
             var pa=[{
             visa:boolea,
             MasterCard: (!boolea),
@@ -76,9 +89,8 @@ app.controller('paymentCtrl', function($scope, $location,paySrv,chargeSrv) {
             Cvv: $scope.CVV,
             ExpiryDate: date
           }]; 
-
-
-          paySrv.insertPayment(pa,
+           
+          paySrv.insertPayment(response.id,pa,
                function(flag) {
                      if(flag == true){
                         
@@ -87,35 +99,12 @@ app.controller('paymentCtrl', function($scope, $location,paySrv,chargeSrv) {
                      else{
                       alert("something went wrong please try again");
                      }
-                }
-          );
+                });
+        
         }
       } 
     
-    stripeResponseHandler = function(status,response){ 
-      console.log("DAAAMMIIT");
-            if(response.error){ 
-               console.log(response);
-               console.log("STRIPE ERRR");
-            } 
-
-            else{ 
-
-               console.log("THIS IS STRIPR RESPONSE > " + response);
-              chargeSrv.tokenizePayment(response.id, function(err){ 
-                 if(err){ 
-                     console.log("HERE IS ERROR");
-                 } 
-                 else{ 
-
-                    console.log("NO ERROR");
-                 }
-
-                });
-            }
-
-
-    } 
+   
 
     getMonthNumber = function(month){ 
          

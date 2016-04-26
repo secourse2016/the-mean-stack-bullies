@@ -13,9 +13,13 @@ console.log("in conf");
 
   		  ConfirmationSrv.getPersonInfo(function(data)
   		 {
+        console.log("new22");
+        console.log("this is the array yarabbbbb");
+        console.log(data);
   		 	console.log("new22");
-  		 			console.log(data);
-  		 			$scope.persons = data;
+  		 			
+  		 			$scope.personArray = data;
+            console.log($scope.personArray);
   		 });
 
         ConfirmationSrv.getbookingnfo(function(data)

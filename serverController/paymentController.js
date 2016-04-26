@@ -17,7 +17,7 @@ var charge = stripe.charges.create({
   } 
   else { 
 
-   console.log("CHARGE CORRECT>>>" + charge); 
+   console.log(charge); 
    cb(null,charge);
   }
 });

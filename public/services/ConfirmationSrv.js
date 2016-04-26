@@ -1,75 +1,110 @@
 app.factory('ConfirmationSrv', function($http){ 
 
-console.log("in facto");
        return {
+
          getallInfo : function(cb) {
+          var tokenReq = {
+        method: 'GET',
+        url: '/getToken'
+           };
+      return $http(tokenReq).success(function(response){
           var req = {
               method: 'GET',
               url: '/api/PaymentInfocomfirmation',
                headers:
               {
-                'x-access-token':
-                  'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJPbmxpbmUgSldUIEJ1aWxkZXIiLCJpYXQiOjE0NjA5ODU3MzQsImV4cCI6MTQ5MjUyMTczNCwiYXVkIjoid3d3LmV4YW1wbGUuY29tIiwic3ViIjoianJvY2tldEBleGFtcGxlLmNvbSIsIkdpdmVuTmFtZSI6IkpvaG5ueSIsIlN1cm5hbWUiOiJSb2NrZXQiLCJFbWFpbCI6Impyb2NrZXRAZXhhbXBsZS5jb20iLCJSb2xlIjpbIk1hbmFnZXIiLCJQcm9qZWN0IEFkbWluaXN0cmF0b3IiXX0.cBVsJtA9S-5vRW_-0bcNBqks-L2EUD_9-vV61LF19oo'
-
+                'x-access-token':response
               }
           };
 
 
 
-          return $http(req).then(function back(response) {
-            cb(response.data);
-          },
-            function myError(response) {
-            cb(response.statusText);
-            });
-         
-         },
+          return $http(req).success(function(response) {
+            cb(response);
+          })
+          .error(function(){
+            cb("An error occured please try again");
+          });
+         }).error(function(response){
+                  console.log(response.statusText);
+                  alert("An error occured please try again");
+         });
+       },
 
           getbookingnfo : function(cb) {
+              var tokenReq = {
+                method: 'GET',
+                url: '/getToken'
+                 };
+      return $http(tokenReq).success(function(response){
           var req = {
               method: 'GET',
               url: '/api/BookingInfocomfirmation',
                headers:
               {
-                'x-access-token':
-                  'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJPbmxpbmUgSldUIEJ1aWxkZXIiLCJpYXQiOjE0NjA5ODU3MzQsImV4cCI6MTQ5MjUyMTczNCwiYXVkIjoid3d3LmV4YW1wbGUuY29tIiwic3ViIjoianJvY2tldEBleGFtcGxlLmNvbSIsIkdpdmVuTmFtZSI6IkpvaG5ueSIsIlN1cm5hbWUiOiJSb2NrZXQiLCJFbWFpbCI6Impyb2NrZXRAZXhhbXBsZS5jb20iLCJSb2xlIjpbIk1hbmFnZXIiLCJQcm9qZWN0IEFkbWluaXN0cmF0b3IiXX0.cBVsJtA9S-5vRW_-0bcNBqks-L2EUD_9-vV61LF19oo'
-
+                'x-access-token':response
               }
           };
 
 
 
-          return $http(req).then(function back(response) {
-            cb(response.data);
-          },
-            function myError(response) {
-            cb(response.statusText);
-            });
+          return $http(req).success(function(response) {
+                                      cb(response);
+                                    })
+                           .error(function(response){
+                                   console.log(response.statusText);
+                                    alert("An error occured please try again");
+                                  });
+           
          
-         },
+         }).error(function(response){
+                 console.log(response.statusText);
+                  alert("An error occured please try again");
+         });
+       },
 
          getPersonInfo: function(cb){
+           var tokenReq = {
+                  method: 'GET',
+                  url: '/getToken'
+                     };
+             return $http(tokenReq).success(function(response){
              var req = {
               method: 'GET',
               url: '/api/getPersonInfocomfirmation',
                headers:
               {
-                'x-access-token':
-                  'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJPbmxpbmUgSldUIEJ1aWxkZXIiLCJpYXQiOjE0NjA5ODU3MzQsImV4cCI6MTQ5MjUyMTczNCwiYXVkIjoid3d3LmV4YW1wbGUuY29tIiwic3ViIjoianJvY2tldEBleGFtcGxlLmNvbSIsIkdpdmVuTmFtZSI6IkpvaG5ueSIsIlN1cm5hbWUiOiJSb2NrZXQiLCJFbWFpbCI6Impyb2NrZXRAZXhhbXBsZS5jb20iLCJSb2xlIjpbIk1hbmFnZXIiLCJQcm9qZWN0IEFkbWluaXN0cmF0b3IiXX0.cBVsJtA9S-5vRW_-0bcNBqks-L2EUD_9-vV61LF19oo'
-
+                'x-access-token':response
               }
               
           };
 
-           return $http(req).then(function back(response) {
-            cb(response.data);
-             },
-            function myError(response) {
-            cb(response.statusText);
-            });
+// <<<<<<< HEAD
+//            return $http(req).then(function back(response) {
+//             console.log("this is the array yarab :");
+//             console.log(response.data);
+//             cb(response.data);
+//              },
+//             function myError(response) {
+//             cb(response.statusText);
+//             });
+// =======
+           return $http(req).success(function(response) {
+            cb(response);
+             }).error(function(response){
+                 console.log(response.statusText);
+                  alert("An error occured please try again");
+             });
+           
 
-         }
+         }).error(function(response){
+                    console.log(response.statusText);
+                  alert("An error occured please try again");
+         });
+// >>>>>>> 23245027426c299d64d798310a72cc486498bdac
 
 
-      };
-  });
+      }
+
+}
+});
