@@ -29,7 +29,7 @@ var flightControl =  require('../serverController/flightController.js');
 var paymentValidation= require('../Validations/paymentValidation.js'); 
 var personController= require('../serverController/personController.js');
 var personValidation= require('../Validations/personValidation.js');
-var bookingValidation = require('../Validations/bookingValidation.js');
+var bookingValidation = require('../Validations/bookingValidation.js'); 
 
 var manageController =  require('../serverController/ManageBookingController.js');
 
@@ -119,7 +119,13 @@ var router = express.Router();
                 });
   
   
-}); 
+});   
+                /*middleware for validating strip token*/ 
+
+
+
+
+               
                //middleware for validating the booking data
 
               router.post('/api/booking', function(req, res, next) { 
@@ -146,23 +152,43 @@ var router = express.Router();
 | These routes are related to the Payments.
 |
 */
-            /*handeling stripe charges*/ 
+            /*handeling stripe charges*/  
+
+            router.post('/api/charge' , function(req,res) {
+
+               console.log("in here   >>>>>" + req.body.token);
+                paymentController.chargeCard(req.body.token,100, function(err){ 
+                         if(err){ 
+                            res.send(err); 
+                            console.log("api error");
+                         } 
+                         else { 
+
+                           console.log("HEEEEYYY"); 
+
+
+                           }
+
+      }); 
+              });
 
        
               /**
                * Inserting payment route.
                */
-            router.post('/api/insertpayment', function(req, res) {
-                  sess = req.session;
+            router.post('/api/insertpayment',function(req,res,next){  
+                
+                            sess = req.session;
    
-                     sess.paymentData = req.body.payment[0];
-                     console.log("payment data added to session --->"+req.body.payment[0]);
-                  // paymentController.addPaymentIntoDatabase(req.body.payment[0],function(){
-                    res.send('payment added to the session');
-                  // });
+                           sess.paymentData = req.body.payment[0];
+                           console.log("payment data added to session --->"+req.body.payment[0]);
+                        // paymentController.addPaymentIntoDatabase(req.body.payment[0],function(){
+                          res.send('payment added to the session');
+                        // });
               
-              
-            });
+
+
+                }); 
   
   
 

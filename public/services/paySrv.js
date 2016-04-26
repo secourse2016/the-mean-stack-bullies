@@ -41,33 +41,10 @@ app.factory('paySrv', function ($http) {
               .error(function(data, status, headers, config) {
                  return "error";
               });
-         }, 
+         }
 
            
-         tokenizePayment : function(Stripetoken,cb) { 
-             console.log("HELLOOOO");
-               var req = { 
-                   
-                   method : 'POST',
-                   url :    '/api/charge', 
-                   token : {token : Stripetoken}
-
-               } 
-                  
-               return $http(req) 
-                    .success(function(response){ 
-
-                      console.log("STRIPE RESPONSE >>>" +response);
-                      cb(response);
-
-                    }) 
-                    .error(function(response){ 
-
-                         return "ERROR";
-                    })
-
-         } 
-         
+        
 
      };
  });

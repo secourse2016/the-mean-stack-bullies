@@ -1,4 +1,4 @@
-app.controller('paymentCtrl', function($scope, $location,paySrv) {
+app.controller('paymentCtrl', function($scope, $location,paySrv,chargeSrv) {
      /**
       * validating payment form
       */
@@ -92,7 +92,8 @@ app.controller('paymentCtrl', function($scope, $location,paySrv) {
         }
       } 
     
-    stripeResponseHandler = function(status,response){
+    stripeResponseHandler = function(status,response){ 
+      console.log("DAAAMMIIT");
             if(response.error){ 
                console.log(response);
                console.log("STRIPE ERRR");
@@ -100,17 +101,15 @@ app.controller('paymentCtrl', function($scope, $location,paySrv) {
 
             else{ 
 
-               console.log(response);
-              paySrv.tokenizePayment(response.id, function(status){ 
-                  if(status=="OK"){ 
-                     
-                     console.log("PASSED FRONT END STRIPE");
+               console.log("THIS IS STRIPR RESPONSE > " + response);
+              chargeSrv.tokenizePayment(response.id, function(err){ 
+                 if(err){ 
+                     console.log("HERE IS ERROR");
+                 } 
+                 else{ 
 
-                  } 
-                  else{ 
-
-                        alert("WRONG");
-                  } 
+                    console.log("NO ERROR");
+                 }
 
                 });
             }
