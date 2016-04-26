@@ -1,6 +1,7 @@
 app.factory('paySrv', function ($http) { 
   
      return {
+
          insertPayment : function(stripeToken,pa,cb) {
           var tokenReq = {
         method: 'GET',

@@ -93,7 +93,7 @@ app.controller('paymentCtrl', function($scope, $location,paySrv,chargeSrv) {
           paySrv.insertPayment(response.id,pa,
                function(flag) {
                      if(flag == true){
-                        
+                        console.log("here in the payment controlller");
                         $location.url('/confirm');
                      }
                      else{
