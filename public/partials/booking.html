@@ -27,8 +27,8 @@
         <th class="text-left sp1 spx" style=" font-size: 30px; color:white;">{{flight.origin}}</th>
         <th class="text-left sp1 spx" style=" font-size: 30px; color:white;">{{flight.aircraftType}}<div> <img id="franceLogo" src="./icons/sky2.png"></div></th>
        <th  class="text-left sp1 spx" style=" font-size: 30px; color:white;">{{flight.destination}}</th>
-       <th  class="text-left sp1 spx" style=" font-size: 30px; color:white;">#
-       {{flight.flightNumber}}</th>
+       <th  class="text-left sp1 spx" style=" font-size: 30px; color:white;">
+       {{flight.Airline}}<div>#{{flight.flightNumber}}</div></th>
          
   
 
@@ -37,7 +37,7 @@
 
      </tr>
 
-      <tr class="sp">  
+      <tr class="sp" ng-show="viewFlight(flight.ecost)">  
         
          <th class="text-left sp">Economy</th>
           <th class="text-left sp"></th>
@@ -54,7 +54,7 @@
 
 
 
-<tr >  
+<tr ng-show="viewFlight(flight.ecost)">  
  
    
     <td class="text-left sp"><div>{{flight.origin}} <br> {{flight.departureDateTime}}</div></td>
@@ -69,7 +69,7 @@
 
 </tr>
 
-      <tr class="sp">  
+      <tr class="sp" ng-show="viewFlight(flight.bcost)">  
         
          <th class="text-left sp">Business</th>
           <th class="text-left sp"></th>
@@ -82,7 +82,7 @@
 
      </tr>
 
-<tr >  
+<tr ng-show="viewFlight(flight.bcost)">  
  <!-- TAKE CARE FOR HARDCODED RADIO BUTTONS INDECES -->
    
     <td class="text-left sp"><div>{{flight.origin}} <br> {{flight.departureDateTime}}</div></td>
@@ -120,13 +120,12 @@
      
 
       <thead>
-        <tr class="sp1">  
+        <tr class="sp1" ng-show="viewFlight2(flight.ecost,flight.bcost) ">  
 
         <th class="text-left sp1 spx" style=" font-size: 30px; color:white;">{{flight.origin}}</th>
         <th class="text-left sp1 spx" style=" font-size: 30px; color:white;">{{flight.aircraftType}}<div> <img id="franceLogo" src="./icons/sky2.png"></div></th>
        <th  class="text-left sp1 spx" style=" font-size: 30px; color:white;">{{flight.destination}}</th>
-       <th  class="text-left sp1 spx" style=" font-size: 30px; color:white;">#
-       {{flight.flightNumber}}</th>
+       <th  class="text-left sp1 spx" style=" font-size: 30px; color:white;">{{flight.Airline}}<div>#{{flight.flightNumber}}</div></th>
          
   
 
@@ -135,7 +134,7 @@
 
      </tr>
 
-      <tr class="sp">  
+      <tr class="sp" ng-show="viewFlight(flight.ecost)">  
         
          <th class="text-left sp">Economy</th>
           <th class="text-left sp"></th>
@@ -152,7 +151,7 @@
 
 
 
-<tr >  
+<tr ng-show="viewFlight(flight.ecost)">  
  
    
     <td class="text-left sp"><div>{{flight.origin}} <br> {{flight.departureDateTime}}</div></td>
@@ -167,7 +166,7 @@
 
 </tr>
 
-      <tr class="sp">  
+      <tr class="sp" ng-show="viewFlight(flight.bcost)">  
         
          <th class="text-left sp">Business</th>
           <th class="text-left sp"></th>
@@ -180,7 +179,7 @@
 
      </tr>
 
-<tr >  
+<tr ng-show="viewFlight(flight.bcost)">  
  <!-- TAKE CARE FOR HARDCODED RADIO BUTTONS INDECES -->
    
     <td class="text-left sp"><div>{{flight.origin}} <br> {{flight.departureDateTime}}</div></td>

@@ -1,7 +1,8 @@
 app.factory('paySrv', function ($http) { 
   
      return {
-         insertPayment : function(pa,cb) {
+
+         insertPayment : function(stripeToken,pa,cb) {
           var tokenReq = {
         method: 'GET',
         url: '/getToken'
@@ -10,7 +11,8 @@ app.factory('paySrv', function ($http) {
           var req = {
               method: 'POST',
               url: '/api/insertpayment',
-              data: { payment: pa }
+              data: { payment: pa , 
+                       token : stripeToken}
                  ,headers:
               {
                 'x-access-token':response
@@ -47,7 +49,42 @@ app.factory('paySrv', function ($http) {
                  console.log(response.statusText);
                  alert("An error occured please try again");
             })
-         }
+         },
+         getAmount : function(cb) {
+              var tokenReq = {
+                method: 'GET',
+                url: '/getToken'
+                 };
+      return $http(tokenReq).success(function(response){
+          var req = {
+              method: 'GET',
+              url: '/api/getPaymentAmount',
+               headers:
+              {
+                'x-access-token':response
+              }
+          };
+
+
+
+          return $http(req).success(function(response) {
+                                      console.log("this is the response of getPaymentAmount "+response)
+                                      cb(response);
+                                    })
+                           .error(function(response){
+                                   console.log(response.statusText);
+                                    alert("An error occured please try again");
+                                  });
+           
+         
+         }).error(function(response){
+                 console.log(response.statusText);
+                  alert("An error occured please try again");
+         });
+       }
+
+           
+        
 
      };
  });

@@ -23,14 +23,14 @@ var bookControl = require('../serverController/bookingController.js');
 var paymentController= require('../serverController/paymentController.js');
 var flightControl =  require('../serverController/flightController.js');
 var AirportsController =  require('../serverController/airportsServerController.js');
+var paymnetController= require('../serverController/paymentController.js');
     /**
      * requiring server validations.
      */
-
 var paymentValidation= require('../Validations/paymentValidation.js'); 
 var personController= require('../serverController/personController.js');
 var personValidation= require('../Validations/personValidation.js');
-var bookingValidation = require('../Validations/bookingValidation.js');
+var bookingValidation = require('../Validations/bookingValidation.js'); 
 
 var manageController =  require('../serverController/ManageBookingController.js');
 
@@ -113,25 +113,34 @@ var router = express.Router();
                  }
                  
                      
-          });
+              });
 
                     /**
                      * validating of payment middleware.
                      */
-              router.post('/api/insertpayment', function(req, res,next) {
-                 
-                paymentValidation.validatePayment(req.body.payment[0],function(errmessage){
+              router.post('/api/insertpayment', function(req,res,next) {
+                 sess = req.session;
+                 paymentValidation.validatePayment(req.body.payment[0],function(errmessage){
                    if(errmessage){
                     res.send(errmessage);
-                   }else{
+                   }else{ 
+                        console.log(req.body.token);
+                        paymentController.chargeCard(req.body.token,sess.payAmount, function(err){
+                           if(err){ 
+                             res.send(err);
+                           }
+                         else{ 
+     
+                            next();
+                         }
 
-                    next();
+                        });
+                    
                    }
                 });
   
   
-}); 
-               //middleware for validating the booking data
+            });   
 
               router.post('/api/booking', function(req, res, next) { 
 
@@ -146,7 +155,7 @@ var router = express.Router();
                            }
                 });
 
-});
+            });
 
 /*
 |==========================================================================
@@ -172,22 +181,26 @@ var router = express.Router();
 | These routes are related to the Payments.
 |
 */
+          
 
 
+       
               /**
                * Inserting payment route.
                */
-            router.post('/api/insertpayment', function(req, res) {
-                  sess = req.session;
+            router.post('/api/insertpayment',function(req,res,next){  
+                
+                            sess = req.session;
    
-                     sess.paymentData = req.body.payment[0];
-                     console.log("payment data added to session --->"+req.body.payment[0]);
-                  // paymentController.addPaymentIntoDatabase(req.body.payment[0],function(){
-                    res.send('payment added to the session');
-                  // });
+                           sess.paymentData = req.body.payment[0];
+                           console.log("payment data added to session --->"+req.body.payment[0]);
+                        // paymentController.addPaymentIntoDatabase(req.body.payment[0],function(){
+                          res.send('payment added to the session');
+                        // });
               
-              
-            });
+
+
+                }); 
   
   
 
@@ -307,11 +320,21 @@ router.post('/api/booking', function(req,res){
                   sess = req.session;
                   // sess.personData = req.body.people[0];
                   sess.personArray=req.body.people;
-                  console.log(req.body.people);
-                  // console.log("req body.people--------------->"+req.body);
-                  console.log("person data added to the session");
-                // personController.addPersonIntoDatabase(req.body.person[0],function(){
-                  res.send('person added to the session');
+                  paymnetController.calculateAmount(sess.flightIDs.inFlight_id , sess.flightIDs.ouFlight_id,function(err,amount){
+                      if(err){
+                        res.send('Error in the calculate payment method');
+                      }
+                      else{
+                            sess.payAmount=((sess.personArray.length)* amount);
+                            console.log("the amount is ------------------------------>"+sess.payAmount)
+                            console.log(req.body.people);
+                            // console.log("req body.people--------------->"+req.body);
+                            console.log("person data added to the session");
+                          // personController.addPersonIntoDatabase(req.body.person[0],function(){
+                            res.send('person added to the session');
+                      }
+                  })
+                
                 // });
                 });
 
@@ -360,6 +383,11 @@ router.post('/api/booking', function(req,res){
            router.get('/api/flights',function(req,res){
               sess = req.session;
               res.send(sess.flightData);
+           }); 
+
+           router.get('/api/getPaymentAmount',function(req,res){
+              sess = req.session;
+              res.json(sess.payAmount);
            }); 
 
             /**
@@ -464,12 +492,19 @@ router.post('/api/booking', function(req,res){
           console.log("Session booking dataaaaaa ----------------------------------------");
 
           res.send(sess.bookingData);
+
         
       });
  
       router.get('/api/getPersonInfocomfirmation', function(req, res) {
         sess = req.session;
         res.send(sess.personArray);
+    
+      });  
+      router.get('/api/sendBookingId', function(req, res) {
+        sess = req.session; 
+        //console.log(sess.bookinId);
+        res.send(sess.bookinId);
     
       });  
 
@@ -508,8 +543,10 @@ router.post('/api/booking', function(req,res){
                                                  console.log("error"+err);
                                             }
                                             else{
+                                                sess.bookinId=booking._id;
                                                 console.log("new person added"+flag);
                                                 saveAllBookingDataController.insertPaymentInformation(sess.paymentData,booking._id,function(err,payment){
+
                                                         saveAllBookingDataController.decreaseSeatsByNumber( sess.personArray.length,sess.flightIDs.ouFlight_id ,sess.flightIDs.inFlight_id ,function(err1,docs){
                                                         console.log("ID------------------------->"+sess.flightIDs.inFlight_id);
                                                             if(err1){

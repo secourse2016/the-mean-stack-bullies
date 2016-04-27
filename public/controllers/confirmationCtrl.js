@@ -1,15 +1,19 @@
-app.controller('confirmationCtrl', function($scope, $location,ConfirmationSrv) {
+app.controller('confirmationCtrl', function($scope, $location,ConfirmationSrv,paySrv) {
 		//$scope.clicktest=function() {
-
-console.log("in conf");
-  		 $scope.showThankYou=true;
-
+console.log("in conf"); 
+console.log($scope.arrd);
+  		 $scope.showThankYou=true; 
+        
   		 ConfirmationSrv.getallInfo(function(data)
   		 {
   		 	console.log("new");
   		 			console.log(data);
   		 			$scope.payments = data;
   		 });
+
+      paySrv.getAmount(function(amount){
+        $scope.amount=amount;
+      });
 
   		  ConfirmationSrv.getPersonInfo(function(data)
   		 {
@@ -27,6 +31,12 @@ console.log("in conf");
         console.log("bokoing data");
             console.log(data);
             $scope.booking = data;
+       }); 
+
+       ConfirmationSrv.getbookingID(function(id){ 
+               console.log(id); 
+               $scope.bookId = id;
+
        });
 
 
