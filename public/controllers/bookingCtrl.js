@@ -53,7 +53,9 @@ app.controller('bookingCtrl', function($scope, $location,airportSrv,flightSrv,Fl
     Class: "Economy12",
     Email:"email@sa.com"
 
-    }]; 
+    }];  
+
+    console.log(data);
     console.log("test nullsss in ctrl----------->"+data[0].NumberOfAdults) ; 
     console.log("test nullsss in ctrl----------->"+data[0].NumberOfChildren) ;  
    

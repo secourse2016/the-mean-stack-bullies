@@ -1,9 +1,9 @@
 app.controller('confirmationCtrl', function($scope, $location,ConfirmationSrv) {
 		//$scope.clicktest=function() {
-
-console.log("in conf");
-  		 $scope.showThankYou=true;
-
+console.log("in conf"); 
+console.log($scope.arrd);
+  		 $scope.showThankYou=true; 
+        
   		 ConfirmationSrv.getallInfo(function(data)
   		 {
   		 	console.log("new");
@@ -27,6 +27,12 @@ console.log("in conf");
         console.log("bokoing data");
             console.log(data);
             $scope.booking = data;
+       }); 
+
+       ConfirmationSrv.getbookingID(function(id){ 
+               console.log(id); 
+               $scope.bookId = id;
+
        });
 
 

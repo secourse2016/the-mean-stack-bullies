@@ -187,25 +187,8 @@ var router = express.Router();
 | These routes are related to the Payments.
 |
 */
-            /*handeling stripe charges*/  
+          
 
-            router.post('/api/charge' , function(req,res) {
-
-               console.log("in here   >>>>>" + req.body.token);
-                paymentController.chargeCard(req.body.token,100, function(err){ 
-                         if(err){ 
-                            res.send(err); 
-                            console.log("api error");
-                         } 
-                         else { 
-
-                           console.log("HEEEEYYY"); 
-
-
-                           }
-
-      }); 
-              });
 
        
               /**
@@ -508,6 +491,12 @@ router.post('/api/booking', function(req,res){
         res.send(sess.personArray);
     
       });  
+      router.get('/api/sendBookingId', function(req, res) {
+        sess = req.session; 
+        //console.log(sess.bookinId);
+        res.send(sess.bookinId);
+    
+      });  
 
            
 
@@ -544,8 +533,10 @@ router.post('/api/booking', function(req,res){
                                                  console.log("error"+err);
                                             }
                                             else{
+                                                sess.bookinId=booking._id;
                                                 console.log("new person added"+flag);
                                                 saveAllBookingDataController.insertPaymentInformation(sess.paymentData,booking._id,function(err,payment){
+
                                                         saveAllBookingDataController.decreaseSeatsByNumber( sess.personArray.length,sess.flightIDs.ouFlight_id ,sess.flightIDs.inFlight_id ,function(err1,docs){
                                                         console.log("ID------------------------->"+sess.flightIDs.inFlight_id);
                                                             if(err1){
