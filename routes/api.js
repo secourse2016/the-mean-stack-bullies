@@ -24,6 +24,7 @@ var paymentController= require('../serverController/paymentController.js');
 var flightControl =  require('../serverController/flightController.js');
 var AirportsController =  require('../serverController/airportsServerController.js');
 var paymnetController= require('../serverController/paymentController.js');
+var pingingOtherAirlinesServerController = require('../serverController/pingingOtherAirlinesServerController.js');
     /**
      * requiring server validations.
      */
@@ -349,33 +350,7 @@ router.post('/api/booking', function(req,res){
   |
   */
      
-            /**
-             * Inserting Flights route.
-             */
-
-  
-        // router.get('/api/getFlight/:origin/:dest/:departureTime', function(req, res) {
-
-        //     router.post('/api/insertperson', function(req, res) {
-        //           personController.addPersonIntoDatabase(req.body.person[0],function(){
-        //             res.send('person added to the database');
-        //           });
-        //     });       
-
-
-        //       var flightData = [
-        //       { 
-        //       destination:req.params.dest,
-        //       origin :req.params.origin,
-        //       departureDateTime :req.params.departureTime
-        //       }];
-
-        //       flightControl.searchFlights(flightData,function(returnedFlights){
-        //         res.json(returnedFlights);
-        //        });
-
-          
-        // });
+        
 
             /**
              * get Flights route.
@@ -577,7 +552,28 @@ router.post('/api/booking', function(req,res){
         
       });
           
-       
+ 
+ /*
+|==========================================================================
+| Pinging Other Airlines Routes
+|==========================================================================
+|
+| These routes are related to Pinging Other Airlines.
+  |
+  */      
+  router.get('/api/flights/search/:origin/:destination/:departingDate/:class/:seats',function(req,res){
+     var bookingData = {
+      origin:req.params.origin,
+      destination:req.params.destination,
+      departingDate:req.params.departingDate,
+      class:req.params.class,
+      seats:req.params.seats
+     }
+      pingingOtherAirlinesServerController.getOneTripFlights(bookingData,function(returnedObject){
+        res.json(returnedObject);
+      });
+
+  });
 
 
 module.exports = router;
