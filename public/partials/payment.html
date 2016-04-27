@@ -13,6 +13,7 @@
   <div class="header">
       <br>
       <h2 >Payment </h2>
+          <label ng-model="amount">the Amount = {{amount}} $</label>
       
       </div>
   <form class="form-horizontal" role="form" name="myForm"  novalidate>
@@ -27,6 +28,7 @@
       <div id="mc">
       <input type="radio" name="oneRound" ng-model="radioButton" value="masterCard" id="mastercard" class="radio" ng-show="false"/>
       <label class="rlabel" for="mastercard">MasterCard</label>
+
     </div>
 
       <br>
@@ -96,6 +98,7 @@
 
 
           <button  id="paybutton" ng-click="submitPaymentForm()" class="payButton" type="button" >Pay</button>
+
 
 
 
