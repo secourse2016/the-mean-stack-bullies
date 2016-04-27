@@ -561,27 +561,27 @@ router.post('/api/booking', function(req,res){
 | These routes are related to Pinging Other Airlines.
   |
   */      
-  router.get('/api/flights/search/:origin/:destination/:departingDate/:class/:seats',function(req,res){
+  router.get('/api/flights/search/:origin/:destination/:departingDate/:class',function(req,res){
      var bookingData = {
       origin:req.params.origin,
       destination:req.params.destination,
       departingDate:req.params.departingDate,
-      class:req.params.class,
-      seats:req.params.seats
+      class:req.params.class
+     // seats:req.params.seats
      }
       pingingOtherAirlinesServerController.getOneTripFlights(bookingData,function(returnedObject){
         res.json(returnedObject);
       });
 
   });
-  router.get('/api/flights/search/:origin/:destination/:departingDate/:returningDate/:class/:seats',function(req,res){
+  router.get('/api/flights/search/:origin/:destination/:departingDate/:returningDate/:class',function(req,res){
      var bookingData = {
       origin:req.params.origin,
       destination:req.params.destination,
       departingDate:req.params.departingDate,
       returningDate: req.params.returningDate,
-      class:req.params.class,
-      seats:req.params.seats
+      class:req.params.class
+      //seats:req.params.seats
      }
       pingingOtherAirlinesServerController.getRoundTripFlights(bookingData,function(returnedObject){
         res.json(returnedObject);
