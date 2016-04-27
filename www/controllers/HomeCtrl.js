@@ -12,7 +12,7 @@ $scope.timeTable = function()
 
 $scope.manageBooking = function()
 {
-	$state.go('payment');
+	$state.go('reservation');
 }
 
 $scope.statistics = function()
