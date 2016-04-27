@@ -50,10 +50,12 @@ app.controller('bookingCtrl', function($scope, $location,airportSrv,flightSrv,Fl
     ReturnDate: $scope.retDate,
     NumberOfAdults: adult,
     NumberOfChildren: child,
-    Class: $scope.cost,
+    Class: $scope.class,
     Email:$scope.email
 
-    }]; 
+    }];  
+
+    console.log(data);
     console.log("test nullsss in ctrl----------->"+data[0].NumberOfAdults) ; 
     console.log("test nullsss in ctrl----------->"+data[0].NumberOfChildren) ;  
    
@@ -61,7 +63,8 @@ app.controller('bookingCtrl', function($scope, $location,airportSrv,flightSrv,Fl
 
                if(response.outFlights){
                 $location.url('/book');
-              }else{
+              }
+              else{
                 alert("no flights with criteria avialable");
               }
        });   

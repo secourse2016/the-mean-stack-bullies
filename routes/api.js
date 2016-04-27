@@ -30,7 +30,7 @@ var paymnetController= require('../serverController/paymentController.js');
 var paymentValidation= require('../Validations/paymentValidation.js'); 
 var personController= require('../serverController/personController.js');
 var personValidation= require('../Validations/personValidation.js');
-var bookingValidation = require('../Validations/bookingValidation.js');
+var bookingValidation = require('../Validations/bookingValidation.js'); 
 
 var manageController =  require('../serverController/ManageBookingController.js');
 
@@ -118,20 +118,29 @@ var router = express.Router();
                     /**
                      * validating of payment middleware.
                      */
-              router.post('/api/insertpayment', function(req, res,next) {
-                 
-                paymentValidation.validatePayment(req.body.payment[0],function(errmessage){
+              router.post('/api/insertpayment', function(req,res,next) {
+                 sess = req.session;
+                 paymentValidation.validatePayment(req.body.payment[0],function(errmessage){
                    if(errmessage){
                     res.send(errmessage);
-                   }else{
+                   }else{ 
+                        console.log(req.body.token);
+                        paymentController.chargeCard(req.body.token,sess.payAmount, function(err){
+                           if(err){ 
+                             res.send(err);
+                           }
+                         else{ 
+     
+                            next();
+                         }
 
-                    next();
+                        });
+                    
                    }
                 });
   
   
-              }); 
-               //middleware for validating the booking data
+            });   
 
               router.post('/api/booking', function(req, res, next) { 
 
@@ -146,7 +155,7 @@ var router = express.Router();
                            }
                 });
 
-});
+            });
 
 /*
 |==========================================================================
@@ -172,22 +181,26 @@ var router = express.Router();
 | These routes are related to the Payments.
 |
 */
+          
 
 
+       
               /**
                * Inserting payment route.
                */
-            router.post('/api/insertpayment', function(req, res) {
-                  sess = req.session;
+            router.post('/api/insertpayment',function(req,res,next){  
+                
+                            sess = req.session;
    
-                     sess.paymentData = req.body.payment[0];
-                     console.log("payment data added to session --->"+req.body.payment[0]);
-                  // paymentController.addPaymentIntoDatabase(req.body.payment[0],function(){
-                    res.send('payment added to the session');
-                  // });
+                           sess.paymentData = req.body.payment[0];
+                           console.log("payment data added to session --->"+req.body.payment[0]);
+                        // paymentController.addPaymentIntoDatabase(req.body.payment[0],function(){
+                          res.send('payment added to the session');
+                        // });
               
-              
-            });
+
+
+                }); 
   
   
 
@@ -479,12 +492,19 @@ router.post('/api/booking', function(req,res){
           console.log("Session booking dataaaaaa ----------------------------------------");
 
           res.send(sess.bookingData);
+
         
       });
  
       router.get('/api/getPersonInfocomfirmation', function(req, res) {
         sess = req.session;
         res.send(sess.personArray);
+    
+      });  
+      router.get('/api/sendBookingId', function(req, res) {
+        sess = req.session; 
+        //console.log(sess.bookinId);
+        res.send(sess.bookinId);
     
       });  
 
@@ -523,8 +543,10 @@ router.post('/api/booking', function(req,res){
                                                  console.log("error"+err);
                                             }
                                             else{
+                                                sess.bookinId=booking._id;
                                                 console.log("new person added"+flag);
                                                 saveAllBookingDataController.insertPaymentInformation(sess.paymentData,booking._id,function(err,payment){
+
                                                         saveAllBookingDataController.decreaseSeatsByNumber( sess.personArray.length,sess.flightIDs.ouFlight_id ,sess.flightIDs.inFlight_id ,function(err1,docs){
                                                         console.log("ID------------------------->"+sess.flightIDs.inFlight_id);
                                                             if(err1){

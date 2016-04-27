@@ -1,19 +1,31 @@
 var models = require('../models/models.js');
 var mongoose = require('mongoose');
+var stripe = require("stripe")("sk_test_eI0A2eL166WZXsd51IOkmksT")
 
-// exports.addPaymentIntoDatabase =function(payment,cb){
-// 	//console.log("hereees"+payment.CardHolderName);
-//   var PaymentModel = mongoose.model('Payment');
-// 	var newpayment = new PaymentModel(payment);
-//      console.log("new payment"+newpayment);
-// 	newpayment.save(function (err,payment) {
-//     console.log("in the save function");
-//        if (err) {
-//        	return console.error(err);
-//        }
-//          cb(payment);
-//       });
-// }
+
+	exports.chargeCard = function (stripeToken,cost,cb) { 
+	 
+		 console.log("in charge card");
+		 console.log(stripeToken);
+		 cost=cost*100;
+		var charge = stripe.charges.create({
+		  amount: cost, // amount in cents, again
+		  currency: "usd",
+		  source: stripeToken,
+		  description: "Example charge"
+		}, function(err, charge) {
+		  if (err) {
+		    console.log("CHARGE ERROR"); 
+		  } 
+		  else { 
+
+		   console.log(charge); 
+		   cb(null,charge);
+		  }
+		});
+	 
+		
+	}
 
 	exports.calculateAmount=function(inFlight_id,ouFlight_id,cb){
 		    var OutFlightModel = mongoose.model('outFlight');
