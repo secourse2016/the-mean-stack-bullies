@@ -92,7 +92,7 @@ var insertPersonalInformation = exports.insertPersonalInformation = function(per
       personalInformation[count].bookingRefNumber = booking_id;
       var PersonModel = mongoose.model('Person');
       var newPerson = new PersonModel(personalInformation[count]);
-      newPerson.save(function (err,person) {
+      newPerson.save(function (err,person){
            if (err) {
              console.log("error when saving"+err);
              cb(err,false);
