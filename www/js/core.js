@@ -10,8 +10,8 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 
             .state('index', {
                 url: '/',
-                templateUrl: '/partials/confirmation.html',
-                controller: 'ConfirmationCtrl'
+                templateUrl: '/partials/home.html',
+                controller: 'HomeCtrl'
             })        
 
             .state('confirmation', {
@@ -30,7 +30,17 @@ app.config(function ($stateProvider, $urlRouterProvider) {
                 url: '/reservation',
                 templateUrl: '/partials/ReservationDetails.html',
                 controller: 'reservationCtrl'
-            });
+            })
+             .state('payment', {
+                url: '/',
+                templateUrl: '/partials/payment.html'
+                // controller: 'ConfirmationCtrl'
+            })   
+              .state('passenger', {
+                url: '/',
+                templateUrl: '/partials/personalInformation.html'
+                // controller: 'ConfirmationCtrl'
+            }) ;  
 
         $urlRouterProvider.otherwise('/#');
 
