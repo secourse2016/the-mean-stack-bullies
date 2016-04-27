@@ -2,6 +2,10 @@ app.controller('paymentCtrl', function($scope, $location,paySrv,chargeSrv) {
      /**
       * validating payment form
       */
+      paySrv.getAmount(function(amount){
+        $scope.amount=amount;
+      });
+      
       function paymentValidations(){
         var isvalid =true;
         var errMessage = "";

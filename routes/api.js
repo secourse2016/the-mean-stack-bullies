@@ -23,10 +23,10 @@ var bookControl = require('../serverController/bookingController.js');
 var paymentController= require('../serverController/paymentController.js');
 var flightControl =  require('../serverController/flightController.js');
 var AirportsController =  require('../serverController/airportsServerController.js');
+var paymnetController= require('../serverController/paymentController.js');
     /**
      * requiring server validations.
      */
-
 var paymentValidation= require('../Validations/paymentValidation.js'); 
 var personController= require('../serverController/personController.js');
 var personValidation= require('../Validations/personValidation.js');
@@ -113,7 +113,7 @@ var router = express.Router();
                  }
                  
                      
-          });
+              });
 
                     /**
                      * validating of payment middleware.
@@ -139,14 +139,7 @@ var router = express.Router();
                 });
   
   
-});   
-                /*middleware for validating strip token*/ 
-
-
-
-
-               
-               //middleware for validating the booking data
+            });   
 
               router.post('/api/booking', function(req, res, next) { 
 
@@ -161,7 +154,7 @@ var router = express.Router();
                            }
                 });
 
-});
+            });
 
 /*
 |==========================================================================
@@ -326,11 +319,21 @@ router.post('/api/booking', function(req,res){
                   sess = req.session;
                   // sess.personData = req.body.people[0];
                   sess.personArray=req.body.people;
-                  console.log(req.body.people);
-                  // console.log("req body.people--------------->"+req.body);
-                  console.log("person data added to the session");
-                // personController.addPersonIntoDatabase(req.body.person[0],function(){
-                  res.send('person added to the session');
+                  paymnetController.calculateAmount(sess.flightIDs.inFlight_id , sess.flightIDs.ouFlight_id,function(err,amount){
+                      if(err){
+                        res.send('Error in the calculate payment method');
+                      }
+                      else{
+                            sess.payAmount=((sess.personArray.length)* amount);
+                            console.log("the amount is ------------------------------>"+sess.payAmount)
+                            console.log(req.body.people);
+                            // console.log("req body.people--------------->"+req.body);
+                            console.log("person data added to the session");
+                          // personController.addPersonIntoDatabase(req.body.person[0],function(){
+                            res.send('person added to the session');
+                      }
+                  })
+                
                 // });
                 });
 
@@ -379,6 +382,11 @@ router.post('/api/booking', function(req,res){
            router.get('/api/flights',function(req,res){
               sess = req.session;
               res.send(sess.flightData);
+           }); 
+
+           router.get('/api/getPaymentAmount',function(req,res){
+              sess = req.session;
+              res.json(sess.payAmount);
            }); 
 
             /**

@@ -170,7 +170,9 @@ top:2%;
   <li class="list-group-item">Card Number : {{payments.CardHolderNo}}</li>
   <li class="list-group-item">CVV : {{payments.Cvv}}</li> 
   <!-- <li class="list-group-item">Amount : {{payments.Amount}}</li> -->
-  <li class="list-group-item">Issue Date : {{payments.ExpiryDate}}</li>  
+
+  <li class="list-group-item">Issue Date : {{payments.ExpiryDate}}</li>
+  <li ng-model="amount" class="list-group-item">Amount Paid: {{amount}} $</li>   
   </ul> 
         <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal">Resend booking reference-id</button>
 
@@ -179,6 +181,7 @@ top:2%;
 </div> 
       
       <div class="modal-footer">
+      <br>
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
 </div>
