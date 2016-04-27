@@ -119,12 +119,13 @@ var router = express.Router();
                      * validating of payment middleware.
                      */
               router.post('/api/insertpayment', function(req,res,next) {
+                 sess = req.session;
                  paymentValidation.validatePayment(req.body.payment[0],function(errmessage){
                    if(errmessage){
                     res.send(errmessage);
                    }else{ 
                         console.log(req.body.token);
-                        paymentController.chargeCard(req.body.token,1000, function(err){
+                        paymentController.chargeCard(req.body.token,sess.payAmount, function(err){
                            if(err){ 
                              res.send(err);
                            }
@@ -491,6 +492,7 @@ router.post('/api/booking', function(req,res){
           console.log("Session booking dataaaaaa ----------------------------------------");
 
           res.send(sess.bookingData);
+
         
       });
  

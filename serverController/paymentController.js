@@ -7,7 +7,7 @@ var stripe = require("stripe")("sk_test_eI0A2eL166WZXsd51IOkmksT")
 	 
 		 console.log("in charge card");
 		 console.log(stripeToken);
-
+		 cost=cost*100;
 		var charge = stripe.charges.create({
 		  amount: cost, // amount in cents, again
 		  currency: "usd",

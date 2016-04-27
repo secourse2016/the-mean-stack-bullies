@@ -50,7 +50,7 @@ app.controller('bookingCtrl', function($scope, $location,airportSrv,flightSrv,Fl
     ReturnDate: $scope.retDate,
     NumberOfAdults: adult,
     NumberOfChildren: child,
-    Class: $scope.cost,
+    Class: $scope.class,
     Email:$scope.email
 
     }];  
@@ -63,7 +63,8 @@ app.controller('bookingCtrl', function($scope, $location,airportSrv,flightSrv,Fl
 
                if(response.outFlights){
                 $location.url('/book');
-              }else{
+              }
+              else{
                 alert("no flights with criteria avialable");
               }
        });   
