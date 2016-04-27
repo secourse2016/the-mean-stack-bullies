@@ -9,7 +9,7 @@ exports.getOneTripFlights = function(bookingData,cb){
    			origin:bookingData.origin,
    			destination:bookingData.destination,
    			class:bookingData.class,
-   			seats:bookingData.seats
+   		//	seats:bookingData.seats
    		};
    		  var x = new Date(departureDateTime);
 		  x.setMinutes(0);
@@ -24,7 +24,7 @@ exports.getOneTripFlights = function(bookingData,cb){
 	query.where('destination',flightCriteria.destination);
 	query.where('departureDateTime',{"$gte":x, "$lte": y}); 
 	query.where('class', flightCriteria.class); 
-	query.where('seats',{"$gt":flightCriteria.seats});   
+	//query.where('seats',{"$gt":flightCriteria.seats});   
     
     query.exec(function (err, docs) { 
            if(err){
@@ -54,7 +54,7 @@ exports.getRoundTripFlights = function(bookingData, cb){
             origin:bookingData.origin,
    			destination:bookingData.destination,
    			class:bookingData.class,
-   			seats:bookingData.seats
+   			//seats:bookingData.seats
      }; 
 
 
@@ -71,7 +71,7 @@ exports.getRoundTripFlights = function(bookingData, cb){
 	query.where('destination',flightCriteria.destination);
 	query.where('departureDateTime',{"$gte":x, "$lte": y}); 
 	query.where('class', flightCriteria.class); 
-	query.where('seats',{"$gt":flightCriteria.seats});   
+	//query.where('seats',{"$gt":flightCriteria.seats});   
     
     query.exec(function (err, docs) { 
            if(err){
@@ -86,7 +86,7 @@ exports.getRoundTripFlights = function(bookingData, cb){
             origin:bookingData.destination,
    			destination:bookingData.origin,
    			class:bookingData.class,
-   			seats:bookingData.seats
+   			//seats:bookingData.seats
              };  
 
            var x2 = new Date(arrivalDateTime);
@@ -101,7 +101,7 @@ exports.getRoundTripFlights = function(bookingData, cb){
 	query2.where('destination',flightCriteria2.destination);
 	query2.where('departureDateTime',{"$gte":x2, "$lte": y2}); 
 	query2.where('class', flightCriteria2.class); 
-	query2.where('seats',{"$gt":flightCriteria2.seats});   
+	//query2.where('seats',{"$gt":flightCriteria2.seats});   
            
            query2.exec(function (err, docs2) { 
            if(err){
