@@ -33,9 +33,18 @@ app.controller('bookingCtrl', function($scope, $location,airportSrv,flightSrv,Fl
   $scope.bookFlight=function(){   
 
      var errMessage = bookingFormValidation(); 
-     var empty=true;
-          if(errMessage){ 
-              alert(errMessage);
+     var empty=true; 
+          if(errMessage&&errMessage.length > 50){  
+            $scope.alertme = "You entered invalid data!";
+             $scope.bookalert = true;
+             $scope.$apply();
+
+          }
+          if(errMessage&&errMessage.length < 50){  
+             $scope.alertme = errMessage;
+             $scope.bookalert = true;
+             $scope.$apply(); 
+
           }
        
     else{ 
@@ -254,7 +263,7 @@ app.controller('bookingCtrl', function($scope, $location,airportSrv,flightSrv,Fl
         } 
 
         if($scope.email == undefined || !(evalid.test($scope.email))) { 
-           err+= "Please enter a valid email \m"; 
+           err+= "Please enter a valid email \n"; 
            valid = false;
 
 

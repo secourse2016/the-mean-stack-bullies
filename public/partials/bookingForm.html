@@ -1,8 +1,10 @@
   <div id="bookingSection"  ng-controller="bookingCtrl" >
 
               <div>
-                <div ng-model="bookings"> 
-                  <h1>Book a flight!</h1>
+                <div ng-model="bookings">  
+                
+                  <h1>Book a flight!</h1> 
+                  <p class="bg-danger" ng-show="bookalert"> {{alertme}}</p> 
                   <div>
                     <div class="col-xs-2">
                       <input ng-model="trippp" type="radio" name="oneRound" value="round" ng-click="hideReturnedDate()">Round Trip </input>
