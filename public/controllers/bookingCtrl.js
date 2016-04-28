@@ -1,6 +1,67 @@
-app.controller('bookingCtrl', function($scope, $location,airportSrv,flightSrv,FlightsSrv,bookingSrv) {
+app.controller('bookingCtrl', function($scope, $location,airportSrv,flightSrv,FlightsSrv,bookingSrv,airlineSrv) {
+ 
+ $scope.checkAllAirlines = function(){
+  if($scope.trippp == "one"){
+        var bookingData = [{ 
+          from: $scope.selectedOrigin,
+          To: $scope.selectedDestination,
+          DepartureDate: $scope.depDate
+         }];  
+     airlineSrv.getOneTripFlightsFromOtherAirlines(bookingData[0],function(outFlights){
+      // console.log("outFlights lenght = "+outFlights.length);
+        var flightsFromOtherAirlines = [];
 
-    
+        for(var i =0 ;i<outFlights.length;i++){
+
+          for(var j=0;j<outFlights[i].outgoingFlights.length;j++){
+            flightsFromOtherAirlines.push(outFlights[i].outgoingFlights[j]);
+          }
+        }
+       // console.log("after modification length = "+flightsFromOtherAirlines.length);
+        flightSrv.setFlightsFromOtherAirlines(flightsFromOtherAirlines);
+        book(); 
+     });
+   }else{
+     var bookingData = [{ 
+          from: $scope.selectedOrigin,
+          To: $scope.selectedDestination,
+          DepartureDate: $scope.depDate,
+          arrivalDate:$scope.retDate
+         }];  
+         airlineSrv.getRoundTripFlightsFromOtherAirlines(bookingData[0],function(AllRoundTripFLights){
+         // console.log("length = "+AllRoundTripFLights.length);
+           var outgoingflightsFromOtherAirlines = [];
+           var returnflightsFromOtherAirlines = [];
+        for(var i =0 ;i<AllRoundTripFLights.length/2;i++){
+          if(AllRoundTripFLights[i].outgoingFlights != undefined){
+           for(var j=0;j<AllRoundTripFLights[i].outgoingFlights.length;j++){
+           // if(AllRoundTripFLights[i].outgoingFlights[j] != undefined){
+               outgoingflightsFromOtherAirlines.push(AllRoundTripFLights[i].outgoingFlights[j]);
+             outgoingflightsFromOtherAirlines.push(AllRoundTripFLights[i+AllRoundTripFLights.length/2].outgoingFlights[j]);
+         // }
+            } 
+          }
+          
+          if(AllRoundTripFLights[i].returnFlights != undefined){
+
+            for(var k=0;k<AllRoundTripFLights[i].returnFlights.length;k++){
+        
+            if(AllRoundTripFLights[i].returnFlights[k] != undefined){
+               returnflightsFromOtherAirlines.push(AllRoundTripFLights[i].returnFlights[k]);
+            returnflightsFromOtherAirlines.push(AllRoundTripFLights[i+AllRoundTripFLights.length/2].returnFlights[k]);
+          }
+            }
+          }  
+          
+           
+        }
+        // console.log("nooo -->"+returnflightsFromOtherAirlines.length);
+        flightSrv.setFlightsFromOtherAirlines(outgoingflightsFromOtherAirlines);
+        flightSrv.setReturnFlightsFromOtherAirlines(returnflightsFromOtherAirlines);
+        book();
+         });
+   }
+    }
   $scope.date= new Date();
   $scope.limit=6;
   $scope.hideBookButton = false; 
@@ -8,7 +69,7 @@ app.controller('bookingCtrl', function($scope, $location,airportSrv,flightSrv,Fl
     //First function handles success
     if(airports){
          $scope.airports = airports;
-         console.log(airports[0]);
+        // console.log(airports[0]);
       console.log("responded");
     }else{
        console.log("not responded");
@@ -30,7 +91,7 @@ app.controller('bookingCtrl', function($scope, $location,airportSrv,flightSrv,Fl
   $scope.showReturnedDate=function(){
     $scope.hidedate=true;
   }
-  $scope.bookFlight=function(){   
+ var book = $scope.bookFlight=function(){   
 
      var errMessage = bookingFormValidation(); 
      var empty=true; 
@@ -61,12 +122,10 @@ app.controller('bookingCtrl', function($scope, $location,airportSrv,flightSrv,Fl
     NumberOfChildren: child,
     Class: $scope.class,
     Email:$scope.email
+    }]; 
+    // console.log("test nullsss in ctrl----------->"+data[0].NumberOfAdults) ; 
+    // console.log("test nullsss in ctrl----------->"+data[0].NumberOfChildren) ;  
 
-    }];  
-
-    console.log(data);
-    console.log("test nullsss in ctrl----------->"+data[0].NumberOfAdults) ; 
-    console.log("test nullsss in ctrl----------->"+data[0].NumberOfChildren) ;  
    
      bookingSrv.insertbooking(data,function(response){
 
