@@ -1,0 +1,345 @@
+	#passportNo{
+		position: absolute;
+		top:64%;
+		left:15%;
+	}
+
+
+	html
+	{
+		height: 100%;
+		width:100%;
+	}
+	body
+	{
+		height:100%;
+		width:100%;
+		
+		background: rgb(221,233,237);
+	}
+	#mainDIV
+	{
+		height: 150%;
+		width:100%;
+		position: relative;
+		top:-10%;
+		left:-4%;
+	}
+	#fixAnimation
+	{
+		width:80%;
+		height:100%;
+
+		overflow: hidden;
+		position: absolute;
+		top:0%;
+		left:1.5%;
+	}
+
+	#Confirm {
+		position: absolute;
+		top:68%;
+		left:55%;
+	}
+
+	#personalInfoDiv
+	{
+		background-color: white;
+		  width:65%;
+	  	height:65%;
+	  position: absolute;
+	  		top:35%;
+	  		left:34%;
+		box-shadow: -10px -10px 40px grey;
+	  border-radius: 5px;
+		  font-family: 'Open Sans Condensed', arial, sans;
+	}
+
+	#firstNameDiv
+	{
+		position: absolute;
+		top:10%;
+		left:15%;
+	}
+
+	#lastNameDiv
+	{
+		position: absolute;
+		top:10%;
+		left:55%;
+	}
+	#ageDiv
+	{
+		position: absolute;
+		top:28%;
+		left:15%;
+	}
+
+	#passportDiv
+	{
+		position: absolute;
+		top:28%;
+		left:55%;
+
+	}
+
+	#issueDateDiv
+	{
+		position: absolute;
+		top:46%;
+		left:15%;
+
+	}
+
+	#expiryDateDiv
+	{
+		position: absolute;
+		top:46%;
+		left:55%;
+
+	}
+
+
+	#firstNameInput
+	{
+		position: relative;
+		left:-20%;
+	}
+	input
+	{
+
+	}
+	#partialDiv
+	{
+			background-image: url(../icons/flights.png);
+				background-repeat: no-repeat;
+		width:40%;
+		height:20%;
+		position: fixed;
+		top:40%;
+		left:8%;
+	}
+	#partialDiv2
+	{
+		background-image: url(../icons/passenger.png);
+		background-repeat: no-repeat;
+
+		width:50%;
+		height:30%;
+		position: fixed;
+		top:60%;
+		left:4%;
+
+	}
+	#partialDiv3
+	{
+	background-image: url(../icons/payment.png);
+		background-repeat: no-repeat;
+		width:40%;
+		height:20%;
+		position: fixed;
+		top:79%;
+		left:8%;
+
+	}
+
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+
+	.form-style-8{
+	    font-family: 'Open Sans Condensed', arial, sans;
+	    width: 500px;
+	    padding: 30px;
+	    background: #FFFFFF;
+	    margin: 50px auto;
+	    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.22);
+	    -moz-box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.22);
+	    -webkit-box-shadow:  0px 0px 15px rgba(0, 0, 0, 0.22);
+
+	}
+	.form-style-8 h2{
+	    background: #4D4D4D;
+	    text-transform: uppercase;
+	    font-family: 'Open Sans Condensed', sans-serif;
+	    color: #797979;
+	    font-size: 18px;
+	    font-weight: 100;
+	    padding: 20px;
+	    margin: -30px -30px 30px -30px;
+
+	}
+	.form-style-8 input[type="text"],
+	.form-style-8 input[type="date"],
+	.form-style-8 input[type="datetime"],
+	.form-style-8 input[type="email"],
+	.form-style-8 input[type="number"],
+	.form-style-8 input[type="search"],
+	.form-style-8 input[type="time"],
+	.form-style-8 input[type="url"],
+	.form-style-8 input[type="password"],
+	.form-style-8 textarea,
+	.form-style-8 select 
+	{
+	    box-sizing: border-box;
+	    -webkit-box-sizing: border-box;
+	    -moz-box-sizing: border-box;
+	    outline: none;
+	    display: block;
+	    width: 100%;
+	    padding: 7px;
+	    border: none;
+	    border-bottom: 1px solid #ddd;
+	    background: transparent;
+	        background-color:white;
+	        border-bottom-color: rgb(152,58,49);
+	    margin-bottom: 10px;
+	    font: 16px Arial, Helvetica, sans-serif;
+	   height:40px;
+	    width: 160px;
+	  -webkit-transition: border-bottom-color 0.5s ease-in-out;
+	  transition: border-bottom-color 0.5s ease-in-out;
+
+
+	}
+	.form-style-8 select:focus
+	{
+		 border-bottom-color: rgb(17,37,60);
+
+	}
+	.form-style-8 textarea{
+	    resize:none;
+	    overflow: hidden;
+	   background: #eee;
+	    border-top: 1px solid #eee;
+	}
+	.form-style-8 input[type="button"], 
+	.form-style-8 input[type="submit"]{
+	    -moz-box-shadow: inset 0px 1px 0px 0px #45D6D6;
+	    -webkit-box-shadow: inset 0px 1px 0px 0px #45D6D6;
+	    box-shadow: inset 0px 1px 0px 0px #45D6D6;
+	    border-bottom: 2px solid black;
+	    background-color: #2CBBBB;
+	    border: 1px solid #27A0A0;
+	    display: inline-block;
+	    cursor: pointer;
+	    color: #FFFFFF;
+	    font-family: 'Open Sans Condensed', sans-serif;
+	    font-size: 14px;
+	    padding: 8px 18px;
+	    text-decoration: none;
+	    text-transform: uppercase;
+	}
+	.form-style-8 input[type="button"]:hover, 
+	.form-style-8 input[type="submit"]:hover {
+	    background:linear-gradient(to bottom, #34CACA 5%, #30C9C9 100%);
+	    background-color:#34CACA;
+	    border-bottom: 2px solid black;
+	}
+
+	.form-style-8 input:focus
+	{
+
+	    border-bottom-color: rgb(17,34,160);
+	-webkit-transition: border-bottom-color 0.5s ease-in-out;
+	  transition: border-bottom-color 0.5s ease-in-out;
+	 
+
+	}
+
+	#personalInfoDivAbove
+	{
+		background: rgb(17,37,60);
+		width:100%;
+		height: 15%;
+		position: absolute;
+		top:-15%;
+		box-shadow: -10px -10px 40px grey;
+		 border-radius: 5px;
+	}
+	/*#line
+	{
+		width:150px;
+		height:2px;
+		background-color: red;
+		position: absolute;
+		top:24.5%;
+		left:10%;
+	}
+	#line:hover
+	{
+		width:0px;
+		height:100px;
+		background-color: black;
+		position: absolute;
+		top:24.5%;
+		left:10%;
+	}*/
+	h2
+	{
+		font-size: 30px;
+		color:white;
+		position: absolute;
+		top:10%;
+		left:15%;
+	}
+#allTextBoxes
+{
+	width:100%;
+	height:100%;
+	position: absolute;
+	top:17%;
+}
+.PassengerType{
+	
+	text-align: center;
+}
+
+#passengerCount
+{
+	border-radius: 50px;
+	background:rgb(17,34,60);
+	display: inline-block; 
+	width:50px;
+	height:50px;
+	text-align: center;
+
+}
+
+
+#passengerCount p 
+{
+	font-size: 40px;
+	color:white;
+
+	/*position: relative;
+	left:27%;
+	top:-8%;*/
+}
+
+.line { 
+    display: block;
+/*   	margin-left: 25%;
+    border-style: inset;
+    border-width: 1px;*/
+    background: rgb(152,58,49);
+	width:30px;
+	height:10px;
+	display: inline-block; 
+	margin-bottom: 10px;
+	margin-right: -5px;
+	margin-left: -5px;
+
+	} 
+.passengerNumbers{
+
+	width:50%;
+	display: inline-block; 
+	width: 100%;
+	text-align: center;
+
+}
+.repeated {
+	display: inline-block; 
+}
+
+
+

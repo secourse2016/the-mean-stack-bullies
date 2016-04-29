@@ -1,0 +1,104 @@
+/* Empty. Add your own CSS if you like */
+body
+{
+/*background: url(img/paris.jpg);
+background-size: 800px 700px;
+background-position: -200px -60px;
+	background-repeat: no-repeat;*/
+	background-color: rgb(221,233,236);
+/**/
+}
+#topBar
+{
+
+	background: rgb(17,34,60);
+	min-height:80px;
+	max-height:15%;
+	padding: auto;
+	text-align: center;
+	box-shadow: -2px 1px 10px black;
+	border:none;
+}
+#logo
+{
+	margin: 0 auto;
+	margin-top: 6%;
+	padding-top: 6%;
+padding: 0 auto;
+
+}
+#buttons1
+{
+	margin-top: 23%;
+
+	height: 220px;
+
+}
+#buttons2
+{
+	margin-top:0%;
+	border-top:blue;
+	height: 220px;
+background:transparent;
+}
+#buttons1 p 
+{
+	color:rgb(17,34,60);
+	margin-top: 168px;
+	margin-left: -15px;
+	font-size: 15px;
+	font-family: Lucida Console;
+	font-weight: bold;
+}
+#buttons2 p 
+{
+	color:rgb(17,34,60);
+	margin-top: 170px;
+	font-size: 15px;
+		font-family: Lucida Console;
+	font-weight: bold;
+
+}
+#book
+{
+	
+background-image: url(../img/transport.png);
+background-repeat: no-repeat;
+background-position: 20px 70px;
+background-size: 80px;
+}
+#timeTable
+{
+	background-image: url(../img/time.png);
+background-repeat: no-repeat;
+background-position: 20px 70px;
+background-size: 80px;
+}
+#manage
+{
+	background-image: url(../img/three.png);
+background-repeat: no-repeat;
+background-position: 20px 70px;
+background-size: 80px;
+}
+#stats
+{
+	background-image: url(../img/business.png);
+background-repeat: no-repeat;
+background-position: 20px 70px;
+background-size: 80px;
+}
+#offers
+{
+	background-image: url(../img/shop.png);
+background-repeat: no-repeat;
+background-position: 20px 70px;
+background-size: 80px;
+}
+#about
+{
+	background-image: url(../img/construction.png);
+background-repeat: no-repeat;
+background-position: 20px 70px;
+background-size: 80px;
+}

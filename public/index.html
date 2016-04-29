@@ -1,0 +1,77 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>Air France </title>
+      <link rel="stylesheet" href="css/bootstrap.css">
+      <link rel="stylesheet" href="css/Homestyle.css">
+      <link rel="stylesheet" href="css/animate.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" media="all">
+    <link href="../css/hover.css" rel="stylesheet" media="all">
+
+      <script src="./js/wow.min.js"></script>
+      <script src="./js/jquery-2.2.0.min.js"></script>
+      <script src="./js/angular.min.js"></script>
+      <script src="./js/angular-route.min.js"></script>
+      <script src="./js/bootstrap.min.js"></script>
+      <script src="./js/ui-bootstrap-tpls-1.2.5.min.js"></script>
+
+      <script src="./core.js"></script> 
+      <script src="./services/bookingSrv.js"></script>
+      <script src="./services/airportsSrv.js"> </script>
+      <script src="./services/personalInfoSrv.js"> </script>
+      <script src="./services/reservationCancelationSrv.js"> </script>
+      <script src="./services/flightsSrv.js"> </script>
+      <script src="./services/paySrv.js"> </script>
+      <script src="./services/contactUsSrv.js"> </script>
+      <script src="./services/ConfirmationSrv.js"> </script>
+      
+      
+      <script src="./controllers/homeController.js"></script>
+      <script src="./controllers/contactUsController.js"></script>
+      <script src="./controllers/flightController.js"></script>
+      <script src="./controllers/bookingCtrl.js"></script>
+      <script src="./controllers/myCtrl.js"></script>
+      <script src="./controllers/reservationsController.js"></script>
+
+
+
+     
+      <script src="./controllers/myCtrl.js"></script>
+      <script src="./controllers/reservationsController.js"></script>
+      <script src="./controllers/bookingCtrl.js"></script>
+      <script src="./controllers/paymentCtrl.js"></script>
+      <script src="./controllers/personalInfoCtrl.js"></script>
+      <script src="./controllers/TeamController.js"></script>
+      <script src="./controllers/confirmationCtrl.js"></script>
+
+    </head>
+    <body ng-app="mainApp">
+       <div id="nav" class="collapse navbar-collapse">
+        <div class="container cont2">
+          <div class="nav navbar-nav">
+
+            <li><img id="logo" src="./images/logowhite.png" width="200"></li>
+          </div>
+          <ul id="navBarStyle" class="nav navbar-nav navbar-right" ng-controller="ScrollController" >
+
+
+            <li class="btn-lg"><a ng-click="goHome()">Home</a></li>
+            <li class="btn-lg"><a ng-click="gotoTeam()">GetInTouch</a></li>
+            <li class="btn-lg"><a href="#/contact">Contact us</a></li>
+
+          </ul>
+        </div>
+      </div>
+        <div ng-view id="imageHome">
+
+        </div>
+
+
+
+    <script>
+      new WOW().init();
+    </script>
+  </body>
+
+  </html>
