@@ -1,5 +1,12 @@
 /* Empty. Add your own CSS if you like */
-.navBar
+.topBar
 {
 	background:rgb(17,34,60);
+	color:white;
+}
+
+.bar-header
+{
+	background-color: rgb(17,34,60);
+	color:white;
 }
