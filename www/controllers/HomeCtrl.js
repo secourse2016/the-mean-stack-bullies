@@ -30,6 +30,8 @@ $scope.offers = function()
 	$state.go('payment');
 }
 
+ 
+
 
 
 });

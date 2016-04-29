@@ -4267,7 +4267,7 @@ a.subdued {
 .bar-header {
   top: 0;
   border-top-width: 0;
-  border-bottom-width: 0; 
+  border-bottom-width: 0px; 
   background-color: rgb(17,34,60);
   color:white;
 }
@@ -4469,7 +4469,7 @@ a.subdued {
   background-color: white;
   background-image: none;
   border: none;
-  border-bottom: 10px solid #ddd;
+  border-bottom: 1px solid #ddd;
   padding-top: 2px; }
 
 .tabs-striped .tab-item.tab-item-active, .tabs-striped .tab-item.active, .tabs-striped .tab-item.activated {
