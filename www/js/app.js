@@ -13,33 +13,33 @@ app = angular.module('starter', ['ionic', 'starter.controllers'])
 
    
   .state('confirmation', {
-    url: '/ionic/confirmation',
+    url: '/confirmation',
     templateUrl: 'templates/confirmation.html',
     controller: 'ConfirmationCtrl'
      
   })
 
     .state('reservation', {
-    url: '/ionic/reservation',
+    url: '/reservation',
     templateUrl: 'templates/ReservationDetails.html',
     controller: 'reservationCtrl'
       })
      
 
   .state('home', {
-      url: '/ionic/home',
+      url: '/home',
       templateUrl: 'templates/home.html',
       controller:'HomeCtrl'
        
     })
   .state('timetable', {
-      url: '/ionic/timetable',
+      url: '/timetable',
       templateUrl: 'templates/timetable.html',
        controller:'timeTableCtrl'
        
     })
     .state('payment', {
-      url: '/ionic/payment',
+      url: '/payment',
       templateUrl: 'templates/payment.html',
       controller:'paymentCtrl'
           
@@ -47,5 +47,5 @@ app = angular.module('starter', ['ionic', 'starter.controllers'])
     })
 
   // // if none of the above states are matched, use this as the fallback
-  // $urlRouterProvider.otherwise('/home');
+  $urlRouterProvider.otherwise('/home');
 });
