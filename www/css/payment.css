@@ -32,23 +32,23 @@ body
 	text-align: center;
 	box-shadow: -2px 1px 10px black;
 	border:none;
-	margin-top:5%;
+	margin-top:10%;
 }
 #passengerInfoAbove h1
 {
 		font-size: 30px;
 		font-family: Lucida Console;
 		color : white;
-		width: 800px;
-		margin-top: 20px;
-		margin-left: 20px;
+		/*width: 800px;*/
+		padding-top: 20px;
+		/*margin-left: 20px;*/
 	/*font-weight: bold;*/
 }
 
 .list
 
 {
-	margin-top:30%;
+
 	margin-bottom: 0px;
 
 }

@@ -13,45 +13,39 @@ app = angular.module('starter', ['ionic', 'starter.controllers'])
 
    
   .state('confirmation', {
-    url: '/confirmation',
-   
-        templateUrl: 'templates/confirmation.html',
-        controller: 'ConfirmationCtrl'
+    url: '/ionic/confirmation',
+    templateUrl: 'templates/confirmation.html',
+    controller: 'ConfirmationCtrl'
      
   })
 
     .state('reservation', {
-    url: '/reservation',
-   
-        templateUrl: 'templates/ReservationDetails.html',
-        controller: 'reservationCtrl'
+    url: '/ionic/reservation',
+    templateUrl: 'templates/ReservationDetails.html',
+    controller: 'reservationCtrl'
       })
      
 
   .state('home', {
-      url: '/home',
-     
-          templateUrl: 'templates/home.html',
-          controller:'HomeCtrl'
+      url: '/ionic/home',
+      templateUrl: 'templates/home.html',
+      controller:'HomeCtrl'
        
     })
   .state('timetable', {
-      url: '/timetable',
-     
-          templateUrl: 'templates/timetable.html',
-          controller:'timeTableCtrl'
+      url: '/ionic/timetable',
+      templateUrl: 'templates/timetable.html',
+       controller:'timeTableCtrl'
        
     })
     .state('payment', {
-      url: '/payment',
-     
-          templateUrl: 'templates/payment.html',
-          controller:'paymentCtrl'
+      url: '/ionic/payment',
+      templateUrl: 'templates/payment.html',
+      controller:'paymentCtrl'
           
        
     })
 
-  
-  // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/home');
+  // // if none of the above states are matched, use this as the fallback
+  // $urlRouterProvider.otherwise('/home');
 });
