@@ -123,3 +123,28 @@ exports.insertPaymentInformation = function(paymentInformation,booking_id,cb){
          cb(null,payment);
       });
 };
+
+
+exports.fligtInformationsByID = function(outgoingFlightId,returnFlightId,cb){
+  var ObjectId = mongoose.Types.ObjectId; 
+  if(outgoingFlightId){
+    var outgoingFlights = mongoose.model('outFlight');
+
+   outgoingFlights.findOne( {'_id' : new ObjectId(outgoingFlightId) }, function(err, outgoingFlight){
+   
+      if(err) cb(err,null,null);
+
+   if(returnFlightId){
+     var returnFLights = mongoose.model('inFlight');
+
+   returnFLights.findOne( {'_id' : new ObjectId(returnFlightId) }, function(err, returnFLight){
+   if(err) cb(err,outgoingFlight,null);
+
+    cb(nulloutgoingFlight,returnFLight);
+   });
+   }else{
+    cb(null,outgoingFlight,returnFLight);
+   }
+});
+
+}
