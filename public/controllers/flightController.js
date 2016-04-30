@@ -1,4 +1,4 @@
-app.controller('flightCtrl', function($scope,$location, flightSrv) {
+app.controller('flightCtrl', function($scope,$location, flightSrv,ConfirmationSrv) {
 console.log("in flight controller");
   $scope.outgoingFlights = [];
   $scope.returnedFlights = [];
@@ -8,6 +8,11 @@ console.log("in flight controller");
   
   var inFlightID = null ;
   var outFlightID = null ;
+
+  var outFlightAirline = null;
+  var inFlightAirline = null;
+   
+   
 
    flightSrv.getFlights(function(response){
        if(response.err){
@@ -209,8 +214,10 @@ console.log("in flight controller");
   
   $scope.Book=function()
   {    
-    console.log(inFlightID+"  "+outFlightID);
-       if(!inFlightID && !outFlightID){
+    // console.log(inFlightID+"  "+outFlightID);
+    // console.log(inFlightAirline+"  "+outFlightAirline);
+    if(outFlightAirline == "AirFrance"){
+      if(!inFlightID && !outFlightID){
         alert("you have to choose a flight");
        }else{
           if(inFlightID && outFlightID || outFlightID){
@@ -226,14 +233,20 @@ console.log("in flight controller");
 
          
        }
+    }else{
+
+      flightSrv.bookflightFromOtherAirline()
+    }
+       
     
   }
 
-  $scope.radioActionOrigin=function(id)
+  $scope.radioActionOrigin=function(id,airline)
   {
-      // console.log("origin");
-      // console.log(id);
+    console.log(id);
+    console.log(airline);
       outFlightID = id;
+      outFlightAirline = airline;
   }
 
    $scope.viewFlight=function(number)
@@ -260,11 +273,11 @@ console.log("in flight controller");
       return true;
     }
   }
-  $scope.radioActionDest=function(id)
+  $scope.radioActionDest=function(id,airline)
   {
-      // console.log("dest");
-      // console.log(id);
+
     inFlightID = id;
+    inFlightAirline = airline;
   }
 
 });

@@ -148,3 +148,4 @@ exports.fligtInformationsByID = function(outgoingFlightId,returnFlightId,cb){
 });
 
 }
+}

@@ -91,13 +91,13 @@ app.factory('airlineSrv',function ($http){
             	
             }
           getEconomyOfOneTripFlightsFromOtherAirlines(count,function(flag){
-          	// console.log(flag);
-           //  console.log(outFlights[0].outgoingFlights[0]);
+          	console.log(flag);
+           // console.log(outFlights[0].outgoingFlights[0]);
             
             getBussinessOfOneTripFlightsFromOtherAirlines(count,function(flag){
-            	// console.log(flag);
-            	// //console.log(outFlights.length);
-            	//   cb(outFlights);
+            	console.log(flag);
+            	console.log(outFlights.length);
+            	   cb(outFlights);
             })
           
           });
