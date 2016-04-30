@@ -1,12 +1,9 @@
 /* Empty. Add your own CSS if you like */
-body
+.body
 {
-/*background: url(img/paris.jpg);
-background-size: 800px 700px;
-background-position: -200px -60px;
-	background-repeat: no-repeat;*/
+
 	background-color: rgb(221,233,236);
-/**/
+
 }
 #topBar
 {
