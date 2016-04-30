@@ -1,8 +1,11 @@
 var app = angular.module('mainApp',['ui.bootstrap','ngRoute']);
 /**
  * Angular Routes
- */
-app.config(function($routeProvider) {
+
+ */  
+ 
+app.config(function($routeProvider) { 
+
     $routeProvider
 
         // route for the home page
@@ -33,15 +36,14 @@ app.config(function($routeProvider) {
         .when('/team', {
             templateUrl : '/partials/team.html',
             controller  : 'TeamController'
-        });
 
-
-
-
-
+        }); 
         
-      
+            
+        Stripe.setPublishableKey('pk_test_ULcStxFLM4quhm4JacResvRo'); 
+        
+
+     
        
 });
-
 

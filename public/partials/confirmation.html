@@ -52,6 +52,18 @@ position: absolute;
 left:92%;
 top:2%;
 
+
+} 
+.head{  
+  font-size: 16px;
+  font-weight: bold;
+
+} 
+.head2{  
+  font-size: 16px;
+  font-weight: bold;
+
+
 }
 </style>
  <!--remove this div modal-content2-->
@@ -77,11 +89,26 @@ top:2%;
   </br>
 </div> 
 
-<div class = "container"> 
 
-    <p> Find your reservation details below : </p>  
-    <div > 
-      <label>Date of Departure : {{booking.DepartureDate}}</label>
+<div class = "container">   
+
+    <div class = "head">
+    <p> Find your reservation details below : </p>   
+    </div>
+    <div >  
+    <ul class="list-group">
+  <li class="list-group-item">Departure Date : {{booking.DepartureDate}}</li>
+  <li class="list-group-item">Arrival Date : {{booking.ReturnDate}}</li>
+  <li class="list-group-item">Origin : {{booking.from}}</li>  
+  <li class="list-group-item">Destination : {{booking.To}}</li>
+  <li class="list-group-item">Number Of Adults : {{booking.NumberOfAdults}}</li>
+  <li class="list-group-item">Number Of Children : {{booking.NumberOfChildren}}</li>  
+  <li class="list-group-item">Email : {{booking.Email}}</li> 
+  <li class="list-group-item">Booking Ref-ID : {{bookId}}</li>
+
+   </ul>
+      <!--label>Date of Departure : {{booking.DepartureDate}}</label>
+
       <br>
       <label>Date of Arrival : {{booking.ReturnDate}}</label>
       <br>
@@ -93,7 +120,11 @@ top:2%;
       <br>
       <label>Number Of Children : {{booking.NumberOfChildren}}</label> 
       <br>
-      <label>Email : {{booking.Email}}</label>   
+
+      <label>Email : {{booking.Email}}</label-->   
+<div class = "head2">
+    <p> Passenger/s Info : </p>   
+    </div>
 
     <table class="table"> 
        <thread> 
@@ -145,15 +176,22 @@ top:2%;
   <li class="list-group-item">Card Number : {{payments.CardHolderNo}}</li>
   <li class="list-group-item">CVV : {{payments.Cvv}}</li> 
   <!-- <li class="list-group-item">Amount : {{payments.Amount}}</li> -->
+
+
   <li class="list-group-item">Issue Date : {{payments.ExpiryDate}}</li>
-  <li class="list-group-item">Passport Num : {{persons.passportNumber}}</li>   
+  <li ng-model="amount" class="list-group-item">Amount Paid: {{amount}} $</li>   
+
   </ul> 
         <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal">Resend booking reference-id</button>
+
+
 
 
 </div> 
       
       <div class="modal-footer">
+      <br>
+
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
 </div>

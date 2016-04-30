@@ -42,7 +42,7 @@ app.filter("airportsFilters",function(){
    	angular.forEach(airports,function(airport){
              // console.log("name ->"+airport.name);
    		     if(airport.name || airport.iata || airport.city ){
-            console.log("heree");
+
               if(airport.iata && (airport.iata!=null) && angular.lowercase(airport.iata).indexOf(angular.lowercase(search))!=-1
                   && airport.name  && (airport.name!=null) && angular.lowercase(airport.name).indexOf(angular.lowercase(search))!=-1 
                   && airport.city  && (airport.city!=null) && angular.lowercase(airport.city).indexOf(angular.lowercase(search))!=-1  ){

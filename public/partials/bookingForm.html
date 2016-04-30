@@ -28,6 +28,7 @@
                     <div >
                       <label>Departure Date</label>
                       <input ng-model = "depDate" type="date" class="form-control"  name="name" placeholder="Departure Date">
+
                     </div>
 
                     <div >
@@ -45,11 +46,24 @@
                     </div>
 
                     <div>
+
+                      <label>Class</label>
+                      <select ng-model="class" class="form-control">
+                        <option> Economy </option>
+                        <option>Business</option>
+                      </select>
+                    </div>
+
+                    <div>
+
                    
 
                       <br>
 
                       <input id="bookBtn" type="Button" ng-click="bookFlight()" class="btn-primary btn-lg"  value="Book Flight" >
+
+                      <input id="flightsAirlines" type="Button" ng-click="checkAllAirlines()" class="btn-primary btn-lg"  value="book from other airlines" >
+
                     </div>
 
 
@@ -113,7 +127,12 @@
                       </select>
                     </div>
 
-                     
+
+                     <div>
+                     <label>Email</label>
+                       <input type="email" class="form-control" name="email" ng-model="email" placeholder="Email">
+                     </div>
+
 
 
 

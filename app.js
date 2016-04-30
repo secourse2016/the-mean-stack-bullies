@@ -23,10 +23,11 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-// app.use(express.static(path.join(__dirname, 'www')));
+
 app.use(session({secret: 'key12',cookie:{maxAge:60000*30}}));
 // routes
-console.log("heree -------->"+process.env.JWTSECRET);
+
+
 app.get('/getToken',function(req,res){
 //   console.log("here in token route");
 // var newJwt = jwt.create(process.env.JWTSECRET);

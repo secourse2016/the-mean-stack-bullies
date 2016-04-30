@@ -1,6 +1,10 @@
 app.factory('flightSrv', function ($http) {
       var inFlights = [];
       var outFlights = [];
+
+      var flightsFromOtherAirlines = [];
+      var ReturnflightsFromOtherAirlines = [];
+
      return {
          getFlights : function(cb) {
           var tokenReq = {
@@ -61,7 +65,26 @@ app.factory('flightSrv', function ($http) {
                console.log(response.statusText);
                alert("An error occured please try again");
          });
-  }  
+
+  },
+        setFlightsFromOtherAirlines: function(flights){
+          flightsFromOtherAirlines = flights;
+         
+        },
+
+        getFlightsFromOtherAirlines: function(){
+          
+          return flightsFromOtherAirlines;
+        },
+        setReturnFlightsFromOtherAirlines: function(flights){
+        ReturnflightsFromOtherAirlines = flights;
+        },
+
+        getReturnFlightsFromOtherAirlines: function(){
+          
+          return ReturnflightsFromOtherAirlines;
+        }  
+
 }
  });
 
