@@ -1,13 +1,13 @@
 app.controller('HomeCtrl', function($scope, $location,$state) {
 
-
+console.log("HOME");
 $scope.bookFlight = function()
 {
 	$state.go('payment');
 }
 $scope.timeTable = function()
 {
-	$state.go('payment');
+	$state.go('timetable');
 }
 
 $scope.manageBooking = function()

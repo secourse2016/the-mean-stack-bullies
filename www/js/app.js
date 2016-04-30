@@ -20,22 +20,33 @@ app = angular.module('starter', ['ionic', 'starter.controllers'])
      
   })
 
+    .state('reservation', {
+    url: '/reservation',
+   
+        templateUrl: 'templates/ReservationDetails.html',
+        controller: 'reservationCtrl'
+      })
+     
+
   .state('home', {
       url: '/home',
      
-          templateUrl: 'templates/home.html'
+          templateUrl: 'templates/home.html',
+          controller:'HomeCtrl'
        
     })
   .state('timetable', {
       url: '/timetable',
      
-          templateUrl: 'templates/timetable.html'
+          templateUrl: 'templates/timetable.html',
+          controller:'timeTableCtrl'
        
     })
     .state('payment', {
       url: '/payment',
      
-          templateUrl: 'templates/payment.html'
+          templateUrl: 'templates/payment.html',
+          controller:'paymentCtrl'
           
        
     })
