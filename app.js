@@ -22,8 +22,10 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
-// app.use(express.static(path.join(__dirname, 'www')));
+
+ 
+// app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'www')));
 
 app.use(session({secret: 'key12',cookie:{maxAge:60000*30}}));
 // routes
@@ -32,13 +34,15 @@ app.use(session({secret: 'key12',cookie:{maxAge:60000*30}}));
 app.get('/getToken',function(req,res){
 //   console.log("here in token route");
 // var newJwt = jwt.create(process.env.JWTSECRET);
-// console.log(newJwt);
+// console.log(   newJwt);
 // var token = newJwt.compact();
 // console.log(token);
 var token = jwt.sign({}, process.env.JWTSECRET);
 console.log(token);
 res.send(token);
 });
+
+
 
 app.use('/api',function(req, res, next) {
 
