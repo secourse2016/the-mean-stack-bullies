@@ -50,10 +50,68 @@
           Search
       </button>
       </div>
-       
-       <label ng-show="notFound">Not Found</label>
-       <label ng-hide="notFound" ng-model="Departure">{{Departure}}</label>
+    <div  class="list card" ng-show="notFound">
+        <a   href="#" class="item item-icon-left" >
+    <i class="icon ion-alert-circled"></i>
+         Not Found
+  </a> 
+  </div>
 
+
+ <div  class="list card" ng-show="canceled">
+        <a   href="#" class="item item-icon-left" >
+    <i class="icon ion-ios-checkmark"></i>
+         Reservation Canceled 
+  </a> 
+  </div>
+
+      <div  class="list card" ng-show="Found" ng-model="Departure2">
+       
+        <a  href="#" class="item item-icon-left" >
+    <i class="icon ion-arrow-right-a"></i>
+         From: {{From}}
+  </a> 
+      <a  href="#" class="item item-icon-left" >
+    <i class="icon ion-arrow-left-a"></i>
+         To: {{To}}
+  </a> 
+      <a  href="#" class="item item-icon-left" >
+    <i class="icon ion-calendar"></i>
+         Departure Date: {{DepartureDate}}
+  </a> 
+      <a  href="#" class="item item-icon-left" >
+    <i class="icon ion-clock"></i>
+         Departure Time: {{DepartureTime}}
+  </a> 
+
+              <a href="#" class="item item-icon-left">
+    <i class="icon ion-calendar"></i>
+    Return Date: {{ReturnDate}}
+  </a>
+     <a  href="#" class="item item-icon-left" >
+    <i class="icon ion-clock"></i>
+         Return Time: {{ReturnTime}}
+  </a> 
+
+  <a href="#" class="item item-icon-left">
+    <i class="icon ion-email"></i>
+    Email: {{Email}}
+  </a>
+
+        <a href="#" class="item item-icon-left">
+    <i class="icon ion-ios-person"></i>
+    Adults: {{Adults}}
+  </a>
+         <a href="#" class="item item-icon-left">
+    <i class="icon ion-ios-body"></i>
+    Children: {{Children}}
+  </a>
+
+ <button  class="button button-block button-positive" ng-click="CancelReservation(SearchResult)">
+          Cancel Reservation
+      </button>
+
+    </div>
 
 
       

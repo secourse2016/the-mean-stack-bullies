@@ -24,8 +24,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
  
-// app.use(express.static(path.join(__dirname, 'public')));
+
 app.use(express.static(path.join(__dirname, 'www')));
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(session({secret: 'key12',cookie:{maxAge:60000*30}}));
 // routes
