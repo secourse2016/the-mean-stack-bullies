@@ -1,283 +1,433 @@
-app.controller('flightCtrl', function($scope,$location, flightSrv,ConfirmationSrv) {
-console.log("in flight controller");
-  $scope.outgoingFlights = [];
-  $scope.returnedFlights = [];
-  $scope.newof=[];
-  $scope.newof2=[];
-  $scope.show=false;
-  
-  var inFlightID = null ;
-  var outFlightID = null ;
+  app.controller('flightCtrl', function($scope,$location, flightSrv,ConfirmationSrv) {
+    console.log("in flight controller");
+    $scope.outgoingFlights = [];
+    $scope.returnedFlights = [];
+    $scope.newof=[];
+    $scope.newof2=[];
+    $scope.show=false;
+    
+    var inFlightID = null ;
+    var outFlightID = null ;
 
-  var outFlightAirline = null;
-  var inFlightAirline = null;
-   
-   
+    var outFlightAirline = null;
+    var inFlightAirline = null;
 
-   flightSrv.getFlights(function(response){
-       if(response.err){
-         alert("somthing went wrong please try again");
-       }else{
-         if(response.outFlights ){
-            //console.log("in booking controller "+response.outFlights[0].origin);
-           var flightsFromOtherAirlines = flightSrv.getFlightsFromOtherAirlines();
-           console.log("hereeee -->"+flightsFromOtherAirlines.length);
-           var AllFlights = flightsFromOtherAirlines.concat(response.outFlights);
-            $scope.outgoingFlights = AllFlights;
+    var outFlightClass = null;
+    var inFlightClass = null;
+ console.log("OUT");
+    flightSrv.getFlights(function(response){
+     console.log("ALL");
+     if(response.err){
+       alert("somthing went wrong please try again");
+     }
+     else
+     {
+      console.log("INSIDE ELSE");
+
+      if(response.outFlights ){
+        console.log("INSIDE CONDITION");
+              //console.log("in booking controller "+response.outFlights[0].origin);
+              var flightsFromOtherAirlines = flightSrv.getFlightsFromOtherAirlines();
+              console.log("hereeee -->"+flightsFromOtherAirlines.length);
+              var AllFlights = flightsFromOtherAirlines.concat(response.outFlights);
+              $scope.outgoingFlights = AllFlights;
               $scope.newof=[];
-             var newi=0;
-             for(var ind=0;ind<$scope.outgoingFlights.length;ind+=2)
-             {
+              var newi=0;
+              console.log("new");
+              console.log($scope.outgoingFlights);
 
-             if($scope.outgoingFlights[ind]!= undefined && $scope.outgoingFlights[ind+1]!=undefined){
-              $scope.newof[newi]={
-                "e_id":$scope.outgoingFlights[ind]._id,
-                "b_id":$scope.outgoingFlights[ind+1]._id,
-                "origin":$scope.outgoingFlights[ind].origin,
-                "eseats":$scope.outgoingFlights[ind].seats,
-                "bseats":$scope.outgoingFlights[ind+1].seats,
-                "departureDateTime":$scope.outgoingFlights[ind].departureDateTime,
-                "ecost":$scope.outgoingFlights[ind].cost,
-                "bcost":$scope.outgoingFlights[ind+1].cost,
-                "destination":$scope.outgoingFlights[ind].destination,
-                "arrivalDateTime":$scope.outgoingFlights[ind].arrivalDateTime,
-                "currency":$scope.outgoingFlights[ind].currency,
-                "flightNumber":$scope.outgoingFlights[ind].flightNumber,
-                "aircraftType":$scope.outgoingFlights[ind].aircraftType,
-                "Airline":$scope.outgoingFlights[ind].Airline
-              }
-              newi++;
-            }
-            else if($scope.outgoingFlights[ind]== undefined && $scope.outgoingFlights[ind+1]!=undefined)
-            {
-                 $scope.newof[newi]={
-                "e_id":0,
-                "b_id":$scope.outgoingFlights[ind+1]._id,
-                "origin":$scope.outgoingFlights[ind+1].origin,
-                "eseats":0,
-                "bseats":$scope.outgoingFlights[ind+1].seats,
-                "departureDateTime":$scope.outgoingFlights[ind+1+1].departureDateTime,
-                "ecost":0,
-                "bcost":$scope.outgoingFlights[ind+1].cost,
-                "destination":$scope.outgoingFlights[ind+1].destination,
-                "arrivalDateTime":$scope.outgoingFlights[ind+1].arrivalDateTime,
-                "currency":$scope.outgoingFlights[ind+1].currency,
-                "flightNumber":$scope.outgoingFlights[ind+1].flightNumber,
-                "aircraftType":$scope.outgoingFlights[ind+1].aircraftType,
-                "Airline":$scope.outgoingFlights[ind+1].Airline
-              }
-              newi++;
-            }
-            else if($scope.outgoingFlights[ind]!= undefined && $scope.outgoingFlights[ind+1]==undefined)
-            {
-                $scope.newof[newi]={
-                "e_id":$scope.outgoingFlights[ind]._id,
-                "b_id":0,
-                "origin":$scope.outgoingFlights[ind].origin,
-                "eseats":$scope.outgoingFlights[ind].seats,
-                "bseats":0,
-                "departureDateTime":$scope.outgoingFlights[ind].departureDateTime,
-                "ecost":$scope.outgoingFlights[ind].cost,
-                "bcost":0,
-                "destination":$scope.outgoingFlights[ind].destination,
-                "arrivalDateTime":$scope.outgoingFlights[ind].arrivalDateTime,
-                "currency":$scope.outgoingFlights[ind].currency,
-                "flightNumber":$scope.outgoingFlights[ind].flightNumber,
-                "aircraftType":$scope.outgoingFlights[ind].aircraftType,
-                "Airline":$scope.outgoingFlights[ind].Airline
-              }
-              newi++;
-            }
-            else{
-              $scope.newof[newi]={
-                "e_id":0,
-                "b_id":0,
-                "origin":0,
-                "eseats":0,
-                "bseats":0,
-                "departureDateTime":0,
-                "ecost":0,
-                "bcost":0,
-                "destination":0,
-                "arrivalDateTime":0,
-                "currency":0,
-                "flightNumber":0,
-                "aircraftType":0,
-                "Airline":0
-              }
-              newi++;
-            }
-
-             }
-            
-             
-              
-             
-          }
-            if(response.inFlights){
-            var retunflightsFromOtherAirlines = flightSrv.getReturnFlightsFromOtherAirlines();
-            console.log("hereee1--->"+retunflightsFromOtherAirlines.length);      
-           var AllFlights = retunflightsFromOtherAirlines.concat(response.inFlights);
-               $scope.returnedFlights =AllFlights;
-             $scope.newof2=[];
-           
-             var newi=0;  
-             for(var ind=0;ind<$scope.returnedFlights.length;ind+=2)
-             {
-              console.log($scope.returnedFlights[ind]);
-              if($scope.returnedFlights[ind]!=undefined && $scope.returnedFlights[ind+1]!=undefined)
+              for(var ind=0;ind<$scope.outgoingFlights.length;ind++)
               {
-              $scope.newof2[newi]={
-                "e_id":$scope.returnedFlights[ind]._id,
-                "b_id":$scope.returnedFlights[ind+1]._id,
-                "origin":$scope.returnedFlights[ind].origin,
-                "eseats":$scope.returnedFlights[ind].seats,
-                "bseats":$scope.returnedFlights[ind+1].seats,
-                "departureDateTime":$scope.returnedFlights[ind].departureDateTime,
-                "ecost":$scope.returnedFlights[ind].cost,
-                "bcost":$scope.returnedFlights[ind+1].cost,
-                "destination":$scope.returnedFlights[ind].destination,
-                "arrivalDateTime":$scope.returnedFlights[ind].arrivalDateTime,
-                "currency":$scope.returnedFlights[ind].currency,
-                "flightNumber":$scope.returnedFlights[ind].flightNumber,
-                "aircraftType":$scope.returnedFlights[ind].aircraftType,
-                "Airline":$scope.returnedFlights[ind].Airline
+               
+               if(ind==(($scope.outgoingFlights.length)-1))
+               {
+                 if($scope.outgoingFlights[ind].class=="economy")
+                 {
+                   $scope.newof[newi]={
+                    "e_id":$scope.outgoingFlights[ind]._id,
+                    "b_id":0,
+                    "origin":$scope.outgoingFlights[ind].origin,
+                    "eseats":$scope.outgoingFlights[ind].seats,
+                    "bseats":0,
+                    "departureDateTime":$scope.outgoingFlights[ind].departureDateTime,
+                    "ecost":$scope.outgoingFlights[ind].cost,
+                    "bcost":0,
+                    "destination":$scope.outgoingFlights[ind].destination,
+                    "arrivalDateTime":$scope.outgoingFlights[ind].arrivalDateTime,
+                    "currency":$scope.outgoingFlights[ind].currency,
+                    "flightNumber":$scope.outgoingFlights[ind].flightNumber,
+                    "aircraftType":$scope.outgoingFlights[ind].aircraftType,
+                    "Airline":$scope.outgoingFlights[ind].Airline,
+                    "e_class": $scope.outgoingFlights[ind].class,
+                    "b_class":0
+                  }
+                  newi++;
+
+                }
+                else
+                {
+
+                 $scope.newof[newi]={
+                  "e_id":0,
+                  "b_id":$scope.outgoingFlights[ind]._id,
+                  "origin":$scope.outgoingFlights[ind].origin,
+                  "eseats":0,
+                  "bseats":$scope.outgoingFlights[ind].seats,
+                  "departureDateTime":$scope.outgoingFlights[ind].departureDateTime,
+                  "ecost":0,
+                  "bcost":$scope.outgoingFlights[ind].cost,
+                  "destination":$scope.outgoingFlights[ind].destination,
+                  "arrivalDateTime":$scope.outgoingFlights[ind].arrivalDateTime,
+                  "currency":$scope.outgoingFlights[ind].currency,
+                  "flightNumber":$scope.outgoingFlights[ind].flightNumber,
+                  "aircraftType":$scope.outgoingFlights[ind].aircraftType,
+                  "Airline":$scope.outgoingFlights[ind].Airline,
+                  "e_class": 0,
+                  "b_class":$scope.outgoingFlights[ind].class
+                }
+                newi++;
+
+              }
+
+            } 
+            else{
+
+
+
+             if($scope.outgoingFlights[ind].Airline==$scope.outgoingFlights[ind+1].Airline)
+             {
+              $scope.newof[newi]={
+                "e_id":$scope.outgoingFlights[ind]._id,
+                "b_id":$scope.outgoingFlights[ind+1]._id,
+                "origin":$scope.outgoingFlights[ind].origin,
+                "eseats":$scope.outgoingFlights[ind].seats,
+                "bseats":$scope.outgoingFlights[ind+1].seats,
+                "departureDateTime":$scope.outgoingFlights[ind].departureDateTime,
+                "ecost":$scope.outgoingFlights[ind].cost,
+                "bcost":$scope.outgoingFlights[ind+1].cost,
+                "destination":$scope.outgoingFlights[ind].destination,
+                "arrivalDateTime":$scope.outgoingFlights[ind].arrivalDateTime,
+                "currency":$scope.outgoingFlights[ind].currency,
+                "flightNumber":$scope.outgoingFlights[ind].flightNumber,
+                "aircraftType":$scope.outgoingFlights[ind].aircraftType,
+                "Airline":$scope.outgoingFlights[ind].Airline,
+                "e_class": $scope.outgoingFlights[ind].class,
+                "b_class":$scope.outgoingFlights[ind+1].class
               }
               newi++;
+              ind++;
             }
-            else if($scope.returnedFlights[ind]==undefined && $scope.returnedFlights[ind+1]!=undefined)
+            else
             {
-              $scope.newof2[newi]={
+              if($scope.outgoingFlights[ind].class=="economy")
+              {
+                $scope.newof[newi]={
+                  "e_id":$scope.outgoingFlights[ind]._id,
+                  "b_id":0,
+                  "origin":$scope.outgoingFlights[ind].origin,
+                  "eseats":$scope.outgoingFlights[ind].seats,
+                  "bseats":0,
+                  "departureDateTime":$scope.outgoingFlights[ind].departureDateTime,
+                  "ecost":$scope.outgoingFlights[ind].cost,
+                  "bcost":0,
+                  "destination":$scope.outgoingFlights[ind].destination,
+                  "arrivalDateTime":$scope.outgoingFlights[ind].arrivalDateTime,
+                  "currency":$scope.outgoingFlights[ind].currency,
+                  "flightNumber":$scope.outgoingFlights[ind].flightNumber,
+                  "aircraftType":$scope.outgoingFlights[ind].aircraftType,
+                  "Airline":$scope.outgoingFlights[ind].Airline,
+                  "e_class": $scope.outgoingFlights[ind].class,
+                  "b_class":0
+                }
+                newi++;
+
+              }
+              else
+              {
+
+
+               $scope.newof[newi]={
                 "e_id":0,
-                "b_id":$scope.returnedFlights[ind+1]._id,
-                "origin":$scope.returnedFlights[ind+1].origin,
+                "b_id":$scope.outgoingFlights[ind]._id,
+                "origin":$scope.outgoingFlights[ind].origin,
                 "eseats":0,
-                "bseats":$scope.returnedFlights[ind+1].seats,
-                "departureDateTime":$scope.returnedFlights[ind+1].departureDateTime,
+                "bseats":$scope.outgoingFlights[ind].seats,
+                "departureDateTime":$scope.outgoingFlights[ind].departureDateTime,
                 "ecost":0,
-                "bcost":$scope.returnedFlights[ind+1].cost,
-                "destination":$scope.returnedFlights[ind+1].destination,
-                "arrivalDateTime":$scope.returnedFlights[ind+1].arrivalDateTime,
-                "currency":$scope.returnedFlights[ind+1].currency,
-                "flightNumber":$scope.returnedFlights[ind+1].flightNumber,
-                "aircraftType":$scope.returnedFlights[ind+1].aircraftType,
-                "Airline":$scope.returnedFlights[ind+1].Airline
+                "bcost":$scope.outgoingFlights[ind].cost,
+                "destination":$scope.outgoingFlights[ind].destination,
+                "arrivalDateTime":$scope.outgoingFlights[ind].arrivalDateTime,
+                "currency":$scope.outgoingFlights[ind].currency,
+                "flightNumber":$scope.outgoingFlights[ind].flightNumber,
+                "aircraftType":$scope.outgoingFlights[ind].aircraftType,
+                "Airline":$scope.outgoingFlights[ind].Airline,
+                "e_class": 0,
+                "b_class":$scope.outgoingFlights[ind].class
               }
               newi++;
-            }
-            else if($scope.returnedFlights[ind]!=undefined && $scope.returnedFlights[ind+1]==undefined)
-            {
-             $scope.newof2[newi]={
-                "e_id":$scope.returnedFlights[ind]._id,
-                "b_id":0,
-                "origin":$scope.returnedFlights[ind].origin,
-                "eseats":$scope.returnedFlights[ind].seats,
-                "bseats":0,
-                "departureDateTime":$scope.returnedFlights[ind].departureDateTime,
-                "ecost":$scope.returnedFlights[ind].cost,
-                "bcost":0,
-                "destination":$scope.returnedFlights[ind].destination,
-                "arrivalDateTime":$scope.returnedFlights[ind].arrivalDateTime,
-                "currency":$scope.returnedFlights[ind].currency,
-                "flightNumber":$scope.returnedFlights[ind].flightNumber,
-                "aircraftType":$scope.returnedFlights[ind].aircraftType,
-                "Airline":$scope.returnedFlights[ind].Airline
-              }
-              newi++;
-            }
-            else if($scope.returnedFlights[ind]==undefined && $scope.returnedFlights[ind+1]==undefined)
-            {
-             $scope.newof2[newi]={
-                "e_id":0,
-                "b_id":0,
-                "origin":0,
-                "eseats":0,
-                "bseats":0,
-                "departureDateTime":0,
-                "ecost":0,
-                "bcost":0,
-                "destination":0,
-                "arrivalDateTime":0,
-                "currency":0,
-                "flightNumber":0,
-                "aircraftType":0,
-                "Airline":0
-              }
-              newi++;
+
+
             }
 
-             }
-             $scope.show=true;
-            };
-       }
-   });
-  
+
+
+          }
+
+
+
+
+
+        } 
+
+
+
+
+
+
+
+
+
+
+      }
+      console.log($scope.newof);
+
+
+
+
+    }
+  }
+
+
+
+  if(response.inFlights){
+    var retunflightsFromOtherAirlines = flightSrv.getReturnFlightsFromOtherAirlines();
+    console.log("hereee1--->"+retunflightsFromOtherAirlines.length);      
+    var AllFlights = retunflightsFromOtherAirlines.concat(response.inFlights);
+    $scope.returnedFlights =AllFlights;
+    $scope.newof2=[];
+
+    var newi=0;  
+
+    for(var ind=0;ind<$scope.returnedFlights.length;ind++)
+    {
+      if(ind==( ($scope.returnedFlights.length)-1) )
+      {
+
+        if($scope.returnedFlights[ind].class=="economy")
+        {
+          $scope.newof2[newi]={
+            "e_id":$scope.returnedFlights[ind]._id,
+            "b_id":0,
+            "origin":$scope.returnedFlights[ind].origin,
+            "eseats":$scope.returnedFlights[ind].seats,
+            "bseats":0,
+            "departureDateTime":$scope.returnedFlights[ind].departureDateTime,
+            "ecost":$scope.returnedFlights[ind].cost,
+            "bcost":0,
+            "destination":$scope.returnedFlights[ind].destination,
+            "arrivalDateTime":$scope.returnedFlights[ind].arrivalDateTime,
+            "currency":$scope.returnedFlights[ind].currency,
+            "flightNumber":$scope.returnedFlights[ind].flightNumber,
+            "aircraftType":$scope.returnedFlights[ind].aircraftType,
+            "Airline":$scope.returnedFlights[ind].Airline,
+            "e_class": $scope.returnedFlights[ind].class,
+            "b_class":0
+          }
+          newi++;
+
+        }
+        else
+        {
+
+         $scope.newof2[newi]={
+          "e_id":0,
+          "b_id":$scope.returnedFlights[ind]._id,
+          "origin":$scope.returnedFlights[ind].origin,
+          "eseats":0,
+          "bseats":$scope.returnedFlights[ind].seats,
+          "departureDateTime":$scope.returnedFlights[ind].departureDateTime,
+          "ecost":0,
+          "bcost":$scope.returnedFlights[ind].cost,
+          "destination":$scope.returnedFlights[ind].destination,
+          "arrivalDateTime":$scope.returnedFlights[ind].arrivalDateTime,
+          "currency":$scope.returnedFlights[ind].currency,
+          "flightNumber":$scope.returnedFlights[ind].flightNumber,
+          "aircraftType":$scope.returnedFlights[ind].aircraftType,
+          "Airline":$scope.returnedFlights[ind].Airline,
+          "e_class": 0,
+          "b_class":$scope.returnedFlights[ind].class
+        }
+        newi++;
+
+      }
+
+
+
+
+
+    }
+    else
+    {
+      if($scope.returnedFlights[ind].Airline==$scope.returnedFlights[ind+1].Airline)
+      {
+        $scope.newof2[newi]={
+          "e_id":$scope.returnedFlights[ind]._id,
+          "b_id":$scope.returnedFlights[ind+1]._id,
+          "origin":$scope.returnedFlights[ind].origin,
+          "eseats":$scope.returnedFlights[ind].seats,
+          "bseats":$scope.returnedFlights[ind+1].seats,
+          "departureDateTime":$scope.returnedFlights[ind].departureDateTime,
+          "ecost":$scope.returnedFlights[ind].cost,
+          "bcost":$scope.returnedFlights[ind+1].cost,
+          "destination":$scope.returnedFlights[ind].destination,
+          "arrivalDateTime":$scope.returnedFlights[ind].arrivalDateTime,
+          "currency":$scope.returnedFlights[ind].currency,
+          "flightNumber":$scope.returnedFlights[ind].flightNumber,
+          "aircraftType":$scope.returnedFlights[ind].aircraftType,
+          "Airline":$scope.returnedFlights[ind].Airline,
+          "e_class": $scope.returnedFlights[ind].class,
+          "b_class":$scope.returnedFlights[ind+1].class
+        }
+        newi++;
+        ind++;
+      }
+      else
+      {
+        if($scope.returnedFlights[ind].class=="economy")
+        {
+          $scope.newof2[newi]={
+            "e_id":$scope.returnedFlights[ind]._id,
+            "b_id":0,
+            "origin":$scope.returnedFlights[ind].origin,
+            "eseats":$scope.returnedFlights[ind].seats,
+            "bseats":0,
+            "departureDateTime":$scope.returnedFlights[ind].departureDateTime,
+            "ecost":$scope.returnedFlights[ind].cost,
+            "bcost":0,
+            "destination":$scope.returnedFlights[ind].destination,
+            "arrivalDateTime":$scope.returnedFlights[ind].arrivalDateTime,
+            "currency":$scope.returnedFlights[ind].currency,
+            "flightNumber":$scope.returnedFlights[ind].flightNumber,
+            "aircraftType":$scope.returnedFlights[ind].aircraftType,
+            "Airline":$scope.returnedFlights[ind].Airline,
+            "e_class": $scope.returnedFlights[ind].class,
+            "b_class":0
+          }
+          newi++;
+
+        }
+        else
+        {
+
+         $scope.newof2[newi]={
+          "e_id":0,
+          "b_id":$scope.returnedFlights[ind]._id,
+          "origin":$scope.returnedFlights[ind].origin,
+          "eseats":0,
+          "bseats":$scope.returnedFlights[ind].seats,
+          "departureDateTime":$scope.returnedFlights[ind].departureDateTime,
+          "ecost":0,
+          "bcost":$scope.returnedFlights[ind].cost,
+          "destination":$scope.returnedFlights[ind].destination,
+          "arrivalDateTime":$scope.returnedFlights[ind].arrivalDateTime,
+          "currency":$scope.returnedFlights[ind].currency,
+          "flightNumber":$scope.returnedFlights[ind].flightNumber,
+          "aircraftType":$scope.returnedFlights[ind].aircraftType,
+          "Airline":$scope.returnedFlights[ind].Airline,
+          "e_class": 0,
+          "b_class":$scope.returnedFlights[ind].class
+        }
+        newi++;
+
+      }
+
+
+
+    }
+
+
+  }
+
+                //-----------------------------------------------------
+                // console.log($scope.returnedFlights[ind]
+              }
+
+
+
+              $scope.show=true;
+            }
+
+          });
+
+
   $scope.Book=function()
   {    
-    // console.log(inFlightID+"  "+outFlightID);
-    // console.log(inFlightAirline+"  "+outFlightAirline);
-    if(outFlightAirline == "AirFrance"){
-      if(!inFlightID && !outFlightID){
-        alert("you have to choose a flight");
-       }else{
+      // console.log(inFlightID+"  "+outFlightID);
+      // console.log(inFlightAirline+"  "+outFlightAirline);
+      if(outFlightAirline == "AirFrance"){
+        if(!inFlightID && !outFlightID){
+          alert("you have to choose a flight");
+        }else{
           if(inFlightID && outFlightID || outFlightID){
             console.log("hereeeee");
             flightSrv.insertFlight(inFlightID,outFlightID,function(err){
-                if(err){
-                  alert(err);
-                }else{
-                  $location.url('/passenger');
-                }
+              if(err){
+                alert(err);
+              }else{
+                $location.url('/passenger');
+              }
             });
           }
 
-         
-       }
-    }else{
 
-      flightSrv.bookflightFromOtherAirline()
+        }
+      }else{
+        ConfirmationSrv.getPersonInfo(function(response){
+          var passengerDetails = response;
+
+        });
+        flightSrv.bookflightFromOtherAirline()
+      }
+
+      
     }
-       
-    
-  }
 
-  $scope.radioActionOrigin=function(id,airline)
-  {
-    console.log(id);
-    console.log(airline);
+    $scope.radioActionOrigin=function(id,airline,classs)
+    {
       outFlightID = id;
       outFlightAirline = airline;
-  }
+      outFlightClass = classs;
+    }
 
-   $scope.viewFlight=function(number)
-  {
-    
-    if(number==0)
+    $scope.viewFlight=function(number)
     {
-      return false;
-    }
-    else
-    {
-      return true;
-    }
-  }
-   $scope.viewFlight2=function(number,number2)
-  {
-    
-    if(number==0 && number2==0)
-    {
-      return false;
-    }
-    else
-    {
-      return true;
-    }
-  }
-  $scope.radioActionDest=function(id,airline)
-  {
 
-    inFlightID = id;
-    inFlightAirline = airline;
-  }
+      if(number==0)
+      {
+        return false;
+      }
+      else
+      {
+        return true;
+      }
+    }
+    $scope.viewFlight2=function(number,number2)
+    {
 
-});
+      if(number==0 && number2==0)
+      {
+        return false;
+      }
+      else
+      {
+        return true;
+      }
+    }
+    $scope.radioActionDest=function(id,airline,classs)
+    {
+      inFlightID = id;
+      inFlightAirline = airline;
+      inFlightClass = classs;
+    }
+
+  });

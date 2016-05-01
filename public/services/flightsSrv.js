@@ -8,8 +8,8 @@ app.factory('flightSrv', function ($http) {
       airlinesNameIpAddresses["Austrian"] = "http://52.90.41.197";
       airlinesNameIpAddresses["KLM"]="http://ec2-52-26-166-80.us-west-2.compute.amazonaws.com";
       airlinesNameIpAddresses["Lufthansa"]="http://ec2-54-152-123-100.compute-1.amazonaws.com";
-      airlinesNameIpAddresses["Turkish_Airlines"]:"http://52.27.150.19";
-      airlinesNameIpAddresses["Hawaiian"]:"http://54.93.36.94";
+      airlinesNameIpAddresses["Turkish_Airlines"]="http://52.27.150.19";
+      airlinesNameIpAddresses["Hawaiian"]="http://54.93.36.94";
    
      return {
          getFlights : function(cb) {
@@ -17,6 +17,7 @@ app.factory('flightSrv', function ($http) {
               method: 'GET',
               url: '/getToken'
             };
+             console.log("services1");
       return $http(tokenReq).success(function(response){
           var req = {
               method: 'GET',
@@ -26,7 +27,7 @@ app.factory('flightSrv', function ($http) {
                 'x-access-token':response
               }
           };
-
+          console.log("services2");
           return $http(req).then(
             function mySucces(response) {
                     cb(response.data);
@@ -90,7 +91,7 @@ app.factory('flightSrv', function ($http) {
           return ReturnflightsFromOtherAirlines;
         }, 
 
-        bookflightFromOtherAirline = function(inputData,cb){
+        bookflightFromOtherAirline: function(inputData,cb){
 
          var ipAddress =  airlinesNameIpAddresses[inputData.Airline] ;
          var tokenReq = {
@@ -120,7 +121,8 @@ app.factory('flightSrv', function ($http) {
             }else{
               cb(response.refNum);
             }
-          })
+          });
+        });
         }
 }
  });

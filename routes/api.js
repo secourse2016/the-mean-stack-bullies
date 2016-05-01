@@ -566,8 +566,8 @@ router.post('/api/booking', function(req,res){
       origin:req.params.origin,
       destination:req.params.destination,
       departingDate:req.params.departingDate,
-      class:req.params.class
-     // seats:req.params.seats
+      class:req.params.class,
+      seats:req.params.seats
      }
       pingingOtherAirlinesServerController.getOneTripFlights(bookingData,function(returnedObject){
         res.json(returnedObject);
@@ -580,8 +580,8 @@ router.post('/api/booking', function(req,res){
       destination:req.params.destination,
       departingDate:req.params.departingDate,
       returningDate: req.params.returningDate,
-      class:req.params.class
-      //seats:req.params.seats
+      class:req.params.class,
+      seats:req.params.seats
      }
       pingingOtherAirlinesServerController.getRoundTripFlights(bookingData,function(returnedObject){
         res.json(returnedObject);

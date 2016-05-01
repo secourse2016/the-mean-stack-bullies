@@ -1,7 +1,8 @@
+
 app.factory('airlineSrv',function ($http){ 
    var airlines =  [    
    						//"http://www.swiss-air.me",
-   						"http://52.90.41.197", 
+   					//"http://52.90.41.197", 
 						"http://ec2-54-152-123-100.compute-1.amazonaws.com",
 						"http://52.27.150.19",
 						"http://ec2-52-26-166-80.us-west-2.compute.amazonaws.com",
@@ -13,7 +14,7 @@ app.factory('airlineSrv',function ($http){
 						//"http://54.187.208.145",
 						//"http://sebitsplease.com.s3-website-us-east-1.amazonaws.com",
 						//"http://52.58.46.74",
-						"http://54.93.36.94",
+						//"http://54.93.36.94",
 						//"http://54.191.202.17",
 						//"http://54.213.157.185",
 						//"http://52.28.246.230",
@@ -23,6 +24,7 @@ app.factory('airlineSrv',function ($http){
 						//"http://52.36.169.206",
 						//"http://ec2-52-91-94-227.compute-1.amazonaws.com"
 					];
+         
 	return{
 		getOneTripFlightsFromOtherAirlines:function(booking,cb){
 			 var tokenReq = {
@@ -30,10 +32,12 @@ app.factory('airlineSrv',function ($http){
               url: '/getToken'
             };
             var count =0 ;
-            var outFlights = [];
+            var economyOutFlights = [];
+            var businessOutFlights = [];
+
             var getEconomyOfOneTripFlightsFromOtherAirlines = function(count,cb){
             	if(count == airlines.length ){
-            		return cb(true);
+            		return cb(economyOutFlights);
             	}else{
             		return $http(tokenReq).success(function(token){
 
@@ -47,10 +51,11 @@ app.factory('airlineSrv',function ($http){
 		                  url:""+airlines[count]+"/api/flights/search/"+origin+"/"+destination+"/"+DepartureDate+"/economy?wt="+token+""
 					          };
                       return $http(req).success(function(economyFlights){
-                      	outFlights = outFlights.concat(economyFlights);
+                      
+                      	economyOutFlights = economyOutFlights.concat(economyFlights);
                       	// console.log("hereeee");
                  
-                      	// console.log(economyFlights);
+                      	console.log(economyFlights);
                       	getEconomyOfOneTripFlightsFromOtherAirlines(count+1,cb);
                       }).error(function(response){
 		                 console.log(response);
@@ -63,7 +68,7 @@ app.factory('airlineSrv',function ($http){
 
                 var getBussinessOfOneTripFlightsFromOtherAirlines = function(count,cb){
             	if(count == airlines.length ){
-            		return cb(true);
+            		return cb(businessOutFlights);
             	}else{
             		return $http(tokenReq).success(function(token){
 
@@ -76,11 +81,12 @@ app.factory('airlineSrv',function ($http){
 		                  method : 'GET', 
 		                  url:""+airlines[count]+"/api/flights/search/"+origin+"/"+destination+"/"+DepartureDate+"/business?wt="+token+""
 					          };
-                      return $http(req).success(function(economyFlights){
-                      	outFlights = outFlights.concat(economyFlights);
+                      return $http(req).success(function(businessFlights){
+                       
+                      	businessOutFlights = businessOutFlights.concat(businessFlights);
                       	// console.log("hereeee");
-                 
-                      	// console.log(economyFlights);
+                
+                      	 console.log(businessFlights);
                       	getBussinessOfOneTripFlightsFromOtherAirlines(count+1,cb);
                       }).error(function(response){
 		                 console.log(response);
@@ -90,14 +96,14 @@ app.factory('airlineSrv',function ($http){
             	}
             	
             }
-          getEconomyOfOneTripFlightsFromOtherAirlines(count,function(flag){
-          	console.log(flag);
+          getEconomyOfOneTripFlightsFromOtherAirlines(count,function(economyOutFlights){
+          	console.log(economyOutFlights.length);
            // console.log(outFlights[0].outgoingFlights[0]);
             
-            getBussinessOfOneTripFlightsFromOtherAirlines(count,function(flag){
-            	console.log(flag);
-            	console.log(outFlights.length);
-            	   cb(outFlights);
+            getBussinessOfOneTripFlightsFromOtherAirlines(count,function(businessOutFlights){
+            	console.log(businessOutFlights.length);
+            	
+            	   cb(economyOutFlights,businessOutFlights);
             })
           
           });
@@ -105,15 +111,19 @@ app.factory('airlineSrv',function ($http){
       	  
 		},
 	getRoundTripFlightsFromOtherAirlines:function(booking,cb){
+
 		 var tokenReq = {
               method: 'GET',
               url: '/getToken'
             };
             var count =0 ;
             var outFlights = [];
+
+             var economyOutFlights = [];
+            var businessOutFlights = [];
     		var getEconomyOfRoundTripFlightsFromOtherAirlines = function(count,cb){
             	if(count == airlines.length ){
-            		return cb(true);
+            		return cb(economyOutFlights);
             	}else{
             		return $http(tokenReq).success(function(token){
  						//console.log("heressss-------><"+booking.from);
@@ -130,10 +140,12 @@ app.factory('airlineSrv',function ($http){
 					          };
 					          
                       return $http(req).success(function(economyFlights){
+                      	
+                          economyOutFlights = economyOutFlights.concat(economyFlights);
+                         
                       	 
-                      	outFlights = outFlights.concat(economyFlights); 
                       //	console.log("economy");                
-                      //	console.log(economyFlights);
+                      	console.log(economyFlights);
                       	getEconomyOfRoundTripFlightsFromOtherAirlines(count+1,cb);
 
                       }).error(function(response){
@@ -147,7 +159,7 @@ app.factory('airlineSrv',function ($http){
 
                 var getBussinessOfRoundTripFlightsFromOtherAirlines = function(count,cb){
             	if(count == airlines.length ){
-            		return cb(true);
+            		return cb(businessOutFlights);
             	}else{
             		return $http(tokenReq).success(function(token){
 
@@ -163,11 +175,12 @@ app.factory('airlineSrv',function ($http){
 		                  method : 'GET', 
 		                  url:""+airlines[count]+"/api/flights/search/"+origin+"/"+destination+"/"+DepartureDate+"/"+ArrivalDate+"/business?wt="+token+""
 					          };
-                      return $http(req).success(function(economyFlights){
-                      	outFlights = outFlights.concat(economyFlights);
+                      return $http(req).success(function(businessFlights){
+                       
+                      	businessOutFlights = businessOutFlights.concat(businessFlights);
                       	
                  		//console.log("business");
-                      	//console.log(economyFlights);
+                      	console.log(businessFlights);
                       	getBussinessOfRoundTripFlightsFromOtherAirlines(count+1,cb);
                       }).error(function(response){
 		                 console.log(response);
@@ -177,17 +190,20 @@ app.factory('airlineSrv',function ($http){
             	}
             	
             }
-          getEconomyOfRoundTripFlightsFromOtherAirlines(count,function(flag){
-          	//console.log("hereee1 ---->"+flag);
+          getEconomyOfRoundTripFlightsFromOtherAirlines(count,function(economyFlights){
+          	console.log(economyFlights);
            // console.log(outFlights[0].outgoingFlights[0]);
             
-            getBussinessOfRoundTripFlightsFromOtherAirlines(count,function(flag){
-            	//console.log("heree2 --->"+flag);
+            getBussinessOfRoundTripFlightsFromOtherAirlines(count,function(businessFlights){
+            	console.log(businessFlights);
             	//console.log(outFlights.length);
-            	  cb(outFlights);
+            	  cb(economyFlights,businessFlights);
             })
           
           });
 	}	
+
+
+
 	}
 });					
