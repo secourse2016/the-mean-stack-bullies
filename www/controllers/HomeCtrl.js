@@ -18,7 +18,7 @@ $scope.manageBooking = function()
 
 $scope.statistics = function()
 {
-	$state.go('payment');
+	$state.go('passenger');
 }
 
 $scope.about = function()

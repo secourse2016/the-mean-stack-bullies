@@ -9,7 +9,6 @@
     <!-- ionic/angularjs js -->
     
  
-  </head>
   
 
 <ion-view id="page" title="Passenger Information">
@@ -18,13 +17,11 @@
 <ion-nav-title id="passengerInfoAbovee">
       <h3 ng-model="tag">Passenger {{current+1}} Information</h3>
       <p>type:{{passType}}</p>
-      </div>
+      </ion-nav-title>
      <br>
 
-    
-
-
-<div id="form" class="">
+  
+<div id="form" class="list">
   <label id="firstName" class="item item-input item-floating-label">
     <span class="input-label">First Name</span>
     <input type="text" ng-model="firstName" placeholder="First Name">
@@ -62,4 +59,3 @@
 </div>
  
 </ion-view>
-
