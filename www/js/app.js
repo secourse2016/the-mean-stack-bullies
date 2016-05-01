@@ -14,6 +14,13 @@ app = angular.module('starter', ['ionic', 'starter.controllers'])
      
   })
 
+  .state('book', {
+    url: '/book',
+    templateUrl: 'templates/bookingFormIon.html',
+    controller: 'bookingFormCtrl'
+     
+  })
+
     .state('reservation', {
     url: '/reservation',
     templateUrl: 'templates/ReservationDetails.html',
