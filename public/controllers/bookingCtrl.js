@@ -75,7 +75,8 @@ app.controller('bookingCtrl', function($scope, $location,airportSrv,flightSrv,Fl
         // console.log(airports[0]);
 
       console.log("responded");
-    }else{
+    }
+    else{
        console.log("not responded");
     } 
   });

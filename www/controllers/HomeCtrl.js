@@ -3,7 +3,7 @@ app.controller('HomeCtrl', function($scope, $location,$state,HomeSrv) {
 console.log("HOME");
 $scope.bookFlight = function()
 {
-	$state.go('payment');
+	$state.go('book');
 }
 $scope.timeTable = function()
 {
