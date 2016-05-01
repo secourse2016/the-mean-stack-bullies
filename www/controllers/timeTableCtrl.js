@@ -1,6 +1,5 @@
 app.controller('timeTableCtrl', function($scope, $location,timeTableSrv) {
-
-$scope.limit=5;
+$scope.limit=0;
   console.log("TIMETABLE");
   timeTableSrv.getFlights(function (array) {
   	 	var i=0;
@@ -9,6 +8,7 @@ $scope.limit=5;
   	 	// console.log($scope.arr.length);
   	 		for(i=0; i< $scope.arr.length;i++){
   	 			console.log(i<$scope.arr.length)
+
   	 		$scope.arr[i].img="../img/"+$scope.arr[i].origin+".jpg";
   	 		$scope.arr[i].arrivalDateTime=$scope.arr[i].arrivalDateTime.substring(0,24);
   	 		$scope.arr[i].departureDateTime=$scope.arr[i].departureDateTime.substring(0,24);
@@ -27,12 +27,19 @@ $scope.limit=5;
                         $scope.arr[i].status="Arrived";
                       }
   	 	}
-  	 		console.log($scope.arr);
+  	 	// $scope.empty=[];
+  	 	// $scope.empty.push()
+
   });
 
-$scope.showMore=function(){
-	$scope.limit+=5;
-}
+
+   $scope.loadMore = function() {
+    	
+	$scope.limit+=10;
+    $scope.$broadcast('scroll.infiniteScrollComplete');
+
+    
+  };
 
 
 });
