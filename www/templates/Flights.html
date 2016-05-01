@@ -1,0 +1,193 @@
+<!doctype html>
+
+<html ng-app="myApp">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title></title>
+      <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+ <link href="../lib/ionic/css/ionic.css" rel="stylesheet">
+
+ <link href="../css/flights.css" rel="stylesheet">
+    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <link href="css/ionic.app.css" rel="stylesheet">
+    -->
+    <script src="../controllers/flightController.js"></script> 
+
+    <!-- ionic/angularjs js -->
+   <!--  <script src="../lib/ionic/js/ionic.bundle.js"></script> -->
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="cordova.js"></script>
+
+    <!-- your app's js -->
+    <script src="../js/app.js"></script>
+  </head>
+
+    <body ng-controller="flightCtrl">
+      <ion-scroll direction="y" class="theroot">
+    <div class="list">
+  <div class="card" id="crd1">
+   <div class="item item-divider" id ="di">
+    
+     <div class="row"> 
+   <div class="col col-20"> {{flight.origin}}</div>
+    <div class="col col-25">{{flight.aircraftType}}</div>
+  <div class="col col-20">{{flight.destination}}</div>
+  <div class="col col-20">#{{flight.flightNumber}}</div>
+ </div>
+  </div>
+  <div class="item item-divider" id ="div">
+    B
+  </div>
+  
+  
+    <ion-item  ng-repeat="flight in newof |  orderBy:'date'"
+            class="item-thumbnail-left">
+ 
+  <div class="item item-text-wrap" id="dv">
+ 
+  
+   <div class="row"> 
+   <div class="col col-33">{{flight.origin}}</div>
+    <div class="col col-33">{{flight.currency}}</div>
+  <div class="col col-33">{{flight.destination}}</div>
+  </div>
+     <div class="row"> 
+   <div class="col col-33">{{flight.departureDateTime}}</div>
+    <div class="col col-33">{{flight.ecost}}</div>
+  <div class="col col-33">{{flight.arrivalDateTime}}</div>
+  </div>
+   
+    <div class="row">
+ <!--  <div class="col col-40"><button ng-click="openPopover($event)" class=" button button-clear ion-chevron-down "></button></div> -->
+  <div class="col col-33"></div>
+  <div class="col col-33"><input type="radio" name="radio" id="{{flight.b_id}}" class="radio" ng-show="false"  ng-click="radioActionDest(flight.b_id)" />
+        <label for="{{flight.b_id}}">Choose</label></div>
+    </div>
+</div>
+</ion-item>
+
+<div class="item item-divider" id ="div">
+    E
+  </div>
+   <ion-item  ng-repeat="flight in newof |  orderBy:'date'"
+            class="item-thumbnail-left">
+ 
+  <div class="item item-text-wrap" id="dv">
+ 
+   
+   <div class="row"> 
+   <div class="col col-33">{{flight.origin}}</div>
+    <div class="col col-33">{{flight.currency}}</div>
+  <div class="col col-33">{{flight.destination}}</div>
+  </div>
+     <div class="row"> 
+   <div class="col col-33">{{flight.departureDateTime}}</div>
+    <div class="col col-33">{{flight.ecost}}</div>
+  <div class="col col-33">{{flight.arrivalDateTime}}</div>
+  </div>
+   <div class="row">
+ <!--  <div class="col col-40"><button ng-click="openPopover($event)" class=" button button-clear ion-chevron-down"></button></div>
+ -->  <div class="col col-33"></div>
+  <div class="col col-33"><input type="radio" name="radio" id="{{flight.e_id}}" class="radio" ng-show="false"  ng-click="radioActionDest(flight.e_id)" />
+        <label for="{{flight.e_id}}">Choose</label></div>
+    </div>
+</div>
+</ion-item>
+</div>
+
+
+  
+</div>
+
+</div>
+<div class="list">
+  <div class="card" id="crd">
+   <div class="item item-divider" id ="di">
+    
+     <div class="row"> 
+   <div class="col col-40">  </div>
+  <div class="col col-33">Return Flights</div>
+  <div class="col col-33"></div>
+ </div>
+  </div>
+  <div class="item item-divider" id ="div">
+    B
+  </div>
+  
+  
+    <ion-item  ng-repeat="flight in newof |  orderBy:'date'"
+            class="item-thumbnail-left">
+ 
+  <div class="item item-text-wrap" id="dv">
+ 
+   
+   <div class="row"> 
+   <div class="col col-33">{{flight.origin}}</div>
+    <div class="col col-33">{{flight.currency}}</div>
+  <div class="col col-33">{{flight.destination}}</div>
+  </div>
+     <div class="row"> 
+   <div class="col col-33">{{flight.departureDateTime}}</div>
+    <div class="col col-33">{{flight.ecost}}</div>
+  <div class="col col-33">{{flight.arrivalDateTime}}</div>
+  </div>
+ <div class="row">
+ <!--  <div class="col col-40"><button  ng-click="openPopover($event)"class=" button button-clear ion-chevron-down"></button></div> -->
+  <div class="col col-33"></div>
+  <div class="col col-33"><input type="radio" name="radio2" id="{{flight.b_id}}" class="radio" ng-show="false"  ng-click="radioActionDest(flight.b_id)" />
+        <label for="{{flight.b_id}}">Choose</label></div>
+ </div>
+
+
+</div>
+</ion-item>
+
+<div class="item item-divider" id ="div">
+    E
+  </div>
+   <ion-item  ng-repeat="flight in newof |  orderBy:'date'"
+            class="item-thumbnail-left">
+ 
+  <div class="item item-text-wrap" id="dv">
+ 
+   <div class="row"> 
+   <div class="col col-33">{{flight.origin}}</div>
+    <div class="col col-33">{{flight.currency}}</div>
+  <div class="col col-33">{{flight.destination}}</div>
+  </div>
+     <div class="row"> 
+   <div class="col col-33">{{flight.departureDateTime}}</div>
+    <div class="col col-33">{{flight.ecost}}</div>
+  <div class="col col-33">{{flight.arrivalDateTime}}</div>
+  </div>
+    <div class="row">
+<!--   <div class="col col-40"><button ng-click="openPopover($event)" class=" button button-clear ion-chevron-down "></button></div>
+ -->  <div class="col col-33"></div>
+  <div class="col col-33"><input type="radio" name="radio2" id="{{flight.e_id}}" class="radio" ng-show="false"  ng-click="radioActionDest(flight.e_id)" />
+        <label for="{{flight.e_id}}">Choose</label></div>
+ </div>
+    
+ 
+</div>
+</ion-item>
+</div>
+
+
+<div class="item item-text-wrap" id ="dv">
+   <div class="row">
+  <div class="col col-40"></div>
+  <div class="col col-33"><button class=" button bookButton" g-click="Book()">Book
+</button></div>
+  <div class="col col-33"></div>
+ </div>
+ </div> 
+  
+</div>
+</div>
+ </ion-scroll>
+
+    </body>
+
+</html>

@@ -1,0 +1,28 @@
+#di{
+background-color: rgb(17,37,60);
+ color:white;
+height: 40px;
+}
+#txt{
+	color:rgb(17,37,60);
+}
+#dv{
+	background-color:light gray;
+	
+}
+
+#div{
+	background:rgb(110,27,20);
+	color:white;
+}
+.bookButton{
+ background-color: rgb(17,37,60);
+ color:white;
+}
+#crd1{
+	margin-top: 5px;
+
+}
+#crd{
+	margin-top: -40px;
+}
