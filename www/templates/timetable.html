@@ -8,8 +8,9 @@
 
       <div class="list" style="background:rgb(221,233,236);margin:0">
 <div ng-repeat="flight in arr | limitTo:limit">
-    <a class="item item-thumbnail-left" href="#" >
-      <img src="{{flight.img}}" >
+    <a class="item item-thumbnail-left" >
+
+      <img ng-src="{{flight.img}}" onerror="this.onerror=null;this.src='../img/transport.png';">
       <h2>{{flight.origin}} -> {{flight.destination}}</h2>
       <p> ARV : {{flight.arrivalDateTime}} </p>
       <p>DEP : {{flight.departureDateTime}}</p>

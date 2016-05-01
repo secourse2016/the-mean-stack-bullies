@@ -29,9 +29,7 @@
 
       <ion-pane>
         <br>
-        <ion-header-bar style="background:rgb(17,36,60);padding-top:10px;">
-          <img id="franceLogo" src="./img/logowhite.png" style="height:20px;margin:0 auto;">
-        </ion-header-bar>
+        
 
         <ion-content style="background:rgb(221,233,236);">
   	       <br>
@@ -51,7 +49,7 @@
       </button>
       </div>
     <div  class="list card" ng-show="notFound">
-        <a   href="#" class="item item-icon-left" >
+        <a   class="item item-icon-left" >
     <i class="icon ion-alert-circled"></i>
          Not Found
   </a> 
@@ -59,7 +57,7 @@
 
 
  <div  class="list card" ng-show="canceled">
-        <a   href="#" class="item item-icon-left" >
+        <a   class="item item-icon-left" >
     <i class="icon ion-ios-checkmark"></i>
          Reservation Canceled 
   </a> 
@@ -67,42 +65,42 @@
 
       <div  class="list card" ng-show="Found" ng-model="Departure2">
        
-        <a  href="#" class="item item-icon-left" >
+        <a class="item item-icon-left" >
     <i class="icon ion-arrow-right-a"></i>
          From: {{From}}
-  </a> 
-      <a  href="#" class="item item-icon-left" >
+      </a> 
+      <a   class="item item-icon-left" >
     <i class="icon ion-arrow-left-a"></i>
          To: {{To}}
   </a> 
-      <a  href="#" class="item item-icon-left" >
+      <a  class="item item-icon-left" >
     <i class="icon ion-calendar"></i>
          Departure Date: {{DepartureDate}}
   </a> 
-      <a  href="#" class="item item-icon-left" >
+      <a  class="item item-icon-left" >
     <i class="icon ion-clock"></i>
          Departure Time: {{DepartureTime}}
   </a> 
 
-              <a href="#" class="item item-icon-left">
+              <a class="item item-icon-left">
     <i class="icon ion-calendar"></i>
     Return Date: {{ReturnDate}}
   </a>
-     <a  href="#" class="item item-icon-left" >
+     <a  class="item item-icon-left" >
     <i class="icon ion-clock"></i>
          Return Time: {{ReturnTime}}
   </a> 
 
-  <a href="#" class="item item-icon-left">
+  <a class="item item-icon-left">
     <i class="icon ion-email"></i>
     Email: {{Email}}
   </a>
 
-        <a href="#" class="item item-icon-left">
+        <a class="item item-icon-left">
     <i class="icon ion-ios-person"></i>
     Adults: {{Adults}}
   </a>
-         <a href="#" class="item item-icon-left">
+         <a class="item item-icon-left">
     <i class="icon ion-ios-body"></i>
     Children: {{Children}}
   </a>
