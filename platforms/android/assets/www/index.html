@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
-    <title></title>
+    <title>AirFrance</title>
 
     <link href="lib/ionic/css/ionic.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
@@ -11,6 +11,7 @@
     <link href="css/home.css" rel="stylesheet">
      <link href="css/confirmation.css" rel="stylesheet">
      <link href="css/payment.css" rel="stylesheet">
+     <link href="css/timetable.css" rel="stylesheet">
 
     <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
     <link href="css/ionic.app.css" rel="stylesheet">
@@ -37,13 +38,14 @@
     <script src="./controllers/timeTableCtrl.js"></script>
     <script src="./controllers/HomeCtrl.js"></script>
     <script src="./controllers/paymentCtrl.js"></script>
-
+    <script src="./controllers/personalInfoCtrl.js"></script>
    
 
   </head>
 
   <body ng-app="starter" class="platform-android platform-cordova platform-webview">
-   <ion-nav-bar class="topBar" >
+  
+   <ion-nav-bar class="topBar" align-title="center">
             <ion-nav-back-button class="button-icon icon  ion-ios7-arrow-back" style="color:white">
                
                Back

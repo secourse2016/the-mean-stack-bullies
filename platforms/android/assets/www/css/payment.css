@@ -39,16 +39,16 @@ body
 		font-size: 30px;
 		font-family: Lucida Console;
 		color : white;
-		width: 800px;
-		margin-top: 20px;
-		margin-left: 20px;
+		/*width: 800px;*/
+		padding-top: 20px;
+		/*margin-left: 20px;*/
 	/*font-weight: bold;*/
 }
 
 .list
 
 {
-	margin-top:30%;
+
 	margin-bottom: 0px;
 
 }

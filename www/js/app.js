@@ -19,7 +19,12 @@ app = angular.module('starter', ['ionic', 'starter.controllers'])
     templateUrl: 'templates/ReservationDetails.html',
     controller: 'reservationCtrl'
       })
-     
+    
+     .state('passenger', {
+    url: '/passenger',
+    templateUrl: 'templates/personalInformation.html',
+    controller: 'personalInfoCtrl'
+      })
 
   .state('home', {
       url: '/home',

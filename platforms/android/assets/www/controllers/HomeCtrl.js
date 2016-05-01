@@ -1,9 +1,9 @@
-app.controller('HomeCtrl', function($scope, $location,$state) {
+app.controller('HomeCtrl', function($scope, $location,$state,HomeSrv) {
 
 console.log("HOME");
 $scope.bookFlight = function()
 {
-	$state.go('payment');
+	$state.go('passenger');
 }
 $scope.timeTable = function()
 {
@@ -29,9 +29,18 @@ $scope.offers = function()
 {
 	$state.go('payment');
 }
+HomeSrv.test("Home From Srv");
 
  
 
 
 
 });
+
+app.factory('HomeSrv',function ($http){ 
+    return{
+         test:function(text){
+              console.log(text);
+         }
+    }
+}); 

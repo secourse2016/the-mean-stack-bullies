@@ -21,8 +21,8 @@ body
 #form
 {
 	
-	margin-top: 50%;
-	padding: 20px;
+	margin-top: 29%;
+	padding: 3%;
 
 }
 #passengerInfoAbove
@@ -32,7 +32,7 @@ body
 	text-align: center;
 	box-shadow: -2px 1px 10px black;
 	border:none;
-	margin-top:92px;
+	margin-top:0;
 }
 #passengerInfoAbove h1
 {
@@ -43,4 +43,9 @@ body
 		margin-top: 20px;
 		margin-left: 20px;
 	/*font-weight: bold;*/
+}
+.submitButton
+{
+	margin-top:0px;
+	
 }

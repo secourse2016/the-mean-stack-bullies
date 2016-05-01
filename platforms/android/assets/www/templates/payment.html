@@ -8,11 +8,12 @@
 
       </ion-header-bar> -->
 
-<ion-header-bar id="passengerInfoAbove" class="bar-royal wow fadeInLeftBig" data-wow-duration="2s">
+<div id="passengerInfoAbove"  data-wow-duration="2s">
       
        <h1>Payment Information</h1>
-      </ion-header-bar>
-<ul class="list wow fadeInDown" data-wow-duration="2s">
+      </div>
+      
+<ul class="list wow fadeInRight" data-wow-duration="2s">
 
   <li class="item item-toggle">
      Visa
@@ -36,22 +37,28 @@
 </ul>
 
 <div id="form" class="list wow fadeInUp" data-wow-duration="2s">
+<button ng-click="submitPaymentForm()">Conifirmation</button>
   <label id="carholder" class="item item-input item-floating-label">
     <span class="input-label">CardHolderName</span>
-    <input type="text" placeholder="Card Name">
+    <input ng-model="holderN" type="text" placeholder="Card Name">
   </label>
   <label id="cardNumber" class="item item-input  item-floating-label">
     <span class="input-label">Card Number</span>
-    <input type="number" placeholder="Card Number">
+    <input ng-model="CardN" type="number" placeholder="Card Number">
   </label>
    <label id="CVV" class="item item-input item-floating-label">
     <span class="input-label">CVV</span>
-    <input type="number" placeholder="CVV">
+    <input ng-model="CVV" type="number" placeholder="CVV">
   </label>
   
+   <label  id="expiryDate2"class="item item-input item-stacked-label">
+    <span class="input-label">Expiry Date</span>
+    <input ng-model="expirymonth" type="month" placeholder="Expiry Date">
+  </label>
+   
   <label  id="expiryDate"class="item item-input item-stacked-label">
     <span class="input-label">Expiry Date</span>
-    <input type="date" placeholder="Expiry Date">
+    <input ng-model="expiryyear" type="year" placeholder="Expiry Date">
   </label>
   
 </div>
