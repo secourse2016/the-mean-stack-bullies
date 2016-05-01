@@ -1,23 +1,4 @@
 
-html,
-body {
-  padding: 0;
-  margin: 0;
-  background-color: rgb(221,233,236);
-  color: rgb(221,233,236);
-  font-family: 'Open Sans';
-}
-
-.container {
-  box-sizing: border-box;
-  padding: 0 25px 25px;
-  text-align: center;
-}
-
-.container h2 { margin-bottom: 40px; margin-top:150px; }
-
-.container p { margin-top: 40px; }
-
 /* Checkmark style starts */
 @-moz-keyframes 
 dothabottomcheck {  0% {
