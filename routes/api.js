@@ -96,6 +96,7 @@ var router = express.Router();
 
               router.post('/api/insertperson', function(req, res,next) {
                  console.log("inside the main insertperson");
+                 console.log(req.body.people[i]);
                  var i;
                  var bool="";
                  for(i=0;i<req.body.people.length;i++){

@@ -84,9 +84,9 @@ exports.getRoundTripFlights = function(bookingData, cb){
                 
   			var flightCriteria2 = { 
             origin:bookingData.destination,
-   			destination:bookingData.origin,
-   			class:bookingData.class,
-   			seats:bookingData.seats
+       			destination:bookingData.origin,
+       			class:bookingData.class,
+       			seats:bookingData.seats
              };  
 
            var x2 = new Date(arrivalDateTime);

@@ -1,9 +1,22 @@
-app.controller('paymentCtrl', function($scope, $location,paySrv,chargeSrv) {
+app.controller('paymentCtrl', function($scope, $location,paySrv,chargeSrv,personalInfoSrv,flightSrv) {
      /**
       * validating payment form
       */
+       var flightsFromOtherAirlinesTotalCost = 0;
+       var inFlightData = flightSrv.getInFLightData();
+       var outFlightData = flightSrv.getOutFLightData();
+
+       if(outFlightData != null){
+        flightsFromOtherAirlinesTotalCost+= outFlightData.FlightCost;
+       }
+
+       if(inFlightData != null){
+        flightsFromOtherAirlinesTotalCost+= inFlightData.FlightCost;
+       }
+
       paySrv.getAmount(function(amount){
-        $scope.amount=amount;
+
+        $scope.amount=amount+flightsFromOtherAirlinesTotalCost;
       });
       
       function paymentValidations(){
@@ -61,15 +74,44 @@ app.controller('paymentCtrl', function($scope, $location,paySrv,chargeSrv) {
                $scope.$apply();
         }
         else{
-            
 
-            Stripe.card.createToken({
-            number: $scope.CardN,
-            cvc: $scope.CVV,
-            exp_month: getMonthNumber($scope.expirymonth),
-            exp_year: $scope.expiryyear
+             if(outFlightData != null){
+                paySrv.getStripePublicKeyOfOtherAirline(outFlightData.FlightAirline,function(key){
+                    console.log(key);
+                    Stripe.setPublishableKey(key); 
+
+                    Stripe.card.createToken({
+                    number: $scope.CardN,
+                    cvc: $scope.CVV,
+                    exp_month: getMonthNumber($scope.expirymonth),
+                    exp_year: $scope.expiryyear
+                    
+                    }, stripeResponseHandler); 
+
+                    if(inFlightData != null){
+                 paySrv.getStripePublicKeyOfOtherAirline(inFlightData.FlightAirline,function(publickey){
+                           
+                            console.log(publickey);
+                            Stripe.setPublishableKey(publickey); 
+
+                            Stripe.card.createToken({
+                            number: $scope.CardN,
+                            cvc: $scope.CVV,
+                            exp_month: getMonthNumber($scope.expirymonth),
+                            exp_year: $scope.expiryyear
+                            
+                            }, stripeResponseHandler); 
+                 });
+               
+               }
+                });
+
+               
+               }
+
+               
+
             
-            }, stripeResponseHandler); 
               
             
 } 
@@ -95,31 +137,91 @@ app.controller('paymentCtrl', function($scope, $location,paySrv,chargeSrv) {
 
           var date ="01 "+$scope.expirymonth+" "+$scope.expiryyear;
 
-               console.log(response);
-            var pa=[{
-            visa:boolea,
-            MasterCard: (!boolea),
-            CardHolderName: $scope.holderN,
-            CardHolderNo: $scope.CardN,
-            Cvv: $scope.CVV,
-            ExpiryDate: date
-          }]; 
-           
-          paySrv.insertPayment(response.id,pa,
-               function(flag) {
-                     if(flag == true){
-                        console.log("here in the payment controlller");
-                        $location.url('/confirm');
-                     }
-                     else{
-                      alert("something went wrong please try again");
-                     }
+            var inFlightData = flightSrv.getInFLightData();
+            var outFlightData = flightSrv.getOutFLightData();
+
+            if(outFlightData != null){
+              customizeBookingFromOtherAirlineRequestObject(outFlightData,response.id,function(returnedData){
+
+                 if(inFlightData != null){
+              customizeBookingFromOtherAirlineRequestObject(inFlightData,response.id,function(response){
+                $location.url('/confirm');
+              });
+            }else{
+              $location.url('/confirm'); 
+            }
+              });
+            
+
+            
+                }else{
+                        var pa=[{
+                              visa:boolea,
+                              MasterCard: (!boolea),
+                              CardHolderName: $scope.holderN,
+                              CardHolderNo: $scope.CardN,
+                              Cvv: $scope.CVV,
+                              ExpiryDate: date
+                            }]; 
+                             
+                      paySrv.insertPayment(response.id,pa,
+                           function(flag) {
+                                 if(flag == true){
+                                    console.log("here in the payment controlller");
+                                    $location.url('/confirm');
+                                   }
+                                   else{
+                                    alert("something went wrong please try again");
+                                   }
                 });
+             }
+             
+
+
+      
         
         }
       } 
-    
+
    
+
+   customizeBookingFromOtherAirlineRequestObject = function(flightData,paymentToken,cb){
+      var personArray = personalInfoSrv.getPersonArray();
+      var passengerDetails = [];
+      for(var i=0;i<personArray.length;i++){
+        var person = {
+        firstName: personArray[i].firstName, 
+        lastName: personArray[i].secondName, 
+        passportNum: personArray[i].passportNumber,
+        passportExpiryDate: personArray[i].expiryDate.getTime(), 
+        dateOfBirth: new Date().getTime(), 
+        nationality: personArray[i].nationality, 
+        email: "hatemmorgan17@gmail.com" 
+         }
+       passengerDetails.push(person);  
+      }
+
+      FlightDatareqData = {
+      passengerDetails:passengerDetails,
+      class:flightData.FlightClass,
+      cost:flightData.FlightCost,
+      outgoingFlightId:flightData.FlightID,
+      returnFlightId:null,
+      paymentToken:paymentToken
+     };
+   
+     
+      
+  
+
+     paySrv.sendBookingToOtherAirline(FlightDatareqData,flightData.FlightAirline,function(response){
+      console.log("in customizeBookingFromOtherAirlineRequestObject method");
+      console.log(response);
+      cb(response);
+  
+      
+     });
+    }
 
     getMonthNumber = function(month){ 
          

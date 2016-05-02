@@ -1,6 +1,7 @@
 app.factory('flightSrv', function ($http) {
-      var inFlights = [];
-      var outFlights = [];
+      var inFlight = null;
+      var outFlight = null;
+      
       var flightsFromOtherAirlines = [];
       var ReturnflightsFromOtherAirlines = [];
 
@@ -27,9 +28,10 @@ app.factory('flightSrv', function ($http) {
                 'x-access-token':response
               }
           };
-          console.log("services2");
+          console.log("services2-->"+response);
           return $http(req).then(
             function mySucces(response) {
+              console.log("heres");
                     cb(response.data);
      },      function myError(response) {
                  cb(response.statusText);
@@ -123,7 +125,22 @@ app.factory('flightSrv', function ($http) {
             }
           });
         });
-        }
+        },
+     setOutFLightData:function(outFlightData){
+      console.log("setting outflights in flightSRv");
+      console.log(outFlightData)
+      outFlight = outFlightData;
+    },
+
+     setinFLightData:function(inFlightData){
+      inFlight = inFlightData;
+    },
+     getOutFLightData:function(){
+      return outFlight;
+    },
+     getInFLightData:function(){
+      return inFlight;
+    }      
 }
  });
 

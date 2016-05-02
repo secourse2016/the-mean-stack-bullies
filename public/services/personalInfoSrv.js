@@ -1,4 +1,5 @@
 app.factory('personalInfoSrv', function ($http) {
+    var personArray = [];
      return {
          insertPerson : function(pe,cb) {
           var tokenReq = {
@@ -61,7 +62,14 @@ app.factory('personalInfoSrv', function ($http) {
                 console.log(response.statusText);
                 alert("An error occured please try again");
             });
-         }
-
+         },
+    setPersonArray : function(persons){
+      personArray = persons;
+      console.log(personArray);
+    },
+    getPersonArray: function(){
+      return personArray;
+    }
      };
+
  });

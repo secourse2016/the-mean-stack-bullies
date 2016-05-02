@@ -2,7 +2,7 @@
 app.factory('airlineSrv',function ($http){ 
    var airlines =  [    
    						//"http://www.swiss-air.me",
-   					//"http://52.90.41.197", 
+   					"http://52.90.41.197", 
 						"http://ec2-54-152-123-100.compute-1.amazonaws.com",
 						"http://52.27.150.19",
 						"http://ec2-52-26-166-80.us-west-2.compute.amazonaws.com",
@@ -48,7 +48,7 @@ app.factory('airlineSrv',function ($http){
 				    var DepartureDate = booking.DepartureDate.getTime();
                 		var req = {  
 		                  method : 'GET', 
-		                  url:""+airlines[count]+"/api/flights/search/"+origin+"/"+destination+"/"+DepartureDate+"/economy?wt="+token+""
+		                  url:""+airlines[count]+"/api/flights/search/"+origin+"/"+destination+"/"+DepartureDate+"/economy/1?wt="+token+""
 					          };
                       return $http(req).success(function(economyFlights){
                       
@@ -59,7 +59,7 @@ app.factory('airlineSrv',function ($http){
                       	getEconomyOfOneTripFlightsFromOtherAirlines(count+1,cb);
                       }).error(function(response){
 		                 console.log(response);
-		                 alert("An error occured please try again");
+		                 getEconomyOfOneTripFlightsFromOtherAirlines(count+1,cb);
 		             });
       				});
             	}
@@ -79,7 +79,7 @@ app.factory('airlineSrv',function ($http){
 				    var DepartureDate = booking.DepartureDate.getTime();
                 		var req = {  
 		                  method : 'GET', 
-		                  url:""+airlines[count]+"/api/flights/search/"+origin+"/"+destination+"/"+DepartureDate+"/business?wt="+token+""
+		                  url:""+airlines[count]+"/api/flights/search/"+origin+"/"+destination+"/"+DepartureDate+"/business/1?wt="+token+""
 					          };
                       return $http(req).success(function(businessFlights){
                        
@@ -90,7 +90,8 @@ app.factory('airlineSrv',function ($http){
                       	getBussinessOfOneTripFlightsFromOtherAirlines(count+1,cb);
                       }).error(function(response){
 		                 console.log(response);
-		                 alert("An error occured please try again");
+		                 //alert("An error occured please try again");
+                     getBussinessOfOneTripFlightsFromOtherAirlines(count+1,cb);
 		             });
       				});
             	}

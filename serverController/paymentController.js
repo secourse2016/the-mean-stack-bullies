@@ -81,9 +81,14 @@ var stripe = require("stripe")("sk_test_eI0A2eL166WZXsd51IOkmksT");
                       		cb(err,null);
                       	}
                       	else{
-                      		console.log("hello from inside paymentserver outdocs not null"+amount);
+                      		if(outdocs.length >0){
+          			 		console.log("hello from inside paymentserver outdocs not null"+amount);
 	                      	amount=outdocs[0].cost;
 	                      	cb(null,amount);
+	                      }else{
+	                      	cb(null,0);
+	                      }
+                     
 	                    }
 					  });
             	}
