@@ -54,14 +54,18 @@ app.controller('paymentCtrl', function($scope, $location,paySrv,chargeSrv) {
                $scope.$apply();
         }
 
-
+                 
         if(errMessage&&errMessage.length < 50){
           $scope.alertMe =errMessage;
                $scope.payAlert = true;
                $scope.$apply();
         }
-        else{
-            
+        else{ 
+          
+          /*publishable key is set here instead of setting it in core.js 
+            to be able to reset it*/ 
+
+           Stripe.setPublishableKey(stripeKey); 
 
             Stripe.card.createToken({
             number: $scope.CardN,
