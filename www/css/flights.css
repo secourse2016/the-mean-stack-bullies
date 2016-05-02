@@ -1,7 +1,17 @@
+#ti{background-color: rgb(17,37,60);
+ color:white;
+height: 30px;
+text-align: center;
+}
 #di{
 background-color: rgb(17,37,60);
  color:white;
-height: 40px;
+height: 30px;
+text-align: center;
+}
+#h{
+	height: 20px;
+	color:white;
 }
 #txt{
 	color:rgb(17,37,60);
@@ -18,6 +28,7 @@ height: 40px;
 .bookButton{
  background-color: rgb(17,37,60);
  color:white;
+  
 }
 #crd1{
 	margin-top: 5px;

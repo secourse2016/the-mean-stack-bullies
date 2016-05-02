@@ -24,25 +24,24 @@
     <script src="../js/app.js"></script>
   </head>
 
-    <body ng-controller="flightCtrl">
+     <body ng-controller="flightCtrl">
       <ion-scroll direction="y" class="theroot">
     <div class="list">
   <div class="card" id="crd1">
-   <div class="item item-divider" id ="di">
+  <div class="item item-divider " id ="ti">
+  Choose a Flight
+  </div>
+
+   <div class="item item-divider" id ="di" ng-repeat="flight in newof |  orderBy:'date'">
     
-     <div class="row"> 
-   <div class="col col-20"> {{flight.origin}}</div>
-    <div class="col col-25">{{flight.aircraftType}}</div>
-  <div class="col col-20">{{flight.destination}}</div>
-  <div class="col col-20">#{{flight.flightNumber}}</div>
- </div>
-  </div>
-  <div class="item item-divider" id ="div">
-    B
+   <h2 id="h">{{flight.aircraftType}}   #{{flight.flightNumber}}  </h2>
+<!--  -->
+  <div class="item item-divider" id ="div" ng-show="viewFlight(flight.bcost)" >
+    Business
   </div>
   
-  
-    <ion-item  ng-repeat="flight in newof |  orderBy:'date'"
+  <!--  -->
+    <ion-item  ng-show="viewFlight(flight.bcost)"
             class="item-thumbnail-left">
  
   <div class="item item-text-wrap" id="dv">
@@ -67,11 +66,12 @@
     </div>
 </div>
 </ion-item>
-
-<div class="item item-divider" id ="div">
-    E
+<!--  -->
+<div class="item item-divider" id ="div" ng-show="viewFlight(flight.ecost)"> 
+    Economy
   </div>
-   <ion-item  ng-repeat="flight in newof |  orderBy:'date'"
+ <!--    -->
+   <ion-item ng-show="viewFlight(flight.ecost)"
             class="item-thumbnail-left">
  
   <div class="item item-text-wrap" id="dv">
@@ -106,18 +106,17 @@
   <div class="card" id="crd">
    <div class="item item-divider" id ="di">
     
-     <div class="row"> 
-   <div class="col col-40">  </div>
-  <div class="col col-33">Return Flights</div>
-  <div class="col col-33"></div>
- </div>
+    
+  <h ng-show=show id="h">Return Flights</h>
   </div>
-  <div class="item item-divider" id ="div">
-    B
+  <!-- -->
+  <div ng-repeat="flight in newof2 |  orderBy:'date'" >
+  <div class="item item-divider" id ="div" ng-show="viewFlight(flight.bcost)">
+    Business
   </div>
   
   
-    <ion-item  ng-repeat="flight in newof |  orderBy:'date'"
+    <ion-item  ng-show="viewFlight(flight.bcost)"
             class="item-thumbnail-left">
  
   <div class="item item-text-wrap" id="dv">
@@ -144,10 +143,10 @@
 </div>
 </ion-item>
 
-<div class="item item-divider" id ="div">
-    E
+<div class="item item-divider" id ="div" ng-show="viewFlight(flight.ecost)">
+   Economy
   </div>
-   <ion-item  ng-repeat="flight in newof |  orderBy:'date'"
+   <ion-item  ng-show="viewFlight(flight.ecost)"
             class="item-thumbnail-left">
  
   <div class="item item-text-wrap" id="dv">
@@ -173,7 +172,7 @@
 </div>
 </ion-item>
 </div>
-
+</div>
 
 <div class="item item-text-wrap" id ="dv">
    <div class="row">

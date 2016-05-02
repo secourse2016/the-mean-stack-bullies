@@ -26,8 +26,7 @@ console.log("in flight controller");
                 "e_id":$scope.outgoingFlights[ind]._id,
                 "b_id":$scope.outgoingFlights[ind+1]._id,
                 "origin":$scope.outgoingFlights[ind].origin,
-                "eseats":$scope.outgoingFlights[ind].seats,
-                "bseats":$scope.outgoingFlights[ind+1].seats,
+      
                 "departureDateTime":$scope.outgoingFlights[ind].departureDateTime,
                 "ecost":$scope.outgoingFlights[ind].cost,
                 "bcost":$scope.outgoingFlights[ind+1].cost,
@@ -57,8 +56,6 @@ console.log("in flight controller");
                 "e_id":$scope.returnedFlights[ind]._id,
                 "b_id":$scope.returnedFlights[ind+1]._id,
                 "origin":$scope.returnedFlights[ind].origin,
-                "eseats":$scope.returnedFlights[ind].seats,
-                "bseats":$scope.returnedFlights[ind+1].seats,
                 "departureDateTime":$scope.returnedFlights[ind].departureDateTime,
                 "ecost":$scope.returnedFlights[ind].cost,
                 "bcost":$scope.returnedFlights[ind+1].cost,
@@ -87,7 +84,7 @@ console.log("in flight controller");
                 if(err){
                   alert(err);
                 }else{
-                  $location.url('/passenger');
+                  $location.url('./templates/personalInformation');
                 }
             });
           }
@@ -109,28 +106,28 @@ console.log("in flight controller");
       // console.log(id);
     inFlightID = id;
   }
-    $ionicPopover.fromTemplateUrl('../partials/details.html', {
-    scope: $scope
-  }).then(function(popover) {
-    $scope.popover = popover;
-  });
-  $scope.openPopover = function($event) {  
-   $scope.popover.show($event);
-  };
-  $scope.closePopover = function() {
-    $scope.popover.hide();
-  };
- // Perform Action on destroy
-   $scope.$on('$destroy', function() {
-    $scope.popover.remove();
-  });
-  // Perform action on hide popover
-  $scope.$on('popover.hidden', function() {
-    // Perform action
-  });
-  // Perform action on remove popover
-  $scope.$on('popover.removed', function() {
-    // Perform action
-  });
+ //    $ionicPopover.fromTemplateUrl('../partials/details.html', {
+ //    scope: $scope
+ //  }).then(function(popover) {
+ //    $scope.popover = popover;
+ //  });
+ //  $scope.openPopover = function($event) {  
+ //   $scope.popover.show($event);
+ //  };
+ //  $scope.closePopover = function() {
+ //    $scope.popover.hide();
+ //  };
+ // // Perform Action on destroy
+ //   $scope.$on('$destroy', function() {
+ //    $scope.popover.remove();
+ //  });
+ //  // Perform action on hide popover
+ //  $scope.$on('popover.hidden', function() {
+ //    // Perform action
+ //  });
+ //  // Perform action on remove popover
+ //  $scope.$on('popover.removed', function() {
+ //    // Perform action
+ //  });
 
 });
