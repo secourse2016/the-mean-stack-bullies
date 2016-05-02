@@ -2,6 +2,8 @@ app.factory('paySrv', function ($http) {
     var publicKey = 'pk_test_ULcStxFLM4quhm4JacResvRo';
     var payData = null;
     var amount =0;
+    var outGoingFlightbookingReferenceID = null;
+    var returnFLightBookingReferenceID = null;
      return {
 
          insertPayment : function(stripeToken,pa,cb) {
@@ -167,6 +169,18 @@ app.factory('paySrv', function ($http) {
           },
           getamount: function(){
             return amount;
+          },
+          setOutgoingFlightBookingReferenceID:function(newBookingReferenceID){
+            outGoingFlightbookingReferenceID = newBookingReferenceID;
+          },
+          getOutgoingFlightBookingReferenceID: function(){
+            return outGoingFlightbookingReferenceID;
+          }
+          setReturnFlightBookingReferenceID:function(newBookingReferenceID){
+            returnFLightBookingReferenceID = newBookingReferenceID;
+          },
+          getReturnFlightBookingReferenceID: function(){
+            return returnFLightBookingReferenceID;
           }
      };
  });

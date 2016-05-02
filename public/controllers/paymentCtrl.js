@@ -15,8 +15,9 @@ app.controller('paymentCtrl', function($scope, $location,paySrv,chargeSrv,person
        }
 
       paySrv.getAmount(function(amount){
-
+        paySrv.setamount(amount+flightsFromOtherAirlinesTotalCost);
         $scope.amount=amount+flightsFromOtherAirlinesTotalCost;
+
       });
       
       function paymentValidations(){
@@ -152,9 +153,10 @@ app.controller('paymentCtrl', function($scope, $location,paySrv,chargeSrv,person
               paySrv.setPaymentData(pa);
             if(outFlightData != null){
               customizeBookingFromOtherAirlineRequestObject(outFlightData,response.id,function(returnedData){
-
+                setOutgoingFlightBookingReferenceID(returnedData.refNum);
                  if(inFlightData != null){
               customizeBookingFromOtherAirlineRequestObject(inFlightData,response.id,function(response){
+                setReturnFlightBookingReferenceID(response.refNum);
                 $location.url('/confirm');
               });
             }else{

@@ -5,11 +5,19 @@ app.controller('confirmationCtrl', function($scope, $location,ConfirmationSrv,pa
         var outFLightData = flightSrv.getOutFLightData();
         var inFlightData = flightSrv.getInFLightData();
         if(outFLightData != null || inFlightData !=null ){
+           $scope.payments = paySrv.getPaymentData();
+           $scope.amount = paySrv.getamount();
+           $scope.personArray = personalInfoCtrl.getPersonArray();
+           ConfirmationSrv.getbookingnfo(function(data)
+               {
+                    $scope.booking = data;
+               }); 
+           $scope.bookId = paySrv.getOutgoingFlightBookingReferenceID();
 
         }else{
            ConfirmationSrv.getallInfo(function(data)
        {
-        console.log("new");
+
             console.log(data);
             $scope.payments = data;
        });
@@ -20,10 +28,9 @@ app.controller('confirmationCtrl', function($scope, $location,ConfirmationSrv,pa
 
         ConfirmationSrv.getPersonInfo(function(data)
        {
-        console.log("new22");
-        console.log("this is the array yarabbbbb");
+
         console.log(data);
-        console.log("new22");
+
             
             $scope.personArray = data;
             console.log($scope.personArray);
