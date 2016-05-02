@@ -88,6 +88,7 @@ app.controller('paymentCtrl', function($scope, $location,paySrv,chargeSrv,person
                     
                     }, stripeResponseHandler); 
 
+
                     if(inFlightData != null){
                  paySrv.getStripePublicKeyOfOtherAirline(inFlightData.FlightAirline,function(publickey){
                            
@@ -140,6 +141,15 @@ app.controller('paymentCtrl', function($scope, $location,paySrv,chargeSrv,person
             var inFlightData = flightSrv.getInFLightData();
             var outFlightData = flightSrv.getOutFLightData();
 
+            var pa=[{
+                      visa:boolea,
+                      MasterCard: (!boolea),
+                      CardHolderName: $scope.holderN,
+                      CardHolderNo: $scope.CardN,
+                      Cvv: $scope.CVV,
+                      ExpiryDate: date
+                            }]; 
+              paySrv.setPaymentData(pa);
             if(outFlightData != null){
               customizeBookingFromOtherAirlineRequestObject(outFlightData,response.id,function(returnedData){
 
@@ -155,14 +165,7 @@ app.controller('paymentCtrl', function($scope, $location,paySrv,chargeSrv,person
 
             
                 }else{
-                        var pa=[{
-                              visa:boolea,
-                              MasterCard: (!boolea),
-                              CardHolderName: $scope.holderN,
-                              CardHolderNo: $scope.CardN,
-                              Cvv: $scope.CVV,
-                              ExpiryDate: date
-                            }]; 
+                        
                              
                       paySrv.insertPayment(response.id,pa,
                            function(flag) {

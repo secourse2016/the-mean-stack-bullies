@@ -1,5 +1,7 @@
 app.factory('paySrv', function ($http) { 
     var publicKey = 'pk_test_ULcStxFLM4quhm4JacResvRo';
+    var payData = null;
+    var amount =0;
      return {
 
          insertPayment : function(stripeToken,pa,cb) {
@@ -152,6 +154,19 @@ app.factory('paySrv', function ($http) {
 
            });
         
+          },
+
+          setPaymentData:function(paymentData){
+            payData = paymentData;
+          },
+          getPaymentData: function(){
+            return payData;
+          },
+          setamount:function(newAmount){
+            amount = newAmount;
+          },
+          getamount: function(){
+            return amount;
           }
      };
  });
