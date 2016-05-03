@@ -7,20 +7,29 @@ app.controller('paymentCtrl', function($scope, $location,paySrv,chargeSrv,person
        var outFlightData = flightSrv.getOutFLightData();
        var NumberOfPassengers = personalInfoSrv.getPersonArray().length;
        console.log(outFlightData);
+       console.log(inFlightData);
        if(outFlightData != null && outFlightData.FlightAirline!="AirFrance"){
+        console.log("here1");
         flightsFromOtherAirlinesTotalCost+= outFlightData.FlightCost*NumberOfPassengers;
        }
 
        if(inFlightData != null&& inFlightData.FlightAirline !="AirFrance"){
+        console.log("here2");
         flightsFromOtherAirlinesTotalCost+= inFlightData.FlightCost*NumberOfPassengers;
-       }
-    console.log(flightsFromOtherAirlinesTotalCost);
-      paySrv.getAmount(function(amount){
-        console.log(amount);
-        paySrv.setamount(amount+flightsFromOtherAirlinesTotalCost);
-        $scope.amount=amount+flightsFromOtherAirlinesTotalCost;
 
+       }
+        console.log(flightsFromOtherAirlinesTotalCost);
+        $scope.amount = flightsFromOtherAirlinesTotalCost;
+       if(outFlightData != null && outFlightData.FlightAirline=="AirFrance" || inFlightData != null&& inFlightData.FlightAirline =="AirFrance" ){
+          paySrv.getAmount(function(amount){
+          console.log(amount);
+          paySrv.setamount(amount+flightsFromOtherAirlinesTotalCost);
+          flightsFromOtherAirlinesTotalCost+=amount;
+          $scope.amount = flightsFromOtherAirlinesTotalCost;
       });
+       }
+    
+    
       
       function paymentValidations(){
         var isvalid =true;
@@ -194,6 +203,7 @@ app.controller('paymentCtrl', function($scope, $location,paySrv,chargeSrv,person
                             }, stripeResponseHandlerForReturnFlightsPayment); 
                  });
                         }else{
+                          console.log("in the else part ");
                             Stripe.setPublishableKey("pk_test_ULcStxFLM4quhm4JacResvRo"); 
 
                             Stripe.card.createToken({
@@ -277,7 +287,8 @@ app.controller('paymentCtrl', function($scope, $location,paySrv,chargeSrv,person
                paySrv.setReturnFlightBookingReferenceID(returnedData.refNum);
                     $location.url('/confirm');
             });
-            }else{
+            }else{    
+                        console.log(response.id);
                       paySrv.insertPayment(response.id,pa,
                            function(flag) {
                                  if(flag == true){

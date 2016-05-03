@@ -79,7 +79,24 @@ exports.decreaseSeatsByNumber = function(number,flightIDOutging,flightIDInGoing,
     });
   }
   else{
-    cb("NO flight choosen",null);
+       if (flightIDInGoing != null)
+      {
+        inFlightModel.findOne({ _id:  flightIDInGoing }, function (err, doc2){
+          if (!err)
+          {
+            console.log("dov2-------------------"+doc2);
+             doc2.seats=doc2.seats-number;
+             doc2.save();
+             cb(null,doc2);
+          }else{
+            cb(err,null);
+          }
+        });
+      }
+      else{
+       cb("NO flight choosen",null);
+      }
+    
   }
 };
 

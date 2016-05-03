@@ -39,6 +39,7 @@ var stripe = require("stripe")("sk_test_eI0A2eL166WZXsd51IOkmksT");
                       outquery.where('_id',ouFlight_id);
                       outquery.exec(function (err, outdocs) {
                       	if(err){
+
                       		console.log("hello from inside paymentserver error");
                       		cb(err,null);
                       	}
@@ -49,6 +50,8 @@ var stripe = require("stripe")("sk_test_eI0A2eL166WZXsd51IOkmksT");
 									cb(err,null);
 								}
 								else{
+									console.log(outdocs[0]);
+									console.log(indocs[0]);
 									amount=(outdocs[0].cost+indocs[0].cost);
 									console.log("hello from inside paymentserver two not null"+amount);
 									cb(null,amount);

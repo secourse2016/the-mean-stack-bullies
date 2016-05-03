@@ -378,56 +378,56 @@
           FlightClass:outFlightClass,
           FlightCost:outFlightCost
         };
-
-      if(outFlightAirline == "AirFrance"){
-        if(!inFlightID && !outFlightID){
+         if(!inFlightID && !outFlightID){
           alert("you have to choose a flight");
         }else{
-          if(inFlightID && outFlightID || outFlightID){
+          if(inFlightID == null && outFlightID && outFlightAirline=="AirFrance"){
+              flightSrv.setOutFLightData(outFlightData);
+              flightSrv.setinFLightData(inFlightData);
+              insertFlightInSession(null,outFlightID);
+          }else{
+            if(inFlightID == null && outFlightID && outFlightAirline!="AirFrance"){
+              flightSrv.setOutFLightData(outFlightData);
+              flightSrv.setinFLightData(inFlightData);
+              $location.url('/passenger');
+            }else{
+              if(inFlightID != null &&inFlightAirline != "AirFrance" && outFlightID && outFlightID!="AirFrance"){
+                flightSrv.setOutFLightData(outFlightData);
+                flightSrv.setinFLightData(inFlightData);
+                $location.url('/passenger');
+              }else{
+                if(inFlightID != null &&inFlightAirline == "AirFrance" && outFlightID && outFlightID=="AirFrance"){
+                  flightSrv.setOutFLightData(outFlightData);
+                  flightSrv.setinFLightData(inFlightData);
+                  insertFlightInSession(inFlightID,outFlightID);
+                }else{
+                 if(inFlightID != null &&inFlightAirline != "AirFrance" && outFlightID && outFlightID=="AirFrance"){
+                        flightSrv.setOutFLightData(outFlightData);
+                        flightSrv.setinFLightData(inFlightData);
+                        insertFlightInSession(null,outFlightID);
+                  }else{
+                    if(inFlightID != null &&inFlightAirline == "AirFrance" && outFlightID && outFlightID!="AirFrance"){
+                        flightSrv.setOutFLightData(outFlightData);
+                        flightSrv.setinFLightData(inFlightData);
+                        insertFlightInSession(inFlightID,null);
+                    }
+                  } 
+                }
+              }
+            }
+          }
+        }
 
-          if(inFlightID && !outFlightID){
-            flightSrv.setinFLightData(inFlightData);
-          }
-          if(!inFlightID && outFlightID){
-            flightSrv.setOutFLightData(outFlightData);
-          }
-          if(inFlightID && outFlightID){
-            flightSrv.setinFLightData(inFlightData);
-            flightSrv.setOutFLightData(outFlightData);
-          }
-
-            flightSrv.insertFlight(inFlightID,outFlightID,function(err){
+        function insertFlightInSession (InID,OutID){
+           flightSrv.insertFlight(InID,OutID,function(err){
               if(err){
                 alert(err);
               }else{
                 $location.url('/passenger');
               }
             });
-          }
-
-
         }
 
-      }else{
-        
-        if(!inFlightID && !outFlightID){
-          alert("you have to choose a flight");
-        }else{
-          if(inFlightID && !outFlightID){
-            flightSrv.setinFLightData(inFlightData);
-            $location.url('/passenger');
-          }
-          if(!inFlightID && outFlightID){
-            flightSrv.setOutFLightData(outFlightData);
-            $location.url('/passenger');
-          }
-          if(inFlightID && outFlightID){
-            flightSrv.setinFLightData(inFlightData);
-            flightSrv.setOutFLightData(outFlightData);
-            $location.url('/passenger');
-          }
-        }
-      }
 
       
     }
