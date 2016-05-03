@@ -12,7 +12,7 @@ app.controller('paymentCtrl', function($scope, $location,paySrv,chargeSrv,person
        }
 
        if(inFlightData != null&& inFlightData.FlightAirline !="AirFrance"){
-        flightsFromOtherAirlinesTotalCost+= inFlightData.FlightCost;
+        flightsFromOtherAirlinesTotalCost+= inFlightData.FlightCost*NumberOfPassengers;
        }
     console.log(flightsFromOtherAirlinesTotalCost);
       paySrv.getAmount(function(amount){
@@ -89,35 +89,35 @@ app.controller('paymentCtrl', function($scope, $location,paySrv,chargeSrv,person
                     exp_month: getMonthNumber($scope.expirymonth),
                     exp_year: $scope.expiryyear
                     
-                    }, stripeResponseHandler); 
+                    }, stripeResponseHandlerForOutgoingFlightsPayment); 
 
 
-                    if(inFlightData != null && inFlightData.FlightAirline !="AirFrance"){
-                 paySrv.getStripePublicKeyOfOtherAirline(inFlightData.FlightAirline,function(publickey){
+               //      if(inFlightData != null && inFlightData.FlightAirline !="AirFrance"){
+               //   paySrv.getStripePublicKeyOfOtherAirline(inFlightData.FlightAirline,function(publickey){
                            
-                            console.log(publickey);
-                            Stripe.setPublishableKey('publickey'); 
+               //              console.log(publickey);
+               //              Stripe.setPublishableKey('publickey'); 
 
-                            Stripe.card.createToken({
-                            number: $scope.CardN,
-                            cvc: $scope.CVV,
-                            exp_month: getMonthNumber($scope.expirymonth),
-                            exp_year: $scope.expiryyear
+               //              Stripe.card.createToken({
+               //              number: $scope.CardN,
+               //              cvc: $scope.CVV,
+               //              exp_month: getMonthNumber($scope.expirymonth),
+               //              exp_year: $scope.expiryyear
                             
-                            }, stripeResponseHandler); 
-                 });
+               //              }, stripeResponseHandler); 
+               //   });
                
-               }else{
-                 Stripe.setPublishableKey("pk_test_ULcStxFLM4quhm4JacResvRo"); 
+               // }else{
+               //   Stripe.setPublishableKey("pk_test_ULcStxFLM4quhm4JacResvRo"); 
 
-                            Stripe.card.createToken({
-                            number: $scope.CardN,
-                            cvc: $scope.CVV,
-                            exp_month: getMonthNumber($scope.expirymonth),
-                            exp_year: $scope.expiryyear
+               //              Stripe.card.createToken({
+               //              number: $scope.CardN,
+               //              cvc: $scope.CVV,
+               //              exp_month: getMonthNumber($scope.expirymonth),
+               //              exp_year: $scope.expiryyear
                             
-                            }, stripeResponseHandler); 
-               }
+               //              }, stripeResponseHandler); 
+               // }
                 });
 
                
@@ -131,7 +131,7 @@ app.controller('paymentCtrl', function($scope, $location,paySrv,chargeSrv,person
                             exp_month: getMonthNumber($scope.expirymonth),
                             exp_year: $scope.expiryyear
                             
-                            }, stripeResponseHandler); 
+                            }, stripeResponseHandlerForOutgoingFlightsPayment); 
                }
 
                
@@ -142,7 +142,7 @@ app.controller('paymentCtrl', function($scope, $location,paySrv,chargeSrv,person
 } 
 }
 
-    stripeResponseHandler = function(status,response){ 
+    stripeResponseHandlerForOutgoingFlightsPayment = function(status,response){ 
       console.log("DAAAMMIIT"); 
       $scope.payAlert = false;
             if(response.error){  
@@ -176,25 +176,34 @@ app.controller('paymentCtrl', function($scope, $location,paySrv,chargeSrv,person
               paySrv.setPaymentData(pa);
             if(outFlightData != null &&outFlightData.FlightAirline!="AirFrance"){
               customizeBookingFromOtherAirlineRequestObject(outFlightData,response.id,function(returnedData){
+                console.log(returnedData);
                 paySrv.setOutgoingFlightBookingReferenceID(returnedData.refNum);
                  if(inFlightData != null ){
                   if (inFlightData.FlightAirline !="AirFrance"){
-              customizeBookingFromOtherAirlineRequestObject(inFlightData,response.id,function(response){
-                paySrv.setReturnFlightBookingReferenceID(response.refNum);
-                $location.url('/confirm');
-              });
+              paySrv.getStripePublicKeyOfOtherAirline(inFlightData.FlightAirline,function(publickey){
+                           
+                            console.log(publickey);
+                            Stripe.setPublishableKey(publickey); 
+
+                            Stripe.card.createToken({
+                            number: $scope.CardN,
+                            cvc: $scope.CVV,
+                            exp_month: getMonthNumber($scope.expirymonth),
+                            exp_year: $scope.expiryyear
+                            
+                            }, stripeResponseHandlerForReturnFlightsPayment); 
+                 });
                         }else{
-                    paySrv.insertPayment(response.id,pa,
-                           function(flag) {
-                                 if(flag == true){
-                                    console.log("here in the payment controlller");
-                                    $location.url('/confirm');
-                                   }
-                                   else{
-                                    alert("something went wrong please try again");
-                                   }
-                              });
-                           }
+                            Stripe.setPublishableKey("pk_test_ULcStxFLM4quhm4JacResvRo"); 
+
+                            Stripe.card.createToken({
+                            number: $scope.CardN,
+                            cvc: $scope.CVV,
+                            exp_month: getMonthNumber($scope.expirymonth),
+                            exp_year: $scope.expiryyear
+                            
+                            }, stripeResponseHandlerForReturnFlightsPayment); 
+                         }
             }else{
               
               $location.url('/confirm');
@@ -225,6 +234,68 @@ app.controller('paymentCtrl', function($scope, $location,paySrv,chargeSrv,person
         }
       } 
 
+
+      stripeResponseHandlerForReturnFlightsPayment = function(status,response){ 
+      console.log("DAAAMMIIT"); 
+      console.log(response.id);
+      $scope.payAlert = false;
+            if(response.error){  
+               $scope.alertMe =response.error.message;
+               $scope.payAlert = true;
+               $scope.$apply();
+            } 
+
+            else{   
+            var boolea=false;
+          if($scope.radioButton=="visa"){
+            boolea=true;
+          }
+          else{
+            boolea=false;
+          }
+
+          var date ="01 "+$scope.expirymonth+" "+$scope.expiryyear;
+
+            var inFlightData = flightSrv.getInFLightData();
+
+
+            var pa=[{
+                      visa:boolea,
+                      MasterCard: (!boolea),
+                      CardHolderName: $scope.holderN,
+                      CardHolderNo: $scope.CardN,
+                      Cvv: $scope.CVV,
+                      ExpiryDate: date
+                            }]; 
+              paySrv.setPaymentData(pa);
+            
+         
+            if(inFlightData != null &&inFlightData.FlightAirline!="AirFrance"){
+
+            customizeBookingFromOtherAirlineRequestObject(inFlightData,response.id,function(returnedData){
+                console.log(returnedData);
+               paySrv.setReturnFlightBookingReferenceID(returnedData.refNum);
+                    $location.url('/confirm');
+            });
+            }else{
+                      paySrv.insertPayment(response.id,pa,
+                           function(flag) {
+                                 if(flag == true){
+                                    console.log("here in the payment controlller");
+                                    $location.url('/confirm');
+                                   }
+                                   else{
+                                    alert("something went wrong please try again");
+                                   }
+                });
+            }
+                        
+                             
+              
+             }
+        
+        }
+       
    
 
    customizeBookingFromOtherAirlineRequestObject = function(flightData,paymentToken,cb){

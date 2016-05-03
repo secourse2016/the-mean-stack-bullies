@@ -5,8 +5,23 @@ app.controller('confirmationCtrl', function($scope, $location,ConfirmationSrv,pa
         var outFLightData = flightSrv.getOutFLightData();
         var inFlightData = flightSrv.getInFLightData();
         console.log(inFlightData);
-        if((outFLightData != null && outFLightData.FlightAirline!="AirFrance") || (inFlightData !=null && inFlightData.FlightAirline !="AirFrance") ){
+        if((outFLightData != null && outFLightData.FlightAirline!="AirFrance") && ((inFlightData !=null && inFlightData.FlightAirline !="AirFrance")||(inFlightData ==null)) ){
             
+          
+        }else{
+
+     
+        }
+        // one way flight from other airline
+        if((outFLightData != null && outFLightData.FlightAirline!="AirFrance")&&(inFlightData ==null)){
+          getComfirmationDataFromServices();
+        }else{
+          // one way flight from our airline
+        if((outFLightData != null && outFLightData.FlightAirline=="AirFrance")&&(inFlightData ==null)){
+
+        }
+  
+function getComfirmationDataFromServices(){
            $scope.payments = paySrv.getPaymentData();
            $scope.amount = paySrv.getamount();
            $scope.personArray = personalInfoSrv.getPersonArray();
@@ -17,15 +32,17 @@ app.controller('confirmationCtrl', function($scope, $location,ConfirmationSrv,pa
                }); 
            console.log(paySrv.getOutgoingFlightBookingReferenceID());
            $scope.bookId = paySrv.getOutgoingFlightBookingReferenceID();
+           $scope.returnBookID = paySrv.getReturnFlightBookingReferenceID();
 
-        }else{
+}
 
-           ConfirmationSrv.getallInfo(function(data)
-       {
+function getComfirmationDataFromSessions (){
+        ConfirmationSrv.getallInfo(function(data)
+         {
 
-            console.log(data);
-            $scope.payments = data;
-       });
+              console.log(data);
+              $scope.payments = data;
+         });
 
       paySrv.getAmount(function(amount){
         $scope.amount=amount;
@@ -54,8 +71,6 @@ app.controller('confirmationCtrl', function($scope, $location,ConfirmationSrv,pa
 
        });
         }
-  		
-
 
  // $scope.reservations =  ConfirmationSrv.getReservation(); 
  // $scope.payments = ConfirmationSrv.getPayments();  
