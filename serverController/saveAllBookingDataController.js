@@ -157,7 +157,7 @@ exports.fligtInformationsByID = function(outgoingFlightId,returnFlightId,cb){
    returnFLights.findOne( {'_id' : new ObjectId(returnFlightId) }, function(err, returnFLight){
    if(err) cb(err,outgoingFlight,null);
 
-    cb(nulloutgoingFlight,returnFLight);
+    cb(null,outgoingFlight,returnFLight);
    });
    }else{
     cb(null,outgoingFlight,null);
