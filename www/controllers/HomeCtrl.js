@@ -23,7 +23,7 @@ $scope.statistics = function()
 
 $scope.about = function()
 {
-	$state.go('payment');
+	$state.go('about');
 }
 
 $scope.offers = function()
