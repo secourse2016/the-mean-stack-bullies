@@ -615,6 +615,7 @@ router.post('/api/booking', function(req,res){
   router.post('/booking', function(req, res) {
     console.log("in booking route");
     console.log(req.body);
+     sess = req.session;
     var outgoingFlightId ;
     var returnedFlightId ;
     var errMessage = "";
