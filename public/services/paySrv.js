@@ -87,6 +87,7 @@ app.factory('paySrv', function ($http) {
          });
        },
 
+
        getStripePublicKeyOfOtherAirline: function(airlineName,cb){
         
          var airlines = [];
@@ -111,7 +112,7 @@ app.factory('paySrv', function ($http) {
                   console.log(err);
                   alert("An error occured please try again");
                 });
-           
+
 
              }).error(function(err){
               console.log(err);

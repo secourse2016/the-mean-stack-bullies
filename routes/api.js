@@ -601,6 +601,14 @@ router.post('/api/booking', function(req,res){
         res.json(returnedObject);
       });
 
+  }); 
+/*end point to send our publishable key and recieve the partenering airline publishable key*/
+  router.get('/api//stripe/pubkey', function(req,res) {
+      var AirFranceKey = {key : "pk_test_ULcStxFLM4quhm4JacResvRo"}; 
+      
+      req.send(AirFranceKey);
+
+
   });
 
 

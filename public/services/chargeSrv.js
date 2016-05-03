@@ -1,30 +1,36 @@
 app.factory('chargeSrv', function ($http) {  
-
   return{
-tokenizePayment : function(token,cb){ 
-           console.log("I'M IN TOKENIZE PAYMENT");
-               var req = { 
-                   
-                   method : 'POST',
-                   url :    '/api/charge', 
-                   data : {token : token}
+  getStripekey : function(airline, cb){ 
+       var tokenReq = {
+        method: 'GET',
+        url: '/getToken'
+      }; 
 
-               }; 
-                 console.log(req);
-               return $http(req) 
-                    .success(function(response){ 
+      var incomingPublishablekey;
 
-                      console.log("STRIPE RESPONSE >>>" +response);
-                      cb(response);
+      return $http(tokenReq).success(function(token){
+          var req = {
+              method: 'GET',
+              url: airline+'/stripe/pubkey'
+          }; 
 
-                    }) 
-                    .error(function(response){ 
 
-                         return "ERROR";
-                    })
+       return $http(req).success(function(key){ 
 
-         } 
+         incomingPublishablekey = key;  
+         cb(incomingPublishablekey);
+         
+
+       }).error(function(response){
+                     console.log(response);
+                     alert("ERROR GETTING THE KEY");
+                 });
+
+
+  } 
+
+
      
-     };
+     }
       
 });

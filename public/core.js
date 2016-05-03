@@ -41,8 +41,6 @@ app.config(function($routeProvider) {
             controller  : 'TeamController'
         }); 
         
-            
-        
         
 
      

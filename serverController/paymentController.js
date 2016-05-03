@@ -27,7 +27,7 @@ var stripe = require("stripe")("sk_test_eI0A2eL166WZXsd51IOkmksT");
 	 
 		
 	}
-
+   
 	exports.calculateAmount=function(inFlight_id,ouFlight_id,cb){
 		    var OutFlightModel = mongoose.model('outFlight');
 			var InFlightModel = mongoose.model('inFlight');
@@ -106,4 +106,4 @@ var stripe = require("stripe")("sk_test_eI0A2eL166WZXsd51IOkmksT");
             	}
             }
             
-	}
+	} 

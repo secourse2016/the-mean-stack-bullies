@@ -74,7 +74,7 @@ app.controller('paymentCtrl', function($scope, $location,paySrv,chargeSrv,person
        /**
         * payment form submitting function
         */
-		$scope.submitPaymentForm=function() {
+		$scope.submitPaymentForm=function(stripeKey,cb) {
         
         var errMessage = paymentValidations();
         if(errMessage&&errMessage.length > 50){
@@ -83,12 +83,13 @@ app.controller('paymentCtrl', function($scope, $location,paySrv,chargeSrv,person
                $scope.$apply();
         }
 
-
+                 
         if(errMessage&&errMessage.length < 50){
           $scope.alertMe =errMessage;
                $scope.payAlert = true;
                $scope.$apply();
         }
+<<<<<<< HEAD
         else{
                
              if(outFlightData != null && outFlightData.FlightAirline!="AirFrance"){
@@ -146,8 +147,6 @@ app.controller('paymentCtrl', function($scope, $location,paySrv,chargeSrv,person
                             
                             }, stripeResponseHandlerForOutgoingFlightsPayment); 
                }
-
-               
 
             
               

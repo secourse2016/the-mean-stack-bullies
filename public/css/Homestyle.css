@@ -679,6 +679,12 @@ h4
   background-color: rgb(17,36,60);
 
 
+} 
+.modal-dialog{ 
+
+width: 100%;
+background-color: white;
+
 }
 
 .home-tabling-btn{
