@@ -160,7 +160,7 @@ exports.fligtInformationsByID = function(outgoingFlightId,returnFlightId,cb){
     cb(nulloutgoingFlight,returnFLight);
    });
    }else{
-    cb(null,outgoingFlight,returnFLight);
+    cb(null,outgoingFlight,null);
    }
 });
 
