@@ -691,7 +691,7 @@ router.post('/api/booking', function(req,res){
                 //saveAllBookingDataController.insertPaymentInformation(sess.paymentData,booking._id,function(err,payment){
 
                         saveAllBookingDataController.decreaseSeatsByNumber( req.body.passengerDetails.length,outgoingFlightId ,returnedFlightId ,function(err5,docs){
-                        console.log("ID------------------------->"+sess.flightIDs.inFlight_id);
+                       
                             if(err5){
                                       console.log("error---------------------------------->"+err5);
                                       errMessage+=err5+"\n";
