@@ -613,10 +613,14 @@ router.post('/api/booking', function(req,res){
   */ 
 
   router.post('/booking', function(req, res) {
-    
+    console.log("in booking route");
+    console.log(req.body);
     var outgoingFlightId ;
     var returnedFlightId ;
     var errMessage = "";
+    if(req.body.outgoingFlightId == null && req.body.returnFlightId ==null ){
+      res.json({ refNum: null, errorMessage:"flightID should not be null"});
+    }
    if(req.body.outgoingFlightId){
     outgoingFlightId = req.body.outgoingFlightId
    }else{
@@ -628,7 +632,7 @@ router.post('/api/booking', function(req,res){
        }else{
         returnedFlightId = null ;
        }
-
+       console.log(outgoingFlightId+"  "+returnedFlightId);
     saveAllBookingDataController.fligtInformationsByID(outgoingFlightId,returnedFlightId,function(err,outgoingFlight,returnedFlight){
       if(err){
         console.log("err1 ------>"+err);
@@ -636,7 +640,8 @@ router.post('/api/booking', function(req,res){
         res.json({ refNum: null, errorMessage: err});
       }else{
 
-
+          console.log(outgoingFlight);
+          console.log(returnedFlight);
       var ReturnDate;
       var Trip;
       if(returnedFlight){
