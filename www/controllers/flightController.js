@@ -7,7 +7,7 @@
   $scope.newof=[];
   $scope.newof2=[];
   $scope.show=false;
-  
+ 
   var inFlightID = null ;
   var outFlightID = null ;
 
