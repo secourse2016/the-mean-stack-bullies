@@ -652,7 +652,7 @@ router.post('/api/booking', function(req,res){
         trip = "one";
       }
 
-      var bookingDate = {
+      var bookingData = {
                           trip:Trip,
                           from:outgoingFlight.origin,
                           To:outgoingFlight.destination,
