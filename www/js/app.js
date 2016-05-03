@@ -45,6 +45,17 @@ app = angular.module('starter', ['ionic', 'starter.controllers'])
        controller:'timeTableCtrl'
        
     })
+  .state('about', {
+      url: '/aboutUs',
+      templateUrl: 'templates/aboutUs.html'
+       
+    })
+   .state('flights', {
+      url: '/flights',
+      templateUrl: 'templates/Flights.html',
+      controller:'flightCtrl'
+       
+    })
     .state('payment', {
       url: '/payment',
       templateUrl: 'templates/payment.html',

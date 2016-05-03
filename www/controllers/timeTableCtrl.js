@@ -35,7 +35,7 @@ $scope.limit=0;
 
    $scope.loadMore = function() {
     	
-	$scope.limit+=10;
+	$scope.limit+=6;
     $scope.$broadcast('scroll.infiniteScrollComplete');
 
     

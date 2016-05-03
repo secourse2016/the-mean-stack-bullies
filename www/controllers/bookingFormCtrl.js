@@ -1,4 +1,4 @@
-app.controller('bookingFormCtrl', function($scope, $location,bookingSrv,airportSrv) {
+app.controller('bookingFormCtrl', function($scope,$state, $location,bookingSrv,airportSrv) {
   $scope.NAdults;
   $scope.one=true;
   $scope.bus=true;
@@ -21,7 +21,7 @@ $scope.trip=function(){
 
   $scope.bookFlight=function(){
     
- 
+
     if(OneWay)
     {
       trip="one";
@@ -48,14 +48,21 @@ $scope.trip=function(){
       
       console.log(response);
            if(response.outFlights){
-            $location.url('/book');
+            // $location.url('/book');
+            $state.go('flights');
 
           }
           else{
 
             alert("no flights with criteria avialable");
           }
-    });      
+    });  
+    // console.log("goingtoFlights");    
+
+    
+
+    // console.log("went"); 
+
 
   }
 
