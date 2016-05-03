@@ -1,0 +1,247 @@
+<link rel="stylesheet" href="../css/booking.css">
+<div id="fixAnimation">
+<div id="partialDiv" class="wow fadeInRightBig" data-wow-duration="1s" data-wow-delay="0.2s"></div>
+<div id="partialDiv2" class="wow fadeInRightBig" data-wow-duration="1s" data-wow-delay="0.4s" ></div>
+<div id="partialDiv3" class="wow fadeInRightBig" data-wow-duration="1s" data-wow-delay="0.7s"></div>
+</div>
+<div id="timeTableSection"   class="viewflights bookbody">
+  <div  data-ng-init="changeTable()"   >
+    <div class="headertitle">
+      <br>
+     
+      <h2>Choose a Flight</h2>
+      
+    </div>
+    <br>
+    <br>
+    
+    <br>
+       <!-- outgoing flights -->
+    <div ng-repeat="flight in newof |  orderBy:'date'">
+    <table class="tx sp" >
+     
+
+      <thead>
+        <tr class="sp1">  
+
+        <th class="text-left sp1 spx" style=" font-size: 30px; color:white;">{{flight.origin}}</th>
+        <th class="text-left sp1 spx" style=" font-size: 30px; color:white;">{{flight.aircraftType}}<div> <img id="franceLogo" src="./icons/sky2.png"></div></th>
+       <th  class="text-left sp1 spx" style=" font-size: 30px; color:white;">{{flight.destination}}</th>
+
+       <th  class="text-left sp1 spx" style=" font-size: 30px; color:white;">
+       {{flight.Airline}}<div>#{{flight.flightNumber}}</div></th>
+
+         
+  
+
+
+
+
+     </tr>
+
+
+      <tr class="sp" ng-show="viewFlight(flight.ecost)">  
+
+        
+         <th class="text-left sp">Economy</th>
+          <th class="text-left sp"></th>
+         <th class="text-left sp"></th>
+         <th  class="text-left sp1 spx" style=" font-size: 30px; color:white;"></th>
+         
+
+
+
+     </tr>
+
+
+</thead>
+
+
+
+
+<tr ng-show="viewFlight(flight.ecost)">  
+
+ 
+   
+    <td class="text-left sp"><div>{{flight.origin}} <br> {{flight.departureDateTime}}</div></td>
+    <td class="text-left sp"><div>{{flight.currency}}<br>{{flight.ecost}}<br>Seats: {{flight.eseats}}</div></td>
+    <td class="text-left sp"><div>{{flight.destination}}<br>{{flight.arrivalDateTime}}</div></td>
+    <td class="text-left sp"><div class="chooseflight">  
+        <input type="radio" name="radio"  id="{{flight.e_id}}" class="radio" ng-show="false" ng-click="radioActionOrigin(flight.e_id)"  />
+        <label for="{{flight.e_id}}">Choose</label>
+                            </div></td>
+
+</tr>
+
+</tr>
+
+
+      <tr class="sp" ng-show="viewFlight(flight.bcost)">  
+
+        
+         <th class="text-left sp">Business</th>
+          <th class="text-left sp"></th>
+         <th class="text-left sp"></th>
+         <th  class="text-left sp1 spx" style=" font-size: 30px; color:white;"></th>
+         
+
+
+
+
+     </tr>
+
+
+<tr ng-show="viewFlight(flight.bcost)">  
+
+ <!-- TAKE CARE FOR HARDCODED RADIO BUTTONS INDECES -->
+   
+    <td class="text-left sp"><div>{{flight.origin}} <br> {{flight.departureDateTime}}</div></td>
+      <td class="text-left sp"><div>{{flight.currency}}<br>{{flight.bcost}}<br>Seats: {{flight.bseats}}</div></td>
+    <td class="text-left sp"><div>{{flight.destination}}<br>{{flight.arrivalDateTime}}</div></td>
+    <td class="text-left sp"><div class="chooseflight">  
+        <input type="radio" name="radio" id="{{flight.b_id}}" class="radio" ng-show="false"  ng-click="radioActionOrigin(flight.b_id)" />
+        <label for="{{flight.b_id}}" >Choose</label>
+                            </div></td>
+
+</tr>
+
+
+</table>
+
+
+<br>
+<br>
+
+
+
+</div>
+
+<br>
+<br>
+  
+     <h1 style="padding-left: 10%" ng-show=show>Return flights</h1>
+<br>
+<br>
+     <br>
+<br>
+
+  <div ng-repeat="flight in newof2 |  orderBy:'date'">
+    <table class="tx sp" >
+     
+
+      <thead>
+
+        <tr class="sp1" ng-show="viewFlight2(flight.ecost,flight.bcost) ">  
+
+
+        <th class="text-left sp1 spx" style=" font-size: 30px; color:white;">{{flight.origin}}</th>
+        <th class="text-left sp1 spx" style=" font-size: 30px; color:white;">{{flight.aircraftType}}<div> <img id="franceLogo" src="./icons/sky2.png"></div></th>
+       <th  class="text-left sp1 spx" style=" font-size: 30px; color:white;">{{flight.destination}}</th>
+
+       <th  class="text-left sp1 spx" style=" font-size: 30px; color:white;">{{flight.Airline}}<div>#{{flight.flightNumber}}</div></th>
+
+         
+  
+
+
+
+
+     </tr>
+
+
+      <tr class="sp" ng-show="viewFlight(flight.ecost)">  
+        
+         <th class="text-left sp">Economy</th>
+          <th class="text-left sp"></th>
+         <th class="text-left sp"></th>
+         <th  class="text-left sp1 spx" style=" font-size: 30px; color:white;"></th>
+         
+
+
+
+     </tr>
+
+
+</thead>
+
+
+
+
+<tr ng-show="viewFlight(flight.ecost)">  
+
+ 
+   
+    <td class="text-left sp"><div>{{flight.origin}} <br> {{flight.departureDateTime}}</div></td>
+   <td class="text-left sp"><div>{{flight.currency}}<br>{{flight.ecost}}<br>Seats: {{flight.eseats}}</div></td>
+    <td class="text-left sp"><div>{{flight.destination}}<br>{{flight.arrivalDateTime}}</div></td>
+    <td class="text-left sp"><div class="chooseflight">  
+        <input type="radio" name="radio2" id="{{flight.e_id}}" class="radio" ng-show="false"  ng-click="radioActionDest(flight.e_id)" />
+        <label for="{{flight.e_id}}">Choose</label>
+                            </div></td>
+
+</tr>
+
+</tr>
+
+
+      <tr class="sp" ng-show="viewFlight(flight.bcost)">  
+
+        
+         <th class="text-left sp">Business</th>
+          <th class="text-left sp"></th>
+         <th class="text-left sp"></th>
+         <th  class="text-left sp1 spx" style=" font-size: 30px; color  :white;"></th>
+         
+
+
+
+
+     </tr>
+
+
+<tr ng-show="viewFlight(flight.bcost)">  
+
+ <!-- TAKE CARE FOR HARDCODED RADIO BUTTONS INDECES -->
+   
+    <td class="text-left sp"><div>{{flight.origin}} <br> {{flight.departureDateTime}}</div></td>
+      <td class="text-left sp"><div>{{flight.currency}}<br>{{flight.bcost}}<br>Seats: {{flight.bseats}}</div></td>
+    <td class="text-left sp"><div>{{flight.destination}}<br>{{flight.arrivalDateTime}}</div></td>
+    <td class="text-left sp"><div class="chooseflight">  
+        <input type="radio" name="radio2" id="{{flight.b_id}}" class="radio" ng-show="false"  ng-click="radioActionDest(flight.b_id)" />
+        <label for="{{flight.b_id}}">Choose</label>
+                            </div></td>
+
+</tr>
+
+
+</table>
+<br>
+<br>
+
+<br>
+<br>
+
+</div>
+
+</div>
+<div style="text-align:center;">
+
+<button ng-click="Book()" class="bookButton" >Book</button>
+<br>
+<br>
+</div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+ 
