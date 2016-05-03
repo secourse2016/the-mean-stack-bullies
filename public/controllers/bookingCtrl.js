@@ -1,5 +1,8 @@
 app.controller('bookingCtrl', function($scope, $location,airportSrv,flightSrv,FlightsSrv,bookingSrv,airlineSrv) {
+  // $scope.showCal=false;
+  // $scope.cal="../partials/calendar.html";
  
+
  $scope.checkAllAirlines = function(){
   if($scope.trippp == "one"){
         var bookingData = [{ 
@@ -92,7 +95,11 @@ app.controller('bookingCtrl', function($scope, $location,airportSrv,flightSrv,Fl
     $scope.hidedate=true;
   }
  var book = $scope.bookFlight=function(){   
+     var depdateString=document.getElementById('retDateCalender').value;
+     var retdateString=document.getElementById('depDateCalender').value;
 
+     $scope.retDate=new Date (retdateString);
+     $scope.depDate=new Date (depdateString);
      var errMessage = bookingFormValidation(); 
      var empty=true;
           if(errMessage){ 
@@ -104,17 +111,17 @@ app.controller('bookingCtrl', function($scope, $location,airportSrv,flightSrv,Fl
       var child= parseInt($scope.children);
      var data = [{ 
     
-    trip: $scope.trippp,
-    from: $scope.selectedOrigin,
-    To: $scope.selectedDestination,
-    DepartureDate: $scope.depDate, 
-    ReturnDate: $scope.retDate,
-    NumberOfAdults: adult,
-    NumberOfChildren: child,
-    Class: $scope.class,
-    Email:$scope.email
-    }]; 
-    // console.log("test nullsss in ctrl----------->"+data[0].NumberOfAdults) ; 
+          trip: $scope.trippp,
+          from: $scope.selectedOrigin,
+          To: $scope.selectedDestination,
+          DepartureDate: $scope.depDate, 
+          ReturnDate: $scope.retDate,
+          NumberOfAdults: adult,
+          NumberOfChildren: child,
+          Class: $scope.class,
+          Email:$scope.email
+      }]; 
+    console.log("test nullsss in ctrl----------->"+data[0].NumberOfAdults) ; 
     // console.log("test nullsss in ctrl----------->"+data[0].NumberOfChildren) ;  
 
    
@@ -259,6 +266,10 @@ app.controller('bookingCtrl', function($scope, $location,airportSrv,flightSrv,Fl
                err+= "Please enter your destination \n"; 
                valid = false;
          } 
+         console.log("date   ------------>");
+         console.log($scope.depDate);
+         console.log("date   ------------>");
+         console.log($scope.retDate);
        if($scope.depDate && ($scope.depDate.getFullYear() > new Date().getFullYear()+1)) { 
             err+="You can not book a flight more than 1 year ahead \n"; 
             valid = false;
@@ -271,7 +282,8 @@ app.controller('bookingCtrl', function($scope, $location,airportSrv,flightSrv,Fl
           ($scope.depDate.getDate() < new Date().getDate()) && 
              ($scope.depDate.getMonth()+1 == new Date().getMonth()+1) &&
              ($scope.depDate.getFullYear() == new Date().getFullYear())) { 
-
+          console.log("date   ------------>"+$scope.depDate);
+           // if(($scope.depDate == undefined)){
                 err+= "Please enter a valid departure date \n"; 
                 valid = false;
         }

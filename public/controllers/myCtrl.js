@@ -3,7 +3,10 @@ app.controller('myCtrl', function($scope) {
   $scope.showPay=false;
   $scope.showTag=false;
   
-  
+$scope.showCalendar=true;
+
+  $scope.departureDatecalendar="../partials/departureDatecalendar.html";
+  $scope.returnDateCalender="../partials/returnDateCalender.html";
   $scope.click1= function()
   {
   	$scope.showMe=true;

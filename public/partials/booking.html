@@ -17,7 +17,13 @@
     
     <br>
        <!-- outgoing flights -->
-    <div ng-repeat="flight in newof |  orderBy:'date'">
+      <ul class="pagination pagination-lg">
+                    <li><a ng-click="previousAirline()"><<</a></li>
+                    <li ng-repeat="airline in airlines.slice(startindex,endindex+1) | limitTo:3" class="ng-class: airline.class;"><a >{{airline.name}}</a></li>
+                    <li><a ng-click="nextAirline()">>></a></li>
+      </ul>
+    <div ng-repeat="flight in arr1 |  orderBy:'date'">
+   
     <table class="tx sp" >
      
 
@@ -115,7 +121,7 @@
      <br>
 <br>
 
-  <div ng-repeat="flight in newof2 |  orderBy:'date'">
+  <div ng-repeat="flight in arr2 |  orderBy:'date'">
     <table class="tx sp" >
      
 

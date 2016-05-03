@@ -5,6 +5,44 @@ console.log("in flight controller");
   $scope.newof=[];
   $scope.newof2=[];
   $scope.show=false;
+
+  $scope.startindex=0;
+  $scope.endindex=2;
+
+  $scope.airlines=[
+      {
+        name:"AirFrance",
+        class:""
+      },
+      {
+        name:"SwissAir",
+        class:""
+      },
+      {
+        name:"EgyptAir",
+        class:""
+      },
+      {
+        name:"Lufthansa",
+        class:""
+      },
+      {
+        name:"Alitalia",
+        class:""
+      },
+      {
+        name:"Olympic",
+        class:""
+      },
+      {
+        name:"birdsAirways",
+        class:""
+      },
+      {
+        name:"BritishAirways",
+        class:""
+      }
+  ];
   
   var inFlightID = null ;
   var outFlightID = null ;
@@ -104,6 +142,11 @@ console.log("in flight controller");
             }
 
              }
+             $scope.arr1=[];
+             var ind=0;
+             for(ind=0;ind<$scope.newof.length;ind++){
+                 $scope.arr1[ind]=$scope.newof[ind]; 
+             }
             
              
               
@@ -202,6 +245,12 @@ console.log("in flight controller");
             }
 
              }
+             $scope.arr2=[];
+             ind=0;
+             for(ind=0;ind<$scope.newof2.length;ind++){
+                 $scope.arr2[ind]=$scope.newof2[ind]; 
+             }
+
              $scope.show=true;
             };
        }
@@ -228,6 +277,7 @@ console.log("in flight controller");
        }
     
   }
+
 
   $scope.radioActionOrigin=function(id)
   {
@@ -265,6 +315,109 @@ console.log("in flight controller");
       // console.log("dest");
       // console.log(id);
     inFlightID = id;
+  }
+  $scope.nextAirline=function(){
+     if($scope.endindex==$scope.airlines.length-1){
+        alert("no next airlines");
+      }
+      else{
+          $scope.startindex=$scope.startindex+3;
+           $scope.endindex=$scope.endindex+3;
+           if($scope.endindex>$scope.airlines.length-1){
+                $scope.startindex=$scope.airlines.length-4;
+                $scope.endindex=$scope.airlines.length-1;
+           }
+          $scope.arr1=[];
+           var ind=0;
+           for(ind=0;ind<$scope.newof.length;ind++){
+                console.log("hoba");
+               $scope.arr1[ind]=$scope.newof[ind]; 
+               console.log( $scope.arr1[ind]);
+           }
+
+
+           $scope.arr2=[];
+           ind=0;
+           for(ind=0;ind<$scope.newof2.length;ind++){
+               console.log("hoba2");
+               $scope.arr2[ind]=$scope.newof2[ind];
+               console.log( $scope.arr2[ind]); 
+           }
+           // $scope.arr1=$scope.newof;
+           // $scope.arr2=$scope.newof2;
+            console.log("new of ");
+       console.log($scope.newof);
+       console.log("new of 2 ");
+       console.log($scope.newof2);
+       console.log("arr1 ");
+       console.log($scope.arr1);
+       console.log("arr2 ");
+       console.log($scope.arr2);
+
+           var i=0;
+            for(i=0;i<$scope.arr1.length;i++){
+              if(($scope.arr1[i].Airline!=$scope.airlines[$scope.startindex].name)&&($scope.arr1[i].Airline!=$scope.airlines[$scope.startindex+1].name)&&($scope.arr1[i].Airline!=$scope.airlines[$scope.startindex+2].name)){
+                  $scope.arr1.splice(i,1);
+                  i--;
+              }
+            }
+            i=0;
+            for(i=0;i<$scope.arr2.length;i++){
+              if(($scope.arr2[i].Airline!=$scope.airlines[$scope.startindex].name)&&($scope.arr2[i].Airline!=$scope.airlines[$scope.startindex+1].name)&&($scope.arr2[i].Airline!=$scope.airlines[$scope.startindex+2].name)){
+                  $scope.arr2.splice(i,1);
+                  i--;
+              }
+            }
+
+      }
+     
+
+
+  }
+  $scope.previousAirline=function(){
+      if($scope.startindex==0){
+        alert("no previous airlines");
+      }
+      else{
+       $scope.startindex=$scope.startindex-3;
+       $scope.endindex=$scope.endindex-3;
+       if($scope.startindex<0){
+            $scope.startindex=0;
+            $scope.endindex=2;
+       }
+       $scope.arr1=[];
+       var ind=0;
+       for(ind=0;ind<$scope.newof.length;ind++){
+           $scope.arr1[ind]=$scope.newof[ind]; 
+           console.log( $scope.arr1[ind]); 
+       }
+
+
+
+
+       $scope.arr2=[];
+       ind=0;
+       for(ind=0;ind<$scope.newof2.length;ind++){
+           $scope.arr2[ind]=$scope.newof2[ind];
+           console.log( $scope.arr2[ind]);  
+       }
+
+
+            var i=0;
+            for(i=0;i<$scope.arr1.length;i++){
+              if(($scope.arr1[i].Airline!=$scope.airlines[$scope.startindex].name)&&($scope.arr1[i].Airline!=$scope.airlines[$scope.startindex+1].name)&&($scope.arr1[i].Airline!=$scope.airlines[$scope.startindex+2].name)){          
+                  $scope.arr1.splice(i,1);
+                  i--;
+              }
+            }
+            i=0;
+            for(i=0;i<$scope.arr2.length;i++){
+              if(($scope.arr2[i].Airline!=$scope.airlines[$scope.startindex].name)&&($scope.arr2[i].Airline!=$scope.airlines[$scope.startindex+1].name)&&($scope.arr2[i].Airline!=$scope.airlines[$scope.startindex+2].name)){
+                  $scope.arr2.splice(i,1);
+                  i--;
+              }
+            }
+     } 
   }
 
 });
