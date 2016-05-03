@@ -18,6 +18,31 @@ app.controller('confirmationCtrl', function($scope, $location,ConfirmationSrv,pa
         }else{
           // one way flight from our airline
         if((outFLightData != null && outFLightData.FlightAirline=="AirFrance")&&(inFlightData ==null)){
+            getComfirmationDataFromSessions();
+          }else{
+             // round way flights both from other airline
+            if((outFLightData != null && outFLightData.FlightAirline!="AirFrance")&&(inFlightData !=null && inFlightData.FlightAirline !="AirFrance")){
+              getComfirmationDataFromServices();
+            }else{
+               // round way flights both from our airline
+              if((outFLightData != null && outFLightData.FlightAirline=="AirFrance")&&(inFlightData !=null && inFlightData.FlightAirline =="AirFrance")){
+                getComfirmationDataFromSessions();
+              }else{
+                // round way flights outgoing flight from our airline and return flight from other airline
+                if((outFLightData != null && outFLightData.FlightAirline=="AirFrance")&&(inFlightData !=null && inFlightData.FlightAirline !="AirFrance")){
+                  getComfirmationDataFromServices();
+                  getComfirmationDataFromSessions();
+                  }else{
+                // round way flights return flight from our airline and outgoing flight from other airline                    
+                    if((outFLightData != null && outFLightData.FlightAirline!="AirFrance")&&(inFlightData !=null && inFlightData.FlightAirline =="AirFrance")){
+                         getComfirmationDataFromServices();
+                         getComfirmationDataFromSessions();
+                    }
+                  }
+                }
+              }
+            }
+          }
 
         }
   
