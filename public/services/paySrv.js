@@ -162,7 +162,7 @@ app.factory('paySrv', function ($http) {
             payData = paymentData;
           },
           getPaymentData: function(){
-            return payData;
+            return payData[0];
           },
           setamount:function(newAmount){
             amount = newAmount;
@@ -175,7 +175,7 @@ app.factory('paySrv', function ($http) {
           },
           getOutgoingFlightBookingReferenceID: function(){
             return outGoingFlightbookingReferenceID;
-          }
+          },
           setReturnFlightBookingReferenceID:function(newBookingReferenceID){
             returnFLightBookingReferenceID = newBookingReferenceID;
           },

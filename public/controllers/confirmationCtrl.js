@@ -1,20 +1,24 @@
-app.controller('confirmationCtrl', function($scope, $location,ConfirmationSrv,paySrv,flightSrv,personalInfoCtrl,paySrv) {
+app.controller('confirmationCtrl', function($scope, $location,ConfirmationSrv,paySrv,flightSrv,personalInfoSrv,paySrv) {
 		//$scope.clicktest=function() {
 
   		 $scope.showThankYou=true; 
         var outFLightData = flightSrv.getOutFLightData();
         var inFlightData = flightSrv.getInFLightData();
-        if(outFLightData != null || inFlightData !=null ){
+        console.log(inFlightData);
+        if((outFLightData != null && outFLightData.FlightAirline!="AirFrance") || (inFlightData !=null && inFlightData.FlightAirline !="AirFrance") ){
+            
            $scope.payments = paySrv.getPaymentData();
            $scope.amount = paySrv.getamount();
-           $scope.personArray = personalInfoCtrl.getPersonArray();
+           $scope.personArray = personalInfoSrv.getPersonArray();
            ConfirmationSrv.getbookingnfo(function(data)
                {
+                   
                     $scope.booking = data;
                }); 
            $scope.bookId = paySrv.getOutgoingFlightBookingReferenceID();
 
         }else{
+          console.log("heress");
            ConfirmationSrv.getallInfo(function(data)
        {
 

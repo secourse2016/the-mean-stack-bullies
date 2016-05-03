@@ -385,8 +385,16 @@
         }else{
           if(inFlightID && outFlightID || outFlightID){
 
+          if(inFlightID && !outFlightID){
+            flightSrv.setinFLightData(inFlightData);
+          }
+          if(!inFlightID && outFlightID){
+            flightSrv.setOutFLightData(outFlightData);
+          }
+          if(inFlightID && outFlightID){
             flightSrv.setinFLightData(inFlightData);
             flightSrv.setOutFLightData(outFlightData);
+          }
 
             flightSrv.insertFlight(inFlightID,outFlightID,function(err){
               if(err){

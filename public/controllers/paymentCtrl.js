@@ -5,12 +5,13 @@ app.controller('paymentCtrl', function($scope, $location,paySrv,chargeSrv,person
        var flightsFromOtherAirlinesTotalCost = 0;
        var inFlightData = flightSrv.getInFLightData();
        var outFlightData = flightSrv.getOutFLightData();
-
-       if(outFlightData != null){
-        flightsFromOtherAirlinesTotalCost+= outFlightData.FlightCost;
+       var NumberOfPassengers = personalInfoSrv.getPersonArray().length;
+       console.log(outFlightData);
+       if(outFlightData != null &&outFlightData.FlightAirline!="AirFrance"){
+        flightsFromOtherAirlinesTotalCost+= outFlightData.FlightCost*NumberOfPassengers;
        }
 
-       if(inFlightData != null){
+       if(inFlightData != null&& inFlightData.FlightAirline !="AirFrance"){
         flightsFromOtherAirlinesTotalCost+= inFlightData.FlightCost;
        }
 
@@ -75,8 +76,8 @@ app.controller('paymentCtrl', function($scope, $location,paySrv,chargeSrv,person
                $scope.$apply();
         }
         else{
-
-             if(outFlightData != null){
+               
+             if(outFlightData != null &&outFlightData.FlightAirline!="AirFrance"){
                 paySrv.getStripePublicKeyOfOtherAirline(outFlightData.FlightAirline,function(key){
                     console.log(key);
                     Stripe.setPublishableKey(key); 
@@ -90,11 +91,11 @@ app.controller('paymentCtrl', function($scope, $location,paySrv,chargeSrv,person
                     }, stripeResponseHandler); 
 
 
-                    if(inFlightData != null){
+                    if(inFlightData != null && inFlightData.FlightAirline !="AirFrance"){
                  paySrv.getStripePublicKeyOfOtherAirline(inFlightData.FlightAirline,function(publickey){
                            
                             console.log(publickey);
-                            Stripe.setPublishableKey(publickey); 
+                            Stripe.setPublishableKey('publickey'); 
 
                             Stripe.card.createToken({
                             number: $scope.CardN,
@@ -105,10 +106,31 @@ app.controller('paymentCtrl', function($scope, $location,paySrv,chargeSrv,person
                             }, stripeResponseHandler); 
                  });
                
+               }else{
+                 Stripe.setPublishableKey("pk_test_ULcStxFLM4quhm4JacResvRo"); 
+
+                            Stripe.card.createToken({
+                            number: $scope.CardN,
+                            cvc: $scope.CVV,
+                            exp_month: getMonthNumber($scope.expirymonth),
+                            exp_year: $scope.expiryyear
+                            
+                            }, stripeResponseHandler); 
                }
                 });
 
                
+               }else{
+                console.log("heresss");
+                 Stripe.setPublishableKey("pk_test_ULcStxFLM4quhm4JacResvRo"); 
+
+                            Stripe.card.createToken({
+                            number: $scope.CardN,
+                            cvc: $scope.CVV,
+                            exp_month: getMonthNumber($scope.expirymonth),
+                            exp_year: $scope.expiryyear
+                            
+                            }, stripeResponseHandler); 
                }
 
                
@@ -151,16 +173,30 @@ app.controller('paymentCtrl', function($scope, $location,paySrv,chargeSrv,person
                       ExpiryDate: date
                             }]; 
               paySrv.setPaymentData(pa);
-            if(outFlightData != null){
+            if(outFlightData != null &&outFlightData.FlightAirline!="AirFrance"){
               customizeBookingFromOtherAirlineRequestObject(outFlightData,response.id,function(returnedData){
-                setOutgoingFlightBookingReferenceID(returnedData.refNum);
-                 if(inFlightData != null){
+                paySrv.setOutgoingFlightBookingReferenceID(returnedData.refNum);
+                 if(inFlightData != null ){
+                  if (inFlightData.FlightAirline !="AirFrance"){
               customizeBookingFromOtherAirlineRequestObject(inFlightData,response.id,function(response){
-                setReturnFlightBookingReferenceID(response.refNum);
+                paySrv.setReturnFlightBookingReferenceID(response.refNum);
                 $location.url('/confirm');
               });
+                        }else{
+                    paySrv.insertPayment(response.id,pa,
+                           function(flag) {
+                                 if(flag == true){
+                                    console.log("here in the payment controlller");
+                                    $location.url('/confirm');
+                                   }
+                                   else{
+                                    alert("something went wrong please try again");
+                                   }
+                              });
+                           }
             }else{
-              $location.url('/confirm'); 
+              
+              $location.url('/confirm');
             }
               });
             

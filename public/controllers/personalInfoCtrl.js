@@ -223,10 +223,11 @@
             console.log(outFlightData);
             console.log(inFlightData);
             if( outFlightData !=null && outFlightData.FlightAirline =="AirFrance" && inFlightData==null){
+              console.log('we are hereeeeee');
               insertPersonArray();
             }else{
               if(outFlightData !=null && outFlightData.FlightAirline !="AirFrance" && inFlightData==null){
-                console.log('we are hereeeeee');
+                
                  personalInfoSrv.setPersonArray($scope.personalArray);
                    $location.url('/pay'); 
               }else{
@@ -237,11 +238,11 @@
                    personalInfoSrv.setPersonArray($scope.personalArray); 
                      $location.url('/pay');
                 }else{
-                if(inFlightData!=null && outFlightData!=null && outFlightData.FlightAirline !="AirFrance" && FlightData.inFlightAirline=="AirFrance"){
+                if(inFlightData!=null && outFlightData!=null && outFlightData.FlightAirline !="AirFrance" && inFlightData.FlightAirline=="AirFrance"){
                   personalInfoSrv.setPersonArray($scope.personalArray); 
                   insertPersonArray();
                 }else{
-                if(inFlightData!=null && outFlightData!=null && outFlightData.FlightAirline =="AirFrance" && FlightData.inFlightAirline!="AirFrance"){
+                if(inFlightData!=null && outFlightData!=null && outFlightData.FlightAirline =="AirFrance" && inFlightData.FlightAirline!="AirFrance"){
                   personalInfoSrv.setPersonArray($scope.personalArray); 
                   insertPersonArray();
                 }
