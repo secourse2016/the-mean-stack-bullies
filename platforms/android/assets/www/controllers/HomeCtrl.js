@@ -3,7 +3,8 @@ app.controller('HomeCtrl', function($scope, $location,$state,HomeSrv) {
 console.log("HOME");
 $scope.bookFlight = function()
 {
-	$state.go('passenger');
+
+	$state.go('book');
 }
 $scope.timeTable = function()
 {
@@ -17,7 +18,7 @@ $scope.manageBooking = function()
 
 $scope.statistics = function()
 {
-	$state.go('payment');
+	$state.go('passenger');
 }
 
 $scope.about = function()

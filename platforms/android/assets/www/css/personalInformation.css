@@ -1,49 +1,31 @@
-body
-{
 
-	background-color: rgb(221,233,236);
-}
-#topBar
+#page
 {
+		overflow-y: scroll;
+		background-color: white;
+}
 
-	background: rgb(17,34,60);
-	height:15%;
-	text-align: center;
-	box-shadow: -2px 1px 10px black;
-	border:none;
-}
-#logo
+#passengerInfoAbovee
 {
-	margin-left: 20%;
-	margin-top: 8%;
+	background:rgb(158,52,49);
+	padding-top: 12%;
+	padding-bottom: 12%;
+	height: 13%;
+}
+#passengerInfoAbovee h3
+{
+	color: white;
+	padding-left: 1px;
+}
+#passengerInfoAbovee p
+{
+	color: white;
+	padding: 20px;
+	font-size: 10px;
+}
 
-}
-#form
-{
-	
-	margin-top: 29%;
-	padding: 3%;
 
-}
-#passengerInfoAbove
-{
-	background: rgb(158,52,49);
-	height:15%;
-	text-align: center;
-	box-shadow: -2px 1px 10px black;
-	border:none;
-	margin-top:0;
-}
-#passengerInfoAbove h1
-{
-		font-size: 30px;
-		font-family: Lucida Console;
-		color : white;
-		width: 800px;
-		margin-top: 20px;
-		margin-left: 20px;
-	/*font-weight: bold;*/
-}
+
 .submitButton
 {
 	margin-top:0px;

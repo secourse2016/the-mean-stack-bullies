@@ -52,9 +52,17 @@ app = angular.module('starter', ['ionic', 'starter.controllers'])
           
        
     })
+    .state('stats', {
+      url: '/stats',
+      templateUrl: 'templates/statistics.html',
+    
+          
+       
+    })
 
   // // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/home');
+   // Stripe.setPublishableKey('pk_test_ULcStxFLM4quhm4JacResvRo'); 
 });
 
 

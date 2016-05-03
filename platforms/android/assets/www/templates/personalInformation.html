@@ -9,29 +9,19 @@
     <!-- ionic/angularjs js -->
     
  
-  </head>
   
 
-<ion-view title="Passenger Information">
-      <ion-header-bar id="topBar" class="bar-royal">
+<ion-view id="page" title="Passenger Information">
+
       
-        <div id="logo"><img src="./img/logowhite.png"></div>
+<ion-nav-title id="passengerInfoAbovee">
+      <h3 ng-model="tag">Passenger {{current+1}} Information</h3>
+      <p style="font-size:10px; margin-top :-47px;">type:{{passType}}</p>
+      </ion-nav-title>
+     <br>
 
-      </ion-header-bar>
-<ion-header-bar id="passengerInfoAbove" class="bar-royal" data-wow-duration="2s">
-      
-       <h1>Passenger Information</h1>
-      </ion-header-bar>
-
-     
-
-<!-- <div class="repeated" ng-repeat="x in Array"> -->
-<!-- <div id="passengerCount" ng-style="i{{$index}}" class="text-centre" > -->
-  <!-- <p ng-model="number" >{{$index+1}}</p> -->
-<!-- </div>
-<hr class="line" ng-show="last($index)"> -->
-<!-- </div> -->
-<div id="form" class="list ">
+  
+<div id="form" class="list">
   <label id="firstName" class="item item-input item-floating-label">
     <span class="input-label">First Name</span>
     <input type="text" ng-model="firstName" placeholder="First Name">

@@ -14,6 +14,13 @@ app = angular.module('starter', ['ionic', 'starter.controllers'])
      
   })
 
+  .state('book', {
+    url: '/book',
+    templateUrl: 'templates/bookingFormIon.html',
+    controller: 'bookingFormCtrl'
+     
+  })
+
     .state('reservation', {
     url: '/reservation',
     templateUrl: 'templates/ReservationDetails.html',
@@ -45,9 +52,17 @@ app = angular.module('starter', ['ionic', 'starter.controllers'])
           
        
     })
+    .state('stats', {
+      url: '/stats',
+      templateUrl: 'templates/statistics.html',
+    
+          
+       
+    })
 
   // // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/home');
+   // Stripe.setPublishableKey('pk_test_ULcStxFLM4quhm4JacResvRo'); 
 });
 
 

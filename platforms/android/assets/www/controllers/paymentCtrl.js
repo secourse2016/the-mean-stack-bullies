@@ -1,4 +1,4 @@
-app.controller('paymentCtrl', function($scope, $location,paymentSrv) {
+app.controller('paymentCtrl', function($scope, $location,paymentSrv,chargeSrv) {
 
 
  paymentSrv.getAmount(function(amount){
@@ -27,15 +27,6 @@ app.controller('paymentCtrl', function($scope, $location,paymentSrv) {
            isvalid = false;
           } 
 
-         if($scope.expiryyear== null){
-           errMessage+="please choose expiry year \n";
-           isvalid =false;
-          } 
-
-         if($scope.expirymonth== null){
-           errMessage+="please choose choose expiry month \n";
-           isvalid =false;
-          }
 
          if(isvalid == true){
           errMessage = null;
@@ -97,7 +88,7 @@ app.controller('paymentCtrl', function($scope, $location,paymentSrv) {
             CardHolderNo: $scope.CardN,
             Cvv: $scope.CVV,
             ExpiryDate: date
-
+            
           }]; 
            
           paymentSrv.insertPayment(response.id,pa,
@@ -237,3 +228,33 @@ app.factory('paymentSrv',function ($http){
 
      };
 }); 
+app.factory('chargeSrv', function ($http) {  
+
+  return{
+tokenizePayment : function(token,cb){ 
+           console.log("I'M IN TOKENIZE PAYMENT");
+               var req = { 
+                   
+                   method : 'POST',
+                   url :    '/api/charge', 
+                   data : {token : token}
+
+               }; 
+                 console.log(req);
+               return $http(req) 
+                    .success(function(response){ 
+
+                      console.log("STRIPE RESPONSE >>>" +response);
+                      cb(response);
+
+                    }) 
+                    .error(function(response){ 
+
+                         return "ERROR";
+                    })
+
+         } 
+     
+     };
+      
+});

@@ -1,4 +1,4 @@
-app.controller('personalInfoCtrl', function($scope, $location,personalInfoSrv) {
+app.controller('personalInfoCtrl', function($scope, $location,$state,personalInfoSrv) {
       var adults=0;
       var children=0;
       $scope.personalArray=[];
@@ -6,12 +6,13 @@ app.controller('personalInfoCtrl', function($scope, $location,personalInfoSrv) {
     // personalInfoSrv.getBookingNumberOfAdultsAndChildren(function(obj){
             adults=1;
             children=1;
-
             $scope.passengersNumber=adults+children;
             $scope.current=0;
+          $scope.passType="Adult";
             if($scope.passengersNumber==1){
                $scope.nextpassShow=false;
             }
+
     // });
 // 
 
@@ -33,6 +34,16 @@ app.controller('personalInfoCtrl', function($scope, $location,personalInfoSrv) {
          
          $scope.personalArray[$scope.current]=person[0];
          $scope.current=$scope.current+1;
+         if(adults!=0)
+         {
+        adults=adults-1;
+        $scope.passType="Adult";
+         }
+         if(adults==0)
+         {
+          $scope.passType="Child";
+         
+         }
          console.log($scope.personalArray);
 
          $scope.firstName=null;
@@ -69,6 +80,7 @@ app.controller('personalInfoCtrl', function($scope, $location,personalInfoSrv) {
          console.log($scope.personalArray);
          personalInfoSrv.insertPerson($scope.personalArray,function(response){
             console.log(response);
+            $state.go('payment');
          });
        }  
          

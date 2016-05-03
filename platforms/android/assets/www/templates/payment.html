@@ -1,4 +1,9 @@
+
   
+<link href="../css/payment.css" rel="stylesheet">
+
+
+<body>
 
   <ion-view title="Payment">
 
@@ -8,17 +13,13 @@
 
       </ion-header-bar> -->
 
-<div id="passengerInfoAbove"  data-wow-duration="2s">
-      
-       <h1>Payment Information</h1>
-      </div>
-      
+ <div class="paymentInfoAbove"><h1>Payment Information</h1></div>
 <ul class="list wow fadeInRight" data-wow-duration="2s">
 
   <li class="item item-toggle">
      Visa
      <label class="toggle toggle-assertive">
-       <input type="checkbox">
+       <input id="Visa" type="checkbox" ng-model="radioButton" >
        <div class="track">
          <div class="handle"></div>
        </div>
@@ -27,7 +28,7 @@
   <li class="item item-toggle">
      Master Card
      <label class="toggle toggle-positive">
-       <input type="checkbox">
+       <input id="masterCard" type="checkbox" ng-model="radioButton">
        <div class="track">
          <div class="handle"></div>
        </div>
@@ -35,9 +36,10 @@
   </li>
 
 </ul>
+<button class="button button-positive confirmButton" ng-click="submitPaymentForm()">Conifirmation</button>
 
 <div id="form" class="list wow fadeInUp" data-wow-duration="2s">
-<button ng-click="submitPaymentForm()">Conifirmation</button>
+
   <label id="carholder" class="item item-input item-floating-label">
     <span class="input-label">CardHolderName</span>
     <input ng-model="holderN" type="text" placeholder="Card Name">
@@ -69,3 +71,4 @@
 
 </ion-view>
 
+</body>
