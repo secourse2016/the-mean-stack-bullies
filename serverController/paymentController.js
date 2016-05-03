@@ -4,10 +4,11 @@ var stripe = require("stripe")("sk_test_eI0A2eL166WZXsd51IOkmksT");
 
 
 	exports.chargeCard = function (stripeToken,cost,cb) { 
-	 
+	 	
 		 console.log("in charge card");
 		 console.log(stripeToken);
 		 cost=cost*100;
+
 		var charge = stripe.charges.create({
 		  amount: cost, // amount in cents, again
 		  currency: "usd",
@@ -15,7 +16,7 @@ var stripe = require("stripe")("sk_test_eI0A2eL166WZXsd51IOkmksT");
 		  description: "Example charge"
 		}, function(err, charge) {
 		  if (err) {
-		    console.log("CHARGE ERROR"); 
+		    console.log(err); 
 		  } 
 		  else { 
 
@@ -50,6 +51,7 @@ var stripe = require("stripe")("sk_test_eI0A2eL166WZXsd51IOkmksT");
 									cb(err,null);
 								}
 								else{
+									console.log("heree");
 									console.log(outdocs[0]);
 									console.log(indocs[0]);
 									amount=(outdocs[0].cost+indocs[0].cost);

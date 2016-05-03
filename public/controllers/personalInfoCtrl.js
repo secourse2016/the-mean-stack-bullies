@@ -222,16 +222,18 @@
             var outFlightData = flightSrv.getOutFLightData();
             console.log(outFlightData);
             console.log(inFlightData);
-            if( outFlightData !=null && outFlightData.FlightAirline =="AirFrance" && inFlightData==null){
+            if( outFlightData !=null && outFlightData.FlightAirline =="AirFrance" && inFlightData.FlightAirline==null){
               console.log('we are hereeeeee');
+              personalInfoSrv.setPersonArray($scope.personalArray);
               insertPersonArray();
             }else{
-              if(outFlightData !=null && outFlightData.FlightAirline !="AirFrance" && inFlightData==null){
+              if(outFlightData !=null && outFlightData.FlightAirline !="AirFrance" && inFlightData.FlightAirline==null){
                 
                  personalInfoSrv.setPersonArray($scope.personalArray);
                    $location.url('/pay'); 
               }else{
               if(inFlightData!=null && outFlightData!=null && outFlightData.FlightAirline =="AirFrance" && inFlightData.FlightAirline=="AirFrance"){
+                personalInfoSrv.setPersonArray($scope.personalArray);
                 insertPersonArray();
               }else{
                 if(inFlightData!=null && outFlightData!=null && outFlightData.FlightAirline !="AirFrance" && inFlightData.FlightAirline!="AirFrance"){
