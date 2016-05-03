@@ -322,14 +322,19 @@ router.post('/api/booking', function(req,res){
             console.log("heess");
                   sess = req.session;
                   // sess.personData = req.body.people[0];
+                 
                   sess.personArray=req.body.people;
-                  if(sess.flightIDs.inFlight_id !=null ||sess.flightIDs.inFlight_id !=undefined || sess.flightIDs.ouFlight_id!=null||sess.flightIDs.ouFlight_id!=undefined){
-
+                   console.log("heree");
+                  console.log(sess.flightIDs);
+                  console.log(sess.flightIDs);
+                  if(sess.flightID !=null ||sess.flightIDs !=undefined || sess.flightIDs!=null||sess.flightIDs!=undefined){
+                    console.log(sess.flightIDs.inFlight_id+" "+sess.flightIDs.ouFlight_id);
                        paymnetController.calculateAmount(sess.flightIDs.inFlight_id , sess.flightIDs.ouFlight_id,function(err,amount){
                       if(err){
                         res.send('Error in the calculate payment method');
                       }
                       else{
+                            console.log(amount)
                             sess.payAmount=((sess.personArray.length)* amount);
                             console.log("the amount is ------------------------------>"+sess.payAmount)
                             console.log(req.body.people);

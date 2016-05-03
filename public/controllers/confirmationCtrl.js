@@ -4,9 +4,44 @@ app.controller('confirmationCtrl', function($scope, $location,ConfirmationSrv,pa
   		 $scope.showThankYou=true; 
         var outFLightData = flightSrv.getOutFLightData();
         var inFlightData = flightSrv.getInFLightData();
+        console.log(outFLightData);
         console.log(inFlightData);
-        if((outFLightData != null && outFLightData.FlightAirline!="AirFrance") || (inFlightData !=null && inFlightData.FlightAirline !="AirFrance") ){
-            
+      
+        // one way flight from other airline
+        if((outFLightData != null && outFLightData.FlightAirline!="AirFrance")&&(inFlightData ==null)){
+          getComfirmationDataFromServices();
+        }else{
+          // one way flight from our airline
+        if((outFLightData != null && outFLightData.FlightAirline=="AirFrance")&&(inFlightData ==null)){
+            getComfirmationDataFromSessions(false);
+          }else{
+             // round way flights both from other airline
+            if((outFLightData != null && outFLightData.FlightAirline!="AirFrance")&&(inFlightData !=null && inFlightData.FlightAirline !="AirFrance")){
+              getComfirmationDataFromServices();
+            }else{
+               // round way flights both from our airline
+              if((outFLightData != null && outFLightData.FlightAirline=="AirFrance")&&(inFlightData !=null && inFlightData.FlightAirline =="AirFrance")){
+                getComfirmationDataFromSessions(false);
+              }else{
+                // round way flights outgoing flight from our airline and return flight from other airline
+                if((outFLightData != null && outFLightData.FlightAirline=="AirFrance")&&(inFlightData !=null && inFlightData.FlightAirline !="AirFrance")){
+                  getComfirmationDataFromServices();
+                  getComfirmationDataFromSessions(false);
+                  }else{
+                // round way flights return flight from our airline and outgoing flight from other airline                    
+                    if((outFLightData != null && outFLightData.FlightAirline!="AirFrance")&&(inFlightData !=null && inFlightData.FlightAirline =="AirFrance")){
+                         getComfirmationDataFromServices();
+                         getComfirmationDataFromSessions(true);
+                    }
+                  }
+                }
+              }
+            }
+          }
+
+        
+  
+function getComfirmationDataFromServices(){
            $scope.payments = paySrv.getPaymentData();
            $scope.amount = paySrv.getamount();
            $scope.personArray = personalInfoSrv.getPersonArray();
@@ -17,15 +52,17 @@ app.controller('confirmationCtrl', function($scope, $location,ConfirmationSrv,pa
                }); 
            console.log(paySrv.getOutgoingFlightBookingReferenceID());
            $scope.bookId = paySrv.getOutgoingFlightBookingReferenceID();
+           $scope.returnBookID = paySrv.getReturnFlightBookingReferenceID();
 
-        }else{
+}
 
-           ConfirmationSrv.getallInfo(function(data)
-       {
+function getComfirmationDataFromSessions (returnFlightFlag){
+        ConfirmationSrv.getallInfo(function(data)
+         {
 
-            console.log(data);
-            $scope.payments = data;
-       });
+              console.log(data);
+              $scope.payments = data;
+         });
 
       paySrv.getAmount(function(amount){
         $scope.amount=amount;
@@ -47,15 +84,21 @@ app.controller('confirmationCtrl', function($scope, $location,ConfirmationSrv,pa
             console.log(data);
             $scope.booking = data;
        }); 
+        if(returnFlightFlag == true){
+           ConfirmationSrv.getbookingID(function(id){ 
+               console.log(id); 
+               $scope.returnBookID = id;
 
-       ConfirmationSrv.getbookingID(function(id){ 
+       });
+        }else{
+           ConfirmationSrv.getbookingID(function(id){ 
                console.log(id); 
                $scope.bookId = id;
 
        });
         }
-  		
-
+      
+        }
 
  // $scope.reservations =  ConfirmationSrv.getReservation(); 
  // $scope.payments = ConfirmationSrv.getPayments();  
