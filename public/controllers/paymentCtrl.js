@@ -45,7 +45,7 @@ app.controller('paymentCtrl', function($scope, $location,paySrv,chargeSrv) {
        /**
         * payment form submitting function
         */
-		$scope.submitPaymentForm=function() {
+		$scope.submitPaymentForm=function(stripeKey,cb) {
         
         var errMessage = paymentValidations();
         if(errMessage&&errMessage.length > 50){
@@ -61,11 +61,11 @@ app.controller('paymentCtrl', function($scope, $location,paySrv,chargeSrv) {
                $scope.$apply();
         }
         else{ 
-          
+
           /*publishable key is set here instead of setting it in core.js 
             to be able to reset it*/ 
 
-           Stripe.setPublishableKey(stripeKey); 
+           Stripe.setPublishableKey("pk_test_ULcStxFLM4quhm4JacResvRo"); 
 
             Stripe.card.createToken({
             number: $scope.CardN,
