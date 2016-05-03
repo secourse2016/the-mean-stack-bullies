@@ -35,12 +35,20 @@
 	<div class="PassengerType">
 	<h1 ng-model="titleType">{{titleType}} information</h1>
 	</div>
-<div id="allTextBoxes" class="form-style-8">
+<form name="myForm" id="allTextBoxes" class="form-style-8">
+<div class="bubble fn" ng-show="firstNameShow" id="firstNameDivValid"><p>please enter a valid First name</p></div>
+
+ <div class="bubble ln" ng-show="showLastNameDiv"><p>please enter a valid Last name</p></div>
+<div class="bubble age"   ng-show="showAgeDiv"><p>please enter age between 10-99</p></div>
+<div class="bubble nat"  ng-show="showNationDiv"><p>please enter a valid nationality</p></div>
+<div class="bubble iss"  ng-show="showIssueDiv" ><p>please enter issue date</p></div>
+<div class="bubble date"   ng-show="showExpiryDiv"><p>please enter expiry date</p></div>
+<div class="bubble pass"  ng-show="showPassDiv"><p>please enter  valid passport number</p></div>
 	<div id="firstNameDiv" >
 	<div class="glyphicon glyphicon-user"></div>
 	 <div id="firstNameText" >First Name</div>
 	
-	 <input	type="text" class="glyphicon glyphicon-user" id="firstName" placeholder ="First Name" ng-model="firstName">
+	 <input	type="text" class="glyphicon glyphicon-user" id="firstName" placeholder ="First Name" ng-model="firstName" required>
 
 	 </div>	
 	 <div id="lastNameDiv">
@@ -48,15 +56,15 @@
 	 	<div class="glyphicon glyphicon-user"></div>
 	  <div id="lastNameText">Last Name</div>
 	 	
-	 <input class=""type="text" id="lastName" placeholder ="Last Name" ng-model="lastName">
+	 <input class=""type="text" id="lastName" placeholder ="Last Name" ng-model="lastName" required>
 	  </div>	
 
 
 	  	<div id="ageDiv">
 	 <div class="glyphicon glyphicon-gift"></div>
 	 
-	 <input	type="number" ng-show="ageShow" min="13" max="99" id="age" placeholder ="Adult Age" ng-model="age">
-	 <input	type="number" ng-show="!ageShow" min="2" max="12" id="age" placeholder ="Child Age" ng-model="age">
+	 <input	type="number" ng-show="ageShow" min="13" max="99" id="age" placeholder ="Adult Age" ng-model="age" required>
+	 <input	type="number" ng-show="!ageShow" min="2" max="12" id="age" placeholder ="Child Age" ng-model="age" required>
 	  </div>
 
 	 	
@@ -264,21 +272,21 @@
 	 <div class="glyphicon glyphicon-calendar"></div>
 	  <div id="issueDateText">Issue Date</div>
 	  
-	 <input type="date" data-date-inline-picker="true"  ng-model="issueDate" />
+	 <input type="date" data-date-inline-picker="true"  ng-model="issueDate" required/>
 	  </div>	
 
 	 <div id="expiryDateDiv">
 	 <div class="glyphicon glyphicon-calendar"></div>
 	  <div id="expiryDateText">Expiry Date</div>
 	
-	 <input	type="date" id="expiryDate"  ng-model="expiryDate">
+	 <input	type="date" id="expiryDate"  ng-model="expiryDate" required>
 	 </div>	
 	    <div id="passportNo">
 	 	
 	 	<div class="glyphicon glyphicon-user"></div>
 	  <div id="lastNameText">Passport Number</div>
 	 	
-	 <input class="" type="text" id="passport" placeholder ="Passport Number" ng-model="passportnum">
+	 <input class="" type="text" id="passport" placeholder ="Passport Number" ng-model="passportnum" required>
 	  </div>
 <div id="line"></div>
 <br>
@@ -287,7 +295,7 @@
 	<button  class="bookButton" ng-show="!lastPassenger" ng-click="submitpersonFrom()" id="Confirm">Confirm</button>
 	<button  class="bookButton" ng-show="lastPassenger"  ng-click="nextPass()" id="Confirm">Next Passenger</button>
 
-</div>
+</form>
 </div>
 </div>
 </body>

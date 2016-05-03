@@ -34,7 +34,11 @@ app.config(function($routeProvider) {
         .when('/team', {
             templateUrl : '/partials/team.html',
             controller  : 'TeamController'
-        }); 
+        }) 
+        .when('/timetable', {
+            templateUrl : '/partials/timeTable.html',
+            controller  : 'bookingCtrl'
+        });
         
             
         Stripe.setPublishableKey('pk_test_ULcStxFLM4quhm4JacResvRo'); 
