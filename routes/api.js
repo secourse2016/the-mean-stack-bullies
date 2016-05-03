@@ -653,8 +653,8 @@ router.post('/api/booking', function(req,res){
         ReturnDate = null;
         trip = "one";
       }
-
-      var bookingData = {
+      if(outgoingFlight){
+        var bookingData = {
                           trip:Trip,
                           from:outgoingFlight.origin,
                           To:outgoingFlight.destination,
@@ -663,6 +663,23 @@ router.post('/api/booking', function(req,res){
                           NumberOfAdults:req.body.passengerDetails.length,
                           NumberOfChildren:0
                          };
+                       }else{
+                        if(returnedFlight){
+                           var bookingData = {
+                          trip:Trip,
+                          from:returnedFlight.origin,
+                          To:returnedFlight.destination,
+                          DepartureDate:returnedFlight.departureDateTime,
+                          ReturnDate:ReturnDate,
+                          NumberOfAdults:req.body.passengerDetails.length,
+                          NumberOfChildren:0
+                         };
+                        }
+                          
+                       }
+          
+
+  
      saveAllBookingDataController.insertBookingData(bookingData,function(err2,booking){
       if(err2){
       console.log("err2 ---->"+err2);
