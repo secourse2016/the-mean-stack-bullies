@@ -52,21 +52,33 @@ exports.decreaseSeatsByNumber = function(number,flightIDOutging,flightIDInGoing,
       if (!err)
       {
         console.log("doc1----------------------------->"+doc1);
-      doc1.seats=doc1.seats-number;
-      doc1.save();
+        if(doc1!=null){
+          doc1.seats=doc1.seats-number;
+          doc1.save();
+        }else{
+          cb("Flight was not found wrong FlightID",null);
+        }
+  
 
     if (flightIDInGoing != null)
       {
         inFlightModel.findOne({ _id:  flightIDInGoing }, function (err, doc2){
           if (!err)
           {
+
             console.log("dov2-------------------"+doc2);
-             doc2.seats=doc2.seats-number;
+            if(doc2 !=null){
+              doc2.seats=doc2.seats-number;
              doc2.save();
              cb(null,doc2);
+           }else{
+            cb("Flight was not found wrong FlightID",null);
+           }
+             
           }else{
             cb(err,null);
           }
+           
         });
       }
       else{
@@ -85,9 +97,14 @@ exports.decreaseSeatsByNumber = function(number,flightIDOutging,flightIDInGoing,
           if (!err)
           {
             console.log("dov2-------------------"+doc2);
-             doc2.seats=doc2.seats-number;
+            if(doc2 !=null){
+               doc2.seats=doc2.seats-number;
              doc2.save();
              cb(null,doc2);
+           }else{
+            cb("Flight was not found wrong FlightID",null);
+           }
+            
           }else{
             cb(err,null);
           }
