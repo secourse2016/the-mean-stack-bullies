@@ -36,6 +36,7 @@ var bookingValidation = require('../Validations/bookingValidation.js');
 var manageController =  require('../serverController/ManageBookingController.js');
 
 var sess;
+var stripe = require("stripe")("sk_test_eI0A2eL166WZXsd51IOkmksT");
 
 var router = express.Router();
 
