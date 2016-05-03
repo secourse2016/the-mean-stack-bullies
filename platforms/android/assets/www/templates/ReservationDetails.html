@@ -29,9 +29,7 @@
 
       <ion-pane>
         <br>
-        <ion-header-bar style="background:rgb(17,36,60);padding-top:10px;">
-          <img id="franceLogo" src="./img/logowhite.png" style="height:20px;margin:0 auto;">
-        </ion-header-bar>
+        
 
         <ion-content style="background:rgb(221,233,236);">
   	       <br>
@@ -41,16 +39,77 @@
       <br><br>
       <label style="max-width:80%;margin:0 auto;" class="item item-input">
       <i  class="icon ion-search placeholder-icon"></i>
-    <input type="search" placeholder="Reference Number">
+    <input type="search" ng-model="SearchResult" placeholder="Reference Number" >
       </label>
       <br>
+      <!-- <label>{{SearchResult}}</label> -->
       <div style="width:70%;margin:0 auto;">
-      <button  class="button button-block button-positive">
+      <button  class="button button-block button-positive" ng-click="getReservation(SearchResult)">
           Search
       </button>
       </div>
-       
+    <div  class="list card" ng-show="notFound">
+        <a   class="item item-icon-left" >
+    <i class="icon ion-alert-circled"></i>
+         Not Found
+  </a> 
+  </div>
 
+
+ <div  class="list card" ng-show="canceled">
+        <a   class="item item-icon-left" >
+    <i class="icon ion-ios-checkmark"></i>
+         Reservation Canceled 
+  </a> 
+  </div>
+
+      <div  class="list card" ng-show="Found" ng-model="Departure2">
+       
+        <a class="item item-icon-left" >
+    <i class="icon ion-arrow-right-a"></i>
+         From: {{From}}
+      </a> 
+      <a   class="item item-icon-left" >
+    <i class="icon ion-arrow-left-a"></i>
+         To: {{To}}
+  </a> 
+      <a  class="item item-icon-left" >
+    <i class="icon ion-calendar"></i>
+         Departure Date: {{DepartureDate}}
+  </a> 
+      <a  class="item item-icon-left" >
+    <i class="icon ion-clock"></i>
+         Departure Time: {{DepartureTime}}
+  </a> 
+
+              <a class="item item-icon-left">
+    <i class="icon ion-calendar"></i>
+    Return Date: {{ReturnDate}}
+  </a>
+     <a  class="item item-icon-left" >
+    <i class="icon ion-clock"></i>
+         Return Time: {{ReturnTime}}
+  </a> 
+
+  <a class="item item-icon-left">
+    <i class="icon ion-email"></i>
+    Email: {{Email}}
+  </a>
+
+        <a class="item item-icon-left">
+    <i class="icon ion-ios-person"></i>
+    Adults: {{Adults}}
+  </a>
+         <a class="item item-icon-left">
+    <i class="icon ion-ios-body"></i>
+    Children: {{Children}}
+  </a>
+
+ <button  class="button button-block button-positive" ng-click="CancelReservation(SearchResult)">
+          Cancel Reservation
+      </button>
+
+    </div>
 
 
       

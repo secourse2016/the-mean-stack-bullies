@@ -33,7 +33,12 @@ app = angular.module('starter', ['ionic', 'starter.controllers'])
     templateUrl: 'templates/ReservationDetails.html',
     controller: 'reservationCtrl'
       })
-     
+    
+     .state('passenger', {
+    url: '/passenger',
+    templateUrl: 'templates/personalInformation.html',
+    controller: 'personalInfoCtrl'
+      })
 
   .state('home', {
       url: '/home',
@@ -47,6 +52,17 @@ app = angular.module('starter', ['ionic', 'starter.controllers'])
        controller:'timeTableCtrl'
        
     })
+  .state('about', {
+      url: '/aboutUs',
+      templateUrl: 'templates/aboutUs.html'
+       
+    })
+   .state('flights', {
+      url: '/flights',
+      templateUrl: 'templates/Flights.html',
+      controller:'flightCtrl'
+       
+    })
     .state('payment', {
       url: '/payment',
       templateUrl: 'templates/payment.html',
@@ -54,9 +70,17 @@ app = angular.module('starter', ['ionic', 'starter.controllers'])
           
        
     })
+    .state('stats', {
+      url: '/stats',
+      templateUrl: 'templates/statistics.html',
+    
+          
+       
+    })
 
   // // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/home');
+   // Stripe.setPublishableKey('pk_test_ULcStxFLM4quhm4JacResvRo'); 
 });
 
 

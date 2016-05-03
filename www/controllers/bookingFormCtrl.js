@@ -1,6 +1,6 @@
-app.controller('bookingFormCtrl', function($scope, $location,bookingSrv,airportSrv,$state) {
-  
-  console.log("CONTROLLER");
+
+app.controller('bookingFormCtrl', function($scope,$state, $location,bookingSrv,airportSrv) {
+   console.log("ctrl");
   $scope.NAdults;
   $scope.one=true;
   $scope.bus=true;
@@ -8,10 +8,9 @@ app.controller('bookingFormCtrl', function($scope, $location,bookingSrv,airportS
   $scope.limit=5;
 
 
-
   trip="";
-
   airportSrv.getAirports(function(airports){
+    console.log("inside");
     $scope.airports=airports;
     $scope.filteredairports=airports;
   });
@@ -155,16 +154,20 @@ $scope.bookFlight=function(){
     NumberOfChildren: $scope.NChildren,
     Class: "Economy",
     Email:"xyz@hotmail.com"
-  }]; 
-  console.log(data[0]);
-  bookingSrv.insertbooking(data,function(response){
 
-    console.log(response);
-    if(response.outFlights){
-      $location.url('/book');
+    }]; 
+    console.log(data[0]);
+    bookingSrv.insertbooking(data,function(response){
+      
+      console.log(response);
+           if(response.outFlights){
+            // $location.url('/book');
+            $state.go('flights');
+
 
     }
     else{
+
 
       alert("no flights with criteria avialable");
     }
@@ -233,7 +236,7 @@ app.factory('airportSrv',function ($http){
             'x-access-token':response
           }
         };
-
+        
         return $http(req).then(
           function mySucces(response) {
              // console.log("in the airport server response = "+response.data[0].iata);

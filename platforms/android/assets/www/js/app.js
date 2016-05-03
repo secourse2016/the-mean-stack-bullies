@@ -1,10 +1,5 @@
 // Ionic Starter App
 
-
-// angular.module is a global place for creating, registering and retrieving Angular modules
-// 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
-// the 2nd parameter is an array of 'requires'
-// 'starter.controllers' is found in controllers.js
 app = angular.module('starter', ['ionic', 'starter.controllers'])
 
 
@@ -14,44 +9,60 @@ app = angular.module('starter', ['ionic', 'starter.controllers'])
    
   .state('confirmation', {
     url: '/confirmation',
-   
-        templateUrl: 'templates/confirmation.html',
-        controller: 'ConfirmationCtrl'
+    templateUrl: 'templates/confirmation.html',
+    controller: 'ConfirmationCtrl'
+     
+  })
+
+  .state('book', {
+    url: '/book',
+    templateUrl: 'templates/bookingFormIon.html',
+    controller: 'bookingFormCtrl'
      
   })
 
     .state('reservation', {
     url: '/reservation',
-   
-        templateUrl: 'templates/ReservationDetails.html',
-        controller: 'reservationCtrl'
+    templateUrl: 'templates/ReservationDetails.html',
+    controller: 'reservationCtrl'
       })
-     
+    
+     .state('passenger', {
+    url: '/passenger',
+    templateUrl: 'templates/personalInformation.html',
+    controller: 'personalInfoCtrl'
+      })
 
   .state('home', {
       url: '/home',
-     
-          templateUrl: 'templates/home.html',
-          controller:'HomeCtrl'
+      templateUrl: 'templates/home.html',
+      controller:'HomeCtrl'
        
     })
   .state('timetable', {
       url: '/timetable',
-     
-          templateUrl: 'templates/timetable.html',
-          controller:'timeTableCtrl'
+      templateUrl: 'templates/timetable.html',
+       controller:'timeTableCtrl'
        
     })
     .state('payment', {
       url: '/payment',
-     
-          templateUrl: 'templates/payment.html',
-          controller:'paymentCtrl'
+      templateUrl: 'templates/payment.html',
+      controller:'paymentCtrl'
+          
+       
+    })
+    .state('stats', {
+      url: '/stats',
+      templateUrl: 'templates/statistics.html',
+    
           
        
     })
 
-  
-  // if none of the above states are matched, use this as the fallback
+  // // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/home');
+   // Stripe.setPublishableKey('pk_test_ULcStxFLM4quhm4JacResvRo'); 
 });
+
+

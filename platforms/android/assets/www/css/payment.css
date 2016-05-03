@@ -1,54 +1,42 @@
 body
 {
 
-	background: white;
-}
-#topBar
-{
-
-	background: rgb(17,34,60);
-	height:15%;
-	text-align: center;
-	box-shadow: -2px 1px 10px black;
-	border:none;
-}
-#logo
-{
-	margin-left: 20%;
-	margin-top: 8%;
-
-}
-#form
-{
 	
-	margin-top: 3%;
-	padding: 20px;
+	overflow-y: scroll;
 
 }
-#passengerInfoAbove
-{
-	background: rgb(158,52,49);
-	height:15%;
-	text-align: center;
-	box-shadow: -2px 1px 10px black;
-	border:none;
-	margin-top:10%;
-}
-#passengerInfoAbove h1
-{
-		font-size: 30px;
-		font-family: Lucida Console;
-		color : white;
-		width: 800px;
-		margin-top: 20px;
-		margin-left: 20px;
-	/*font-weight: bold;*/
-}
+
+
 
 .list
 
 {
-	margin-top:30%;
-	margin-bottom: 0px;
 
+	margin-top: 15%;
+
+
+}
+.paymentInfoAbove
+{
+	background-color: rgb(158,58,49);
+	position: relative;
+	top:9%;
+	height: 10%;
+	
+}
+.paymentInfoAbove h1
+{ 
+	color:white;
+	font-size:30px;
+	margin-left: 10%;
+	padding-top: 3%;
+}
+.confirmButton
+{
+	position: absolute;
+	top:94%;
+}
+#form
+{
+	margin-top:-5%;
 }

@@ -1,0 +1,189 @@
+
+
+<html ng-app="myApp">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+  <title></title>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+  <link href="../lib/ionic/css/ionic.css" rel="stylesheet">
+
+  <link href="../css/flights.css" rel="stylesheet">
+    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <link href="css/ionic.app.css" rel="stylesheet">
+  -->
+
+
+  <!-- ionic/angularjs js -->
+  <!--  <script src="../lib/ionic/js/ionic.bundle.js"></script> -->
+
+  <!-- cordova script (this will be a 404 during development) -->
+  <script src="cordova.js"></script>
+
+  <!-- your app's js -->
+  <script src="../js/app.js"></script>
+</head>
+<body ng-controller="flightCtrl">
+  <ion-view title="Choose A Flight" style="overflow-y:scroll;">
+  <br><br><br>
+  <div class="headerB">
+    <h1>Choose a Flight</h1>
+  </div> 
+
+
+
+  <div class="card" ng-repeat="flight in newof">
+    <br>
+    <div class="item item-divider" id ="di">
+
+
+     <div class="row"> 
+       <div class="col col-20" >{{flight.origin}}</div>
+       <div class="col col-25">-></div>
+       <div class="col col-20">{{flight.destination}}</div>
+       <div class="col col-20"> {{flight.Airline}}</div>
+     </div>
+
+
+   </div>
+
+
+   <div class="item item-divider" id ="div" ng-show="viewFlight(flight.ecost)">
+    Economy <span style="color:rgb(110,27,20);">_______</span> {{flight.currency}} {{flight.ecost}}
+  </div>
+  
+  <br>
+
+   <div ng-show="viewFlight(flight.ecost)">
+  <div class="col"><span>DRPT:   </span>{{flight.departureDateTime}}</div>
+
+
+  <div class="col"><span>ARVL:   </span>{{flight.arrivalDateTime}}</div>
+
+  <div class="row" >
+   <div class="col col-50" style="text-align:center;"><br><br> <span>Seats:   </span>{{flight.eseats}}</div>
+   <div class="col col-50" style="text-align:center;"> <div class="chooseflight">  
+    <input type="radio" name="radio" ng-click="radioActionOrigin(flight.e_id)" id="{{flight.e_id}}" class="radio" ng-show="false"  />
+    <label for="{{flight.e_id}}">Choose</label>
+  </div></div>
+
+  </div>
+</div>
+
+
+<div class="item item-divider" id ="div" ng-show="viewFlight(flight.bcost)">
+  Business <span style="color:rgb(110,27,20);">_______</span> {{flight.currency}} {{flight.bcost}}
+</div>
+
+
+<br>
+
+<div ng-show="viewFlight(flight.bcost)">
+
+
+<div class="col"><span>DRPT:   </span>{{flight.departureDateTime}}</div>
+
+
+<div class="col"><span>ARVL:   </span>{{flight.arrivalDateTime}}</div>
+
+<div class="row" >
+ <div class="col col-50" style="text-align:center;"><br><br><span>Seats:   </span>{{flight.bseats}}</div>
+ <div class="col col-50" style="text-align:center;"> <div class="chooseflight">  
+  <input type="radio" name="radio" ng-click="radioActionOrigin(flight.e_id)" id="{{flight.b_id}}" class="radio" ng-show="false"  />
+  <label for="{{flight.b_id}}" >Choose</label>
+</div></div>
+
+
+</div>
+</div>
+
+
+</div>
+
+<br>
+
+<div class="headerB" ng-show=show>
+  <h1>Return Flights</h1>
+</div>
+
+
+<br>
+
+
+ <div class="card" ng-repeat="flight in newof2">
+    <br>
+    <div class="item item-divider" id ="di">
+
+     <div class="row"> 
+       <div class="col col-20" >{{flight.origin}}</div>
+       <div class="col col-25">-></div>
+       <div class="col col-20">{{flight.destination}}</div>
+       <div class="col col-20"> {{flight.Airline}}</div>
+     </div>
+
+
+   </div>
+
+
+   <div class="item item-divider" id ="div" ng-show="viewFlight(flight.ecost)">
+    Economy <span style="color:rgb(110,27,20);">_______</span> {{flight.currency}} {{flight.ecost}}
+  </div>
+  
+  <br>
+
+
+   <div ng-show="viewFlight(flight.ecost)">
+  <div class="col"><span>DRPT:   </span>{{flight.departureDateTime}}</div>
+
+
+
+  <div class="col"><span>ARVL:   </span>{{flight.arrivalDateTime}}</div>
+
+  <div class="row" >
+   <div class="col col-50" style="text-align:center;"><br><br> <span>Seats:   </span>{{flight.eseats}}</div>
+   <div class="col col-50" style="text-align:center;"> <div class="chooseflight">  
+    <input type="radio" name="radio" ng-click="radioActionOrigin(flight.e_id)" id="{{flight.e_id}}" class="radio" ng-show="false"  />
+    <label for="{{flight.e_id}}">Choose</label>
+  </div></div>
+
+  </div>
+</div>
+
+<div class="item item-divider" id ="div" ng-show="viewFlight(flight.bcost)">
+  Business <span style="color:rgb(110,27,20);">_______</span> {{flight.currency}} {{flight.bcost}}
+</div>
+
+
+<br>
+
+<div ng-show="viewFlight(flight.bcost)">
+
+
+<div class="col"><span>DRPT:   </span>{{flight.departureDateTime}}</div>
+
+
+<div class="col"><span>ARVL:   </span>{{flight.arrivalDateTime}}</div>
+
+<div class="row" >
+ <div class="col col-50" style="text-align:center;"><br><br><span>Seats:   </span>{{flight.bseats}}</div>
+ <div class="col col-50" style="text-align:center;"> <div class="chooseflight">  
+  <input type="radio" name="radio" ng-click="radioActionOrigin(flight.e_id)" id="{{flight.b_id}}" class="radio" ng-show="false"  />
+  <label for="{{flight.b_id}}" >Choose</label>
+</div></div>
+
+</div>
+</div>
+</div>
+
+</div>
+
+
+<div style="text-align:center;">
+ <button class=" button bookButton" ng-click="Book()">Book
+ </button></div>
+</div>
+
+</ion-view>
+</body>
+
+</html>

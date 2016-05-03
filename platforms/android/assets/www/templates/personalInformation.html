@@ -1,82 +1,61 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
-    <title></title>
 
-    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
-    <link href="css/personalInformation.css" rel="stylesheet">
-      <link rel="stylesheet" href="css/animate.css">
+    <link href="../css/personalInformation.css" rel="stylesheet">
+         <link href="../lib/ionic/css/ionic.css" rel="stylesheet">
 
     <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
     <link href="css/ionic.app.css" rel="stylesheet">
     -->
 
     <!-- ionic/angularjs js -->
-    <script src="lib/ionic/js/ionic.bundle.js"></script>
+    
  
+  
 
- 
+<ion-view id="page" title="Passenger Information">
 
-    <!-- cordova script (this will be a 404 during development) -->
-    <script src="cordova.js"></script>
-
-    <!-- your app's js -->
-    <script src="js/app.js"></script>
-       <script src="js/jquery-2.2.0.js"></script>
-     <script src="js/wow.min.js"></script>
- 
-  </head>
-  <body ng-app="starter">
-
-
-      <ion-header-bar id="topBar" class="bar-royal">
       
-        <div id="logo"><img src="./img/logowhite.png"></div>
+<ion-nav-title id="passengerInfoAbovee">
+      <h3 ng-model="tag">Passenger {{current+1}} Information</h3>
+      <p style="font-size:10px; margin-top :-47px;">type:{{passType}}</p>
+      </ion-nav-title>
+     <br>
 
-      </ion-header-bar>
-<ion-header-bar id="passengerInfoAbove" class="bar-royal wow fadeInLeftBig" data-wow-duration="2s">
-      
-       <h1>Passenger Information</h1>
-      </ion-header-bar>
-
-<div id="form" class="list ">
+  
+<div id="form" class="list">
   <label id="firstName" class="item item-input item-floating-label">
     <span class="input-label">First Name</span>
-    <input type="text" placeholder="First Name">
+    <input type="text" ng-model="firstName" placeholder="First Name">
   </label>
   <label id="lastName" class="item item-input item-floating-label">
     <span class="input-label">Last Name</span>
-    <input type="text" placeholder="Last Name">
+    <input type="text" ng-model="lastName" placeholder="Last Name">
   </label>
-   <label id="email" class="item item-input item-floating-label">
+<!--    <label id="email" class="item item-input item-floating-label">
     <span class="input-label">email</span>
-    <input type="email" placeholder="Email">
-  </label>
+    <input type="email" ng-model="email" placeholder="Email">
+  </label> -->
   <label  id="age"class="item item-input item-floating-label">
     <span class="input-label">Age</span>
-    <input type="number" placeholder="Age">
+    <input type="number" ng-model="age" placeholder="Age">
   </label>
   <label  id="expiryDate"class="item item-input item-stacked-label">
     <span class="input-label">Expiry Date</span>
-    <input type="date" placeholder="Expiry Date">
+    <input type="date" ng-model="expiryDate" placeholder="Expiry Date">
   </label>
   <label  id="passportNumber"class="item item-input item-floating-label">
     <span class="input-label">Passport Number</span>
-    <input type="number" placeholder="Passport Number">
+    <input type="number"  ng-model="passportnum" placeholder="Passport Number">
   </label>
   <label  id="Nationality"class="item item-input item-floating-label">
     <span class="input-label">Nationality</span>
-    <input type="number" placeholder="Nationality">
+    <input type="text" ng-model="Nationality" placeholder="Nationality">
   </label>
 </div>
 
+
+ <button class="button button-positive submitButton" ng-show="nextpassShow" ng-click="nextpass()">Next Pass</button>
+ <button class="button button-positive " ng-show="!nextpassShow" ng-click="confirm()">Confirm</button>
+
 </div>
  
-
-<script>
-  new WOW().init();
-</script>
-  </body>
-</html>
+</ion-view>
