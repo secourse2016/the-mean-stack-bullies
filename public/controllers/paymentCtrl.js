@@ -19,17 +19,20 @@ app.controller('paymentCtrl', function($scope, $location,paySrv,chargeSrv,person
 
        }
         console.log(flightsFromOtherAirlinesTotalCost);
+        console.log("setted the amount from outside");
         paySrv.setamount(flightsFromOtherAirlinesTotalCost);
         $scope.amount = flightsFromOtherAirlinesTotalCost;
+        /*
        if(outFlightData != null && outFlightData.FlightAirline=="AirFrance" || inFlightData != null&& inFlightData.FlightAirline =="AirFrance" ){
           paySrv.getAmount(function(amount){
           console.log(amount);
-          paySrv.setamount(amount+flightsFromOtherAirlinesTotalCost);
-          flightsFromOtherAirlinesTotalCost+=amount;
+          console.log("other airlines " + flightsFromOtherAirlinesTotalCost);
+          paySrv.setamount(flightsFromOtherAirlinesTotalCost);
+         // flightsFromOtherAirlinesTotalCost+=amount;
           $scope.amount = flightsFromOtherAirlinesTotalCost;
       });
-       }
-    
+       }*/
+   
     
       
       function paymentValidations(){

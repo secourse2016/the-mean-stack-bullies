@@ -165,9 +165,11 @@ app.factory('paySrv', function ($http) {
             return payData[0];
           },
           setamount:function(newAmount){
+            console.log("last set  " + newAmount);
             amount = newAmount;
           },
           getamount: function(){
+                    console.log("last get  " + amount);
             return amount;
           },
           setOutgoingFlightBookingReferenceID:function(newBookingReferenceID){
