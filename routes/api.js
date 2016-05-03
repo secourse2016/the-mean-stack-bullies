@@ -575,7 +575,7 @@ router.post('/api/booking', function(req,res){
 | These routes are related to Pinging .
   |
   */      
-  router.get('/api/flights/search/:origin/:destination/:departingDate/:class',function(req,res){
+  router.get('/api/flights/search/:origin/:destination/:departingDate/:class/:seats',function(req,res){
      var bookingData = {
       origin:req.params.origin,
       destination:req.params.destination,
@@ -588,7 +588,7 @@ router.post('/api/booking', function(req,res){
       });
 
   });
-  router.get('/api/flights/search/:origin/:destination/:departingDate/:returningDate/:class',function(req,res){
+  router.get('/api/flights/search/:origin/:destination/:departingDate/:returningDate/:class/:seats',function(req,res){
      var bookingData = {
       origin:req.params.origin,
       destination:req.params.destination,
