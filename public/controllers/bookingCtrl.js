@@ -136,6 +136,11 @@ app.controller('bookingCtrl', function($scope, $location,airportSrv,flightSrv,Fl
   $scope.click5();
  
   }
+   $scope.goToTimeTable=function()
+  {
+
+     $location.url('/timetable');
+  } 
   $scope.filterTableDate=function(){
     var result=[];
        var array=$scope.arr;

@@ -15,6 +15,8 @@ app.controller('myCtrl', function($scope) {
     $scope.include="../partials/booking2.html"
 
   }
+ 
+
   $scope.click3=function()
   {
   	$scope.showMe=true;
