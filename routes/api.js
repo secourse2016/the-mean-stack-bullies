@@ -569,10 +569,10 @@ router.post('/api/booking', function(req,res){
  
  /*
 |==========================================================================
-| Pinging Other Airlines Routes
+| Pinging Routes
 |==========================================================================
 |
-| These routes are related to Pinging Other Airlines.
+| These routes are related to Pinging .
   |
   */      
   router.get('/api/flights/search/:origin/:destination/:departingDate/:class',function(req,res){
@@ -603,6 +603,14 @@ router.post('/api/booking', function(req,res){
 
   });
 
+ /*
+|==========================================================================
+| Other airlines Booking flights from our Airline Routes
+|==========================================================================
+|
+| These routes are related to Booking flights from our Airline.
+  |
+  */ 
 
   router.post('/booking', function(req, res) {
     
@@ -625,6 +633,7 @@ router.post('/api/booking', function(req,res){
       if(err){
         console.log("err1 ------>"+err);
         errMessage+= err+"\n";
+        res.json({ refNum: null, errorMessage: err});
       }else{
 
 
@@ -651,12 +660,14 @@ router.post('/api/booking', function(req,res){
       if(err2){
       console.log("err2 ---->"+err2);
       errMessage+= err2+"\n";
+      res.json({ refNum: null, errorMessage: err});
     }else{
      console.log("new booking added"+booking);
      saveAllBookingDataController.insertReservationData(outgoingFlightId ,returnedFlightId, booking._id,function(err3, reserve){
            if(err3){
             console.log("err3---->"+err3);
             errMessage+= err3+"\n";
+            res.json({ refNum: null, errorMessage: err});
            }else{
             console.log("new reservation added"+reserve);
             var i;
@@ -666,6 +677,7 @@ router.post('/api/booking', function(req,res){
                 if(err4){
                      console.log("error4----->"+err4);
                      errMessage+= err4+"\n";
+                     res.json({ refNum: null, errorMessage: err});
                 }
                 else{
                 sess.bookinId=booking._id;
@@ -677,6 +689,7 @@ router.post('/api/booking', function(req,res){
                             if(err5){
                                       console.log("error---------------------------------->"+err5);
                                       errMessage+=err5+"\n";
+                                   res.json({ refNum: null, errorMessage: err});
                                     }
                                     else{
 
@@ -733,6 +746,19 @@ router.post('/api/booking', function(req,res){
 
 
 });
+
+ /*
+|==========================================================================
+| stripe public key Routes
+|==========================================================================
+|
+| These routes are related to requesting stripe public key .
+  |
+  */ 
+
+  router.get('/stripe/pubkey',function(req,res){
+      res.send("pk_test_ULcStxFLM4quhm4JacResvRo");
+  });
 
 module.exports = router;
 
