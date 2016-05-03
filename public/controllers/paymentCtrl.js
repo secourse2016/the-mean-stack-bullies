@@ -8,17 +8,18 @@ app.controller('paymentCtrl', function($scope, $location,paySrv,chargeSrv,person
        var NumberOfPassengers = personalInfoSrv.getPersonArray().length;
        console.log(outFlightData);
        console.log(inFlightData);
-       if(outFlightData != null && outFlightData.FlightAirline!="AirFrance"){
+       if(outFlightData != null && outFlightData.FlightCost !=null){
         console.log("here1");
         flightsFromOtherAirlinesTotalCost+= outFlightData.FlightCost*NumberOfPassengers;
        }
 
-       if(inFlightData != null&& inFlightData.FlightAirline !="AirFrance"){
+       if(inFlightData != null && inFlightData.FlightCost !=null){
         console.log("here2");
         flightsFromOtherAirlinesTotalCost+= inFlightData.FlightCost*NumberOfPassengers;
 
        }
         console.log(flightsFromOtherAirlinesTotalCost);
+        paySrv.setamount(flightsFromOtherAirlinesTotalCost);
         $scope.amount = flightsFromOtherAirlinesTotalCost;
        if(outFlightData != null && outFlightData.FlightAirline=="AirFrance" || inFlightData != null&& inFlightData.FlightAirline =="AirFrance" ){
           paySrv.getAmount(function(amount){
@@ -87,7 +88,7 @@ app.controller('paymentCtrl', function($scope, $location,paySrv,chargeSrv,person
         }
         else{
                
-             if(outFlightData != null &&outFlightData.FlightAirline!="AirFrance"){
+             if(outFlightData != null && outFlightData.FlightAirline!="AirFrance"){
                 paySrv.getStripePublicKeyOfOtherAirline(outFlightData.FlightAirline,function(key){
                     console.log(key);
                     Stripe.setPublishableKey(key); 
@@ -186,9 +187,10 @@ app.controller('paymentCtrl', function($scope, $location,paySrv,chargeSrv,person
             if(outFlightData != null &&outFlightData.FlightAirline!="AirFrance"){
               customizeBookingFromOtherAirlineRequestObject(outFlightData,response.id,function(returnedData){
                 console.log(returnedData);
+                console.log(inFlightData);
                 paySrv.setOutgoingFlightBookingReferenceID(returnedData.refNum);
-                 if(inFlightData != null ){
-                  if (inFlightData.FlightAirline !="AirFrance"){
+                 if(inFlightData.FlightAirline != null ){
+                  if (inFlightData.FlightAirline !="AirFrance" && inFlightData.FlightAirline !=null){
               paySrv.getStripePublicKeyOfOtherAirline(inFlightData.FlightAirline,function(publickey){
                            
                             console.log(publickey);

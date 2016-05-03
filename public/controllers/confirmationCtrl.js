@@ -8,11 +8,11 @@ app.controller('confirmationCtrl', function($scope, $location,ConfirmationSrv,pa
         console.log(inFlightData);
       
         // one way flight from other airline
-        if((outFLightData != null && outFLightData.FlightAirline!="AirFrance")&&(inFlightData ==null)){
+        if((outFLightData != null && outFLightData.FlightAirline!="AirFrance")&&(inFlightData.FlightAirline ==null)){
           getComfirmationDataFromServices();
         }else{
           // one way flight from our airline
-        if((outFLightData != null && outFLightData.FlightAirline=="AirFrance")&&(inFlightData ==null)){
+        if((outFLightData != null && outFLightData.FlightAirline=="AirFrance")&&(inFlightData.FlightAirline ==null)){
             getComfirmationDataFromSessions(false);
           }else{
              // round way flights both from other airline
@@ -43,6 +43,7 @@ app.controller('confirmationCtrl', function($scope, $location,ConfirmationSrv,pa
   
 function getComfirmationDataFromServices(){
            $scope.payments = paySrv.getPaymentData();
+           console.log(paySrv.getamount())
            $scope.amount = paySrv.getamount();
            $scope.personArray = personalInfoSrv.getPersonArray();
            ConfirmationSrv.getbookingnfo(function(data)

@@ -179,7 +179,7 @@ app.factory('paySrv', function ($http) {
           setReturnFlightBookingReferenceID:function(newBookingReferenceID){
             returnFLightBookingReferenceID = newBookingReferenceID;
           },
-          getReturnFlightBookingReferenceID: function(){
+          getReturnFlightBookingReferenceID : function(){
             return returnFLightBookingReferenceID;
           }
      };
