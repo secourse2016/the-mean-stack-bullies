@@ -42,7 +42,7 @@ app.config(function($routeProvider) {
         }); 
         
             
-        Stripe.setPublishableKey('pk_test_ULcStxFLM4quhm4JacResvRo'); 
+        
         
 
      

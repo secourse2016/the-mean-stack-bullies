@@ -96,6 +96,7 @@ var router = express.Router();
 
               router.post('/api/insertperson', function(req, res,next) {
                  console.log("inside the main insertperson");
+                 console.log(req.body.people);
                  var i;
                  var bool="";
                  for(i=0;i<req.body.people.length;i++){
@@ -318,10 +319,13 @@ router.post('/api/booking', function(req,res){
              */
 
           router.post('/api/insertperson', function(req, res) {
+            console.log("heess");
                   sess = req.session;
                   // sess.personData = req.body.people[0];
                   sess.personArray=req.body.people;
-                  paymnetController.calculateAmount(sess.flightIDs.inFlight_id , sess.flightIDs.ouFlight_id,function(err,amount){
+                  if(sess.flightIDs.inFlight_id !=null ||sess.flightIDs.inFlight_id !=undefined || sess.flightIDs.ouFlight_id!=null||sess.flightIDs.ouFlight_id!=undefined){
+
+                       paymnetController.calculateAmount(sess.flightIDs.inFlight_id , sess.flightIDs.ouFlight_id,function(err,amount){
                       if(err){
                         res.send('Error in the calculate payment method');
                       }
@@ -329,15 +333,20 @@ router.post('/api/booking', function(req,res){
                             sess.payAmount=((sess.personArray.length)* amount);
                             console.log("the amount is ------------------------------>"+sess.payAmount)
                             console.log(req.body.people);
-                            // console.log("req body.people--------------->"+req.body);
-                            console.log("person data added to the session");
-                          // personController.addPersonIntoDatabase(req.body.person[0],function(){
+
                             res.send('person added to the session');
                       }
-                  })
+                    });
+                  }else{
+                    console.log("in the else part");
+                    sess.payAmount=0;
+                    res.send('person added to the session');
+                  }
+               
                 
-                // });
                 });
+                
+                
 
 
  
@@ -566,8 +575,8 @@ router.post('/api/booking', function(req,res){
       origin:req.params.origin,
       destination:req.params.destination,
       departingDate:req.params.departingDate,
-      class:req.params.class
-     // seats:req.params.seats
+      class:req.params.class,
+      seats:req.params.seats
      }
       pingingOtherAirlinesServerController.getOneTripFlights(bookingData,function(returnedObject){
         res.json(returnedObject);
@@ -580,14 +589,145 @@ router.post('/api/booking', function(req,res){
       destination:req.params.destination,
       departingDate:req.params.departingDate,
       returningDate: req.params.returningDate,
-      class:req.params.class
-      //seats:req.params.seats
+      class:req.params.class,
+      seats:req.params.seats
      }
       pingingOtherAirlinesServerController.getRoundTripFlights(bookingData,function(returnedObject){
         res.json(returnedObject);
       });
 
   });
+
+
+  router.post('/booking', function(req, res) {
+    
+    var outgoingFlightId ;
+    var returnedFlightId ;
+    var errMessage = "";
+   if(req.body.outgoingFlightId){
+    outgoingFlightId = req.body.outgoingFlightId
+   }else{
+    outgoingFlightId = null ;
+   }
+
+    if(req.body.returnFlightId){
+        returnedFlightId = req.body.returnFlightId
+       }else{
+        returnedFlightId = null ;
+       }
+
+    saveAllBookingDataController.fligtInformationsByID(outgoingFlightId,returnedFlightId,function(err,outgoingFlight,returnedFlight){
+      if(err){
+        console.log("err1 ------>"+err);
+        errMessage+= err+"\n";
+      }else{
+
+
+      var ReturnDate;
+      var Trip;
+      if(returnedFlight){
+        ReturnDate = returnedFlight.departureDateTime;
+        trip = "round";
+      }else{
+        ReturnDate = null;
+        trip = "one";
+      }
+
+      var bookingDate = {
+                          trip:Trip,
+                          from:outgoingFlight.origin,
+                          To:outgoingFlight.destination,
+                          DepartureDate:outgoingFlight.departureDateTime,
+                          ReturnDate:ReturnDate,
+                          NumberOfAdults:req.body.passengerDetails.length,
+                          NumberOfChildren:0
+                         };
+     saveAllBookingDataController.insertBookingData(bookingData,function(err2,booking){
+      if(err2){
+      console.log("err2 ---->"+err2);
+      errMessage+= err2+"\n";
+    }else{
+     console.log("new booking added"+booking);
+     saveAllBookingDataController.insertReservationData(outgoingFlightId ,returnedFlightId, booking._id,function(err3, reserve){
+           if(err3){
+            console.log("err3---->"+err3);
+            errMessage+= err3+"\n";
+           }else{
+            console.log("new reservation added"+reserve);
+            var i;
+            
+            saveAllBookingDataController.insertPersonalInformation(req.body.passengerDetails,booking._id,0,function(err4,flag){
+                  
+                if(err4){
+                     console.log("error4----->"+err4);
+                     errMessage+= err4+"\n";
+                }
+                else{
+                sess.bookinId=booking._id;
+                console.log("new person added"+flag);
+                //saveAllBookingDataController.insertPaymentInformation(sess.paymentData,booking._id,function(err,payment){
+
+                        saveAllBookingDataController.decreaseSeatsByNumber( req.body.passengerDetails.length,outgoingFlightId ,returnedFlightId ,function(err5,docs){
+                        console.log("ID------------------------->"+sess.flightIDs.inFlight_id);
+                            if(err5){
+                                      console.log("error---------------------------------->"+err5);
+                                      errMessage+=err5+"\n";
+                                    }
+                                    else{
+
+                                              // retrieve the token
+                                              var stripeToken = req.body.paymentToken;
+                                              var flightCost  = req.body.cost;
+
+
+                                             // attempt to create a charge using token
+                                            stripe.charges.create({
+                                              amount: flightCost,
+                                              currency: "usd",
+                                              source: stripeToken,
+                                              description: "test"
+                                            }, function(err, data) {
+                                            if (err) res.json({ refNum: null, errorMessage: err});
+                                            else{
+                                                var e = JSON.stringify(req.body);
+                                                console.log(e);
+                                                res.end("DONE" + e);
+                                               // payment successful
+                                               // create reservation in database
+                                               // get booking reference number and send it back to the user
+                                            }
+                                            });
+                                      var message = "Booking is comfirmed";
+                                      if(booking._id){
+                                        var returnedObject =  {
+                                            refNum: booking._id,
+                                            errorMessage: errMessage
+                                        }
+                                      res.json(returnedObject);
+                                      }
+                                       
+                                   }
+                               });  
+                        // });    
+                    }
+
+                  });
+                        
+
+                    
+         
+                   }
+             });
+    }
+     });
+
+   }
+    });   
+    
+
+
+
+});
 
 module.exports = router;
 

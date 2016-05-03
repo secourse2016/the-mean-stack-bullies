@@ -1,30 +1,45 @@
-app.controller('confirmationCtrl', function($scope, $location,ConfirmationSrv,paySrv) {
+app.controller('confirmationCtrl', function($scope, $location,ConfirmationSrv,paySrv,flightSrv,personalInfoSrv,paySrv) {
 		//$scope.clicktest=function() {
-console.log("in conf"); 
-console.log($scope.arrd);
+
   		 $scope.showThankYou=true; 
-        
-  		 ConfirmationSrv.getallInfo(function(data)
-  		 {
-  		 	console.log("new");
-  		 			console.log(data);
-  		 			$scope.payments = data;
-  		 });
+        var outFLightData = flightSrv.getOutFLightData();
+        var inFlightData = flightSrv.getInFLightData();
+        console.log(inFlightData);
+        if((outFLightData != null && outFLightData.FlightAirline!="AirFrance") || (inFlightData !=null && inFlightData.FlightAirline !="AirFrance") ){
+            
+           $scope.payments = paySrv.getPaymentData();
+           $scope.amount = paySrv.getamount();
+           $scope.personArray = personalInfoSrv.getPersonArray();
+           ConfirmationSrv.getbookingnfo(function(data)
+               {
+                   
+                    $scope.booking = data;
+               }); 
+           console.log(paySrv.getOutgoingFlightBookingReferenceID());
+           $scope.bookId = paySrv.getOutgoingFlightBookingReferenceID();
+
+        }else{
+
+           ConfirmationSrv.getallInfo(function(data)
+       {
+
+            console.log(data);
+            $scope.payments = data;
+       });
 
       paySrv.getAmount(function(amount){
         $scope.amount=amount;
       });
 
-  		  ConfirmationSrv.getPersonInfo(function(data)
-  		 {
-        console.log("new22");
-        console.log("this is the array yarabbbbb");
+        ConfirmationSrv.getPersonInfo(function(data)
+       {
+
         console.log(data);
-  		 	console.log("new22");
-  		 			
-  		 			$scope.personArray = data;
+
+            
+            $scope.personArray = data;
             console.log($scope.personArray);
-  		 });
+       });
 
         ConfirmationSrv.getbookingnfo(function(data)
        {
@@ -38,6 +53,8 @@ console.log($scope.arrd);
                $scope.bookId = id;
 
        });
+        }
+  		
 
 
  // $scope.reservations =  ConfirmationSrv.getReservation(); 
