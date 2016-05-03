@@ -33,8 +33,7 @@
                 "e_id":$scope.outgoingFlights[ind]._id,
                 "b_id":$scope.outgoingFlights[ind+1]._id,
                 "origin":$scope.outgoingFlights[ind].origin,
-                "eseats":$scope.outgoingFlights[ind].seats,
-                "bseats":$scope.outgoingFlights[ind+1].seats,
+      
                 "departureDateTime":$scope.outgoingFlights[ind].departureDateTime,
                 "ecost":$scope.outgoingFlights[ind].cost,
                 "bcost":$scope.outgoingFlights[ind+1].cost,
@@ -134,8 +133,6 @@
                 "e_id":$scope.returnedFlights[ind]._id,
                 "b_id":$scope.returnedFlights[ind+1]._id,
                 "origin":$scope.returnedFlights[ind].origin,
-                "eseats":$scope.returnedFlights[ind].seats,
-                "bseats":$scope.returnedFlights[ind+1].seats,
                 "departureDateTime":$scope.returnedFlights[ind].departureDateTime,
                 "ecost":$scope.returnedFlights[ind].cost,
                 "bcost":$scope.returnedFlights[ind+1].cost,
@@ -229,7 +226,9 @@
                 if(err){
                   alert(err);
                 }else{
+
                   $state.go('passenger');
+
                 }
             });
           }
@@ -407,4 +406,5 @@ app.factory('FlightsSrv', function ($http) {
         }
      };
  });
+
 

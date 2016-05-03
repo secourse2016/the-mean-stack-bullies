@@ -36,6 +36,7 @@
     <br>
     <div class="item item-divider" id ="di">
 
+
      <div class="row"> 
        <div class="col col-20" >{{flight.origin}}</div>
        <div class="col col-25">-></div>
@@ -65,8 +66,10 @@
     <input type="radio" name="radio" ng-click="radioActionOrigin(flight.e_id)" id="{{flight.e_id}}" class="radio" ng-show="false"  />
     <label for="{{flight.e_id}}">Choose</label>
   </div></div>
+
   </div>
 </div>
+
 
 <div class="item item-divider" id ="div" ng-show="viewFlight(flight.bcost)">
   Business <span style="color:rgb(110,27,20);">_________________</span> {{flight.currency}} {{flight.bcost}}
@@ -90,6 +93,7 @@
   <label for="{{flight.b_id}}" >Choose</label>
 </div></div>
 
+
 </div>
 </div>
 
@@ -101,6 +105,7 @@
 <div class="headerB" ng-show=show>
   <h1>Return Flights</h1>
 </div>
+
 
 <br>
 
@@ -126,8 +131,10 @@
   
   <br>
 
+
    <div ng-show="viewFlight(flight.ecost)">
   <div class="col"><span>DRPT:   </span>{{flight.departureDateTime}}</div>
+
 
 
   <div class="col"><span>ARVL:   </span>{{flight.arrivalDateTime}}</div>
@@ -138,6 +145,7 @@
     <input type="radio" name="radio" ng-click="radioActionOrigin(flight.e_id)" id="{{flight.e_id}}" class="radio" ng-show="false"  />
     <label for="{{flight.e_id}}">Choose</label>
   </div></div>
+
   </div>
 </div>
 
@@ -165,7 +173,7 @@
 
 </div>
 </div>
-
+</div>
 
 </div>
 
