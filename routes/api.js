@@ -712,14 +712,10 @@ router.post('/api/booking', function(req,res){
                                               source: stripeToken,
                                               description: "test"
                                             }, function(err, data) {
-                                            if (err){ res.json({ refNum: null, errorMessage: err});
+                                            if (err){ res.json({ refNum: null, errorMessage: "un authorized stripe acc"});
                                            } else{
-                                                var e = JSON.stringify(req.body);
-                                                console.log(e);
-                                                res.end("DONE" + e);
-                                               // payment successful
-                                               // create reservation in database
-                                               // get booking reference number and send it back to the user
+
+
                                                var message = "Booking is comfirmed";
                                                 if(booking._id){
                                                   var returnedObject =  {
