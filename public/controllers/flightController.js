@@ -470,6 +470,10 @@
     }
     $scope.radioActionDest=function(id,airline,classs,cost)
     {
+      console.log(id);
+      console.log(airline);
+      console.log(classs);
+      console.log(cost);
       inFlightID = id;
       inFlightAirline = airline;
       inFlightClass = classs;

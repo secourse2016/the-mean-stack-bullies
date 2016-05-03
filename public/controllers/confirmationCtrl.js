@@ -15,10 +15,11 @@ app.controller('confirmationCtrl', function($scope, $location,ConfirmationSrv,pa
                    
                     $scope.booking = data;
                }); 
+           console.log(paySrv.getOutgoingFlightBookingReferenceID());
            $scope.bookId = paySrv.getOutgoingFlightBookingReferenceID();
 
         }else{
-          console.log("heress");
+
            ConfirmationSrv.getallInfo(function(data)
        {
 

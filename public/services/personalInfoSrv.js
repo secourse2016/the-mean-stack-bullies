@@ -16,7 +16,7 @@ app.factory('personalInfoSrv', function ($http) {
                 'x-access-token':response
               }
           };
-          
+          console.log(pe);
           return $http(req)
 
               .success(function(response) {
@@ -28,7 +28,7 @@ app.factory('personalInfoSrv', function ($http) {
                   alert("An error occured please try again");
           });
             }).error(function(response){
-                console.log(response.statusText);
+                console.log(response);
                 alert("An error occured please try again");
             });
 

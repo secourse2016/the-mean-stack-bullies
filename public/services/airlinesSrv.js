@@ -137,7 +137,7 @@ app.factory('airlineSrv',function ($http){
 
                 		var req = {  
 		                  method : 'GET', 
-		                  url:""+airlines[count]+"/api/flights/search/"+origin+"/"+destination+"/"+DepartureDate+"/"+ArrivalDate+"/economy?wt="+token+""
+		                  url:""+airlines[count]+"/api/flights/search/"+origin+"/"+destination+"/"+DepartureDate+"/"+ArrivalDate+"/economy/1?wt="+token+""
 					          };
 					          
                       return $http(req).success(function(economyFlights){
@@ -151,7 +151,7 @@ app.factory('airlineSrv',function ($http){
 
                       }).error(function(response){
 		                 console.log(response);
-		                 alert("An error occured please try again");
+		                 getEconomyOfRoundTripFlightsFromOtherAirlines(count+1,cb);
 		             });
       				});
             	}
@@ -174,7 +174,7 @@ app.factory('airlineSrv',function ($http){
                        //console.log(ArrivalDate);
                 		var req = {  
 		                  method : 'GET', 
-		                  url:""+airlines[count]+"/api/flights/search/"+origin+"/"+destination+"/"+DepartureDate+"/"+ArrivalDate+"/business?wt="+token+""
+		                  url:""+airlines[count]+"/api/flights/search/"+origin+"/"+destination+"/"+DepartureDate+"/"+ArrivalDate+"/business/1?wt="+token+""
 					          };
                       return $http(req).success(function(businessFlights){
                        
@@ -185,7 +185,7 @@ app.factory('airlineSrv',function ($http){
                       	getBussinessOfRoundTripFlightsFromOtherAirlines(count+1,cb);
                       }).error(function(response){
 		                 console.log(response);
-		                 alert("An error occured please try again");
+		                 getBussinessOfRoundTripFlightsFromOtherAirlines(count+1,cb);
 		             });
       				});
             	}

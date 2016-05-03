@@ -96,7 +96,7 @@ var router = express.Router();
 
               router.post('/api/insertperson', function(req, res,next) {
                  console.log("inside the main insertperson");
-                 console.log(req.body.people[i]);
+                 console.log(req.body.people);
                  var i;
                  var bool="";
                  for(i=0;i<req.body.people.length;i++){
@@ -319,10 +319,13 @@ router.post('/api/booking', function(req,res){
              */
 
           router.post('/api/insertperson', function(req, res) {
+            console.log("heess");
                   sess = req.session;
                   // sess.personData = req.body.people[0];
                   sess.personArray=req.body.people;
-                  paymnetController.calculateAmount(sess.flightIDs.inFlight_id , sess.flightIDs.ouFlight_id,function(err,amount){
+                  if(sess.flightIDs.inFlight_id !=null ||sess.flightIDs.inFlight_id !=undefined || sess.flightIDs.ouFlight_id!=null||sess.flightIDs.ouFlight_id!=undefined){
+
+                       paymnetController.calculateAmount(sess.flightIDs.inFlight_id , sess.flightIDs.ouFlight_id,function(err,amount){
                       if(err){
                         res.send('Error in the calculate payment method');
                       }
@@ -330,15 +333,20 @@ router.post('/api/booking', function(req,res){
                             sess.payAmount=((sess.personArray.length)* amount);
                             console.log("the amount is ------------------------------>"+sess.payAmount)
                             console.log(req.body.people);
-                            // console.log("req body.people--------------->"+req.body);
-                            console.log("person data added to the session");
-                          // personController.addPersonIntoDatabase(req.body.person[0],function(){
+
                             res.send('person added to the session');
                       }
-                  })
+                    });
+                  }else{
+                    console.log("in the else part");
+                    sess.payAmount=0;
+                    res.send('person added to the session');
+                  }
+               
                 
-                // });
                 });
+                
+                
 
 
  

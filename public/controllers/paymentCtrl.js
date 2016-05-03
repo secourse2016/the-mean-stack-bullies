@@ -7,15 +7,16 @@ app.controller('paymentCtrl', function($scope, $location,paySrv,chargeSrv,person
        var outFlightData = flightSrv.getOutFLightData();
        var NumberOfPassengers = personalInfoSrv.getPersonArray().length;
        console.log(outFlightData);
-       if(outFlightData != null &&outFlightData.FlightAirline!="AirFrance"){
+       if(outFlightData != null && outFlightData.FlightAirline!="AirFrance"){
         flightsFromOtherAirlinesTotalCost+= outFlightData.FlightCost*NumberOfPassengers;
        }
 
        if(inFlightData != null&& inFlightData.FlightAirline !="AirFrance"){
         flightsFromOtherAirlinesTotalCost+= inFlightData.FlightCost;
        }
-
+    console.log(flightsFromOtherAirlinesTotalCost);
       paySrv.getAmount(function(amount){
+        console.log(amount);
         paySrv.setamount(amount+flightsFromOtherAirlinesTotalCost);
         $scope.amount=amount+flightsFromOtherAirlinesTotalCost;
 

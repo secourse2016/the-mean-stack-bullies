@@ -239,10 +239,12 @@
                      $location.url('/pay');
                 }else{
                 if(inFlightData!=null && outFlightData!=null && outFlightData.FlightAirline !="AirFrance" && inFlightData.FlightAirline=="AirFrance"){
+                  console.log("heree1");
                   personalInfoSrv.setPersonArray($scope.personalArray); 
                   insertPersonArray();
                 }else{
                 if(inFlightData!=null && outFlightData!=null && outFlightData.FlightAirline =="AirFrance" && inFlightData.FlightAirline!="AirFrance"){
+                  console.log("heree2");
                   personalInfoSrv.setPersonArray($scope.personalArray); 
                   insertPersonArray();
                 }
@@ -254,7 +256,7 @@
               }
             }
                       function insertPersonArray (){
-
+                        console.log($scope.personalArray);
             personalInfoSrv.insertPerson($scope.personalArray,function(result){
               console.log("hereeeeee switch to payment view");
               if(result=="person added to the session"){
