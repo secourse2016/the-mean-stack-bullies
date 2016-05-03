@@ -8,7 +8,7 @@
     $scope.show=false;
 
      $scope.startindex=0;
-  $scope.endindex=2;
+  $scope.endindex=1;
 
   $scope.airlines=[];
     $scope.airlinesTemp=[];
@@ -215,6 +215,24 @@
              }
 
 
+             var i=0;
+            for(i=0;i<$scope.arr1.length;i++){
+              if(($scope.arr1[i].Airline!=$scope.airlines[$scope.startindex].name)&&($scope.arr1[i].Airline!=$scope.airlines[$scope.startindex+1].name)){
+                  $scope.arr1.splice(i,1);
+                  i--;
+              }
+            }
+            if($scope.arr2){
+              i=0;
+              for(i=0;i<$scope.arr2.length;i++){
+                if(($scope.arr2[i].Airline!=$scope.airlines[$scope.startindex].name)&&($scope.arr2[i].Airline!=$scope.airlines[$scope.startindex+1].name)){
+                    $scope.arr2.splice(i,1);
+                    i--;
+                }
+              }
+            }
+
+
 
 
 
@@ -399,6 +417,21 @@
                   }
              }
 
+             var i=0;
+            for(i=0;i<$scope.arr1.length;i++){
+              if(($scope.arr1[i].Airline!=$scope.airlines[$scope.startindex].name)&&($scope.arr1[i].Airline!=$scope.airlines[$scope.startindex+1].name)){
+                  $scope.arr1.splice(i,1);
+                  i--;
+              }
+            }
+            i=0;
+            for(i=0;i<$scope.arr2.length;i++){
+              if(($scope.arr2[i].Airline!=$scope.airlines[$scope.startindex].name)&&($scope.arr2[i].Airline!=$scope.airlines[$scope.startindex+1].name)){
+                  $scope.arr2.splice(i,1);
+                  i--;
+              }
+            }
+
 
              $scope.show=true;
             };
@@ -527,10 +560,10 @@
         alert("no next airlines");
       }
       else{
-          $scope.startindex=$scope.startindex+3;
-           $scope.endindex=$scope.endindex+3;
+          $scope.startindex=$scope.startindex+2;
+           $scope.endindex=$scope.endindex+2;
            if($scope.endindex>$scope.airlines.length-1){
-                $scope.startindex=$scope.airlines.length-4;
+                $scope.startindex=$scope.airlines.length-2;
                 $scope.endindex=$scope.airlines.length-1;
            }
           $scope.arr1=[];
@@ -562,14 +595,14 @@
 
            var i=0;
             for(i=0;i<$scope.arr1.length;i++){
-              if(($scope.arr1[i].Airline!=$scope.airlines[$scope.startindex].name)&&($scope.arr1[i].Airline!=$scope.airlines[$scope.startindex+1].name)&&($scope.arr1[i].Airline!=$scope.airlines[$scope.startindex+2].name)){
+              if(($scope.arr1[i].Airline!=$scope.airlines[$scope.startindex].name)&&($scope.arr1[i].Airline!=$scope.airlines[$scope.startindex+1].name)){
                   $scope.arr1.splice(i,1);
                   i--;
               }
             }
             i=0;
             for(i=0;i<$scope.arr2.length;i++){
-              if(($scope.arr2[i].Airline!=$scope.airlines[$scope.startindex].name)&&($scope.arr2[i].Airline!=$scope.airlines[$scope.startindex+1].name)&&($scope.arr2[i].Airline!=$scope.airlines[$scope.startindex+2].name)){
+              if(($scope.arr2[i].Airline!=$scope.airlines[$scope.startindex].name)&&($scope.arr2[i].Airline!=$scope.airlines[$scope.startindex+1].name)){
                   $scope.arr2.splice(i,1);
                   i--;
               }
@@ -585,11 +618,11 @@
         alert("no previous airlines");
       }
       else{
-       $scope.startindex=$scope.startindex-3;
-       $scope.endindex=$scope.endindex-3;
+       $scope.startindex=$scope.startindex-2;
+       $scope.endindex=$scope.endindex-2;
        if($scope.startindex<0){
             $scope.startindex=0;
-            $scope.endindex=2;
+            $scope.endindex=1;
        }
        $scope.arr1=[];
        var ind=0;
@@ -611,14 +644,14 @@
 
             var i=0;
             for(i=0;i<$scope.arr1.length;i++){
-              if(($scope.arr1[i].Airline!=$scope.airlines[$scope.startindex].name)&&($scope.arr1[i].Airline!=$scope.airlines[$scope.startindex+1].name)&&($scope.arr1[i].Airline!=$scope.airlines[$scope.startindex+2].name)){          
+              if(($scope.arr1[i].Airline!=$scope.airlines[$scope.startindex].name)&&($scope.arr1[i].Airline!=$scope.airlines[$scope.startindex+1].name)){          
                   $scope.arr1.splice(i,1);
                   i--;
               }
             }
             i=0;
             for(i=0;i<$scope.arr2.length;i++){
-              if(($scope.arr2[i].Airline!=$scope.airlines[$scope.startindex].name)&&($scope.arr2[i].Airline!=$scope.airlines[$scope.startindex+1].name)&&($scope.arr2[i].Airline!=$scope.airlines[$scope.startindex+2].name)){
+              if(($scope.arr2[i].Airline!=$scope.airlines[$scope.startindex].name)&&($scope.arr2[i].Airline!=$scope.airlines[$scope.startindex+1].name)){
                   $scope.arr2.splice(i,1);
                   i--;
               }

@@ -7,8 +7,8 @@ app.controller('bookingCtrl', function($scope, $location,airportSrv,flightSrv,Fl
   var depdateString=document.getElementById('retDateCalender').value;
      var retdateString=document.getElementById('depDateCalender').value;
 
-     $scope.retDate=new Date (retdateString);
-     $scope.depDate=new Date (depdateString);
+     $scope.retDate=new Date (depdateString);
+     $scope.depDate=new Date (retdateString);
   if($scope.trippp == "one"){
         var bookingData = [{ 
           from: $scope.selectedOrigin,
@@ -117,8 +117,8 @@ app.controller('bookingCtrl', function($scope, $location,airportSrv,flightSrv,Fl
      var depdateString=document.getElementById('retDateCalender').value;
      var retdateString=document.getElementById('depDateCalender').value;
 
-     $scope.retDate=new Date (retdateString);
-     $scope.depDate=new Date (depdateString);
+     $scope.retDate=new Date (depdateString);
+     $scope.depDate=new Date (retdateString);
      var errMessage = bookingFormValidation(); 
      var empty=true; 
           if(errMessage&&errMessage.length > 50){  

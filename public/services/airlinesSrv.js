@@ -3,7 +3,7 @@ app.factory('airlineSrv',function ($http){
    var airlines =  [    
    						//"http://www.swiss-air.me",
    					"http://52.90.41.197", 
-						"http://ec2-54-152-123-100.compute-1.amazonaws.com",
+						// "http://ec2-54-152-123-100.compute-1.amazonaws.com",
 						"http://52.27.150.19",
 						"http://ec2-52-26-166-80.us-west-2.compute.amazonaws.com",
 						//"http://52.90.46.68",
