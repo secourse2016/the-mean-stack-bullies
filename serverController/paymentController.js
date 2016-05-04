@@ -27,13 +27,16 @@ var stripe = require("stripe")("sk_test_eI0A2eL166WZXsd51IOkmksT");
 	 
 		
 	}
-
+   
 	exports.calculateAmount=function(inFlight_id,ouFlight_id,cb){
 		    var OutFlightModel = mongoose.model('outFlight');
 			var InFlightModel = mongoose.model('inFlight');
 			var outquery = OutFlightModel.find();
 	        var inquery = InFlightModel.find();
 		    var amount=0;
+
+		    console.log(inFlight_id);
+
             if(inFlight_id!=null){
 					inquery.where('_id',inFlight_id);
 					if(ouFlight_id!=null ){
@@ -86,9 +89,10 @@ var stripe = require("stripe")("sk_test_eI0A2eL166WZXsd51IOkmksT");
                       		cb(err,null);
                       	}
                       	else{
+                      		 amount=outdocs[0].cost;
                       		if(outdocs.length >0){
-          			 		console.log("hello from inside paymentserver outdocs not null"+amount);
-	                      	amount=outdocs[0].cost;
+          			 			console.log("hello from inside paymentserver outdocs not null"+amount);
+	                     
 	                      	cb(null,amount);
 	                      }else{
 	                      	cb(null,0);
@@ -102,4 +106,4 @@ var stripe = require("stripe")("sk_test_eI0A2eL166WZXsd51IOkmksT");
             	}
             }
             
-	}
+	} 

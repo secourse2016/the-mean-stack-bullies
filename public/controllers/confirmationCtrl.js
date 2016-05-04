@@ -64,10 +64,9 @@ function getComfirmationDataFromSessions (returnFlightFlag){
               console.log(data);
               $scope.payments = data;
          });
-
-      paySrv.getAmount(function(amount){
-        $scope.amount=amount;
-      });
+        $scope.amount = paySrv.getamount();
+   console.log($scope.amount);
+    
 
         ConfirmationSrv.getPersonInfo(function(data)
        {

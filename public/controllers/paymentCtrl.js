@@ -19,17 +19,20 @@ app.controller('paymentCtrl', function($scope, $location,paySrv,chargeSrv,person
 
        }
         console.log(flightsFromOtherAirlinesTotalCost);
+        console.log("setted the amount from outside");
         paySrv.setamount(flightsFromOtherAirlinesTotalCost);
         $scope.amount = flightsFromOtherAirlinesTotalCost;
+        /*
        if(outFlightData != null && outFlightData.FlightAirline=="AirFrance" || inFlightData != null&& inFlightData.FlightAirline =="AirFrance" ){
           paySrv.getAmount(function(amount){
           console.log(amount);
-          paySrv.setamount(amount+flightsFromOtherAirlinesTotalCost);
-          flightsFromOtherAirlinesTotalCost+=amount;
+          console.log("other airlines " + flightsFromOtherAirlinesTotalCost);
+          paySrv.setamount(flightsFromOtherAirlinesTotalCost);
+         // flightsFromOtherAirlinesTotalCost+=amount;
           $scope.amount = flightsFromOtherAirlinesTotalCost;
       });
-       }
-    
+       }*/
+   
     
       
       function paymentValidations(){
@@ -71,7 +74,7 @@ app.controller('paymentCtrl', function($scope, $location,paySrv,chargeSrv,person
        /**
         * payment form submitting function
         */
-		$scope.submitPaymentForm=function() {
+		$scope.submitPaymentForm=function(stripeKey,cb) {
         
         var errMessage = paymentValidations();
         if(errMessage&&errMessage.length > 50){
@@ -80,12 +83,13 @@ app.controller('paymentCtrl', function($scope, $location,paySrv,chargeSrv,person
                $scope.$apply();
         }
 
-
+                 
         if(errMessage&&errMessage.length < 50){
           $scope.alertMe =errMessage;
                $scope.payAlert = true;
                $scope.$apply();
         }
+<<<<<<< HEAD
         else{
                
              if(outFlightData != null && outFlightData.FlightAirline!="AirFrance"){
@@ -143,8 +147,6 @@ app.controller('paymentCtrl', function($scope, $location,paySrv,chargeSrv,person
                             
                             }, stripeResponseHandlerForOutgoingFlightsPayment); 
                }
-
-               
 
             
               

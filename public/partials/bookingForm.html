@@ -1,8 +1,8 @@
+ 
+ <script src="../js/main.js"></script>
   <div id="bookingSection"  ng-controller="bookingCtrl" >
-
               <div>
                 <div ng-model="bookings">  
-                
                   <h1>Book a flight!</h1> 
                   <p class="bg-danger" ng-show="bookalert"> {{alertme}}</p> 
                   <div>
@@ -29,8 +29,9 @@
 
                     <div >
                       <label>Departure Date</label>
-                      <input ng-model = "depDate" type="date" class="form-control"  name="name" placeholder="Departure Date">
-
+                      <input type="text"id="depDateCalender" ng-model="depDate"  class="form-control"  name="name" placeholder="Deparute Date">
+                      <button id="calendarDeparture" class="glyphicon glyphicon-calendar"></button>
+                     
                     </div>
 
                     <div >
@@ -89,8 +90,12 @@
 
                     <div ng-hide="hidedate">  
                       <label>Return Date</label>
-                      <input ng-model="retDate" type="date" class="form-control" name="name" placeholder="Departure Date">
-                    </div>  
+                      <input type="text" id="retDateCalender"ng-model="retDate"   class="form-control" name="name" placeholder="Return Date">
+
+
+                      <button id="calendarReturn" class="glyphicon glyphicon-calendar"></button>
+                    </div>
+
 
                     <div ng-hide="!hidedate"> 
                       <label> </label>
@@ -141,8 +146,9 @@
 
 
                 </div>
-              </div>  
-            </div> 
+              </div> 
+              
+      </div> 
 
 
 
