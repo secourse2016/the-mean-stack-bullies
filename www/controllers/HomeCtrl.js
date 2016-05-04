@@ -28,7 +28,7 @@ $scope.about = function()
 
 $scope.offers = function()
 {
-	$state.go('payment');
+	$state.go('berlinOffer');
 }
 HomeSrv.test("Home From Srv");
 

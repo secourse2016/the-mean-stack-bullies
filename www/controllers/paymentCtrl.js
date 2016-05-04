@@ -212,7 +212,7 @@ app.factory('paymentSrv',function ($http){
          getAmount : function(cb) {
               var tokenReq = {
                 method: 'GET',
-                url: '/getToken'
+                url: 'http://52.26.173.245/getToken'
                  };
       return $http(tokenReq).success(function(response){
           var req = {

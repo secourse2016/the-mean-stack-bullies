@@ -1,21 +1,25 @@
-app.controller('personalInfoCtrl', function($scope, $location,$state,personalInfoSrv) {
+app.controller('personalInfoCtrl', function($scope, $location,$state,personalInfoSrv,flightSrv) {
       var adults=0;
       var children=0;
       $scope.personalArray=[];
       $scope.nextpassShow=true;
       $scope.ageShow=true;
-    personalInfoSrv.getBookingNumberOfAdultsAndChildren(function(data){
-           console.log(data);
-           adults=parseInt(data.NumberOfAdults);
-           children=parseInt(data.NumberOfChildren);
+    
+              
+
+           adults=parseInt(flightSrv.getAdultNumber());
+           children=parseInt(flightSrv.getChildrenNumber());
+           console.log(adults);
+           console.log(children);
             $scope.passengersNumber=adults+children;
+            console.log($scope.passengersNumber);
             $scope.current=0;
           $scope.passType="Adult";
             if($scope.passengersNumber==1){
                $scope.nextpassShow=false;
             }
 
-     });
+ 
 // 
 
     $scope.nextpass=function(){

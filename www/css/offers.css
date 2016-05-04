@@ -1,0 +1,46 @@
+#booknow 
+{
+
+    font-weight: bolder;
+    font-size: 13px;
+    background-color: #700000 
+} 
+
+
+#offercard 
+{ 
+background-position: center;
+position: relative;
+top:6%;
+
+
+} 
+
+#title 
+{ 
+
+font-weight: bolder;
+ font-size: x-large;
+
+} 
+
+#country 
+{
+	font-weight: bolder; 
+	font-size: large;
+} 
+
+#price 
+{ 
+ position: relative;
+ font-weight: bolder; 
+font-size: x-large;
+} 
+
+#check 
+{ 
+ color: red;  
+ position: relative;
+ left:10%;
+
+}

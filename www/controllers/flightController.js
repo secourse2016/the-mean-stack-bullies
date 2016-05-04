@@ -292,11 +292,24 @@
   app.factory('flightSrv', function ($http) {
       var inFlights = [];
       var outFlights = [];
-
+      var ChildrenNumber = 0;
+      var AdultNumber = 0;
       var flightsFromOtherAirlines = [];
       var ReturnflightsFromOtherAirlines = [];
 
      return {
+         setAdultNumber : function(number){
+          AdultNumber = number;
+         },
+         getAdultNumber : function(){
+          return AdultNumber;
+         },
+          setChildrenNumber : function(number){
+          ChildrenNumber = number;
+         },
+         getChildrenNumber : function(){
+          return ChildrenNumber;
+         },
          getFlights : function(cb) {
           var tokenReq = {
               method: 'GET',

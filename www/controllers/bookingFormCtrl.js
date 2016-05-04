@@ -1,5 +1,5 @@
 
-app.controller('bookingFormCtrl', function($scope,$state, $location,bookingSrv,airportSrv) {
+app.controller('bookingFormCtrl', function($scope,$state, $location,bookingSrv,airportSrv,flightSrv) {
    console.log("ctrl");
   $scope.NAdults;
   $scope.NChildren;
@@ -174,6 +174,8 @@ else{
     Class:"Economy"
 
     }]; 
+    flightSrv.setAdultNumber($scope.NAdults);
+    flightSrv.setChildrenNumber($scope.NChildren);
     console.log(data[0]);
     bookingSrv.insertbooking(data,function(response){
       
