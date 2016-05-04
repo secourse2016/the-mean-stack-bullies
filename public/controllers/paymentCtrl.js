@@ -1,7 +1,4 @@
-
-
 app.controller('paymentCtrl', function($scope, $location,paySrv,chargeSrv,personalInfoSrv,flightSrv) {
-
      /**
       * validating payment form
       */
@@ -34,15 +31,10 @@ app.controller('paymentCtrl', function($scope, $location,paySrv,chargeSrv,person
          // flightsFromOtherAirlinesTotalCost+=amount;
           $scope.amount = flightsFromOtherAirlinesTotalCost;
       });
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> master
-
        }*/
    
     
-
+      
       function paymentValidations(){
         var isvalid =true;
         var errMessage = "";
@@ -54,12 +46,8 @@ app.controller('paymentCtrl', function($scope, $location,paySrv,chargeSrv,person
            errMessage+="Please enter a valid card number \n";
            isvalid = false;
           }
-
          if(($scope.CVV == null)||!(/^[0-9]{3}$/.test($scope.CVV))){
-
-
            errMessage+="Please enter a valid CVV \n";
-
            isvalid =false;
           }
          if($scope.radioButton== null){
@@ -86,7 +74,7 @@ app.controller('paymentCtrl', function($scope, $location,paySrv,chargeSrv,person
        /**
         * payment form submitting function
         */
-		$scope.submitPaymentForm=function(stripeKey,cb) {
+    $scope.submitPaymentForm=function(stripeKey,cb) {
         
         var errMessage = paymentValidations();
         if(errMessage&&errMessage.length > 50){
@@ -102,8 +90,6 @@ app.controller('paymentCtrl', function($scope, $location,paySrv,chargeSrv,person
                $scope.$apply();
         }
         else{
-
-
                
              if(outFlightData != null && outFlightData.FlightAirline!="AirFrance"){
                 paySrv.getStripePublicKeyOfOtherAirline(outFlightData.FlightAirline,function(key){
@@ -136,7 +122,6 @@ app.controller('paymentCtrl', function($scope, $location,paySrv,chargeSrv,person
                             }, stripeResponseHandlerForOutgoingFlightsPayment); 
                }
 
-
             
               
             
@@ -154,7 +139,6 @@ app.controller('paymentCtrl', function($scope, $location,paySrv,chargeSrv,person
 
             else{   
             var boolea=false;
-
           if($scope.radioButton=="visa"){
             boolea=true;
           }
@@ -163,9 +147,6 @@ app.controller('paymentCtrl', function($scope, $location,paySrv,chargeSrv,person
           }
 
           var date ="01 "+$scope.expirymonth+" "+$scope.expiryyear;
-
-               console.log(response);
-
 
             var inFlightData = flightSrv.getInFLightData();
             var outFlightData = flightSrv.getOutFLightData();
@@ -252,8 +233,6 @@ app.controller('paymentCtrl', function($scope, $location,paySrv,chargeSrv,person
                             
                             }, stripeResponseHandlerForReturnFlightsPayment); 
                         }
-                      }else{
-                         $location.url('/confirm');
                       }  
                                     // console.log("here in the payment controlller");
                                     // $location.url('/confirm');
@@ -261,7 +240,6 @@ app.controller('paymentCtrl', function($scope, $location,paySrv,chargeSrv,person
                                    else{
                                     alert("something went wrong please try again");
                                    }
-
                 });
              }
              
