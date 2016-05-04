@@ -1,5 +1,5 @@
 
-  app.controller('flightCtrl', function($scope,$state,flightSrv,FlightsSrv) {
+  app.controller('flightCtrl', function($scope,$state,flightSrv,FlightsSrv,bookingSrv) {
   	console.log("in flight controller");
 
   $scope.outgoingFlights = [];
@@ -11,17 +11,23 @@
   var inFlightID = null ;
   var outFlightID = null ;
 
-   flightSrv.getFlights(function(response){
+//   flightSrv.getFlights(function(response){
+  var response = bookingSrv.getFlightFromService();
+    console.log("IN");
        if(response.err){
          alert("somthing went wrong please try again");
        }else{
-         if(response.outFlights ){
+        console.log("IN2");
+        console.log(response);
+         if(response.outFlights){
             //console.log("in booking controller "+response.outFlights[0].origin);
 
            var flightsFromOtherAirlines = flightSrv.getFlightsFromOtherAirlines();
            console.log("hereeee -->"+flightsFromOtherAirlines.length);
            var AllFlights = flightsFromOtherAirlines.concat(response.outFlights);
             $scope.outgoingFlights = AllFlights;
+            console.log("hi")
+            console.log(AllFlights);
               $scope.newof=[];
              var newi=0;
              for(var ind=0;ind<$scope.outgoingFlights.length;ind+=2)
@@ -213,7 +219,7 @@
              $scope.show=true;
             };
        }
-   });
+   //});
   
   $scope.Book=function()
   {    
@@ -294,20 +300,19 @@
          getFlights : function(cb) {
           var tokenReq = {
               method: 'GET',
-              url: '/getToken'
+              url: 'http://52.26.173.245/getToken'
             };
       return $http(tokenReq).success(function(response){
+        console.log(response);
           var req = {
               method: 'GET',
-              url: '/api/flights',
-            headers:
-              {
-                'x-access-token':response
-              }
+              url: 'http://52.26.173.245/api/flights?wt='+response
+           
           };
 
           return $http(req).then(
             function mySucces(response) {
+              console.log(response);
                     cb(response.data);
      },      function myError(response) {
                  cb(response.statusText);
@@ -321,7 +326,7 @@
           insertFlight : function(inFlight_id,ouFlight_id,cb){
                 var tokenReq = {
                       method: 'GET',
-                      url: '/getToken'
+                      url: 'http://52.26.173.245/getToken'
                     };
               return $http(tokenReq).success(function(response){
                   var flightsID = {
@@ -330,13 +335,10 @@
                   };
                  var req = {
                    method:'POST',
-                   url:'/api/insertFlight',
+                   url:'http://52.26.173.245/api/insertFlight?wt='+response,
 
-                   data:{flightsID: flightsID},
-                   headers:
-                          {
-                            'x-access-token':response
-                          }
+                   data:{flightsID: flightsID}
+                      
                  };
               return $http(req).then(
               function success(response){
@@ -379,16 +381,13 @@ app.factory('FlightsSrv', function ($http) {
          getFlights : function(cb) {
                   var tokenReq = {
                       method: 'GET',
-                      url: '/getToken'
+                      url: 'http://52.26.173.245/getToken'
                     };
               return $http(tokenReq).success(function(response){
                          var req = {
                                method: 'GET',
-                               url: '/api/flightsForTimetable',
-                               headers:
-                                  {
-                                    'x-access-token':response
-                                  }
+                               url: 'http://52.26.173.245/api/flightsForTimetable?wt='+response
+                               
                          };
 
                         return $http(req)
@@ -407,5 +406,4 @@ app.factory('FlightsSrv', function ($http) {
         }
      };
  });
-
 

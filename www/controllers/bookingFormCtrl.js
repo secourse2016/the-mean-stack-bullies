@@ -2,17 +2,20 @@
 app.controller('bookingFormCtrl', function($scope,$state, $location,bookingSrv,airportSrv) {
    console.log("ctrl");
   $scope.NAdults;
+  $scope.NChildren;
   $scope.one=true;
   $scope.bus=true;
   OneWay=true;
-  $scope.limit=5;
+  $scope.limit=10;
+  Generated=false;
 
+  
 
-  trip="";
   airportSrv.getAirports(function(airports){
-    console.log("inside");
+ 
     $scope.airports=airports;
     $scope.filteredairports=airports;
+    Generated=true;
   });
   
   $scope.search=function(x){
@@ -110,12 +113,13 @@ $scope.searchAirport2= function()
 $scope.book=function(){
   console.log("hobaaaä");
 }
+
+
+
 $scope.class=function(){
   $scope.bus=!$scope.bus;
 }
-$scope.children=function(x){
-  console.log(x);
-}
+
 $scope.trip=function(){
   $scope.one=!$scope.one;
   OneWay=$scope.one;
@@ -124,9 +128,16 @@ $scope.trip=function(){
 
 $scope.loadMore= function()
 {
-
+  console.log(Generated);
+  if(!Generated){
+    setTimeout(function(){ $scope.$broadcast('scroll.infiniteScrollComplete'); }, 3000);
+  }
+  else{
+    console.log("increase");
   $scope.limit+=10;
   $scope.$broadcast('scroll.infiniteScrollComplete');
+  }
+
 }
 
 $scope.bookFlight=function(){
@@ -140,8 +151,14 @@ $scope.bookFlight=function(){
   {
     trip="round";
   }
-  console.log(trip);
   
+  
+  var err= bookingFormValidation();
+if(err)
+{
+  alert(err);
+}
+else{
 
   var data = [{ 
 
@@ -152,8 +169,8 @@ $scope.bookFlight=function(){
     ReturnDate: $scope.RDate,
     NumberOfAdults: $scope.NAdults,
     NumberOfChildren: $scope.NChildren,
-    Class: "Economy",
-    Email:"xyz@hotmail.com"
+    Email:$scope.email,
+    Class:"Economy"
 
     }]; 
     console.log(data[0]);
@@ -161,7 +178,7 @@ $scope.bookFlight=function(){
       
       console.log(response);
            if(response.outFlights){
-            // $location.url('/book');
+            bookingSrv.setFlightFromService(response);
             $state.go('flights');
 
 
@@ -172,29 +189,121 @@ $scope.bookFlight=function(){
       alert("no flights with criteria avialable");
     }
   });      
+}
+}
+
+function bookingFormValidation(){  
+
+  var valid= true; 
+  var err="";
+  var evalid = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+  if(trip == undefined){ 
+   err+= "Please select your trip type"; 
+   valid = false;
+ }
+
+ if(typeof Origin == 'undefined' || Origin == undefined){  
+ 
+   err += "Please enter your origin airport \n";
+   valid = false; 
+ } 
+ if(typeof Destination == 'undefined' || Destination == undefined){ 
+   err+= "Please enter your destination \n"; 
+   valid = false;
+ } 
+ if(typeof $scope.DDate == 'undefined')
+ {
+  err+="Please enter a Departure Date \n"; 
+  valid = false;
+ }
+ else if(( $scope.DDate && ($scope.DDate.getFullYear() > new Date().getFullYear()+1))) { 
+  err+="You can not book a flight more than 1 year ahead \n"; 
+  valid = false;
+}
+
+if(($scope.DDate == undefined)||   
+  ($scope.DDate.getFullYear() < new Date().getFullYear()) || 
+  ($scope.DDate.getMonth()+1 < new Date().getMonth()+1) && 
+  ($scope.DDate.getFullYear() == new Date().getFullYear()) || 
+  ($scope.DDate.getDate() < new Date().getDate()) && 
+  ($scope.DDate.getMonth()+1 == new Date().getMonth()+1) &&
+  ($scope.DDate.getFullYear() == new Date().getFullYear())) { 
+
+  err+= "Please enter a valid departure date \n"; 
+valid = false;
+}
+
+
+if(trip == "round"){ 
+
+ if(($scope.RDate== undefined)||   
+  ($scope.RDate.getFullYear() < new Date().getFullYear()) || 
+  ($scope.RDate.getMonth()+1 < new Date().getMonth()+1) && 
+  ($scope.RDate.getFullYear() == new Date().getFullYear()) || 
+  ($scope.RDate.getDate() < new Date().getDate()) && 
+  ($scope.RDate.getMonth()+1 == new Date().getMonth()+1) &&
+  ($scope.RDate.getFullYear() == new Date().getFullYear())){
+
+  err+= "Please enter a valid return date \n"; 
+valid = false;
+
+
+} 
+
+} 
+
+
+if($scope.NAdults == undefined){ 
+ err+= "Please select number of adults \n";
+ valid = false;
+
+}   
+
+
+if($scope.NChildren == undefined){ 
+  err+="Please select number of children \n";
+  valid = false;
+}
+
+
+
+
+if($scope.email == undefined || !(evalid.test($scope.email))) { 
+ err+= "Please enter a valid email \n"; 
+ valid = false;
+
+
+}
+
+
+
+
+if(valid == true){ 
+ err=null;
+} 
+
+return(err);
 
 }
 
 }); 
 
 app.factory('bookingSrv',function ($http){ 
+  var flights = null;
   return{
     insertbooking : function(booking,cb){  
       var tokenReq = {
         method: 'GET',
-        url: '/getToken'
+        url: 'http://52.26.173.245/getToken'
       };
       return $http(tokenReq).success(function(response){
         console.log("token--->"+response);
 
         var req = {  
           method : 'POST', 
-          url : '/api/booking', 
-          data : {booking: booking} ,
-          headers:
-          {
-            'x-access-token': response
-          }
+          url : 'http://52.26.173.245/api/booking?wt='+response, 
+          data : {booking: booking} 
         };  
         return $http(req)
 
@@ -211,7 +320,13 @@ app.factory('bookingSrv',function ($http){
         console.log(response.statusText);
         alert("An error occured please try again");
       }) ;                         
-    } 
+    }, 
+    getFlightFromService:function(){
+      return flights;
+    },
+    setFlightFromService:function(flightArray){
+      flights = flightArray;
+    }
   }    
   
 });
@@ -225,18 +340,14 @@ app.factory('airportSrv',function ($http){
     getAirports : function(cb){
       var tokenReq = {
         method: 'GET',
-        url: '/getToken'
+        url: 'http://52.26.173.245/getToken'
       };
       return $http(tokenReq).success(function(response){
         var req = {
           method: 'GET',
-          url: '/api/airports',
-          headers:
-          {
-            'x-access-token':response
-          }
+          url: 'http://52.26.173.245/api/airports?wt='+response
         };
-        
+
         return $http(req).then(
           function mySucces(response) {
              // console.log("in the airport server response = "+response.data[0].iata);
@@ -255,92 +366,4 @@ app.factory('airportSrv',function ($http){
     
   }
 });
-function bookingFormValidation(){  
-  var valid= true; 
-  var err="";
-  var evalid = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-  if($scope.trippp == undefined){ 
-   err+= "Please select your trip type"; 
-   valid = false;
- }
-
- if($scope.selectedOrigin == undefined){  
-   err += "Please enter your origin airport \n";
-   valid = false; 
- } 
- if($scope.selectedDestination == undefined){ 
-   err+= "Please enter your destination \n"; 
-   valid = false;
- } 
- if($scope.depDate && ($scope.depDate.getFullYear() > new Date().getFullYear()+1)) { 
-  err+="You can not book a flight more than 1 year ahead \n"; 
-  valid = false;
-}
-
-if(($scope.depDate == undefined)||   
-  ($scope.depDate.getFullYear() < new Date().getFullYear()) || 
-  ($scope.depDate.getMonth()+1 < new Date().getMonth()+1) && 
-  ($scope.depDate.getFullYear() == new Date().getFullYear()) || 
-  ($scope.depDate.getDate() < new Date().getDate()) && 
-  ($scope.depDate.getMonth()+1 == new Date().getMonth()+1) &&
-  ($scope.depDate.getFullYear() == new Date().getFullYear())) { 
-
-  err+= "Please enter a valid departure date \n"; 
-valid = false;
-}
-
-
-if($scope.trippp == "round"){ 
-
- if(($scope.retDate== undefined)||   
-  ($scope.retDate.getFullYear() < new Date().getFullYear()) || 
-  ($scope.retDate.getMonth()+1 < new Date().getMonth()+1) && 
-  ($scope.retDate.getFullYear() == new Date().getFullYear()) || 
-  ($scope.retDate.getDate() < new Date().getDate()) && 
-  ($scope.retDate.getMonth()+1 == new Date().getMonth()+1) &&
-  ($scope.retDate.getFullYear() == new Date().getFullYear())){
-
-  err+= "Please enter a valid return date \n"; 
-valid = false;
-
-
-} 
-
-} 
-
-if($scope.adultsss == undefined){ 
- err+= "Please select number of adults \n";
- valid = false;
-
-}   
-
-if($scope.children == undefined){ 
-  err+="Please select number of children \n";
-  valid = false;
-} 
-
-
-if($scope.class == undefined){  
-  err+= "Please select the seating class \n"; 
-  valid = false;
-
-} 
-
-if($scope.email == undefined || !(evalid.test($scope.email))) { 
- err+= "Please enter a valid email \m"; 
- valid = false;
-
-
-}
-
-
-
-
-if(valid == true){ 
- err=null;
-} 
-
-return(err);
-
-}

@@ -74,12 +74,6 @@ exports.validateBooking = function(booking, cb){
             valid = false;
         } 
 
-        if(booking.Class == undefined){  
-        	err += "Please select the seating class"; 
-        	valid = false;
-
-        } 
-
         if(booking.Email == undefined || !(evalid.test(booking.Email))) { 
            err += "Please enter a valid email"; 
            valid = false;

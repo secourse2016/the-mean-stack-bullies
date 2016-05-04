@@ -1,6 +1,6 @@
 
     <link href="../css/personalInformation.css" rel="stylesheet">
-         <link href="../lib/ionic/css/ionic.css" rel="stylesheet">
+
 
     <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
     <link href="css/ionic.app.css" rel="stylesheet">
@@ -19,42 +19,91 @@
       <p style="font-size:10px; margin-top :-47px;">type:{{passType}}</p>
       </ion-nav-title>
      <br>
+     <br>
 
   
 <div id="form" class="list">
-  <label id="firstName" class="item item-input item-floating-label">
-    <span class="input-label">First Name</span>
-    <input type="text" ng-model="firstName" placeholder="First Name">
+
+
+
+      <label id="firstName" class="item item-input item-stacked-label">
+      <div>
+    <i style="font-size: 2.10em; display: inline-block;margin-right: 5px;" class="icon ion-person"></i>
+    <input type="text" placeholder="First Name" style="display: inline-block;"  ng-model="firstName">
+    </div>
   </label>
-  <label id="lastName" class="item item-input item-floating-label">
-    <span class="input-label">Last Name</span>
-    <input type="text" ng-model="lastName" placeholder="Last Name">
+
+
+
+
+
+
+
+    <label id="lastName" class="item item-input item-stacked-label">
+      <div>
+    <i style="font-size: 2.10em; display: inline-block;margin-right: 5px;" class="icon ion-ios-personadd"></i>
+    <input type="text" placeholder="Last Name" style="display: inline-block;"  ng-model="lastName">
+    </div>
   </label>
-<!--    <label id="email" class="item item-input item-floating-label">
-    <span class="input-label">email</span>
-    <input type="email" ng-model="email" placeholder="Email">
-  </label> -->
-  <label  id="age"class="item item-input item-floating-label">
-    <span class="input-label">Age</span>
-    <input type="number" ng-model="age" placeholder="Age">
+
+
+
+    <label id="age" class="item item-input item-stacked-label" ng-show="!ageShow">
+      <div>
+    <i style="font-size: 2.10em; display: inline-block;margin-right: 5px;" class="icon ion-man"></i>
+    <input type="number" placeholder="Child age" min="2" max="12" style="display: inline-block;"  ng-model="age">
+    </div>
   </label>
-  <label  id="expiryDate"class="item item-input item-stacked-label">
-    <span class="input-label">Expiry Date</span>
-    <input type="date" ng-model="expiryDate" placeholder="Expiry Date">
+
+      <label id="age" class="item item-input item-stacked-label" ng-show="ageShow">
+      <div>
+    <i style="font-size: 2.10em; display: inline-block;margin-right: 5px;" class="icon ion-man"></i>
+    <input type="number" placeholder="Adult age"  min="13" max="99" style="display: inline-block;"  ng-model="age">
+    </div>
   </label>
-  <label  id="passportNumber"class="item item-input item-floating-label">
-    <span class="input-label">Passport Number</span>
-    <input type="number"  ng-model="passportnum" placeholder="Passport Number">
+
+
+
+      <label class="item item-icon-left">
+          Expiry Date
+          <input type="date" ng-model="expiryDate" placeholder="Expiry Date">
+          <i class="icon ion-android-calendar"></i>
+         </label>
+
+
+
+    <label id="passportNumber" class="item item-input item-stacked-label">
+      <div>
+    <i style="font-size: 2.10em; display: inline-block;margin-right: 5px;" class="icon ion-map"></i>
+    <input type="number" placeholder="Passport Number" style="display: inline-block;"  ng-model="passportnum">
+    </div>
   </label>
-  <label  id="Nationality"class="item item-input item-floating-label">
-    <span class="input-label">Nationality</span>
-    <input type="text" ng-model="Nationality" placeholder="Nationality">
+<label class="item item-icon-left">
+          Issue Date
+          <input type="date" ng-model="issueDate" placeholder="Issue Date">
+          <i class="icon ion-android-calendar"></i>
+         </label>
+
+
+
+
+   <label id="Nationality" class="item item-input item-stacked-label">
+      <div>
+    <i style="font-size: 2.10em; display: inline-block;margin-right: 5px;" class="icon ion-earth"></i>
+    <input type="text" placeholder="Nationality" style="display: inline-block;"  ng-model="Nationality">
+    </div>
   </label>
 </div>
 
+<br>
 
- <button class="button button-positive submitButton" ng-show="nextpassShow" ng-click="nextpass()">Next Pass</button>
- <button class="button button-positive " ng-show="!nextpassShow" ng-click="confirm()">Confirm</button>
+
+<div style="text-align:center;">
+ <button class="button button-assertive submitButton" ng-show="nextpassShow" ng-click="nextpass()">Next Pass</button>
+ </div>
+ <div style="text-align:center;">
+ <button class="button button-assertive " ng-show="!nextpassShow" ng-click="confirm()">Confirm</button>
+ </div>
 
 </div>
  

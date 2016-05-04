@@ -1,5 +1,15 @@
-app.controller('paymentCtrl', function($scope, $location,paymentSrv,chargeSrv) {
+app.controller('paymentCtrl', function($scope, $state,paymentSrv,chargeSrv) {
+$scope.visa=function(){
+  console.log("VISA");
+  // console.log($scope.radioButton);
+   $scope.Mastercard=false;
+}
 
+$scope.mastercard=function(){
+  console.log("MASTERCARD");
+   $scope.Visa=false;
+  // console.log($scope.radioButton2);
+}
 
  paymentSrv.getAmount(function(amount){
         $scope.amount=amount;
@@ -22,7 +32,17 @@ app.controller('paymentCtrl', function($scope, $location,paymentSrv,chargeSrv) {
            errMessage+="please enter a valid CVV \n";
            isvalid =false;
           }
-         if($scope.radioButton== null){
+        if($scope.expiryyear== null){
+           errMessage+="please choose expiry year \n";
+           isvalid =false;
+          } 
+
+         if($scope.expirymonth== null){
+           errMessage+="please choose choose expiry month \n";
+           isvalid =false;
+          }
+
+         if(($scope.Visa== undefined || $scope.Visa == false)&&($scope.Mastercard== undefined || $scope.Mastercard == false)){
            errMessage+="please choose either Visa or MasterCard \n";
            isvalid = false;
           } 
@@ -54,6 +74,7 @@ app.controller('paymentCtrl', function($scope, $location,paymentSrv,chargeSrv) {
             exp_year: $scope.expiryyear
             
             }, stripeResponseHandler); 
+             $state.go('confirmation');
               
             
 } 
@@ -82,21 +103,21 @@ app.controller('paymentCtrl', function($scope, $location,paymentSrv,chargeSrv) {
                console.log(response);
             var pa=[{
 
-            visa:boolea,
-            MasterCard: (!boolea),
+            visa:$scope.Visa,
+            MasterCard: $scope.Mastercard,
             CardHolderName: $scope.holderN,
             CardHolderNo: $scope.CardN,
             Cvv: $scope.CVV,
             ExpiryDate: date
             
           }]; 
-           
+        
           paymentSrv.insertPayment(response.id,pa,
 
                function(flag) {
                      if(flag == true){
                         console.log("here in the payment controlller");
-                        $location.url('/home');
+                        
                      }
                      else{
                       alert("something went wrong please try again");
@@ -143,20 +164,17 @@ app.factory('paymentSrv',function ($http){
 
           var tokenReq = {
         method: 'GET',
-        url: '/getToken'
+        url: 'http://52.26.173.245/getToken'
       };
       return $http(tokenReq).success(function(response){
           var req = {
               method: 'POST',
-              url: '/api/insertpayment',
+              url: 'http://52.26.173.245/api/insertpayment?wt='+response,
 
               data: { payment: pa , 
                        token : stripeToken}
 
-                 ,headers:
-              {
-                'x-access-token':response
-              }
+                 ,
           };
 
           return $http(req)
@@ -165,7 +183,7 @@ app.factory('paymentSrv',function ($http){
                   console.log("payment added to sessions");
                   var req2 = {
                       method: 'GET',
-                      url: '/api/completeBookingData',
+                      url: 'http://52.26.173.245/api/completeBookingData',
                        headers:
                                 {
                                   'x-access-token':response
@@ -199,11 +217,8 @@ app.factory('paymentSrv',function ($http){
       return $http(tokenReq).success(function(response){
           var req = {
               method: 'GET',
-              url: '/api/getPaymentAmount',
-               headers:
-              {
-                'x-access-token':response
-              }
+              url: 'http://52.26.173.245/api/getPaymentAmount?wt='+response
+              
           };
 
 
@@ -236,7 +251,7 @@ tokenizePayment : function(token,cb){
                var req = { 
                    
                    method : 'POST',
-                   url :    '/api/charge', 
+                   url :    'http://52.26.173.245/api/charge?wt='+response, 
                    data : {token : token}
 
                }; 

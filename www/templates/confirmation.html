@@ -44,23 +44,21 @@
 
        <div class="card">
     <div class="item item-divider">
-      London to Paris
+      {{booking.from}} to {{booking.To}}
     </div>
     <div class="item item-text-wrap">
-      Departure 25/05/2015
+      Departure {{booking.DepartureDate}}
     </div>
     <div class="item item-text-wrap">
-      Arrival 26/05/2015
+     {{booking.NumberOfAdults}}
     </div>
     <div class="item item-text-wrap">
-      4 Adult(s)
-    </div>
-    <div class="item item-text-wrap">
-      2 Child(ren)
+      {{booking.NumberOfChildren}}
     </div>
 
   </div>
   <h2 style="padding-left:20px;">Passenger Details</h2>
+       <div ng-repeat="person in personArray">
      <div class="card">
     <div class="item item-divider">
       <table style="width:100%">
@@ -73,13 +71,14 @@
     
   </table>
     </div>
-    <div class="item item-text-wrap">
+
+    <div class="item item-text-wrap" >
            <table style="width:100%;text-align:left;">
     <th>
-      <td style="width:30%;">Mostafa</td>
-      <td style="width:30%;">Ahmed</td> 
-       <td style="width:30%;">Egyptian</td>
-      <td style="width:10%;">20</td>
+      <td style="width:30%;">{{person.firstName}}</td>
+      <td style="width:30%;">{{person.secondName}}</td> 
+       <td style="width:30%;">{{person.nationality}}</td>
+      <td style="width:10%;">{{person.age}}</td>
     </th>
     
   </table>
@@ -97,63 +96,20 @@
      <div class="item item-text-wrap">
            <table style="width:100%;text-align:left;">
     <th>    
-      <td style="width:30%;">40323311</td> 
-      <td style="width:30%;">20/05/2016</td>
-       <td style="min-width:30%;">20/05/2023</td>
+      <td style="width:30%;">{{person.passportNumber}}</td> 
+      <td style="width:30%;">{{person.issueDate}}</td>
+       <td style="min-width:30%;">{{person.expiryDate}}</td>
     </th>
     
   </table>
     </div>
     </div>
     <br>
+    </div>
+    <br><br>
 
-     <div class="card">
-    <div class="item item-divider">
-      <table style="width:100%">
-    <th>
-      <td style="width:30%;">First Name</td>
-      <td style="width:30%;">Last Name</td> 
-       <td style="width:30%;">Nationality</td>
-       <td style="width:10%;">Age</td>
-    </th>
     
-  </table>
-    </div>
-    <div class="item item-text-wrap">
-           <table style="width:100%;text-align:left;">
-    <th>
-      <td style="width:30%;">Mohamed</td>
-      <td style="width:30%;">Abouzeid</td> 
-       <td style="width:30%;">American</td>
-      <td style="width:10%;">21</td>
-    </th>
-    
-  </table>
-    </div>
-      <div class="item item-divider">
-      <table style="width:100%">
-    <th>
-      <td style="width:30%;">Passport</td> 
-      <td style="width:30%; ">Issue Date</td>
-       <td style="min-width:30%;">Expiry Date</td>
-    </th>
-    
-  </table>
-    </div>
-     <div class="item item-text-wrap">
-           <table style="width:100%;text-align:left;">
-    <th>    
-      <td style="width:30%;">23901412</td> 
-      <td style="width:30%;">02/12/2010</td>
-       <td style="min-width:30%;">02/12/2017</td>
-    </th>
-    
-  </table>
-    </div>  
   
-    
-  </div>
-  <br><br>
 
 
       

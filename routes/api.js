@@ -332,7 +332,8 @@ router.post('/api/booking', function(req,res){
                   sess = req.session;
                   // sess.personData = req.body.people[0];
                   sess.personArray=req.body.people;
-
+                  console.log('PERSONARRAY');
+                  console.log(sess.personArray)
                   paymnetController.calculateAmount(sess.flightIDs.inFlight_id , sess.flightIDs.ouFlight_id,function(err,amount){
                       if(err){
                         res.send('Error in the calculate payment method');

@@ -75,16 +75,13 @@ app.factory('reservationSrv',function ($http){
        getReservation : function(refNum,cb) {
         var tokenReq = {
         method: 'GET',
-        url: '/getToken'
+        url: 'http://52.26.173.245/getToken'
       };
       return $http(tokenReq).success(function(response){
           var req = {
               method: 'GET',
-              url: '/api/getReservation/' + refNum,
-              headers:
-              {
-                'x-access-token':response
-              }
+              url: 'http://52.26.173.245/api/getReservation/' + refNum+'?wt='+response
+            
           };
 
                   return $http(req).then(function mySucces(response) {
@@ -101,17 +98,14 @@ app.factory('reservationSrv',function ($http){
          cancelReservation : function(refNum,cb) {
             var tokenReq = {
                 method: 'GET',
-                url: '/getToken'
+                url: 'http://52.26.173.245/getToken'
               };
       return $http(tokenReq).success(function(response){
          var req = {
               method: 'POST',
-              url: '/api/cancelReservation',
+              url: 'http://52.26.173.245/api/cancelReservation?wt='+response,
               data: { ref: refNum }
-                 ,headers:
-              {
-                'x-access-token':response
-              }
+                 
           };
 
 

@@ -1,9 +1,19 @@
-<ion-view title="Book Flight">
+<style>
+.bg{
+
+  background:rgb(221,233,236);
+}
+
+
+
+</style>
+
+<ion-view title="Book Flight" style="background:rgb(221,233,236);">
   
 <div id="BookingForm" >    
      <br><br>
-      <div>
-        <a class="item item-icon-left"  ng-click="searchAirport1()">
+      <div >
+        <a class="item item-icon-left bg"  ng-click="searchAirport1()">
           <i class="icon ion-android-plane"></i>
           From
           <p id="from"></p>
@@ -11,7 +21,7 @@
       </div>
      
       <div >
-        <a class="item item-icon-left" ng-click="searchAirport2()">
+        <a class="item item-icon-left bg" ng-click="searchAirport2()">
          <i class="icon ion-android-plane"></i>
           To
           <p id="to"></p>
@@ -20,41 +30,42 @@
      
 
       <div ng-click="trip()" ng-show= "one" ng-model="trippp">
-        <a class="item item-icon-left">
+        <a class="item item-icon-left bg">
          <i class="icon ion-arrow-right-c"></i>
           One Way
         </a>
       </div>
 
       <div ng-click="trip()" ng-hide= "one" ng-model="trippp">
-        <a class="item item-icon-left">
+        <a class="item item-icon-left bg">
          <i class="icon ion-arrow-swap"></i>
           Round Trip
         </a>
       </div>
 
        <div >
-        <label class="item item-icon-left">
+        <label class="item item-icon-left bg">
           Going
-          <input type="date" ng-model="DDate">
-          <i class="icon ion-ios-calendar-outline"></i>
+          <input type="date" ng-model="DDate" style="background:rgb(221,233,236);">
+          <i class="icon ion-android-calendar"></i>
          </label>
-        <label class="item item-icon-left" ng-hide= "one" >
+        <label class="item item-icon-left bg" ng-hide= "one" >
           Return
-          <input type="date" ng-model="RDate">
-          <i class="icon ion-ios-calendar-outline"></i>
+          <input type="date" ng-model="RDate" style="background:rgb(221,233,236);">
+          <i class="icon ion-android-calendar"></i>
          </label> 
 
       </div>
-
+  
+     
       
       <div  >
-        <label class="item item-input item-select" >
-          <i class="icon ion-person "></i>
+        <label class="item item-input item-select bg" >
+          <i style="font-size: 2.10em; display: inline-block;margin-right: 5px;" class="icon ion-person"></i>
           <div>
             Adults  
           </div>
-          <select ng-model="NAdults">
+          <select ng-model="NAdults" style="background:rgb(221,233,236);">
             <option selected>1 Adult</option>
             <option>2 Adults</option>
             <option>3 Adults</option>
@@ -69,12 +80,13 @@
 
 
       <div >
-        <label class="item item-input item-select">
-          <i class="icon ion-android-person"></i>
+        <label class="item item-input item-select bg">
+    
+          <i style="font-size: 2.10em; display: inline-block;margin-right: 5px;" class="icon ion-android-person"></i>
           <div >
             Children
           </div>
-          <select name="NChildren" ng-model="NChildren" >
+          <select name="NChildren" ng-model="NChildren" style="background:rgb(221,233,236);">
             <option selected>0 Child</option>
             <option>1 Children</option>
             <option>2 Children</option>
@@ -87,6 +99,14 @@
          </label> 
 
       </div>
+
+      <label class="item item-input item-stacked-label">
+      <div>
+    <i style="font-size: 2.10em; display: inline-block;margin-right: 5px;" class="icon ion-ios-email"></i>
+    <input type="email" placeholder="Email" style="display: inline-block;background:rgb(221,233,236);" ng-model="email" >
+    </div>
+  </label>
+
      
 <div style="text-align: center;">
   <br>

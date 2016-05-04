@@ -3,9 +3,11 @@ app.controller('personalInfoCtrl', function($scope, $location,$state,personalInf
       var children=0;
       $scope.personalArray=[];
       $scope.nextpassShow=true;
-    // personalInfoSrv.getBookingNumberOfAdultsAndChildren(function(obj){
-            adults=1;
-            children=1;
+      $scope.ageShow=true;
+    personalInfoSrv.getBookingNumberOfAdultsAndChildren(function(data){
+           console.log(data);
+           adults=parseInt(data.NumberOfAdults);
+           children=parseInt(data.NumberOfChildren);
             $scope.passengersNumber=adults+children;
             $scope.current=0;
           $scope.passType="Adult";
@@ -13,10 +15,11 @@ app.controller('personalInfoCtrl', function($scope, $location,$state,personalInf
                $scope.nextpassShow=false;
             }
 
-    // });
+     });
 // 
 
     $scope.nextpass=function(){
+      console.log("IN");
       var err=presonValidations();
       if(err){
         alert("please enter correct info\n"+err);
@@ -31,7 +34,7 @@ app.controller('personalInfoCtrl', function($scope, $location,$state,personalInf
              issueDate      : $scope.issueDate,
              expiryDate     : $scope.expiryDate
             }];
-         
+         console.log(person[0]);
          $scope.personalArray[$scope.current]=person[0];
          $scope.current=$scope.current+1;
          if(adults!=0)
@@ -42,6 +45,7 @@ app.controller('personalInfoCtrl', function($scope, $location,$state,personalInf
          if(adults==0)
          {
           $scope.passType="Child";
+           $scope.ageShow=false;
          
          }
          console.log($scope.personalArray);
@@ -77,9 +81,9 @@ app.controller('personalInfoCtrl', function($scope, $location,$state,personalInf
             
          $scope.personalArray[$scope.current]=person[0];
            $scope.current=$scope.current+1;
-         console.log($scope.personalArray);
+         // console.log($scope.personalArray);
          personalInfoSrv.insertPerson($scope.personalArray,function(response){
-            console.log(response);
+            // console.log(response);
             $state.go('payment');
          });
        }  
@@ -132,17 +136,14 @@ app.factory('personalInfoSrv',function ($http){
          insertPerson : function(pe,cb) {
           var tokenReq = {
               method: 'GET',
-              url: '/getToken'
+              url: 'http://52.26.173.245/getToken'
             };
       return $http(tokenReq).success(function(response){
           var req = {
               method: 'POST',
-              url: '/api/insertperson',
+              url: 'http://52.26.173.245/api/insertperson?wt='+response,
               data: { people: pe }
-                 ,headers:
-              {
-                'x-access-token':response
-              }
+                 
           };
           
           return $http(req)
@@ -164,17 +165,12 @@ app.factory('personalInfoSrv',function ($http){
      getBookingNumberOfAdultsAndChildren : function(cb){
         var tokenReq = {
               method: 'GET',
-              url: '/getToken'
+              url: 'http://52.26.173.245/getToken'
             };
       return $http(tokenReq).success(function(response){
         var req = {
           method: 'Get',
-          url: '/api/getBookingNumberOfAdultsAndChildren',
-          
-          headers:
-          {
-            'x-access-token':response
-          }
+          url: 'http://52.26.173.245/api/getBookingNumberOfAdultsAndChildren?wt='+response
       };
 
         return $http(req)

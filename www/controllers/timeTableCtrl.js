@@ -52,16 +52,15 @@ app.factory('timeTableSrv',function ($http){
          getFlights : function(cb) {
                   var tokenReq = {
                       method: 'GET',
-                      url: '/getToken'
+                      url: 'http://52.26.173.245/getToken'
                     };
               return $http(tokenReq).success(function(response){
+                         console.log("the response -------------->");
+                         console.log(response);
                          var req = {
                                method: 'GET',
-                               url: '/api/flightsForTimetable',
-                               headers:
-                                  {
-                                    'x-access-token':response
-                                  }
+                               url: 'http://52.26.173.245/api/flightsForTimetable?wt='+response
+                              
                          };
 
                         return $http(req)
