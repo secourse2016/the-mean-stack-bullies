@@ -128,8 +128,9 @@ $scope.trip=function(){
 
 $scope.loadMore= function()
 {
-  console.log(Generated);
+  // console.log(Generated);
   if(!Generated){
+    console.log("Loading");
     setTimeout(function(){ $scope.$broadcast('scroll.infiniteScrollComplete'); }, 3000);
   }
   else{
