@@ -233,6 +233,8 @@ app.controller('paymentCtrl', function($scope, $location,paySrv,chargeSrv,person
                             
                             }, stripeResponseHandlerForReturnFlightsPayment); 
                         }
+                      }else{
+                         $location.url('/confirm');
                       }  
                                     // console.log("here in the payment controlller");
                                     // $location.url('/confirm');
