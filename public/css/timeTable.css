@@ -23,30 +23,8 @@ body {
   background-attachment: fixed;
 }
 
-h1 {
-  font-size:3em; 
-  font-weight: 300;
-  line-height:1em;
-  text-align: center;
-  color: #4DC3FA;
-}
 
-h2 {
-  font-size:1em; 
-  font-weight: 300;
-  text-align: center;
-  display: block;
-  line-height:1em;
-  padding-bottom: 2em;
-  color: #FB667A;
-}
 
-h2 a {
-  font-weight: 700;
-  text-transform: uppercase;
-  color: #FB667A;
-  text-decoration: none;
-}
 
 .blue { color: #185875; }
 .yellow { color: #FFF842; }
@@ -112,7 +90,7 @@ h2 a {
 }
 #tableContent
 {
-  color:gray;
+  color:white;
 }
 
 .container td:first-child { color: #FB667A; }
