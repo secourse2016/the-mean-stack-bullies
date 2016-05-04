@@ -233,6 +233,7 @@ router.post('/api/booking', function(req,res){
 
                      console.log("sesssion = "+ sess.bookingData);
                      if(err){
+                      console.log(err);
                       returnedjson = {
                           err:err,
                           outFlights:null,
@@ -240,6 +241,9 @@ router.post('/api/booking', function(req,res){
                         };
                        res.send(returnedjson);
                      }else{
+                      console.log("in the else part");
+                      console.log(outFlights);
+                      console.log(inFlights);
                         returnedjson = {
                           err:null,
                           outFlights:outFlights,

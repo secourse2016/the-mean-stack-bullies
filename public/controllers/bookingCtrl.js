@@ -155,7 +155,7 @@ app.controller('bookingCtrl', function($scope, $location,airportSrv,flightSrv,Fl
    
      bookingSrv.insertbooking(data,function(response){
 
-               if(response.outFlights.length >0){
+               if(response.outFlights != undefined && response.outFlights.length >0){
                 $location.url('/book');
               }
               else{
