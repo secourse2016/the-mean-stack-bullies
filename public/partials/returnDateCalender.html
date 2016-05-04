@@ -1,0 +1,49 @@
+<br><br><br><br><br><br><br><br><br><br><br><br>
+<link rel="stylesheet" href="css/calendar.css">
+<body >
+  <div  ng-controller="bookingCtrl">
+    <div  ng-controller="myCtrl" ng-show="showCalendar">
+      <div  ng-controller="calendarCtrl">
+        <table class="datepicker">
+          <caption class="datepicker-caption">
+            <a ng-click="perv(Month)" class="datepicker-prev">Previous</a>
+            <span class="datepicker-title" ng-model="Month" ng-model="Year">{{Month}} {{Year}}</span>
+            <a ng-click="next(Month)" class="datepicker-next">Next</a>
+          </caption>
+          <thead class="datepicker-head">
+            <tr>
+              <th class="datepicker-th">Mo</th>
+              <th class="datepicker-th">Tu</th>
+              <th class="datepicker-th">We</th>
+              <th class="datepicker-th">Th</th>
+              <th class="datepicker-th">Fr</th>
+              <th class="datepicker-th">Sa</th>
+              <th class="datepicker-th">Su</th>
+            </tr>
+          </thead>
+          <tbody class="datepicker-body">
+            <tr>
+              <td class="ng-class: day.class;" ng-repeat="day in days1.slice(0,7) | limitTo:7" ><a ng-click="setDepartureDate(day.day)" >{{day.day}}</a></td>
+            </tr>
+            <tr>
+              <td class="ng-class: day.class;" ng-repeat="day in days1.slice(7,14)| limitTo:7"><a ng-click="setDepartureDate(day.day)">{{day.day}}</a></td>
+            </tr>
+            <tr>
+              <td class="ng-class: day.class;" ng-repeat="day in days1.slice(14,21)| limitTo:7"><a ng-click="setDepartureDate(day.day)">{{day.day}}</a></td>
+            </tr>
+            <tr>
+              <td class="ng-class: day.class;" ng-repeat="day in days1.slice(21,28)| limitTo:7"><a ng-click="setDepartureDate(day.day)">{{day.day}}</a></td>
+            </tr>
+            <tr>
+              <td class="ng-class: day.class;" ng-repeat="day in days1.slice(28,35)| limitTo:7"><a ng-click="setDepartureDate(day.day)">{{day.day}}</a></td>
+            </tr>
+            <tr>
+              <td class="ng-class: day.class;" ng-repeat="day in days1.slice(35,42)| limitTo:7"><a ng-click="setDepartureDate(day.day)">{{day.day}}</a></td>
+            </tr>
+          </tbody>
+        </table>
+        </div>
+        </div>
+        </div>
+
+</body>

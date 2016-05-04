@@ -57,14 +57,14 @@ var ingoingflightSchema = schema({
             Airline           : String
 });
 var bookingSchema = schema({
-    trip:String,
+    trip:{type:String,default:null},
     from: String,
     To: String,
     DepartureDate: Date,
     ReturnDate: Date,
     NumberOfAdults: Number,
     NumberOfChildren: Number,
-    Email:String
+    Email:{type:String,default:null}
 
 });
 

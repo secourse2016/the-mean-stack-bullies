@@ -38,6 +38,7 @@ var bookingValidation = require('../Validations/bookingValidation.js');
 var manageController =  require('../serverController/ManageBookingController.js');
 
 var sess;
+var stripe = require("stripe")("sk_test_eI0A2eL166WZXsd51IOkmksT");
 
 var router = express.Router();
 
@@ -98,6 +99,7 @@ var router = express.Router();
 
               router.post('/api/insertperson', function(req, res,next) {
                  console.log("inside the main insertperson");
+                 console.log(req.body.people);
                  var i;
                  var bool="";
                  for(i=0;i<req.body.people.length;i++){
@@ -329,29 +331,42 @@ router.post('/api/booking', function(req,res){
              */
 
           router.post('/api/insertperson', function(req, res) {
+            console.log("heess");
                   sess = req.session;
                   // sess.personData = req.body.people[0];
+                 
                   sess.personArray=req.body.people;
-                  console.log('PERSONARRAY');
-                  console.log(sess.personArray)
-                  paymnetController.calculateAmount(sess.flightIDs.inFlight_id , sess.flightIDs.ouFlight_id,function(err,amount){
+
+                   console.log("heree");
+                  console.log(sess.flightIDs);
+                  console.log(sess.flightIDs);
+                  if(sess.flightID !=null ||sess.flightIDs !=undefined || sess.flightIDs!=null||sess.flightIDs!=undefined){
+                    console.log(sess.flightIDs.inFlight_id+" "+sess.flightIDs.ouFlight_id);
+                       paymnetController.calculateAmount(sess.flightIDs.inFlight_id , sess.flightIDs.ouFlight_id,function(err,amount){
+
                       if(err){
                         res.send('Error in the calculate payment method');
                       }
                       else{
+                            console.log(amount)
                             sess.payAmount=((sess.personArray.length)* amount);
                             console.log("the amount is ------------------------------>"+sess.payAmount)
                             console.log(req.body.people);
-                            // console.log("req body.people--------------->"+req.body);
-                            console.log("person data added to the session");
-                          // personController.addPersonIntoDatabase(req.body.person[0],function(){
+
                             res.send('person added to the session');
                       }
-                  })
+                    });
+                  }else{
+                    console.log("in the else part");
+                    sess.payAmount=0;
+                    res.send('person added to the session');
+                  }
+               
                 
-
-                // });
+f
                 });
+                
+                
 
 
  
@@ -575,38 +590,223 @@ router.post('/api/booking', function(req,res){
  
  /*
 |==========================================================================
-| Pinging Other Airlines Routes
+| Pinging Routes
 |==========================================================================
 |
-| These routes are related to Pinging Other Airlines.
+| These routes are related to Pinging .
   |
   */      
-  router.get('/api/flights/search/:origin/:destination/:departingDate/:class',function(req,res){
+  router.get('/api/flights/search/:origin/:destination/:departingDate/:class/:seats',function(req,res){
      var bookingData = {
       origin:req.params.origin,
       destination:req.params.destination,
       departingDate:req.params.departingDate,
-      class:req.params.class
-     // seats:req.params.seats
+      class:req.params.class,
+      seats:req.params.seats
      }
       pingingOtherAirlinesServerController.getOneTripFlights(bookingData,function(returnedObject){
         res.json(returnedObject);
       });
 
   });
-  router.get('/api/flights/search/:origin/:destination/:departingDate/:returningDate/:class',function(req,res){
+  router.get('/api/flights/search/:origin/:destination/:departingDate/:returningDate/:class/:seats',function(req,res){
      var bookingData = {
       origin:req.params.origin,
       destination:req.params.destination,
       departingDate:req.params.departingDate,
       returningDate: req.params.returningDate,
-      class:req.params.class
-      //seats:req.params.seats
+      class:req.params.class,
+      seats:req.params.seats
      }
       pingingOtherAirlinesServerController.getRoundTripFlights(bookingData,function(returnedObject){
         res.json(returnedObject);
       });
 
+  }); 
+/*end point to send our publishable key and recieve the partenering airline publishable key*/
+  router.get('/api//stripe/pubkey', function(req,res) {
+      var AirFranceKey = {key : "pk_test_ULcStxFLM4quhm4JacResvRo"}; 
+      
+      req.send(AirFranceKey);
+
+
+  });
+
+ /*
+|==========================================================================
+| Other airlines Booking flights from our Airline Routes
+|==========================================================================
+|
+| These routes are related to Booking flights from our Airline.
+  |
+  */ 
+
+  router.post('/booking', function(req, res) {
+    console.log("in booking route");
+    console.log(req.body);
+     sess = req.session;
+    var outgoingFlightId ;
+    var returnedFlightId ;
+    var errMessage = "";
+    if(req.body.outgoingFlightId == null && req.body.returnFlightId ==null ){
+      res.json({ refNum: null, errorMessage:"flightID should not be null"});
+    }
+   if(req.body.outgoingFlightId){
+    outgoingFlightId = req.body.outgoingFlightId
+   }else{
+    outgoingFlightId = null ;
+   }
+
+    if(req.body.returnFlightId){
+        returnedFlightId = req.body.returnFlightId
+       }else{
+        returnedFlightId = null ;
+       }
+       console.log(outgoingFlightId+"  "+returnedFlightId);
+    saveAllBookingDataController.fligtInformationsByID(outgoingFlightId,returnedFlightId,function(err,outgoingFlight,returnedFlight){
+      if(err){
+        console.log("err1 ------>"+err);
+        errMessage+= err+"\n";
+        res.json({ refNum: null, errorMessage: err});
+      }else{
+
+          console.log(outgoingFlight);
+          console.log(returnedFlight);
+      var ReturnDate;
+      var Trip;
+      if(returnedFlight){
+        ReturnDate = returnedFlight.departureDateTime;
+        trip = "round";
+      }else{
+        ReturnDate = null;
+        trip = "one";
+      }
+      if(outgoingFlight){
+        var bookingData = {
+                          trip:Trip,
+                          from:outgoingFlight.origin,
+                          To:outgoingFlight.destination,
+                          DepartureDate:outgoingFlight.departureDateTime,
+                          ReturnDate:ReturnDate,
+                          NumberOfAdults:req.body.passengerDetails.length,
+                          NumberOfChildren:0
+                         };
+                       }else{
+                        if(returnedFlight){
+                           var bookingData = {
+                          trip:Trip,
+                          from:returnedFlight.origin,
+                          To:returnedFlight.destination,
+                          DepartureDate:returnedFlight.departureDateTime,
+                          ReturnDate:ReturnDate,
+                          NumberOfAdults:req.body.passengerDetails.length,
+                          NumberOfChildren:0
+                         };
+                        }
+                          
+                       }
+          
+
+  
+     saveAllBookingDataController.insertBookingData(bookingData,function(err2,booking){
+      if(err2){
+      console.log("err2 ---->"+err2);
+      errMessage+= err2+"\n";
+      res.json({ refNum: null, errorMessage: err});
+    }else{
+     console.log("new booking added"+booking);
+     saveAllBookingDataController.insertReservationData(outgoingFlightId ,returnedFlightId, booking._id,function(err3, reserve){
+           if(err3){
+            console.log("err3---->"+err3);
+            errMessage+= err3+"\n";
+            res.json({ refNum: null, errorMessage: err});
+           }else{
+            console.log("new reservation added"+reserve);
+            var i;
+            
+            saveAllBookingDataController.insertPersonalInformation(req.body.passengerDetails,booking._id,0,function(err4,flag){
+                  
+                if(err4){
+                     console.log("error4----->"+err4);
+                     errMessage+= err4+"\n";
+                     res.json({ refNum: null, errorMessage: err});
+                }
+                else{
+                sess.bookinId=booking._id;
+                console.log("new person added"+flag);
+                //saveAllBookingDataController.insertPaymentInformation(sess.paymentData,booking._id,function(err,payment){
+
+                        saveAllBookingDataController.decreaseSeatsByNumber( req.body.passengerDetails.length,outgoingFlightId ,returnedFlightId ,function(err5,docs){
+                       
+                            if(err5){
+                                      console.log("error---------------------------------->"+err5);
+                                      errMessage+=err5+"\n";
+                                   res.json({ refNum: null, errorMessage: err});
+                                    }
+                                    else{
+
+                                              // retrieve the token
+                                              var stripeToken = req.body.paymentToken;
+                                              var flightCost  = req.body.cost;
+
+
+                                             // attempt to create a charge using token
+                                            stripe.charges.create({
+                                              amount: flightCost,
+                                              currency: "usd",
+                                              source: stripeToken,
+                                              description: "test"
+                                            }, function(err, data) {
+                                            if (err){ res.json({ refNum: null, errorMessage: "un authorized stripe acc"});
+                                           } else{
+
+
+                                               var message = "Booking is comfirmed";
+                                                if(booking._id){
+                                                  var returnedObject =  {
+                                                      refNum: booking._id,
+                                                      errorMessage: errMessage
+                                                  }
+                                                res.json(returnedObject);
+                                                }
+                                            }
+                                            });
+                                     
+                                       
+                                   }
+                               });  
+                        // });    
+                    }
+
+                  });
+                        
+
+                    
+         
+                   }
+             });
+    }
+     });
+
+   }
+    });   
+    
+
+
+
+});
+
+ /*
+|==========================================================================
+| stripe public key Routes
+|==========================================================================
+|
+| These routes are related to requesting stripe public key .
+  |
+  */ 
+
+  router.get('/stripe/pubkey',function(req,res){
+      res.send("pk_test_ULcStxFLM4quhm4JacResvRo");
   });
 
 

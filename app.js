@@ -32,6 +32,14 @@ app.use(session({secret: 'key12',cookie:{maxAge:60000*30}}));
 // routes
 
 
+app.all('*', function(req, res, next) {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.addHeader("Access-Control-Allow-Origin", "*");
+  res.header('Access-Control-Allow-Headers', ['Content-Type', 'X-Requested-With','x-access-token']);
+  next();
+});
+
+
 app.get('/getToken',function(req,res){
 //   console.log("here in token route");
 // var newJwt = jwt.create(process.env.JWTSECRET);

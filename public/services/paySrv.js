@@ -1,5 +1,9 @@
 app.factory('paySrv', function ($http) { 
-  
+    var publicKey = 'pk_test_ULcStxFLM4quhm4JacResvRo';
+    var payData = null;
+    var amount =0;
+    var outGoingFlightbookingReferenceID = null;
+    var returnFLightBookingReferenceID = null;
      return {
 
 
@@ -86,9 +90,107 @@ app.factory('paySrv', function ($http) {
                  console.log(response.statusText);
                   alert("An error occured please try again");
          });
-       }
+       },
 
-           
 
+
+       getStripePublicKeyOfOtherAirline: function(airlineName,cb){
+        
+         var airlines = [];
+          airlines["Austrian"] = "http://52.90.41.197";
+          airlines["Lufthansa"]="http://ec2-54-152-123-100.compute-1.amazonaws.com";
+          airlines["KLM"]="http://ec2-52-26-166-80.us-west-2.compute.amazonaws.com";
+          airlines["Turkish Airlines"]="http://52.27.150.19/";
+
+            var tokenReq = {
+                method: 'GET',
+                url: '/getToken'
+                 };
+             return $http(tokenReq).success(function(token){
+              var getPublickeyRequest = {
+                method : 'GET',
+                url:airlines[airlineName]+"/stripe/pubkey?wt="+token
+              };
+                return $http(getPublickeyRequest).success(function(newPublicKey){
+
+                 cb(newPublicKey);
+                }).error(function(err){
+                  console.log(err);
+                  alert("An error occured please try again");
+                });
+
+
+             }).error(function(err){
+              console.log(err);
+              alert("An error occured please try again");
+             })
+
+       },
+
+      
+
+       sendBookingToOtherAirline: function(bookingData,airlineName,cb){
+        console.log(bookingData);
+         var airlines = [];
+          airlines["Austrian"] = "http://52.90.41.197";
+          airlines["Lufthansa"]="http://ec2-54-152-123-100.compute-1.amazonaws.com";
+          airlines["KLM"]="http://ec2-52-26-166-80.us-west-2.compute.amazonaws.com";
+          airlines["Turkish Airlines"]="http://52.27.150.19/";
+
+            var tokenReq = {
+                method: 'GET',
+                url: '/getToken'
+                 };
+           return $http(tokenReq).success(function(token){
+              var bookingFromOtherAirlineRequest = {
+                method : 'POST',
+                url:airlines[airlineName]+"/booking?wt="+token,
+                data:bookingData
+              };
+              return $http(bookingFromOtherAirlineRequest).success(function(response){
+                console.log("response-->");
+                console.log(response)
+                cb(response);
+              }).error(function(err){
+                console.log(err);
+
+              });
+       
+
+           }).error(function(err){
+            console.log(err);
+            alert("An error occured please try again");
+
+           });
+        
+          },
+
+
+          setPaymentData:function(paymentData){
+            payData = paymentData;
+          },
+          getPaymentData: function(){
+            return payData[0];
+          },
+          setamount:function(newAmount){
+            console.log("last set  " + newAmount);
+            amount = newAmount;
+          },
+          getamount: function(){
+                    console.log("last get  " + amount);
+            return amount;
+          },
+          setOutgoingFlightBookingReferenceID:function(newBookingReferenceID){
+            outGoingFlightbookingReferenceID = newBookingReferenceID;
+          },
+          getOutgoingFlightBookingReferenceID: function(){
+            return outGoingFlightbookingReferenceID;
+          },
+          setReturnFlightBookingReferenceID:function(newBookingReferenceID){
+            returnFLightBookingReferenceID = newBookingReferenceID;
+          },
+          getReturnFlightBookingReferenceID : function(){
+            return returnFLightBookingReferenceID;
+          }
      };
  });

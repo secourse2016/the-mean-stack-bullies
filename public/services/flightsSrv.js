@@ -1,9 +1,18 @@
 app.factory('flightSrv', function ($http) {
-      var inFlights = [];
-      var outFlights = [];
 
+      var inFlight = null;
+      var outFlight = null;
+      
       var flightsFromOtherAirlines = [];
       var ReturnflightsFromOtherAirlines = [];
+
+      var airlinesNameIpAddresses = [];
+      airlinesNameIpAddresses["Austrian"] = "http://52.90.41.197";
+      airlinesNameIpAddresses["KLM"]="http://ec2-52-26-166-80.us-west-2.compute.amazonaws.com";
+      airlinesNameIpAddresses["Lufthansa"]="http://ec2-54-152-123-100.compute-1.amazonaws.com";
+      airlinesNameIpAddresses["Turkish_Airlines"]="http://52.27.150.19";
+      airlinesNameIpAddresses["Hawaiian"]="http://54.93.36.94";
+   
 
      return {
          getFlights : function(cb) {
@@ -11,6 +20,7 @@ app.factory('flightSrv', function ($http) {
               method: 'GET',
               url: '/getToken'
             };
+             console.log("services1");
       return $http(tokenReq).success(function(response){
           var req = {
               method: 'GET',
@@ -20,9 +30,10 @@ app.factory('flightSrv', function ($http) {
                 'x-access-token':response
               }
           };
-
+          console.log("services2-->"+response);
           return $http(req).then(
             function mySucces(response) {
+              console.log("heres");
                     cb(response.data);
      },      function myError(response) {
                  cb(response.statusText);
@@ -83,7 +94,57 @@ app.factory('flightSrv', function ($http) {
         getReturnFlightsFromOtherAirlines: function(){
           
           return ReturnflightsFromOtherAirlines;
-        }  
+
+        }, 
+
+        bookflightFromOtherAirline: function(inputData,cb){
+
+         var ipAddress =  airlinesNameIpAddresses[inputData.Airline] ;
+         var tokenReq = {
+              method: 'GET',
+              url: '/getToken'
+            };
+          return $http(tokenReq).success(function(token){
+          var req = {
+            method:'POST',
+            url: '/booking',
+            data:{
+              passengerDetails:inputData.passengerDetails,
+              class:inputData.class,
+              cost:inputData.cost,
+              outgoingFlightId:inputData.outgoingFlightId,
+              returnFlightId:inputData.returnFlightId
+            },
+             headers:
+                      {
+                        'x-access-token':token
+                      }
+
+          }
+          $http(req).success(function(response){
+            if(response.errorMessage){
+              alert(response.errorMessage);
+            }else{
+              cb(response.refNum);
+            }
+          });
+        });
+        },
+     setOutFLightData:function(outFlightData){
+      console.log("setting outflights in flightSRv");
+      console.log(outFlightData)
+      outFlight = outFlightData;
+    },
+
+     setinFLightData:function(inFlightData){
+      inFlight = inFlightData;
+    },
+     getOutFLightData:function(){
+      return outFlight;
+    },
+     getInFLightData:function(){
+      return inFlight;
+    }      
 
 }
  });

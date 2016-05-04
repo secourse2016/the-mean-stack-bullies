@@ -1,88 +1,16 @@
+
+
 <div id="timeTableBackground"></div>
 <div id="timeTableScroll">
-<div id="timeTableSection">
+<div id="timeTableSection"> 
                 <div ng-hide="hide">
 
+                    <h1 id="showAll">Show All Flights</h1>
+                    <button ng-click="goToTimeTable()">Show All Flights</button>
                  
-                    <div class="col-xs-5"  >
-                      <lable style="font-family: arial;color: red">
-                        Search Origin: 
-                      </lable>
-                      <input class="form-control" id="tag"type="text" ng-click="changeTable()" ng-model="destination" typeahead-on-select="changeTable($item.iata)" uib-typeahead="airport.name+' ('+airport.iata+')' for airport in airports | airportsFilters:destination| limitTo:10" placeholder="Destination: ">
-
-
                     </div>
 
-                    <br> <br> <br>
-                    <div class="col-sm-5" ng-show="false" id="DateDiv">
-                      <lable style="color:red;font-family: arial;">
-                        Select Date
-                      </lable>
-
-                      <input class="form-control" id="dateTextBox" type="date" ng-model="dateString" style="background:rgb(17,37,60);">
-
-
-                      <button class="btn-primary" ng-click="filterTableDate()">Filter By Date</button>
-                    </div>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                   
-                 
-
-                  <label ng-hide="!hideTable">No Flights to this destination !!</label>
-
-                  <table id="table" class="table table-striped" ng-hide="hideTable">
-                    <!-- /  fillTable(destination); -->
-                    <tr class="row" style="color: white;">  
-                     <td>Flight Number</td>
-                    <td>AircraftType</td>
-                    <td>Class</td>
-                    <td>Cost</td>
-                    <td>Origin</td>
-                    <td>Destination</td>
-                    <td>Departure</td>
-                    <td>Arrival</td>
-                    <td>Status</td>
-
-
-                   </tr>
-
-
-                   <tr class="row" ng-repeat="flight in arr | limitTo:limit  " ng-animate= "'animate' " >  
-                    <td>{{flight.flightNumber}}</td>
-                    <td>{{flight.aircraftType}}</td>
-                    <td>{{flight.class}}</td>
-                    <td>{{flight.cost}}</td>
-                    <td>{{flight.origin}}</td>
-                    <td>{{flight.destination}}</td>
-                    <td>{{flight.departureDateTime}}</td>
-                    <td>{{flight.arrivalDateTime}}</td>
-                    <td>{{flight.status}}</td>
-
-                  </tr>
-
-
-                </table>
-                <button class="btn-info btn-lg" ng-click="showMore()" ng-hide="hideTable">Show More</button>
-
-              </div>
-              <div ng-hide="!hide">
-              </div>
 
             </div>
-          </div>  
- 
-        <!-- Start timeTable Form -->
-
-        <div ng-show="timeTableshow" id="timeTableShow">
-
-
-        </div>
-         </div>
+            </div>
+            

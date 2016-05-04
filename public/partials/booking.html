@@ -17,7 +17,13 @@
     
     <br>
        <!-- outgoing flights -->
-    <div ng-repeat="flight in newof |  orderBy:'date'">
+      <ul style="margin-left:35%"class="pagination pagination-lg">
+                    <li><a ng-click="previousAirline()"><<</a></li>
+                    <li ng-repeat="airline in airlines.slice(startindex,endindex+1) | limitTo:2" class="ng-class: airline.class;"><a >{{airline.name}}</a></li>
+                    <li><a ng-click="nextAirline()">>></a></li>
+      </ul>
+    <div ng-repeat="flight in arr1 |  orderBy:'date'">
+   
     <table class="tx sp" >
      
 
@@ -67,7 +73,7 @@
     <td class="text-left sp"><div>{{flight.currency}}<br>{{flight.ecost}}<br>Seats: {{flight.eseats}}</div></td>
     <td class="text-left sp"><div>{{flight.destination}}<br>{{flight.arrivalDateTime}}</div></td>
     <td class="text-left sp"><div class="chooseflight">  
-        <input type="radio" name="radio"  id="{{flight.e_id}}" class="radio" ng-show="false" ng-click="radioActionOrigin(flight.e_id)"  />
+        <input type="radio" name="radio"  id="{{flight.e_id}}" class="radio" ng-show="false" ng-click="radioActionOrigin(flight.e_id,flight.Airline,flight.e_class,flight.ecost)"  />
         <label for="{{flight.e_id}}">Choose</label>
                             </div></td>
 
@@ -99,7 +105,7 @@
       <td class="text-left sp"><div>{{flight.currency}}<br>{{flight.bcost}}<br>Seats: {{flight.bseats}}</div></td>
     <td class="text-left sp"><div>{{flight.destination}}<br>{{flight.arrivalDateTime}}</div></td>
     <td class="text-left sp"><div class="chooseflight">  
-        <input type="radio" name="radio" id="{{flight.b_id}}" class="radio" ng-show="false"  ng-click="radioActionOrigin(flight.b_id)" />
+        <input type="radio" name="radio" id="{{flight.b_id}}" class="radio" ng-show="false"  ng-click="radioActionOrigin(flight.b_id,flight.Airline,flight.b_class,flight.bcost)" />
         <label for="{{flight.b_id}}" >Choose</label>
                             </div></td>
 
@@ -119,13 +125,13 @@
 <br>
 <br>
   
-     <h1 style="padding-left: 10%" ng-show=show>Return flights</h1>
+     <h1 style="padding-left: 10%" ng-show="show">Return flights</h1>
 <br>
 <br>
      <br>
 <br>
 
-  <div ng-repeat="flight in newof2 |  orderBy:'date'">
+  <div ng-repeat="flight in arr2 |  orderBy:'date'">
     <table class="tx sp" >
      
 
@@ -175,7 +181,7 @@
    <td class="text-left sp"><div>{{flight.currency}}<br>{{flight.ecost}}<br>Seats: {{flight.eseats}}</div></td>
     <td class="text-left sp"><div>{{flight.destination}}<br>{{flight.arrivalDateTime}}</div></td>
     <td class="text-left sp"><div class="chooseflight">  
-        <input type="radio" name="radio2" id="{{flight.e_id}}" class="radio" ng-show="false"  ng-click="radioActionDest(flight.e_id)" />
+        <input type="radio" name="radio2" id="{{flight.e_id}}" class="radio" ng-show="false"  ng-click="radioActionDest(flight.b_id,flight.Airline,flight.e_class,flight.ecost)" />
         <label for="{{flight.e_id}}">Choose</label>
                             </div></td>
 
@@ -207,7 +213,7 @@
       <td class="text-left sp"><div>{{flight.currency}}<br>{{flight.bcost}}<br>Seats: {{flight.bseats}}</div></td>
     <td class="text-left sp"><div>{{flight.destination}}<br>{{flight.arrivalDateTime}}</div></td>
     <td class="text-left sp"><div class="chooseflight">  
-        <input type="radio" name="radio2" id="{{flight.b_id}}" class="radio" ng-show="false"  ng-click="radioActionDest(flight.b_id)" />
+        <input type="radio" name="radio2" id="{{flight.b_id}}" class="radio" ng-show="false"  ng-click="radioActionDest(flight.b_id,flight.Airline,flight.b_class,flight.bcost)" />
         <label for="{{flight.b_id}}">Choose</label>
                             </div></td>
 

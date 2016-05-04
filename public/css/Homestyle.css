@@ -329,9 +329,21 @@ transition: background 1.5s linear;
   font-family: "Helvetica Neue","Helvetica",Helvetica,Arial,sans-serif;
   font-weight: normal;
   font-style: normal;
-}
-#welcomeText2
-{
+
+
+ }
+
+
+ h5
+ {
+  color: lime; 
+  font-family: "Courier";
+  font-size: 20px;
+  margin: 10px 0 0 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 30em;
+  animation: type 4s steps(120, end); 
   color:#EEE;
   position:absolute;
   top:40%;
@@ -340,7 +352,41 @@ transition: background 1.5s linear;
   font-family: "Helvetica Neue","Helvetica",Helvetica,Arial,sans-serif;
   font-weight: normal;
   font-style: normal;
+
 }
+#span2
+{
+   color: lime; 
+  font-family: "Courier";
+  font-size: 20px;
+  margin: 10px 0 0 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 30em;
+  animation: type 4s steps(60, end); 
+  color:#EEE;
+  position:absolute;
+  top:40%;
+  left:15%;
+  font-size:20px;
+  font-family: "Helvetica Neue","Helvetica",Helvetica,Arial,sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  animation: blink 1s infinite;
+  height: 100%;
+}
+@keyframes blink{
+  to{opacity: .0;}
+}
+
+
+
+@keyframes type{ 
+  from { width: 0; } 
+} 
+
+ 
+
 
 #scroll
 {
@@ -669,15 +715,21 @@ h4
 
 /* start home-tabling-container */
 #home-tabling-container{
-  margin-top: 35%;
+  margin-top: 3%;
   width: 40%;
   height: 5%;
-  opacity:0.9;
+  opacity:1;
   position: absolute;
   top:9%;
   left: -1%;
   background-color: rgb(17,36,60);
 
+
+} 
+.modal-dialog{ 
+
+width: 100%;
+background-color: white;
 
 }
 
@@ -704,28 +756,40 @@ background-color: rgb(0, 33, 71);
   
   
 }
-#bookingForm::-webkit-scrollbar {
-    width: 10px;  /* remove scrollbar space */
-    background: rgb(221,233,237);  /* optional: just make scrollbar invisible */
-}
+
 #bookingForm
 {
   
   background-position: 100% -20%;
   background-size: 110% 100%;
-  width: 130%;
+
+  width: 105%;
   height: 1100%;
-  border-radius: 9px;
+  
+
   color:black;
   
-  overflow: scroll;
+ 
   overflow-x:hidden; 
   position: absolute;
  
-  background: rgb(221,233,237);
+  background: white;
 
-  top:-1104%;
-  left:2%;
+
+  top:126%;
+  left:3%;
+}
+#bookAFlight
+{
+  margin-left: 10%;
+}
+#flightType
+{
+ position: relative;
+ left: 1  0%;
+   font-size: 20px;
+   width:850px;
+
 }
 
 #closeButton
@@ -980,11 +1044,110 @@ fieldset h1
 #bookingSection
 {
 position: relative;
-left:9%;
+left:35%;
 top:1%;
 max-height:130%;
 padding-bottom: 3%;
+
 }
+#bookingForms
+{
+  width:100%;
+  margin-left:-20%;
+  margin-top: 3%;
+
+}
+.form-style-7{
+     
+  }
+  .form-style-7 h2{
+      background: #4D4D4D;
+      text-transform: uppercase;
+      font-family: 'Open Sans Condensed', sans-serif;
+      color: #797979;
+      font-size: 18px;
+      font-weight: 100;
+      padding: 20px;
+      margin: -30px -30px 30px -30px;
+
+  }
+  .form-style-7 input[type="text"],
+  .form-style-7 input[type="date"],
+  .form-style-7 input[type="datetime"],
+  .form-style-7 input[type="email"],
+  .form-style-7 input[type="number"],
+  .form-style-7 input[type="search"],
+  .form-style-7 input[type="time"],
+  .form-style-7 input[type="url"],
+  .form-style-7 input[type="password"],
+  .form-style-7 textarea,
+  .form-style-7 select 
+  {
+      box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      outline: none;
+      display: block;
+      width: 300%;
+      padding: 7px;
+      border: none;
+      border-bottom: 1px solid #ddd;
+      background: transparent;
+          background-color:white;
+          border-bottom-color: rgb(152,58,49);
+      margin-bottom: 10px;
+      font: 16px Arial, Helvetica, sans-serif;
+     height:40px;
+      width: 160px;
+    -webkit-transition: border-bottom-color 0.5s ease-in-out;
+    transition: border-bottom-color 0.5s ease-in-out;
+
+
+  }
+  .form-style-7 select:focus
+  {
+     border-bottom-color: rgb(17,37,60);
+
+  }
+  .form-style-7 textarea{
+      resize:none;
+      overflow: hidden;
+     background: #eee;
+
+  }
+  .form-style-7 input[type="button"], 
+  .form-style-7 input[type="submit"]{
+      -moz-box-shadow: inset 0px 1px 0px 0px #45D6D6;
+      -webkit-box-shadow: inset 0px 1px 0px 0px #45D6D6;
+      box-shadow: inset 0px 1px 0px 0px #45D6D6;
+      border-bottom: 2px solid black;
+      background-color: #2CBBBB;
+      border: 1px solid #27A0A0;
+      display: inline-block;
+      cursor: pointer;
+      color: #FFFFFF;
+      font-family: 'Open Sans Condensed', sans-serif;
+      font-size: 14px;
+      padding: 8px 18px;
+      text-decoration: none;
+      text-transform: uppercase;
+  }
+  .form-style-7 input[type="button"]:hover, 
+  .form-style-7 input[type="submit"]:hover {
+      background:linear-gradient(to bottom, #34CACA 5%, #30C9C9 100%);
+      background-color:#34CACA;
+      border-bottom: 2px solid black;
+  }
+
+  .form-style-7 input:focus
+  {
+
+      border-bottom-color: rgb(17,34,160);
+  -webkit-transition: border-bottom-color 0.5s ease-in-out;
+    transition: border-bottom-color 0.5s ease-in-out;
+   
+
+  }
 #bookBtn
 {
   position: absolute;
@@ -1020,6 +1183,7 @@ width:100%;
   margin-top: -150px;
 
 }
+
 #timeTableSection2
 {
 position: relative;
@@ -1035,6 +1199,7 @@ font-weight: bold;
 position: relative;
 left:9%;
 height:auto;
+width:90%;
 color:black;
 font-weight: bold;
 
@@ -1389,5 +1554,49 @@ color:#EEE;
       border-top: 1px solid #eee;
       color:white;
   }
-
+#calendarDeparture
+{
+  position: absolute;
+  left:80%;
+  top:30%;
+}
+#calendarReturn
+{
+  position: absolute;
+  left:80%;
+  top:38%;
+}
   
+#overlay-back{
+    position   : absolute;
+    top        : 0;
+    left       : 0;
+    width      : 100%;
+    height     : 100%;
+    opacity    : 0.6;
+    filter     : alpha(opacity=60);
+    z-index    : 5;
+    display    : none;
+}
+
+
+#overlay {
+    position : absolute;
+    top      : 1%;
+    left     : 20%;
+    width    : 50%;
+    height   : 50%;
+    z-index  : 20;
+    display  : none;
+
+} 
+#overlay2 {
+    position : absolute;
+    top      : 1%;
+    left     : 20%;
+    width    : 50%;
+    height   : 50%;
+    z-index  : 20;
+    display  : none;
+
+} 

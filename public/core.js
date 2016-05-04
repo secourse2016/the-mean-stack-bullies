@@ -13,6 +13,11 @@ app.config(function($routeProvider) {
             templateUrl : '/partials/home.html',
             controller  : 'myCtrl'
         })
+
+        .when('/cal', {
+            templateUrl : '/partials/calendar.html',
+            controller  : 'calendarCtrl'
+        })
         .when('/book', {
             templateUrl : '/partials/booking.html',
             controller  : 'flightCtrl'
@@ -37,10 +42,13 @@ app.config(function($routeProvider) {
             templateUrl : '/partials/team.html',
             controller  : 'TeamController'
 
-        }); 
+        }) 
+        .when('/timetable', {
+            templateUrl : '/partials/timeTable.html',
+            controller  : 'bookingCtrl'
+        });
+
         
-            
-        Stripe.setPublishableKey('pk_test_ULcStxFLM4quhm4JacResvRo'); 
         
 
      

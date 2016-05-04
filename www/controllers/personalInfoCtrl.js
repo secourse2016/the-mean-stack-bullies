@@ -162,17 +162,16 @@ app.factory('personalInfoSrv',function ($http){
             });
 
          },
-     getBookingNumberOfAdultsAndChildren : function(cb){
+getBookingNumberOfAdultsAndChildren : function(cb){
         var tokenReq = {
               method: 'GET',
               url: 'http://52.26.173.245/getToken'
             };
       return $http(tokenReq).success(function(response){
         var req = {
-          method: 'Get',
+          method: 'GET',
           url: 'http://52.26.173.245/api/getBookingNumberOfAdultsAndChildren?wt='+response
       };
-
         return $http(req)
               .success(function(response) {
                      console.log("in the person service"+response);
@@ -182,8 +181,7 @@ app.factory('personalInfoSrv',function ($http){
                    console.log(response.statusText);
                 alert("An error occured please try again");
               });
-            })
-            .error(function(response){
+            }).error(function(response){
                 console.log(response.statusText);
                 alert("An error occured please try again");
             });

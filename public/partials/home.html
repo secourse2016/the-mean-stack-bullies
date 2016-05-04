@@ -5,12 +5,16 @@
 
 </head>
 <div id="main" class="container-fluid">
-      
+
+    <div id="overlay-back"></div>
+<div id="overlay" ng-include="departureDatecalendar"></div>   
+<div id="overlay2" ng-include="returnDateCalender"></div> 
+
 
    <!--START The top image background -->
 
         <div id="topImage" ng-controller="bookingCtrl" data-ng-init="changeTable()" ng-style="{'background': 'url('+image+') no-repeat center center fixed','background-size':'100% 160%'}"> 
-
+  
          <div id="home-tabling-container" class="col-xs-12 col-md-10 col-lg-8" ng-controller="reservationsController" >
            <div id="bookingForm" ng-show="showMe" >
 
@@ -25,7 +29,6 @@
         <!-- Start Manage Booking  -->
         
 
-        
        <!--End Manage Booking-->
        <button id="closeButton" class ="glyphicon glyphicon-remove" ng-click="close()"></button>
        <p id="closeButtonText">close</p>
@@ -58,7 +61,9 @@
         Welcome to Air France
         <img id="franceLogo" src="./images/francelogo.png">
       </h2>
-      <h5  class="wow fadeIn" data-wow-delay="0.2s"id="welcomeText2">We are happy to serve you</h5>
+      <h5 id="welcomeText2">We are happy to serve you</h5>
+     
+
 
     </section>
     </div>  
