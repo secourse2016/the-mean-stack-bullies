@@ -76,7 +76,7 @@ app = angular.module('starter', ['ionic', 'starter.controllers'])
     
           
        
-    })
+    }) 
     .state('berlinOffer', {
       url: '/berlinOffer',
       templateUrl: 'templates/berlinOffer.html',
@@ -95,6 +95,8 @@ app = angular.module('starter', ['ionic', 'starter.controllers'])
       controller :'nepalOfferCtrl'
        
     })
+    
+
 
   // // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/home');

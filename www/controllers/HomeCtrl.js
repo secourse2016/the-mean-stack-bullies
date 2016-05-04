@@ -26,9 +26,15 @@ $scope.about = function()
 	$state.go('about');
 }
 
-$scope.offers = function()
+$scope.payment = function()
 {
-	$state.go('berlinOffer');
+
+	$state.go('payment');
+} 
+$scope.offers =function()
+{ 
+     $state.go('berlinOffer');
+
 }
 HomeSrv.test("Home From Srv");
 

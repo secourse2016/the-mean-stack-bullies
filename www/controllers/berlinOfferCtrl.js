@@ -12,3 +12,4 @@ app.controller('berlinOfferCtrl', function($scope,$state) {
 
 	
 }); 
+
