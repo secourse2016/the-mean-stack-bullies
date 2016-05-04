@@ -9,6 +9,14 @@ app.controller('bookingCtrl', function($scope, $location,airportSrv,flightSrv,Fl
 
      $scope.retDate=new Date (depdateString);
      $scope.depDate=new Date (retdateString);
+    var errMessage = bookingFormValidation(); 
+     var empty=true; 
+     if(errMessage){
+      alert(errMessage);
+
+     }
+     else{
+      
   if($scope.trippp == "one"){
         var bookingData = [{ 
           from: $scope.selectedOrigin,
@@ -81,6 +89,7 @@ app.controller('bookingCtrl', function($scope, $location,airportSrv,flightSrv,Fl
          });
    }
     }
+  }
 
   
 
@@ -121,18 +130,22 @@ app.controller('bookingCtrl', function($scope, $location,airportSrv,flightSrv,Fl
      $scope.depDate=new Date (retdateString);
      var errMessage = bookingFormValidation(); 
      var empty=true; 
-          if(errMessage&&errMessage.length > 50){  
-            $scope.alertme = "You entered invalid data!";
-             $scope.bookalert = true;
-             $scope.$apply();
+     if(errMessage){
+      alert(errMessage);
 
-          }
-          if(errMessage&&errMessage.length < 50){  
-             $scope.alertme = errMessage;
-             $scope.bookalert = true;
-             $scope.$apply(); 
+     }
+          // if(errMessage&&errMessage.length > 50){  
+          //   $scope.alertme = "You entered invalid data!";
+          //    $scope.bookalert = true;
+          //    $scope.$apply();
 
-          }
+          // }
+          // if(errMessage&&errMessage.length < 50){  
+          //    $scope.alertme = errMessage;
+          //    $scope.bookalert = true;
+          //    $scope.$apply(); 
+
+          // }
        
     else{ 
       var adult=parseInt( $scope.adultsss);
