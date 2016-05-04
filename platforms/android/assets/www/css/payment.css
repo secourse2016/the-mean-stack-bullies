@@ -1,0 +1,42 @@
+body
+{
+
+	
+	overflow-y: scroll;
+
+}
+
+
+
+.list
+
+{
+
+	margin-top: 15%;
+
+
+}
+.paymentInfoAbove
+{
+	background-color: rgb(158,58,49);
+	position: relative;
+	top:9%;
+	height: 10%;
+	
+}
+.paymentInfoAbove h1
+{ 
+	color:white;
+	font-size:30px;
+	margin-left: 10%;
+	padding-top: 3%;
+}
+.confirmButton
+{
+	position: absolute;
+	top:94%;
+}
+#form
+{
+	margin-top:-5%;
+}

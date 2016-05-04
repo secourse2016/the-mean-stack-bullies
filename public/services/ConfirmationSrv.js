@@ -64,6 +64,7 @@ app.factory('ConfirmationSrv', function($http){
        },
 
 
+
           getbookingID : function(cb) {
               var tokenReq = {
                 method: 'GET',
@@ -95,6 +96,7 @@ app.factory('ConfirmationSrv', function($http){
                   alert("An error occured please try again");
          });
        },
+
 
          getPersonInfo: function(cb){
            var tokenReq = {

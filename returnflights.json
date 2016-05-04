@@ -564,7 +564,11 @@
             "destination"       : "DEL",
             "cost"              : "1500",
             "currency"          : "EUR",
+
+            
+
             "class"             : "business",
+
             "Airline"           : "AirFrance"
     },
     {
@@ -576,7 +580,11 @@
             "destination"       : "JED",
             "cost"              : "1300",
             "currency"          : "EUR",
+
+            
+
             "class"             : "business",
+
             "Airline"           : "AirFrance"
         
     },
@@ -590,7 +598,11 @@
             "destination"       : "TPE",
             "cost"              : "1600",
             "currency"          : "EUR",
+
+            
+
             "class"             : "business",
+
             "Airline"           : "AirFrance"
         
     },
@@ -604,7 +616,11 @@
             "destination"       : "CPT",
             "cost"              : "1820",
             "currency"          : "EUR",
+
+            
+
             "class"             : "business",
+
             "Airline"           : "AirFrance"
         
     },
@@ -618,7 +634,11 @@
             "destination"       : "JED",
             "cost"              : "960",
             "currency"          : "EUR",
+
+            
+
             "class"             : "business",
+
             "Airline"           : "AirFrance"
         
     },
@@ -632,7 +652,11 @@
             "destination"       : "JFK",
             "cost"              : "1716",
             "currency"          : "EUR",
+
+            
+
             "class"             : "business",
+
             "Airline"           : "AirFrance"
     },
    
@@ -645,7 +669,11 @@
             "destination"       : "LAX",
             "cost"              : "790",
             "currency"          : "EUR",
+
+            
+
             "class"             : "business",
+
             "Airline"           : "AirFrance"
         
     },
@@ -659,7 +687,11 @@
             "destination"       : "LAX",
             "cost"              : "1390",
             "currency"          : "EUR",
+
+            
+
             "class"             : "business",
+
             "Airline"           : "AirFrance"
         
     },
@@ -673,7 +705,11 @@
             "destination"       : "BER",
             "cost"              : "1016",
             "currency"          : "EUR",
+
+            
+
             "class"             : "business",
+
             "Airline"           : "AirFrance"
         
     },
@@ -687,7 +723,11 @@
             "destination"       : "MXP",
             "cost"              : "930",
             "currency"          : "EUR",
+
+            
+
             "class"             : "business",
+
             "Airline"           : "AirFrance"
         
     },
@@ -703,7 +743,11 @@
             "cost"              : "1500", 
             "seats"              : "300",
             "currency"          : "EUR",
+
+            
+
             "class"             : "business",
+
             "Airline"           : "AirFrance"
         
     },
@@ -717,7 +761,11 @@
             "cost"              : "1300", 
             "seats"              : "300",
             "currency"          : "EUR",
+
+            
+
             "class"             : "business",
+
             "Airline"           : "AirFrance"
         
     },
@@ -731,7 +779,11 @@
             "cost"              : "1600", 
             "seats"              : "300",
             "currency"          : "EUR",
+
+            
+
             "class"             : "business",
+
             "Airline"           : "AirFrance"
         
     },
@@ -745,7 +797,11 @@
             "cost"              : "1820", 
             "seats"              : "300",
             "currency"          : "EUR",
+
+            
+
             "class"             : "business",
+
             "Airline"           : "AirFrance"
         
     },
@@ -759,7 +815,11 @@
             "cost"              : "960",
             "seats"              : "300",
             "currency"          : "EUR",
+
+            
+
             "class"             : "business",
+
             "Airline"           : "AirFrance"
         
     },
@@ -773,7 +833,11 @@
             "cost"              : "1716", 
             "seats"              : "300",
             "currency"          : "EUR",
+
+            
+
             "class"             : "business",
+
             "Airline"           : "AirFrance"
         
     },
@@ -787,7 +851,11 @@
             "cost"              : "790", 
             "seats"              : "300",
             "currency"          : "EUR",
+
+            
+
             "class"             : "business",
+
             "Airline"           : "AirFrance"
         
     },
@@ -801,7 +869,11 @@
             "cost"              : "1390", 
             "seats"              : "300",
             "currency"          : "EUR",
+
+            
+
             "class"             : "business",
+
             "Airline"           : "AirFrance"
         
     },  
@@ -815,7 +887,11 @@
             "cost"              : "1016", 
             "seats"              : "300",
             "currency"          : "EUR",
+
+            
+
             "class"             : "business",
+
             "Airline"           : "AirFrance"
         
     },
@@ -829,7 +905,11 @@
             "cost"              : "930", 
             "seats"              : "300",
             "currency"          : "EUR",
+
+            
+
             "class"             : "business",
+
             "Airline"           : "AirFrance"
         
     },
@@ -844,7 +924,11 @@
             "destination"       : "DEL",
             "cost"              : "1500",
             "currency"          : "EUR",
+
+            
+
             "class"             : "business",
+
             "Airline"           : "AirFrance"
     },
     {
@@ -856,7 +940,11 @@
             "destination"       : "JED",
             "cost"              : "1300",
             "currency"          : "EUR",
+
+            
+
             "class"             : "business",
+
             "Airline"           : "AirFrance"
         
     },
@@ -870,7 +958,11 @@
             "destination"       : "TPE",
             "cost"              : "1600",
             "currency"          : "EUR",
+
+            
+
             "class"             : "business",
+
             "Airline"           : "AirFrance"
         
     },
@@ -884,7 +976,11 @@
             "destination"       : "CPT",
             "cost"              : "1820",
             "currency"          : "EUR",
+
+            
+
             "class"             : "business",
+
             "Airline"           : "AirFrance"
         
     },
@@ -898,7 +994,11 @@
             "destination"       : "JED",
             "cost"              : "960",
             "currency"          : "EUR",
+
+            
+
             "class"             : "business",
+
             "Airline"           : "AirFrance"
         
     },
@@ -912,7 +1012,11 @@
             "destination"       : "JFK",
             "cost"              : "1716",
             "currency"          : "EUR",
+
+            
+
             "class"             : "business",
+
             "Airline"           : "AirFrance"
     },
    
@@ -925,7 +1029,11 @@
             "destination"       : "LAX",
             "cost"              : "790",
             "currency"          : "EUR",
+
+            
+
             "class"             : "business",
+
             "Airline"           : "AirFrance"
         
     },
@@ -939,7 +1047,11 @@
             "destination"       : "LAX",
             "cost"              : "1390",
             "currency"          : "EUR",
+
+            
+
             "class"             : "business",
+
             "Airline"           : "AirFrance"
         
     },
@@ -953,7 +1065,11 @@
             "destination"       : "BER",
             "cost"              : "1016",
             "currency"          : "EUR",
+
+            
+
             "class"             : "business",
+
             "Airline"           : "AirFrance"
         
     },
@@ -967,7 +1083,11 @@
             "destination"       : "MXP",
             "cost"              : "930",
             "currency"          : "EUR",
+
+            
+
             "class"             : "business",
+
             "Airline"           : "AirFrance"
         
     },
@@ -982,7 +1102,11 @@
             "cost"              : "1500", 
             "seats"              : "300",
             "currency"          : "EUR",
+
+            
+
             "class"             : "business",
+
             "Airline"           : "AirFrance"
         
     },
@@ -996,7 +1120,11 @@
             "cost"              : "1300", 
             "seats"              : "300",
             "currency"          : "EUR",
+
+            
+
             "class"             : "business",
+
             "Airline"           : "AirFrance"
         
     },
@@ -1010,7 +1138,11 @@
             "cost"              : "1600", 
             "seats"              : "300",
             "currency"          : "EUR",
+
+            
+
             "class"             : "business",
+
             "Airline"           : "AirFrance"
         
     },
@@ -1024,7 +1156,11 @@
             "cost"              : "1820", 
             "seats"              : "300",
             "currency"          : "EUR",
+
+            
+
             "class"             : "business",
+
             "Airline"           : "AirFrance"
         
     },
@@ -1038,7 +1174,11 @@
             "cost"              : "960", 
             "seats"              : "300",
             "currency"          : "EUR",
+
+            
+
             "class"             : "business",
+
             "Airline"           : "AirFrance"
         
     },
@@ -1052,7 +1192,11 @@
             "cost"              : "1716", 
             "seats"              : "300",
             "currency"          : "EUR",
+
+            
+
             "class"             : "business",
+
             "Airline"           : "AirFrance"
         
     },
@@ -1066,7 +1210,11 @@
             "cost"              : "790", 
             "seats"              : "300",
             "currency"          : "EUR",
+
+            
+
             "class"             : "business",
+
             "Airline"           : "AirFrance"
         
     },
@@ -1080,7 +1228,11 @@
             "cost"              : "1390", 
             "seats"              : "300",
             "currency"          : "EUR",
+
+            
+
             "class"             : "business",
+
             "Airline"           : "AirFrance"
         
     },  
@@ -1094,7 +1246,11 @@
             "cost"              : "1016", 
             "seats"              : "300",
             "currency"          : "EUR",
+
+            
+
             "class"             : "business",
+
             "Airline"           : "AirFrance"
         
     },
@@ -1108,7 +1264,11 @@
             "cost"              : "930", 
             "seats"              : "300",
             "currency"          : "EUR",
+
+            
+
             "class"             : "business",
+
             "Airline"           : "AirFrance"
         
     }

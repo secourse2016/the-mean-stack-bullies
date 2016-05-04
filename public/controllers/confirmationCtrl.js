@@ -1,4 +1,6 @@
+
 app.controller('confirmationCtrl', function($scope, $location,ConfirmationSrv,paySrv,flightSrv,personalInfoSrv,paySrv) {
+
 		//$scope.clicktest=function() {
 
   		 $scope.showThankYou=true; 
@@ -40,6 +42,16 @@ app.controller('confirmationCtrl', function($scope, $location,ConfirmationSrv,pa
           }
 
         
+
+
+  		 ConfirmationSrv.getallInfo(function(data)
+  		 {
+  		 	console.log("new");
+  		 			console.log(data);
+  		 			$scope.payments = data;
+  		 });
+
+
   
 function getComfirmationDataFromServices(){
            $scope.payments = paySrv.getPaymentData();
@@ -71,6 +83,7 @@ function getComfirmationDataFromSessions (returnFlightFlag){
         ConfirmationSrv.getPersonInfo(function(data)
        {
 
+
         console.log(data);
 
             
@@ -83,6 +96,7 @@ function getComfirmationDataFromSessions (returnFlightFlag){
         console.log("bokoing data");
             console.log(data);
             $scope.booking = data;
+
        }); 
         if(returnFlightFlag == true){
            ConfirmationSrv.getbookingID(function(id){ 
@@ -94,6 +108,7 @@ function getComfirmationDataFromSessions (returnFlightFlag){
            ConfirmationSrv.getbookingID(function(id){ 
                console.log(id); 
                $scope.bookId = id;
+
 
        });
         }

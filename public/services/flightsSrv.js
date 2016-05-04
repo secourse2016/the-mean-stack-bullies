@@ -1,4 +1,9 @@
 app.factory('flightSrv', function ($http) {
+
+      var inFlights = [];
+      var outFlights = [];
+
+
       var inFlight = null;
       var outFlight = null;
       
@@ -11,7 +16,7 @@ app.factory('flightSrv', function ($http) {
       airlinesNameIpAddresses["Lufthansa"]="http://ec2-54-152-123-100.compute-1.amazonaws.com";
       airlinesNameIpAddresses["Turkish_Airlines"]="http://52.27.150.19";
       airlinesNameIpAddresses["Hawaiian"]="http://54.93.36.94";
-   
+
      return {
          getFlights : function(cb) {
           var tokenReq = {
@@ -74,6 +79,7 @@ app.factory('flightSrv', function ($http) {
                console.log(response.statusText);
                alert("An error occured please try again");
          });
+
   },
         setFlightsFromOtherAirlines: function(flights){
           flightsFromOtherAirlines = flights;
@@ -91,6 +97,8 @@ app.factory('flightSrv', function ($http) {
         getReturnFlightsFromOtherAirlines: function(){
           
           return ReturnflightsFromOtherAirlines;
+
+
         }, 
 
         bookflightFromOtherAirline: function(inputData,cb){
@@ -141,6 +149,7 @@ app.factory('flightSrv', function ($http) {
      getInFLightData:function(){
       return inFlight;
     }      
+
 }
  });
 

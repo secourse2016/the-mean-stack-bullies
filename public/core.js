@@ -1,9 +1,11 @@
 var app = angular.module('mainApp',['ui.bootstrap','ngRoute']);
 /**
  * Angular Routes
+
  */  
  
 app.config(function($routeProvider) { 
+
     $routeProvider
 
         // route for the home page
@@ -39,14 +41,18 @@ app.config(function($routeProvider) {
         .when('/team', {
             templateUrl : '/partials/team.html',
             controller  : 'TeamController'
+
+
         }) 
         .when('/timetable', {
             templateUrl : '/partials/timeTable.html',
             controller  : 'bookingCtrl'
         });
+
         
         
 
      
        
 });
+

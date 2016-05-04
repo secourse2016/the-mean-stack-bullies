@@ -1,0 +1,117 @@
+
+  
+<link href="../css/payment.css" rel="stylesheet">
+
+
+<body>
+
+  <ion-view title="Payment">
+
+      <!-- <ion-header-bar id="topBar" class="bar-royal wow fadeInDown" data-wow-duration="2s">
+      
+        <div id="logo"><img src="./img/logowhite.png"></div>
+
+      </ion-header-bar> -->
+
+
+<ul class="list" >
+
+
+ 
+<br>
+
+  <li class="item item-toggle">
+     Visa
+     <label class="toggle toggle-assertive">
+       <input id="Visa" type="checkbox" ng-model="Visa" ng-change="visa()" >
+       <div class="track">
+         <div class="handle"></div>
+       </div>
+     </label>
+  </li>
+  <li class="item item-toggle">
+     Master Card
+     <label class="toggle toggle-positive">
+       <input id="masterCard" type="checkbox" ng-model="Mastercard" ng-change="mastercard()" >
+       <div class="track">
+         <div class="handle"></div>
+       </div>
+     </label>
+  </li>
+
+</ul>
+
+
+<div id="form" class="list" >
+
+  
+<label class="item item-input item-stacked-label">
+    <div>
+  <i style="font-size: 2.10em; display: inline-block;margin-right: 5px;" class="icon ion-person"></i>
+    <input type="text" placeholder="Card Holder Name" style="display: inline-block;" ng-model="holderN">
+    </div>
+    </label>
+
+
+
+<label class="item item-input item-stacked-label">
+      <div>
+  <i style="font-size: 2.10em; display: inline-block;margin-right: 5px;" class="icon ion-card"></i>
+    <input type="text" placeholder="Card Number" style="display: inline-block;" ng-model="CardN">
+    </div>
+ </label>
+
+
+<label class="item item-input item-stacked-label">
+      <div>
+  <i style="font-size: 2.10em; display: inline-block;margin-right: 5px;" class="icon ion-android-lock"></i>
+    <input type="text" ng-model="CVV" placeholder="CVV" style="display: inline-block;" ng-model="CardN">
+    </div>
+ </label>
+
+  <div class="plabel" id="expiry">
+        <label class="side" style="color:rgb(17,37,60);">Expiry Date:  </label>
+
+
+        <select class="styled-select smonth tem item-input item-floating-label" id="expiryDate"   ng-model="expirymonth" placeholder="Departure Date" data-stripe="exp-month">
+
+          <option>JAN</option>
+          <option>FEB</option>
+          <option>MAR</option>
+          <option>APR</option>
+          <option>MAY</option>
+          <option>JUN</option>
+          <option>JUL</option>
+          <option>AUG</option>
+          <option>SEP</option>
+          <option>OCT</option>
+          <option>NOV</option>
+          <option>DEC</option>
+        </select>
+
+
+        <select   class="styled-select syear item item-input item-floating-label" id="exyear" ng-model="expiryyear" placeholder="Departure Date" data-stripe="exp-year">
+
+          <option>2016</option>
+          <option>2017</option>
+          <option>2018</option>
+          <option>2019</option>
+          <option>2020</option>
+          <option>2021</option>
+          <option>2022</option>
+        </select>
+
+
+
+      </div>
+
+  
+</div>
+
+</div>
+<div style="text-align:center;">
+<button class="button button-assertive confirmButton" ng-click="submitPaymentForm()">Conifirmation</button>
+</div>
+</ion-view>
+
+</body>

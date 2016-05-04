@@ -1,0 +1,130 @@
+<style>
+.bg{
+
+  background:rgb(221,233,236);
+}
+
+
+
+</style>
+
+<ion-view title="Book Flight" style="background:rgb(221,233,236);">
+  
+<br><br><br>
+<div id="BookingForm" >    
+     <br><br>
+      <div >
+        <a class="item item-icon-left bg"  ng-click="searchAirport1()">
+          <i class="icon ion-android-plane"></i>
+          From
+          <p id="from"></p>
+        </a>
+      </div>
+     
+      <div >
+        <a class="item item-icon-left bg" ng-click="searchAirport2()">
+         <i class="icon ion-android-plane"></i>
+          To
+          <p id="to"></p>
+        </a>
+      </div>
+     
+
+      <div ng-click="trip()" ng-show= "one" ng-model="trippp">
+        <a class="item item-icon-left bg">
+         <i class="icon ion-arrow-right-c"></i>
+          One Way
+        </a>
+      </div>
+
+      <div ng-click="trip()" ng-hide= "one" ng-model="trippp">
+        <a class="item item-icon-left bg">
+         <i class="icon ion-arrow-swap"></i>
+          Round Trip
+        </a>
+      </div>
+
+       <div >
+        <label class="item item-icon-left bg">
+          Going
+          <input type="date" ng-model="DDate" style="background:rgb(221,233,236);">
+          <i class="icon ion-android-calendar"></i>
+         </label>
+        <label class="item item-icon-left bg" ng-hide= "one" >
+          Return
+          <input type="date" ng-model="RDate" style="background:rgb(221,233,236);">
+          <i class="icon ion-android-calendar"></i>
+         </label> 
+
+      </div>
+  
+     
+      
+      <div  >
+        <label class="item item-input item-select bg" >
+          <i style="font-size: 2.10em; display: inline-block;margin-right: 5px;" class="icon ion-person"></i>
+          <div>
+            Adults  
+          </div>
+          <select ng-model="NAdults" style="background:rgb(221,233,236);">
+            <option selected>1 Adult</option>
+            <option>2 Adults</option>
+            <option>3 Adults</option>
+            <option>4 Adults</option>
+            <option>5 Adults</option>
+            <option>6 Adults</option>
+            <option>7 Adults</option>       
+          </select>
+         </label> 
+
+      </div>
+
+
+      <div >
+        <label class="item item-input item-select bg">
+    
+          <i style="font-size: 2.10em; display: inline-block;margin-right: 5px;" class="icon ion-android-person"></i>
+          <div >
+            Children
+          </div>
+          <select name="NChildren" ng-model="NChildren" style="background:rgb(221,233,236);">
+            <option selected>0 Child</option>
+            <option>1 Children</option>
+            <option>2 Children</option>
+            <option>3 Children</option>
+            <option>4 Children</option>
+            <option>5 Children</option>
+            <option>6 Children</option>
+            <option>7 Children</option>       
+          </select>
+         </label> 
+
+      </div>
+
+      <label class="item item-input item-stacked-label">
+      <div>
+    <i style="font-size: 2.10em; display: inline-block;margin-right: 5px;" class="icon ion-ios-email"></i>
+    <input type="email" placeholder="Email" style="display: inline-block;background:rgb(221,233,236);" ng-model="email" >
+    </div>
+  </label>
+
+     
+<div style="text-align: center;">
+  <br>
+        <button class="button button-assertive" ng-click="bookFlight()">
+  Search Flights
+</button>
+
+</div>
+
+
+
+   </div>
+   <br>
+
+
+      </ion-view>
+
+
+
+

@@ -1,0 +1,33 @@
+
+#page
+{
+		overflow-y: scroll;
+		background-color: white;
+}
+
+#passengerInfoAbovee
+{
+	background:rgb(158,52,49);
+	padding-top: 12%;
+	padding-bottom: 12%;
+	height: 13%;
+}
+#passengerInfoAbovee h3
+{
+	color: white;
+	padding-left: 1px;
+}
+#passengerInfoAbovee p
+{
+	color: white;
+	padding: 20px;
+	font-size: 10px;
+}
+
+
+
+.submitButton
+{
+	margin-top:0px;
+	
+}

@@ -13,7 +13,7 @@ app.controller('reservationsController', function($scope,cancelationReservation)
                 {
 
 
-console.log("name " + reservationData.reservation.firstName);
+              console.log("name " + reservationData.reservation.firstName);
                    $scope.reservationExist = true;
                         $scope.names = ["First Name : " + reservationData.person.firstName
                         ,"Last Name : " + reservationData.person.secondName,

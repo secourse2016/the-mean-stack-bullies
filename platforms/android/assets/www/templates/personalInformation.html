@@ -1,0 +1,61 @@
+
+    <link href="../css/personalInformation.css" rel="stylesheet">
+         <link href="../lib/ionic/css/ionic.css" rel="stylesheet">
+
+    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <link href="css/ionic.app.css" rel="stylesheet">
+    -->
+
+    <!-- ionic/angularjs js -->
+    
+ 
+  
+
+<ion-view id="page" title="Passenger Information">
+
+      
+<ion-nav-title id="passengerInfoAbovee">
+      <h3 ng-model="tag">Passenger {{current+1}} Information</h3>
+      <p style="font-size:10px; margin-top :-47px;">type:{{passType}}</p>
+      </ion-nav-title>
+     <br>
+
+  
+<div id="form" class="list">
+  <label id="firstName" class="item item-input item-floating-label">
+    <span class="input-label">First Name</span>
+    <input type="text" ng-model="firstName" placeholder="First Name">
+  </label>
+  <label id="lastName" class="item item-input item-floating-label">
+    <span class="input-label">Last Name</span>
+    <input type="text" ng-model="lastName" placeholder="Last Name">
+  </label>
+<!--    <label id="email" class="item item-input item-floating-label">
+    <span class="input-label">email</span>
+    <input type="email" ng-model="email" placeholder="Email">
+  </label> -->
+  <label  id="age"class="item item-input item-floating-label">
+    <span class="input-label">Age</span>
+    <input type="number" ng-model="age" placeholder="Age">
+  </label>
+  <label  id="expiryDate"class="item item-input item-stacked-label">
+    <span class="input-label">Expiry Date</span>
+    <input type="date" ng-model="expiryDate" placeholder="Expiry Date">
+  </label>
+  <label  id="passportNumber"class="item item-input item-floating-label">
+    <span class="input-label">Passport Number</span>
+    <input type="number"  ng-model="passportnum" placeholder="Passport Number">
+  </label>
+  <label  id="Nationality"class="item item-input item-floating-label">
+    <span class="input-label">Nationality</span>
+    <input type="text" ng-model="Nationality" placeholder="Nationality">
+  </label>
+</div>
+
+
+ <button class="button button-positive submitButton" ng-show="nextpassShow" ng-click="nextpass()">Next Pass</button>
+ <button class="button button-positive " ng-show="!nextpassShow" ng-click="confirm()">Confirm</button>
+
+</div>
+ 
+</ion-view>

@@ -6,7 +6,9 @@ app.factory('paySrv', function ($http) {
     var returnFLightBookingReferenceID = null;
      return {
 
+
          insertPayment : function(stripeToken,pa,cb) {
+
           var tokenReq = {
         method: 'GET',
         url: '/getToken'
@@ -15,8 +17,10 @@ app.factory('paySrv', function ($http) {
           var req = {
               method: 'POST',
               url: '/api/insertpayment',
+
               data: { payment: pa , 
                        token : stripeToken}
+
                  ,headers:
               {
                 'x-access-token':response
@@ -53,6 +57,7 @@ app.factory('paySrv', function ($http) {
                  console.log(response.statusText);
                  alert("An error occured please try again");
             })
+
          },
          getAmount : function(cb) {
               var tokenReq = {
@@ -86,6 +91,7 @@ app.factory('paySrv', function ($http) {
                   alert("An error occured please try again");
          });
        },
+
 
 
        getStripePublicKeyOfOtherAirline: function(airlineName,cb){
@@ -158,6 +164,7 @@ app.factory('paySrv', function ($http) {
            });
         
           },
+
 
           setPaymentData:function(paymentData){
             payData = paymentData;
