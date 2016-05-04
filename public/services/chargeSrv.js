@@ -27,10 +27,11 @@ app.factory('chargeSrv', function ($http) {
                  });
 
 
-  } 
+  }); 
 
 
      
      }
+   }
       
 });

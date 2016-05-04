@@ -89,7 +89,6 @@ app.controller('paymentCtrl', function($scope, $location,paySrv,chargeSrv,person
                $scope.payAlert = true;
                $scope.$apply();
         }
-<<<<<<< HEAD
         else{
                
              if(outFlightData != null && outFlightData.FlightAirline!="AirFrance"){
@@ -106,33 +105,7 @@ app.controller('paymentCtrl', function($scope, $location,paySrv,chargeSrv,person
                     }, stripeResponseHandlerForOutgoingFlightsPayment); 
 
 
-               //      if(inFlightData != null && inFlightData.FlightAirline !="AirFrance"){
-               //   paySrv.getStripePublicKeyOfOtherAirline(inFlightData.FlightAirline,function(publickey){
-                           
-               //              console.log(publickey);
-               //              Stripe.setPublishableKey('publickey'); 
-
-               //              Stripe.card.createToken({
-               //              number: $scope.CardN,
-               //              cvc: $scope.CVV,
-               //              exp_month: getMonthNumber($scope.expirymonth),
-               //              exp_year: $scope.expiryyear
-                            
-               //              }, stripeResponseHandler); 
-               //   });
-               
-               // }else{
-               //   Stripe.setPublishableKey("pk_test_ULcStxFLM4quhm4JacResvRo"); 
-
-               //              Stripe.card.createToken({
-               //              number: $scope.CardN,
-               //              cvc: $scope.CVV,
-               //              exp_month: getMonthNumber($scope.expirymonth),
-               //              exp_year: $scope.expiryyear
-                            
-               //              }, stripeResponseHandler); 
-               // }
-                });
+       
 
                
                }else{
