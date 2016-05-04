@@ -1098,6 +1098,11 @@ padding-bottom: 3%;
 
 
   }
+  #flightButtons
+  {
+    position: absolute;
+    top:120%;
+  }
   .form-style-7 select:focus
   {
      border-bottom-color: rgb(17,37,60);
