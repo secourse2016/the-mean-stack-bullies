@@ -23,7 +23,6 @@ var bookControl = require('../serverController/bookingController.js');
 var paymentController= require('../serverController/paymentController.js');
 var flightControl =  require('../serverController/flightController.js');
 var AirportsController =  require('../serverController/airportsServerController.js');
-
 var paymnetController= require('../serverController/paymentController.js');
 var pingingOtherAirlinesServerController = require('../serverController/pingingOtherAirlinesServerController.js');
     /**
@@ -33,7 +32,6 @@ var paymentValidation= require('../Validations/paymentValidation.js');
 var personController= require('../serverController/personController.js');
 var personValidation= require('../Validations/personValidation.js');
 var bookingValidation = require('../Validations/bookingValidation.js'); 
-
 
 var manageController =  require('../serverController/ManageBookingController.js');
 
@@ -118,14 +116,11 @@ var router = express.Router();
                  }
                  
                      
-
               });
-
 
                     /**
                      * validating of payment middleware.
                      */
-
               router.post('/api/insertpayment', function(req,res,next) {
                  sess = req.session;
                  paymentValidation.validatePayment(req.body.payment[0],function(errmessage){
@@ -144,14 +139,11 @@ var router = express.Router();
 
                         });
                     
-
                    }
                 });
   
   
-
             });   
-
 
               router.post('/api/booking', function(req, res, next) { 
 
@@ -166,9 +158,7 @@ var router = express.Router();
                            }
                 });
 
-
             });
-
 
 /*
 |==========================================================================
@@ -194,7 +184,6 @@ var router = express.Router();
 | These routes are related to the Payments.
 |
 */
-
           
 
 
@@ -340,22 +329,12 @@ router.post('/api/booking', function(req,res){
                   // sess.personData = req.body.people[0];
                  
                   sess.personArray=req.body.people;
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> master
-
                    console.log("heree");
                   console.log(sess.flightIDs);
                   console.log(sess.flightIDs);
                   if(sess.flightID !=null ||sess.flightIDs !=undefined || sess.flightIDs!=null||sess.flightIDs!=undefined){
                     console.log(sess.flightIDs.inFlight_id+" "+sess.flightIDs.ouFlight_id);
                        paymnetController.calculateAmount(sess.flightIDs.inFlight_id , sess.flightIDs.ouFlight_id,function(err,amount){
-<<<<<<< HEAD
-
-=======
->>>>>>> 2c7e742d345b38e6d774d62f2df35d439bdaaf83
->>>>>>> master
                       if(err){
                         res.send('Error in the calculate payment method');
                       }
@@ -375,15 +354,6 @@ router.post('/api/booking', function(req,res){
                   }
                
                 
-<<<<<<< HEAD
-f
-=======
-<<<<<<< HEAD
-
-                // });
-=======
->>>>>>> 2c7e742d345b38e6d774d62f2df35d439bdaaf83
->>>>>>> master
                 });
                 
                 
@@ -399,7 +369,7 @@ f
   |
   */
      
-
+        
 
             /**
              * get Flights route.
@@ -408,7 +378,6 @@ f
               sess = req.session;
               res.send(sess.flightData);
            }); 
-
 
            router.get('/api/getPaymentAmount',function(req,res){
               sess = req.session;
@@ -526,14 +495,12 @@ f
         res.send(sess.personArray);
     
       });  
-
       router.get('/api/sendBookingId', function(req, res) {
         sess = req.session; 
         //console.log(sess.bookinId);
         res.send(sess.bookinId);
     
       });  
-
 
            
 
@@ -570,11 +537,9 @@ f
                                                  console.log("error"+err);
                                             }
                                             else{
-
                                                 sess.bookinId=booking._id;
                                                 console.log("new person added"+flag);
                                                 saveAllBookingDataController.insertPaymentInformation(sess.paymentData,booking._id,function(err,payment){
-
 
                                                         saveAllBookingDataController.decreaseSeatsByNumber( sess.personArray.length,sess.flightIDs.ouFlight_id ,sess.flightIDs.inFlight_id ,function(err1,docs){
                                                         console.log("ID------------------------->"+sess.flightIDs.inFlight_id);
@@ -606,7 +571,6 @@ f
         
       });
           
-
  
  /*
 |==========================================================================
@@ -828,7 +792,6 @@ f
   router.get('/stripe/pubkey',function(req,res){
       res.send("pk_test_ULcStxFLM4quhm4JacResvRo");
   });
-
 
 module.exports = router;
 

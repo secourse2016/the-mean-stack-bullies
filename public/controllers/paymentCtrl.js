@@ -1,14 +1,7 @@
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> master
+
 
 app.controller('paymentCtrl', function($scope, $location,paySrv,chargeSrv,personalInfoSrv,flightSrv) {
-<<<<<<< HEAD
 
-=======
->>>>>>> 2c7e742d345b38e6d774d62f2df35d439bdaaf83
->>>>>>> master
      /**
       * validating payment form
       */
@@ -49,12 +42,7 @@ app.controller('paymentCtrl', function($scope, $location,paySrv,chargeSrv,person
        }*/
    
     
-      
-<<<<<<< HEAD
 
-=======
->>>>>>> 2c7e742d345b38e6d774d62f2df35d439bdaaf83
->>>>>>> master
       function paymentValidations(){
         var isvalid =true;
         var errMessage = "";
@@ -68,17 +56,10 @@ app.controller('paymentCtrl', function($scope, $location,paySrv,chargeSrv,person
           }
 
          if(($scope.CVV == null)||!(/^[0-9]{3}$/.test($scope.CVV))){
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> master
+
 
            errMessage+="Please enter a valid CVV \n";
-<<<<<<< HEAD
 
-=======
->>>>>>> 2c7e742d345b38e6d774d62f2df35d439bdaaf83
->>>>>>> master
            isvalid =false;
           }
          if($scope.radioButton== null){
@@ -121,10 +102,7 @@ app.controller('paymentCtrl', function($scope, $location,paySrv,chargeSrv,person
                $scope.$apply();
         }
         else{
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> master
+
 
                
              if(outFlightData != null && outFlightData.FlightAirline!="AirFrance"){
@@ -157,11 +135,7 @@ app.controller('paymentCtrl', function($scope, $location,paySrv,chargeSrv,person
                             
                             }, stripeResponseHandlerForOutgoingFlightsPayment); 
                }
-<<<<<<< HEAD
 
-=======
->>>>>>> 2c7e742d345b38e6d774d62f2df35d439bdaaf83
->>>>>>> master
 
             
               
@@ -190,13 +164,8 @@ app.controller('paymentCtrl', function($scope, $location,paySrv,chargeSrv,person
 
           var date ="01 "+$scope.expirymonth+" "+$scope.expiryyear;
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-
                console.log(response);
-            var pa=[{
->>>>>>> master
+
 
             var inFlightData = flightSrv.getInFLightData();
             var outFlightData = flightSrv.getOutFLightData();
@@ -283,6 +252,8 @@ app.controller('paymentCtrl', function($scope, $location,paySrv,chargeSrv,person
                             
                             }, stripeResponseHandlerForReturnFlightsPayment); 
                         }
+                      }else{
+                         $location.url('/confirm');
                       }  
                                     // console.log("here in the payment controlller");
                                     // $location.url('/confirm');
@@ -290,11 +261,7 @@ app.controller('paymentCtrl', function($scope, $location,paySrv,chargeSrv,person
                                    else{
                                     alert("something went wrong please try again");
                                    }
-<<<<<<< HEAD
 
-=======
->>>>>>> 2c7e742d345b38e6d774d62f2df35d439bdaaf83
->>>>>>> master
                 });
              }
              

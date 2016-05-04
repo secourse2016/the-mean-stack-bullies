@@ -172,10 +172,10 @@ Db.seed(mongoose.model('Airport'),require('../airports.json'),function(){
 
 
 
- // Db.drop(function(){
- //    console.log("dropped");
- //    seedingFunction(function(){
- //    console.log("seeding database completed successfully");
- //  });
- // });
+ Db.drop(function(){
+    console.log("dropped");
+    seedingFunction(function(){
+    console.log("seeding database completed successfully");
+  });
+ });
 

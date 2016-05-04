@@ -107,16 +107,9 @@ var stripe = require("stripe")("sk_test_eI0A2eL166WZXsd51IOkmksT");
             	}
             }
             
-<<<<<<< HEAD
+
 
 	}
 
 
-=======
-<<<<<<< HEAD
-	}
 
-=======
-	} 
->>>>>>> 2c7e742d345b38e6d774d62f2df35d439bdaaf83
->>>>>>> master

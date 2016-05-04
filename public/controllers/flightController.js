@@ -1,31 +1,3 @@
-<<<<<<< HEAD
-
-=======
-<<<<<<< HEAD
-app.controller('flightCtrl', function($scope,$location, flightSrv) {
-console.log("in flight controller");
-  $scope.outgoingFlights = [];
-  $scope.returnedFlights = [];
-  $scope.newof=[];
-  $scope.newof2=[];
-  $scope.show=false;
-  
-  var inFlightID = null ;
-  var outFlightID = null ;
-
-   flightSrv.getFlights(function(response){
-       if(response.err){
-         alert("somthing went wrong please try again");
-       }else{
-         if(response.outFlights ){
-            //console.log("in booking controller "+response.outFlights[0].origin);
-
-           var flightsFromOtherAirlines = flightSrv.getFlightsFromOtherAirlines();
-           console.log("hereeee -->"+flightsFromOtherAirlines.length);
-           var AllFlights = flightsFromOtherAirlines.concat(response.outFlights);
-            $scope.outgoingFlights = AllFlights;
-=======
->>>>>>> master
 
   app.controller('flightCtrl', function($scope,$location, flightSrv,ConfirmationSrv) {
     console.log("in flight controller");
@@ -70,11 +42,6 @@ console.log("in flight controller");
               console.log("hereeee -->"+flightsFromOtherAirlines.length);
               var AllFlights = flightsFromOtherAirlines.concat(response.outFlights);
               $scope.outgoingFlights = AllFlights;
-<<<<<<< HEAD
-
-=======
->>>>>>> 2c7e742d345b38e6d774d62f2df35d439bdaaf83
->>>>>>> master
               $scope.newof=[];
               var newi=0;
               console.log("new");
@@ -137,20 +104,9 @@ console.log("in flight controller");
             else{
 
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-             if($scope.outgoingFlights[ind]!= undefined && $scope.outgoingFlights[ind+1]!=undefined){
->>>>>>> master
-
 
              if($scope.outgoingFlights[ind].Airline==$scope.outgoingFlights[ind+1].Airline)
              {
-<<<<<<< HEAD
-
-=======
->>>>>>> 2c7e742d345b38e6d774d62f2df35d439bdaaf83
->>>>>>> master
               $scope.newof[newi]={
                 "e_id":$scope.outgoingFlights[ind]._id ||$scope.outgoingFlights[ind].flightId,
                 "b_id":$scope.outgoingFlights[ind+1]._id||$scope.outgoingFlights[ind+1].flightId,
@@ -164,7 +120,6 @@ console.log("in flight controller");
                 "arrivalDateTime":$scope.outgoingFlights[ind].arrivalDateTime,
                 "currency":$scope.outgoingFlights[ind].currency,
                 "flightNumber":$scope.outgoingFlights[ind].flightNumber,
-
                 "aircraftType":$scope.outgoingFlights[ind].aircraftType,
                 "Airline":$scope.outgoingFlights[ind].Airline,
                 "e_class": $scope.outgoingFlights[ind].class,
@@ -225,25 +180,6 @@ console.log("in flight controller");
 
             }
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-             }
-
-            
-             
-              
-             
-          }
-            if(response.inFlights){
-
-            var retunflightsFromOtherAirlines = flightSrv.getReturnFlightsFromOtherAirlines();
-            console.log("hereee1--->"+retunflightsFromOtherAirlines.length);      
-           var AllFlights = retunflightsFromOtherAirlines.concat(response.inFlights);
-               $scope.returnedFlights =AllFlights;
-             $scope.newof2=[];
->>>>>>> master
-
 
           }
 
@@ -284,11 +220,6 @@ console.log("in flight controller");
               if(($scope.arr1[i].Airline!=$scope.airlines[$scope.startindex].name)&&($scope.arr1[i].Airline!=$scope.airlines[$scope.startindex+1].name)){
                   $scope.arr1.splice(i,1);
                   i--;
-<<<<<<< HEAD
-
-=======
->>>>>>> 2c7e742d345b38e6d774d62f2df35d439bdaaf83
->>>>>>> master
               }
             }
             if($scope.arr2){
@@ -502,15 +433,6 @@ console.log("in flight controller");
             }
 
 
-<<<<<<< HEAD
-
-
-=======
-<<<<<<< HEAD
-             }
-=======
->>>>>>> 2c7e742d345b38e6d774d62f2df35d439bdaaf83
->>>>>>> master
              $scope.show=true;
             };
             }
@@ -582,20 +504,10 @@ console.log("in flight controller");
 
         }
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> master
-
       
     }
 
     $scope.radioActionOrigin=function(id,airline,classs,cost)
-<<<<<<< HEAD
-
-=======
->>>>>>> 2c7e742d345b38e6d774d62f2df35d439bdaaf83
->>>>>>> master
     {
       console.log(id);
       console.log(airline);
@@ -701,11 +613,6 @@ console.log("in flight controller");
 
 
   }
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> master
-
   $scope.previousAirline=function(){
       if($scope.startindex==0){
         alert("no previous airlines");
@@ -724,11 +631,6 @@ console.log("in flight controller");
            console.log( $scope.arr1[ind]); 
        }
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 2c7e742d345b38e6d774d62f2df35d439bdaaf83
->>>>>>> master
 
 
 

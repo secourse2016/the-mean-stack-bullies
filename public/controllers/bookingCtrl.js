@@ -1,4 +1,3 @@
-
 app.controller('bookingCtrl', function($scope, $location,airportSrv,flightSrv,FlightsSrv,bookingSrv,airlineSrv) {
   // $scope.showCal=false;
   // $scope.cal="../partials/calendar.html";
@@ -90,16 +89,9 @@ app.controller('bookingCtrl', function($scope, $location,airportSrv,flightSrv,Fl
          });
    }
     }
-<<<<<<< HEAD
-
-=======
-<<<<<<< HEAD
-=======
   }
 
   
->>>>>>> 2c7e742d345b38e6d774d62f2df35d439bdaaf83
->>>>>>> master
 
   $scope.date= new Date();
   $scope.limit=6;
@@ -108,12 +100,9 @@ app.controller('bookingCtrl', function($scope, $location,airportSrv,flightSrv,Fl
     //First function handles success
     if(airports){
          $scope.airports = airports;
-
         // console.log(airports[0]);
-
       console.log("responded");
-    }
-    else{
+    }else{
        console.log("not responded");
     } 
   });
@@ -133,23 +122,12 @@ app.controller('bookingCtrl', function($scope, $location,airportSrv,flightSrv,Fl
   $scope.showReturnedDate=function(){
     $scope.hidedate=true;
   }
-
  var book = $scope.bookFlight=function(){   
      var depdateString=document.getElementById('retDateCalender').value;
      var retdateString=document.getElementById('depDateCalender').value;
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> master
-
      $scope.retDate=new Date (depdateString);
      $scope.depDate=new Date (retdateString);
-<<<<<<< HEAD
-
-=======
->>>>>>> 2c7e742d345b38e6d774d62f2df35d439bdaaf83
->>>>>>> master
      var errMessage = bookingFormValidation(); 
      var empty=true; 
      if(errMessage){
@@ -174,24 +152,6 @@ app.controller('bookingCtrl', function($scope, $location,airportSrv,flightSrv,Fl
       var child= parseInt($scope.children);
      var data = [{ 
     
-<<<<<<< HEAD
-
-=======
-<<<<<<< HEAD
-    trip: $scope.trippp,
-    from: $scope.selectedOrigin,
-    To: $scope.selectedDestination,
-    DepartureDate: $scope.depDate, 
-    ReturnDate: $scope.retDate,
-    NumberOfAdults: adult,
-    NumberOfChildren: child,
-
-    Class: $scope.class,
-    Email:$scope.email
-    }]; 
-    // console.log("test nullsss in ctrl----------->"+data[0].NumberOfAdults) ; 
-=======
->>>>>>> master
           trip: $scope.trippp,
           from: $scope.selectedOrigin,
           To: $scope.selectedDestination,
@@ -203,23 +163,15 @@ app.controller('bookingCtrl', function($scope, $location,airportSrv,flightSrv,Fl
           Email:$scope.email
       }]; 
     console.log("test nullsss in ctrl----------->"+data[0].NumberOfAdults) ; 
-<<<<<<< HEAD
-
-=======
->>>>>>> 2c7e742d345b38e6d774d62f2df35d439bdaaf83
->>>>>>> master
     // console.log("test nullsss in ctrl----------->"+data[0].NumberOfChildren) ;  
-
 
    
      bookingSrv.insertbooking(data,function(response){
 
                if(response.outFlights != undefined && response.outFlights.length >0){
                 $location.url('/book');
-
               }
               else{
-
                 alert("no flights with criteria avialable");
               }
        });   
@@ -412,7 +364,6 @@ app.controller('bookingCtrl', function($scope, $location,airportSrv,flightSrv,Fl
             valid = false;
         } 
 
-
         if($scope.class == undefined){  
           err+= "Please select the seating class \n"; 
           valid = false;
@@ -425,7 +376,6 @@ app.controller('bookingCtrl', function($scope, $location,airportSrv,flightSrv,Fl
 
 
         }
-
 
                   
          

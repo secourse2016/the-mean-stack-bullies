@@ -22,36 +22,26 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-
- 
-
-
 app.use(express.static(path.join(__dirname, 'public')));
-
 app.use(session({secret: 'key12',cookie:{maxAge:60000*30}}));
 // routes
 
-
 app.all('*', function(req, res, next) {
   res.header('Access-Control-Allow-Origin', '*');
-  res.addHeader("Access-Control-Allow-Origin", "*");
   res.header('Access-Control-Allow-Headers', ['Content-Type', 'X-Requested-With','x-access-token']);
   next();
 });
 
-
 app.get('/getToken',function(req,res){
 //   console.log("here in token route");
 // var newJwt = jwt.create(process.env.JWTSECRET);
-// console.log(   newJwt);
+// console.log(newJwt);
 // var token = newJwt.compact();
 // console.log(token);
 var token = jwt.sign({}, process.env.JWTSECRET);
 console.log(token);
 res.send(token);
 });
-
-
 
 app.use('/api',function(req, res, next) {
 
@@ -86,7 +76,7 @@ app.use('/', api);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-  var err = new Error('Not Found123');
+  var err = new Error('Not Found');
   err.status = 404;
   next(err);
 });
