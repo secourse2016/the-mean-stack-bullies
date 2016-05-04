@@ -92,7 +92,13 @@ app.factory('paySrv', function ($http) {
          });
        },
 
+<<<<<<< HEAD
 
+=======
+<<<<<<< HEAD
+           
+=======
+>>>>>>> master
 
        getStripePublicKeyOfOtherAirline: function(airlineName,cb){
         
@@ -164,7 +170,11 @@ app.factory('paySrv', function ($http) {
            });
         
           },
+<<<<<<< HEAD
 
+=======
+>>>>>>> 2c7e742d345b38e6d774d62f2df35d439bdaaf83
+>>>>>>> master
 
           setPaymentData:function(paymentData){
             payData = paymentData;

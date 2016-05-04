@@ -244,6 +244,7 @@ router.post('/api/booking', function(req,res){
 
                      console.log("sesssion = "+ sess.bookingData);
                      if(err){
+                      console.log(err);
                       returnedjson = {
                           err:err,
                           outFlights:null,
@@ -251,6 +252,9 @@ router.post('/api/booking', function(req,res){
                         };
                        res.send(returnedjson);
                      }else{
+                      console.log("in the else part");
+                      console.log(outFlights);
+                      console.log(inFlights);
                         returnedjson = {
                           err:null,
                           outFlights:outFlights,
@@ -336,6 +340,10 @@ router.post('/api/booking', function(req,res){
                   // sess.personData = req.body.people[0];
                  
                   sess.personArray=req.body.people;
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> master
 
                    console.log("heree");
                   console.log(sess.flightIDs);
@@ -343,7 +351,11 @@ router.post('/api/booking', function(req,res){
                   if(sess.flightID !=null ||sess.flightIDs !=undefined || sess.flightIDs!=null||sess.flightIDs!=undefined){
                     console.log(sess.flightIDs.inFlight_id+" "+sess.flightIDs.ouFlight_id);
                        paymnetController.calculateAmount(sess.flightIDs.inFlight_id , sess.flightIDs.ouFlight_id,function(err,amount){
+<<<<<<< HEAD
 
+=======
+>>>>>>> 2c7e742d345b38e6d774d62f2df35d439bdaaf83
+>>>>>>> master
                       if(err){
                         res.send('Error in the calculate payment method');
                       }
@@ -363,7 +375,15 @@ router.post('/api/booking', function(req,res){
                   }
                
                 
+<<<<<<< HEAD
 f
+=======
+<<<<<<< HEAD
+
+                // });
+=======
+>>>>>>> 2c7e742d345b38e6d774d62f2df35d439bdaaf83
+>>>>>>> master
                 });
                 
                 

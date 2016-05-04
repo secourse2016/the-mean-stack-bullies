@@ -41,13 +41,21 @@ app.config(function($routeProvider) {
         .when('/team', {
             templateUrl : '/partials/team.html',
             controller  : 'TeamController'
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> master
 
         }) 
         .when('/timetable', {
             templateUrl : '/partials/timeTable.html',
             controller  : 'bookingCtrl'
         });
+<<<<<<< HEAD
 
+=======
+>>>>>>> 2c7e742d345b38e6d774d62f2df35d439bdaaf83
+>>>>>>> master
         
         
 

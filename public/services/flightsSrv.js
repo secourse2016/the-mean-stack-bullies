@@ -1,4 +1,10 @@
 app.factory('flightSrv', function ($http) {
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+      var inFlights = [];
+      var outFlights = [];
+>>>>>>> master
 
       var inFlight = null;
       var outFlight = null;
@@ -13,7 +19,11 @@ app.factory('flightSrv', function ($http) {
       airlinesNameIpAddresses["Turkish_Airlines"]="http://52.27.150.19";
       airlinesNameIpAddresses["Hawaiian"]="http://54.93.36.94";
    
+<<<<<<< HEAD
 
+=======
+>>>>>>> 2c7e742d345b38e6d774d62f2df35d439bdaaf83
+>>>>>>> master
      return {
          getFlights : function(cb) {
           var tokenReq = {
@@ -94,6 +104,11 @@ app.factory('flightSrv', function ($http) {
         getReturnFlightsFromOtherAirlines: function(){
           
           return ReturnflightsFromOtherAirlines;
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+        }  
+>>>>>>> master
 
         }, 
 
@@ -145,7 +160,11 @@ app.factory('flightSrv', function ($http) {
      getInFLightData:function(){
       return inFlight;
     }      
+<<<<<<< HEAD
 
+=======
+>>>>>>> 2c7e742d345b38e6d774d62f2df35d439bdaaf83
+>>>>>>> master
 }
  });
 

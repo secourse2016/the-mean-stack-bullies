@@ -1,6 +1,14 @@
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> master
 
 app.controller('paymentCtrl', function($scope, $location,paySrv,chargeSrv,personalInfoSrv,flightSrv) {
+<<<<<<< HEAD
 
+=======
+>>>>>>> 2c7e742d345b38e6d774d62f2df35d439bdaaf83
+>>>>>>> master
      /**
       * validating payment form
       */
@@ -33,12 +41,20 @@ app.controller('paymentCtrl', function($scope, $location,paySrv,chargeSrv,person
          // flightsFromOtherAirlinesTotalCost+=amount;
           $scope.amount = flightsFromOtherAirlinesTotalCost;
       });
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> master
 
        }*/
    
     
       
+<<<<<<< HEAD
 
+=======
+>>>>>>> 2c7e742d345b38e6d774d62f2df35d439bdaaf83
+>>>>>>> master
       function paymentValidations(){
         var isvalid =true;
         var errMessage = "";
@@ -52,9 +68,17 @@ app.controller('paymentCtrl', function($scope, $location,paySrv,chargeSrv,person
           }
 
          if(($scope.CVV == null)||!(/^[0-9]{3}$/.test($scope.CVV))){
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> master
 
            errMessage+="Please enter a valid CVV \n";
+<<<<<<< HEAD
 
+=======
+>>>>>>> 2c7e742d345b38e6d774d62f2df35d439bdaaf83
+>>>>>>> master
            isvalid =false;
           }
          if($scope.radioButton== null){
@@ -97,6 +121,10 @@ app.controller('paymentCtrl', function($scope, $location,paySrv,chargeSrv,person
                $scope.$apply();
         }
         else{
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> master
 
                
              if(outFlightData != null && outFlightData.FlightAirline!="AirFrance"){
@@ -129,7 +157,11 @@ app.controller('paymentCtrl', function($scope, $location,paySrv,chargeSrv,person
                             
                             }, stripeResponseHandlerForOutgoingFlightsPayment); 
                }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 2c7e742d345b38e6d774d62f2df35d439bdaaf83
+>>>>>>> master
 
             
               
@@ -158,6 +190,13 @@ app.controller('paymentCtrl', function($scope, $location,paySrv,chargeSrv,person
 
           var date ="01 "+$scope.expirymonth+" "+$scope.expiryyear;
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+
+               console.log(response);
+            var pa=[{
+>>>>>>> master
 
             var inFlightData = flightSrv.getInFLightData();
             var outFlightData = flightSrv.getOutFLightData();
@@ -217,13 +256,45 @@ app.controller('paymentCtrl', function($scope, $location,paySrv,chargeSrv,person
                       paySrv.insertPayment(response.id,pa,
                            function(flag) {
                                  if(flag == true){
-                                    console.log("here in the payment controlller");
-                                    $location.url('/confirm');
+                 if(inFlightData.FlightAirline != null ){
+                  if (inFlightData.FlightAirline !="AirFrance" && inFlightData.FlightAirline !=null){
+                            paySrv.getStripePublicKeyOfOtherAirline(inFlightData.FlightAirline,function(publickey){
+                           
+                            console.log(publickey);
+                            Stripe.setPublishableKey(publickey); 
+
+                            Stripe.card.createToken({
+                            number: $scope.CardN,
+                            cvc: $scope.CVV,
+                            exp_month: getMonthNumber($scope.expirymonth),
+                            exp_year: $scope.expiryyear
+                            
+                            }, stripeResponseHandlerForReturnFlightsPayment); 
+                           });
+                        }else{
+                          console.log("in the else part ");
+                            Stripe.setPublishableKey("pk_test_ULcStxFLM4quhm4JacResvRo"); 
+
+                            Stripe.card.createToken({
+                            number: $scope.CardN,
+                            cvc: $scope.CVV,
+                            exp_month: getMonthNumber($scope.expirymonth),
+                            exp_year: $scope.expiryyear
+                            
+                            }, stripeResponseHandlerForReturnFlightsPayment); 
+                        }
+                      }  
+                                    // console.log("here in the payment controlller");
+                                    // $location.url('/confirm');
                                    }
                                    else{
                                     alert("something went wrong please try again");
                                    }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 2c7e742d345b38e6d774d62f2df35d439bdaaf83
+>>>>>>> master
                 });
              }
              

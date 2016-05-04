@@ -1,6 +1,14 @@
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> master
 
 app.controller('confirmationCtrl', function($scope, $location,ConfirmationSrv,paySrv,flightSrv,personalInfoSrv,paySrv) {
+<<<<<<< HEAD
 
+=======
+>>>>>>> 2c7e742d345b38e6d774d62f2df35d439bdaaf83
+>>>>>>> master
 		//$scope.clicktest=function() {
 
   		 $scope.showThankYou=true; 
@@ -42,6 +50,18 @@ app.controller('confirmationCtrl', function($scope, $location,ConfirmationSrv,pa
           }
 
         
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+
+  		 ConfirmationSrv.getallInfo(function(data)
+  		 {
+  		 	console.log("new");
+  		 			console.log(data);
+  		 			$scope.payments = data;
+  		 });
+
+>>>>>>> master
 
   
 function getComfirmationDataFromServices(){
@@ -74,7 +94,11 @@ function getComfirmationDataFromSessions (returnFlightFlag){
         ConfirmationSrv.getPersonInfo(function(data)
        {
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 2c7e742d345b38e6d774d62f2df35d439bdaaf83
+>>>>>>> master
         console.log(data);
 
             
