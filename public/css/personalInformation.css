@@ -343,3 +343,88 @@
 
 
 
+.bubble{
+    background-color: rgb(152,58,49);
+    border-radius: 2px;
+    box-shadow: 0 0 6px black;
+    display: inline-block;
+    padding: 10px 18px;
+    
+    width:240px;
+    height: 34px;
+    text-align: center;
+    color:rgb(17,34,60);
+    opacity: 0.8;
+     -webkit-transition: height 0.5s ease-in-out;
+	  transition: height 0.5s ease-in-out;
+
+
+	 
+}
+
+.bubble::before {
+ background-color: rgb(152,58,49);
+    content: "\00a0";
+    display: block;
+    height: 20px;
+    position: absolute;
+    top: -7px;
+    left:10px;
+    transform:             rotate( 29deg ) skew( -35deg );
+        -moz-transform:    rotate( 29deg ) skew( -35deg );
+        -ms-transform:     rotate( 29deg ) skew( -35deg );
+        -o-transform:      rotate( 29deg ) skew( -35deg );
+        -webkit-transform: rotate( 29deg ) skew( -35deg );
+    width:  10px;
+
+}
+
+.fn
+{
+position: absolute;
+    top:25%;
+    left:25%;
+    z-index: 1;
+}
+.ln
+{
+position: absolute;
+    top:25%;
+    left:66%;
+}
+.age
+{
+position: absolute;
+    top:40%;
+    left:25%;
+}
+.nat
+{
+position: absolute;
+    top:40%;
+    left:66%;
+}
+.iss
+{
+position: absolute;
+    top:61%;
+    left:25%;
+}
+.date
+{
+position: absolute;
+     top:61%;
+    left:66%;
+}
+.pass
+{
+position: absolute;
+    top:79%;
+    left:25%;
+}
+
+.bubble p 
+{
+	margin-top:-6.5px;
+	color:white;
+}

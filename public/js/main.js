@@ -120,6 +120,23 @@ $(window).scroll(function() {
 	//  top:'10px'
 	 
 	//  },1500);
+	$('#calendarDeparture').on('click', function () {
+    $('#overlay, #overlay-back').fadeIn(500);
+
+});
+
+
+
+	$('#calendarReturn').on('click', function () {
+    $('#overlay2, #overlay-back').fadeIn(500);
+});
+	$('.datepicker-body').on('click', function () {
+	
+    $('#overlay, #overlay-back').hide();
+     $('#overlay2, #overlay-back').hide();
+});
+	
+
  
  });
  

@@ -9,16 +9,19 @@
 
 
 <div id="mainPay">
-
   <div class="header">
       <br>
+<<<<<<< HEAD
       <h2 >Payment </h2>
+=======
+      <h2 >Payment </h2> 
+>>>>>>> 2c7e742d345b38e6d774d62f2df35d439bdaaf83
 
           <label ng-model="amount">the Amount = {{amount}} $</label>
       
       </div>
   <form id="paymen-form" class="form-horizontal" role="form" name="myForm"  novalidate>
-
+  <p class="bg-danger" ng-show="payAlert">{{alertMe}}</p>
 
 
     <div id="check" class="radiobuttons">
