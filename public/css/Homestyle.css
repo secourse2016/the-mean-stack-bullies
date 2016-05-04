@@ -725,6 +725,12 @@ h4
   background-color: rgb(17,36,60);
 
 
+} 
+.modal-dialog{ 
+
+width: 100%;
+background-color: white;
+
 }
 
 .home-tabling-btn{
@@ -756,9 +762,11 @@ background-color: rgb(0, 33, 71);
   
   background-position: 100% -20%;
   background-size: 110% 100%;
+
   width: 105%;
   height: 1100%;
   
+
   color:black;
   
  
@@ -766,6 +774,7 @@ background-color: rgb(0, 33, 71);
   position: absolute;
  
   background: white;
+
 
   top:126%;
   left:3%;
@@ -780,6 +789,7 @@ background-color: rgb(0, 33, 71);
  left: 1  0%;
    font-size: 20px;
    width:850px;
+
 }
 
 #closeButton
@@ -1544,5 +1554,49 @@ color:#EEE;
       border-top: 1px solid #eee;
       color:white;
   }
-
+#calendarDeparture
+{
+  position: absolute;
+  left:80%;
+  top:30%;
+}
+#calendarReturn
+{
+  position: absolute;
+  left:80%;
+  top:38%;
+}
   
+#overlay-back{
+    position   : absolute;
+    top        : 0;
+    left       : 0;
+    width      : 100%;
+    height     : 100%;
+    opacity    : 0.6;
+    filter     : alpha(opacity=60);
+    z-index    : 5;
+    display    : none;
+}
+
+
+#overlay {
+    position : absolute;
+    top      : 1%;
+    left     : 20%;
+    width    : 50%;
+    height   : 50%;
+    z-index  : 20;
+    display  : none;
+
+} 
+#overlay2 {
+    position : absolute;
+    top      : 1%;
+    left     : 20%;
+    width    : 50%;
+    height   : 50%;
+    z-index  : 20;
+    display  : none;
+
+} 

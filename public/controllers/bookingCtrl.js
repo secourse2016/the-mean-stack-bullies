@@ -1,26 +1,31 @@
 app.controller('bookingCtrl', function($scope, $location,airportSrv,flightSrv,FlightsSrv,bookingSrv,airlineSrv) {
+  // $scope.showCal=false;
+  // $scope.cal="../partials/calendar.html";
  
+
  $scope.checkAllAirlines = function(){
+  var depdateString=document.getElementById('retDateCalender').value;
+     var retdateString=document.getElementById('depDateCalender').value;
+
+     $scope.retDate=new Date (depdateString);
+     $scope.depDate=new Date (retdateString);
   if($scope.trippp == "one"){
         var bookingData = [{ 
           from: $scope.selectedOrigin,
           To: $scope.selectedDestination,
           DepartureDate: $scope.depDate
          }];  
-     airlineSrv.getOneTripFlightsFromOtherAirlines(bookingData[0],function(outFlights){
-      // console.log("outFlights lenght = "+outFlights.length);
-        var flightsFromOtherAirlines = [];
+     airlineSrv.getOneTripFlightsFromOtherAirlines(bookingData[0],function(economyOutFlights,businessOutFlights){
 
-        for(var i =0 ;i<outFlights.length;i++){
+       
 
-          for(var j=0;j<outFlights[i].outgoingFlights.length;j++){
-            flightsFromOtherAirlines.push(outFlights[i].outgoingFlights[j]);
-          }
-        }
-       // console.log("after modification length = "+flightsFromOtherAirlines.length);
+        var flightsFromOtherAirlines = customizingFlightsFromOtherAirlines(economyOutFlights,businessOutFlights);
+        console.log(flightsFromOtherAirlines);
         flightSrv.setFlightsFromOtherAirlines(flightsFromOtherAirlines);
         book(); 
-     });
+        });
+        
+     
    }else{
      var bookingData = [{ 
           from: $scope.selectedOrigin,
@@ -28,40 +33,57 @@ app.controller('bookingCtrl', function($scope, $location,airportSrv,flightSrv,Fl
           DepartureDate: $scope.depDate,
           arrivalDate:$scope.retDate
          }];  
-         airlineSrv.getRoundTripFlightsFromOtherAirlines(bookingData[0],function(AllRoundTripFLights){
+         airlineSrv.getRoundTripFlightsFromOtherAirlines(bookingData[0],function(economyFlights,businessFlights){
          // console.log("length = "+AllRoundTripFLights.length);
-           var outgoingflightsFromOtherAirlines = [];
-           var returnflightsFromOtherAirlines = [];
-        for(var i =0 ;i<AllRoundTripFLights.length/2;i++){
-          if(AllRoundTripFLights[i].outgoingFlights != undefined){
-           for(var j=0;j<AllRoundTripFLights[i].outgoingFlights.length;j++){
-           // if(AllRoundTripFLights[i].outgoingFlights[j] != undefined){
-               outgoingflightsFromOtherAirlines.push(AllRoundTripFLights[i].outgoingFlights[j]);
-             outgoingflightsFromOtherAirlines.push(AllRoundTripFLights[i+AllRoundTripFLights.length/2].outgoingFlights[j]);
-         // }
-            } 
-          }
-          
-          if(AllRoundTripFLights[i].returnFlights != undefined){
+          var economyoutgoingflightsFromOtherAirlines = [];
+          var businessoutgoingflightsFromOtherAirlines = [];
+          var economyreturnflightsFromOtherAirlines = [];
+          var businessreturnflightsFromOtherAirlines = [];
 
-            for(var k=0;k<AllRoundTripFLights[i].returnFlights.length;k++){
-        
-            if(AllRoundTripFLights[i].returnFlights[k] != undefined){
-               returnflightsFromOtherAirlines.push(AllRoundTripFLights[i].returnFlights[k]);
-            returnflightsFromOtherAirlines.push(AllRoundTripFLights[i+AllRoundTripFLights.length/2].returnFlights[k]);
-          }
+           for(var i=0; (i<economyFlights.length)||(i<businessFlights.length);i++){
+            if(economyFlights[i]){
+               var economyOutgoingFlights = {
+                outgoingFlights:economyFlights[i].outgoingFlights
+                };
+                var economyReturnFlights = {
+                  outgoingFlights:economyFlights[i].returnFlights 
+                  };
+             economyoutgoingflightsFromOtherAirlines.push(economyOutgoingFlights);
+             economyreturnflightsFromOtherAirlines.push(economyReturnFlights);
             }
-          }  
-          
            
-        }
-        // console.log("nooo -->"+returnflightsFromOtherAirlines.length);
+            if(businessFlights[i]){
+
+            var businessOutgoingFlights = {
+            outgoingFlights:businessFlights[i].outgoingFlights
+            };
+            var businessReturnFlights = {
+            outgoingFlights:businessFlights[i].returnFlights 
+            };
+           
+            businessoutgoingflightsFromOtherAirlines.push(businessOutgoingFlights);
+            
+            businessreturnflightsFromOtherAirlines.push(businessReturnFlights);
+            }
+            
+           }
+              // console.log(economyoutgoingflightsFromOtherAirlines);
+              // console.log(businessoutgoingflightsFromOtherAirlines);
+              // console.log(economyreturnflightsFromOtherAirlines);
+              // console.log(economyreturnflightsFromOtherAirlines);
+          var outgoingflightsFromOtherAirlines = customizingFlightsFromOtherAirlines(economyoutgoingflightsFromOtherAirlines,businessoutgoingflightsFromOtherAirlines);
+          var returnflightsFromOtherAirlines =  customizingFlightsFromOtherAirlines(economyreturnflightsFromOtherAirlines,businessreturnflightsFromOtherAirlines);
+          // console.log(outgoingflightsFromOtherAirlines);
+          // console.log(returnflightsFromOtherAirlines);
         flightSrv.setFlightsFromOtherAirlines(outgoingflightsFromOtherAirlines);
         flightSrv.setReturnFlightsFromOtherAirlines(returnflightsFromOtherAirlines);
         book();
          });
    }
     }
+
+  
+
   $scope.date= new Date();
   $scope.limit=6;
   $scope.hideBookButton = false; 
@@ -92,11 +114,24 @@ app.controller('bookingCtrl', function($scope, $location,airportSrv,flightSrv,Fl
     $scope.hidedate=true;
   }
  var book = $scope.bookFlight=function(){   
+     var depdateString=document.getElementById('retDateCalender').value;
+     var retdateString=document.getElementById('depDateCalender').value;
 
+     $scope.retDate=new Date (depdateString);
+     $scope.depDate=new Date (retdateString);
      var errMessage = bookingFormValidation(); 
-     var empty=true;
-          if(errMessage){ 
-              alert(errMessage);
+     var empty=true; 
+          if(errMessage&&errMessage.length > 50){  
+            $scope.alertme = "You entered invalid data!";
+             $scope.bookalert = true;
+             $scope.$apply();
+
+          }
+          if(errMessage&&errMessage.length < 50){  
+             $scope.alertme = errMessage;
+             $scope.bookalert = true;
+             $scope.$apply(); 
+
           }
        
     else{ 
@@ -104,23 +139,23 @@ app.controller('bookingCtrl', function($scope, $location,airportSrv,flightSrv,Fl
       var child= parseInt($scope.children);
      var data = [{ 
     
-    trip: $scope.trippp,
-    from: $scope.selectedOrigin,
-    To: $scope.selectedDestination,
-    DepartureDate: $scope.depDate, 
-    ReturnDate: $scope.retDate,
-    NumberOfAdults: adult,
-    NumberOfChildren: child,
-    Class: $scope.class,
-    Email:$scope.email
-    }]; 
-    // console.log("test nullsss in ctrl----------->"+data[0].NumberOfAdults) ; 
+          trip: $scope.trippp,
+          from: $scope.selectedOrigin,
+          To: $scope.selectedDestination,
+          DepartureDate: $scope.depDate, 
+          ReturnDate: $scope.retDate,
+          NumberOfAdults: adult,
+          NumberOfChildren: child,
+          Class: $scope.class,
+          Email:$scope.email
+      }]; 
+    console.log("test nullsss in ctrl----------->"+data[0].NumberOfAdults) ; 
     // console.log("test nullsss in ctrl----------->"+data[0].NumberOfChildren) ;  
 
    
      bookingSrv.insertbooking(data,function(response){
 
-               if(response.outFlights){
+               if(response.outFlights.length >0){
                 $location.url('/book');
               }
               else{
@@ -264,6 +299,10 @@ app.controller('bookingCtrl', function($scope, $location,airportSrv,flightSrv,Fl
                err+= "Please enter your destination \n"; 
                valid = false;
          } 
+         console.log("date   ------------>");
+         console.log($scope.depDate);
+         console.log("date   ------------>");
+         console.log($scope.retDate);
        if($scope.depDate && ($scope.depDate.getFullYear() > new Date().getFullYear()+1)) { 
             err+="You can not book a flight more than 1 year ahead \n"; 
             valid = false;
@@ -276,7 +315,8 @@ app.controller('bookingCtrl', function($scope, $location,airportSrv,flightSrv,Fl
           ($scope.depDate.getDate() < new Date().getDate()) && 
              ($scope.depDate.getMonth()+1 == new Date().getMonth()+1) &&
              ($scope.depDate.getFullYear() == new Date().getFullYear())) { 
-
+          console.log("date   ------------>"+$scope.depDate);
+           // if(($scope.depDate == undefined)){
                 err+= "Please enter a valid departure date \n"; 
                 valid = false;
         }
@@ -318,7 +358,7 @@ app.controller('bookingCtrl', function($scope, $location,airportSrv,flightSrv,Fl
         } 
 
         if($scope.email == undefined || !(evalid.test($scope.email))) { 
-           err+= "Please enter a valid email \m"; 
+           err+= "Please enter a valid email \n"; 
            valid = false;
 
 
@@ -341,4 +381,96 @@ app.controller('bookingCtrl', function($scope, $location,airportSrv,flightSrv,Fl
 
 
 
+function customizingFlightsFromOtherAirlines (economyOutFlights,businessOutFlights){
+         var flightsFromOtherAirlines = [];
+        /**
+         * getting the economy and business objects that contains all flights from all other airlines
+         * it will check for objects in the two arrays which has the same airline and then call the
+         * addBusinessAndEconomyOfTheSameFlightsOfTheSameAirline method that will return back an array
+         * of pairs one pair represent business and economy class of one flight for this airline
+         */
+ 
+        while(economyOutFlights.length != 0 ){
+           if(economyOutFlights[0] &&  economyOutFlights[0] != undefined && economyOutFlights[0].outgoingFlights.length != 0 && economyOutFlights[0].outgoingFlights != undefined){
+             var economyAirline = economyOutFlights[0].outgoingFlights[0].Airline;
+             var flag = false;
 
+             for(var j=0; j<businessOutFlights.length; j++){
+              if(businessOutFlights[j] &&  businessOutFlights[j] != undefined && businessOutFlights[j].outgoingFlights.length != 0 && businessOutFlights[j].outgoingFlights !=undefined ){
+                var businessAirline = businessOutFlights[j].outgoingFlights[0].Airline;
+                if(economyAirline == businessAirline){
+                  flag =true;
+;
+                 var returnedArray =  addBusinessAndEconomyOfTheSameFlightsOfTheSameAirline(economyOutFlights[0].outgoingFlights,businessOutFlights[j].outgoingFlights);
+                 flightsFromOtherAirlines = flightsFromOtherAirlines.concat(returnedArray);
+                 businessOutFlights.splice(j,1);
+                 break;
+                } 
+             }else{
+              businessOutFlights.splice(j,1);
+             } 
+        }
+        if(flag == false){
+        flightsFromOtherAirlines = flightsFromOtherAirlines.concat(economyOutFlights[0].outgoingFlights);
+        }
+        economyOutFlights.splice(0,1);
+      }else{
+        economyOutFlights.splice(0,1);
+      }
+    }
+    for(var k=0;k<businessOutFlights.length;k++){
+      if(businessOutFlights[k] &&  businessOutFlights[k] != undefined && businessOutFlights[k].outgoingFlights.length != 0 && businessOutFlights[k].outgoingFlights !=undefined ){
+        flightsFromOtherAirlines = flightsFromOtherAirlines.concat(businessOutFlights[k].outgoingFlights);
+      }
+    }    
+
+          /**
+           * this method takes the economy flights array and business flights array 
+           * and it returns an array that contains pairs where each piar is the business and economy flights of
+           * a specific flight based on the same ID or the same flight number
+           */
+  
+         function addBusinessAndEconomyOfTheSameFlightsOfTheSameAirline(airlineEconomyFlights,airlineBusinessFlights){
+           console.log(airlineEconomyFlights);
+           console.log(airlineBusinessFlights);
+            var returnedArray = [];
+            while(airlineEconomyFlights.length !=0){
+              if(airlineEconomyFlights[0] && airlineEconomyFlights[0] != undefined){
+                 var economyFlightID = 0;
+                if(airlineEconomyFlights[0]._id){
+                   var economyFlightID = airlineEconomyFlights[0]._id;
+                }
+               
+                var economyFlightNumber = airlineEconomyFlights[0].flightNumber;
+                returnedArray.push(airlineEconomyFlights[0]);
+                airlineEconomyFlights.splice(0,1);
+
+                  for(var i=0 ; i<airlineBusinessFlights.length; i++){
+                    if(airlineBusinessFlights[i] && airlineBusinessFlights[i] != undefined){
+                      var businessFlightID = 0;
+                      if(airlineBusinessFlights[i]._id){
+                        businessFlightID = airlineBusinessFlights[i]._id
+                      }
+                      var businessFlightNumber = airlineBusinessFlights[i].flightNumber;
+                      if(economyFlightID == businessFlightID  && economyFlightNumber == businessFlightNumber ){
+                        returnedArray.push(airlineBusinessFlights[i]);
+                        airlineBusinessFlights.splice(j,1);
+                        break;
+                      }
+                    }else{
+                       airlineBusinessFlights.splice(j,1);
+                       
+                    }
+                  }
+              }else{
+                airlineEconomyFlights.splice(0,1);
+              }
+              
+            }
+            if(airlineBusinessFlights.length >0){
+              returnedArray = returnedArray.concat(airlineBusinessFlights);
+            }
+            return returnedArray ;
+         }
+         return flightsFromOtherAirlines;
+}

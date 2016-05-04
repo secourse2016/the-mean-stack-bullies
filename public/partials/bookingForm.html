@@ -1,9 +1,19 @@
+ 
+ <script src="../js/main.js"></script>
   <div id="bookingSection"  ng-controller="bookingCtrl" >
+
 
               <div id="bookingForms">
                 <div ng-model="bookings"> 
                  
                   <div id="flightType">
+<!-- =======
+              <div>
+                <div ng-model="bookings">  
+                  <h1>Book a flight!</h1> 
+                  <p class="bg-danger" ng-show="bookalert"> {{alertme}}</p> 
+                  <div>
+>>>>>>> booking_route_to_allow_other_airlines_to_book_our_flights -->
                     <div class="col-xs-2">
                       <input ng-model="trippp" type="radio" name="oneRound" value="round" ng-click="hideReturnedDate()">Round Trip </input>
                     </div>
@@ -27,8 +37,9 @@
 
                     <div class="form-style-7">
                       <label>Departure Date</label>
-                      <input ng-model = "depDate" type="date" class="form-control"  name="name" placeholder="Departure Date">
-
+                      <input type="text"id="depDateCalender" ng-model="depDate"  class="form-control"  name="name" placeholder="Deparute Date">
+                      <button id="calendarDeparture" class="glyphicon glyphicon-calendar"></button>
+                     
                     </div>
 
                     <div class="form-style-7">
@@ -87,8 +98,12 @@
 
                     <div ng-hide="hidedate" class="form-style-7">  
                       <label>Return Date</label>
-                      <input ng-model="retDate" type="date" class="form-control" name="name" placeholder="Departure Date">
-                    </div>  
+                      <input type="text" id="retDateCalender"ng-model="retDate"   class="form-control" name="name" placeholder="Return Date">
+
+
+                      <button id="calendarReturn" class="glyphicon glyphicon-calendar"></button>
+                    </div>
+
 
                     <div ng-hide="!hidedate"> 
                       <label> </label>
@@ -139,8 +154,9 @@
 
 
                 </div>
-              </div>  
-            </div> 
+              </div> 
+              
+      </div> 
 
 
 

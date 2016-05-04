@@ -52,21 +52,29 @@ exports.decreaseSeatsByNumber = function(number,flightIDOutging,flightIDInGoing,
       if (!err)
       {
         console.log("doc1----------------------------->"+doc1);
-      doc1.seats=doc1.seats-number;
-      doc1.save();
+        if(doc1!=null){
+          doc1.seats=doc1.seats-number;
+          doc1.save();
+        }
+  
 
     if (flightIDInGoing != null)
       {
         inFlightModel.findOne({ _id:  flightIDInGoing }, function (err, doc2){
           if (!err)
           {
+
             console.log("dov2-------------------"+doc2);
-             doc2.seats=doc2.seats-number;
+            if(doc2 !=null){
+              doc2.seats=doc2.seats-number;
              doc2.save();
              cb(null,doc2);
+           }
+             
           }else{
             cb(err,null);
           }
+           
         });
       }
       else{
@@ -79,7 +87,30 @@ exports.decreaseSeatsByNumber = function(number,flightIDOutging,flightIDInGoing,
     });
   }
   else{
-    cb("NO flight choosen",null);
+       if (flightIDInGoing != null)
+      {
+        inFlightModel.findOne({ _id:  flightIDInGoing }, function (err, doc2){
+          if (!err)
+          {
+            console.log("dov2-------------------"+doc2);
+            if(doc2 !=null){
+               doc2.seats=doc2.seats-number;
+             doc2.save();
+             cb(null,doc2);
+           }
+           // }else{
+           //  cb("Flight was not found wrong FlightID",null);
+           // }
+            
+          }else{
+            cb(err,null);
+          }
+        });
+      }
+      else{
+       cb("NO flight choosen",null);
+      }
+    
   }
 };
 
@@ -123,3 +154,29 @@ exports.insertPaymentInformation = function(paymentInformation,booking_id,cb){
          cb(null,payment);
       });
 };
+
+
+exports.fligtInformationsByID = function(outgoingFlightId,returnFlightId,cb){
+  var ObjectId = mongoose.Types.ObjectId; 
+  if(outgoingFlightId){
+    var outgoingFlights = mongoose.model('outFlight');
+
+   outgoingFlights.findOne( {'_id' : new ObjectId(outgoingFlightId) }, function(err, outgoingFlight){
+   
+      if(err) cb(err,null,null);
+
+   if(returnFlightId){
+     var returnFLights = mongoose.model('inFlight');
+
+   returnFLights.findOne( {'_id' : new ObjectId(returnFlightId) }, function(err, returnFLight){
+   if(err) cb(err,outgoingFlight,null);
+
+    cb(null,outgoingFlight,returnFLight);
+   });
+   }else{
+    cb(null,outgoingFlight,null);
+   }
+});
+
+}
+}

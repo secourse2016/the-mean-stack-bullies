@@ -1,4 +1,4 @@
-  app.controller('personalInfoCtrl', function($scope, $location,personalInfoSrv) {
+  app.controller('personalInfoCtrl', function($scope, $location,personalInfoSrv,flightSrv) {
   
   var index;
   Adults=0;
@@ -8,6 +8,8 @@
   $scope.titleType="Adult 1";
   $scope.i0={"background-color":"rgb(152,58,49)"};
   $scope.ageShow=true;
+
+  var personArray = null;
 
   personalInfoSrv.getBookingNumberOfAdultsAndChildren(function(data){
 
@@ -236,39 +238,10 @@
       }
       
   }
-	// $scope.submitpersonFrom=function() {
-		        
- //        var errMessage = presonValidations();
- //        if(errMessage){
- //          alert(errMessage);
- //        }
- //        else{
-          
- //          var person=[{
- //               firstName      : $scope.firstName,
- //     		       secondName    : $scope.lastName,
- //    		   age            : $scope.age,
- //    		   nationality    : $scope.Nationality,
- //      		   passportNumber: $scope.passportnum,
- //     		   issueDate      : $scope.issueDate,
- //     		   expiryDate     : $scope.expiryDate
- //          }];
-          
- //          personalInfoSrv.insertPerson(person,function(result){
- //            if(result=="person added to the session"){
- //                        console.log(result);
- //                        $location.url('/pay');
- //                     }
- //                     else{
- //                      alert("An error occured please try again");
- //                     }
- //          });
- //          } 
- //        }
-// >>>>>>> 23245027426c299d64d798310a72cc486498bdac
-//     }
+
+
   	$scope.submitpersonFrom=function() {
-  		        
+
           var errMessage = presonValidations();
           if(errMessage){
             // alert(errMessage);
@@ -287,9 +260,47 @@
             
              $scope.personalArray[$scope.currentIndex]=person[0];
            
+            var inFlightData = flightSrv.getInFLightData();
+            var outFlightData = flightSrv.getOutFLightData();
+            console.log(outFlightData);
+            console.log(inFlightData);
+            if( outFlightData !=null && outFlightData.FlightAirline =="AirFrance" && inFlightData.FlightAirline==null){
+              console.log('we are hereeeeee');
+              personalInfoSrv.setPersonArray($scope.personalArray);
+              insertPersonArray();
+            }else{
+              if(outFlightData !=null && outFlightData.FlightAirline !="AirFrance" && inFlightData.FlightAirline==null){
                 
-                
-            
+                 personalInfoSrv.setPersonArray($scope.personalArray);
+                   $location.url('/pay'); 
+              }else{
+              if(inFlightData!=null && outFlightData!=null && outFlightData.FlightAirline =="AirFrance" && inFlightData.FlightAirline=="AirFrance"){
+                personalInfoSrv.setPersonArray($scope.personalArray);
+                insertPersonArray();
+              }else{
+                if(inFlightData!=null && outFlightData!=null && outFlightData.FlightAirline !="AirFrance" && inFlightData.FlightAirline!="AirFrance"){
+                   personalInfoSrv.setPersonArray($scope.personalArray); 
+                     $location.url('/pay');
+                }else{
+                if(inFlightData!=null && outFlightData!=null && outFlightData.FlightAirline !="AirFrance" && inFlightData.FlightAirline=="AirFrance"){
+                  console.log("heree1");
+                  personalInfoSrv.setPersonArray($scope.personalArray); 
+                  insertPersonArray();
+                }else{
+                if(inFlightData!=null && outFlightData!=null && outFlightData.FlightAirline =="AirFrance" && inFlightData.FlightAirline!="AirFrance"){
+                  console.log("heree2");
+                  personalInfoSrv.setPersonArray($scope.personalArray); 
+                  insertPersonArray();
+                }
+                }
+                }
+
+              }
+
+              }
+            }
+                      function insertPersonArray (){
+                        console.log($scope.personalArray);
             personalInfoSrv.insertPerson($scope.personalArray,function(result){
               console.log("hereeeeee switch to payment view");
               if(result=="person added to the session"){
@@ -301,7 +312,17 @@
                         alert(result);
                        }
                      });
-            
+          }
           }
       }
+
+ 
+    
+
+   function setPersonArray (persons){
+    personArray =person;
+   }
+   function getPersonArray (){
+    return personArray;
+   }    
   });
