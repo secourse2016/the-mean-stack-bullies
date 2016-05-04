@@ -206,8 +206,36 @@ app.controller('paymentCtrl', function($scope, $location,paySrv,chargeSrv,person
                       paySrv.insertPayment(response.id,pa,
                            function(flag) {
                                  if(flag == true){
-                                    console.log("here in the payment controlller");
-                                    $location.url('/confirm');
+                 if(inFlightData.FlightAirline != null ){
+                  if (inFlightData.FlightAirline !="AirFrance" && inFlightData.FlightAirline !=null){
+                            paySrv.getStripePublicKeyOfOtherAirline(inFlightData.FlightAirline,function(publickey){
+                           
+                            console.log(publickey);
+                            Stripe.setPublishableKey(publickey); 
+
+                            Stripe.card.createToken({
+                            number: $scope.CardN,
+                            cvc: $scope.CVV,
+                            exp_month: getMonthNumber($scope.expirymonth),
+                            exp_year: $scope.expiryyear
+                            
+                            }, stripeResponseHandlerForReturnFlightsPayment); 
+                           });
+                        }else{
+                          console.log("in the else part ");
+                            Stripe.setPublishableKey("pk_test_ULcStxFLM4quhm4JacResvRo"); 
+
+                            Stripe.card.createToken({
+                            number: $scope.CardN,
+                            cvc: $scope.CVV,
+                            exp_month: getMonthNumber($scope.expirymonth),
+                            exp_year: $scope.expiryyear
+                            
+                            }, stripeResponseHandlerForReturnFlightsPayment); 
+                        }
+                      }  
+                                    // console.log("here in the payment controlller");
+                                    // $location.url('/confirm');
                                    }
                                    else{
                                     alert("something went wrong please try again");
